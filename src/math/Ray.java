@@ -11,24 +11,24 @@ package math;
  */
 public class Ray {
     
-    private Vec3f vA, vB;
+    private Vec3 vA, vB;
     
     //CONSTRUCTOR
-    public Ray(Vec3f va, Vec3f vb){
+    public Ray(Vec3 va, Vec3 vb){
         vA=va;
         vB=vb;        
     }
     
     //METHODS
-    public Vec3f origin(){
+    public Vec3 origin(){
         return vA;
     }
     
-    public Vec3f direction(){
+    public Vec3 direction(){
         return vB;
     }
     
-    public Vec3f point_at_parameter(float t){
+    public Vec3 point_at_parameter(float t){
         return vA.add(vB.product(t));
     }
 }

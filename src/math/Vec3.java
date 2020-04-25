@@ -6,27 +6,27 @@ package math;
  */
 
 //A class to create & operate with points/vectors & colours
-public class Vec3f {
+public class Vec3 {
     
     //PROPERTIES
     private float x,y,z;
     
     
     //CONSTRUCTOR
-    public Vec3f(){
+    public Vec3(){
         this.x=0.0f;
         this.y=0.0f;
         this.z=0.0f;
     }
     
     
-    public Vec3f(float x){
+    public Vec3(float x){
         this.x=x;
         this.y=x;
         this.z=x;
     }    
     
-    public Vec3f(float x, float y, float z) {
+    public Vec3(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -34,33 +34,37 @@ public class Vec3f {
     
     
     //METHODS 
-    public Vec3f add(Vec3f v){
-        return new Vec3f(x+v.x, y+v.y, z+v.z);
+    public Vec3 add(Vec3 v){
+        return new Vec3(x+v.x, y+v.y, z+v.z);
     }
     
-    public Vec3f add(float d){
-        return new Vec3f(x+d, y+d, z+d);
+    public Vec3 add(float d){
+        return new Vec3(x+d, y+d, z+d);
     }
     
-    public Vec3f sub(Vec3f v){
-        return new Vec3f(x-v.x, y-v.y, z-v.z);
+    public Vec3 sub(Vec3 v){
+        return new Vec3(x-v.x, y-v.y, z-v.z);
     }
     
-    public Vec3f sub(float d){
-        return new Vec3f(x-d, y-d, z-d);
+    public Vec3 sub(float d){
+        return new Vec3(x-d, y-d, z-d);
     }
     
-    public Vec3f product(float d){
-        return new Vec3f(x*d, y*d, z*d);
+    public Vec3 product(float d){
+        return new Vec3(x*d, y*d, z*d);
     }
     
-    public Vec3f dotProduct(Vec3f v){
-        return  new Vec3f(x*v.x, y*v.y, z*v.z);
+    public float dotProduct(Vec3 v){
+        return  x*v.x + y*v.y + z*v.z;
+    }
+    
+    public static float dotProduct(Vec3 v1, Vec3 v2){
+        return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     }
     
     //Return perpendicular vector to the plane based in the two given vectors
-    public Vec3f cross(Vec3f v){
-        return new Vec3f(
+    public Vec3 cross(Vec3 v){
+        return new Vec3(
                 y*v.z - z*v.y,
                 z*v.x - x*v.z,
                 x*v.y - y*v.x
@@ -87,9 +91,23 @@ public class Vec3f {
                 return 0.0f;
         }
     }
+
+    public float x() {
+        return x;
+    }
+
+    public float y() {
+        return y;
+    }
+
+    public float z() {
+        return z;
+    }
+    
+    
     
     //Every coordinate divided by the vector lenght
-    public Vec3f normalize(){
+    public Vec3 normalize(){
         float len=length();
         if(len>0){
             float invLen=1/len;
