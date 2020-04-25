@@ -20,7 +20,7 @@ import math.Vec3f;
 public class PathTracer {
 
     
-    private Vec3f color(Ray r){
+    private static Vec3f color(Ray r){
         Vec3f unit_direction=(r.direction().normalize());
         float t= 0.5f*(unit_direction.getValue(1) + 1.0f);    
         return new Vec3f(1.0f,1.0f,1.0f).product(1.0f-t)
@@ -34,29 +34,42 @@ public class PathTracer {
     public static void main(String[] args) {
         
         int pwidth = 200;
-        int pheight = 100;
-        
-        String test;
+        int pheight = 100;        
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
+        
+        Vec3f lower_left_corner=new Vec3f(-2.0f,-1.0f,-1.0f);
+        Vec3f horizontal=new Vec3f(4.0f,0.0f,0.0f);
+        Vec3f vertical=new Vec3f(0.0f,2.0f,0.0f);
+        Vec3f origin=new Vec3f(0.0f,0.0f,0.0f);
+        
         for (int j = pheight-1; j>=0; j--) {
             for (int i = 0; i < pwidth; i++) {
                 
-                //Vector to storage the RGB
-                Vec3f v=new Vec3f((float)i / (float)pwidth,
-                        (pheight-(float)j) / (float)pheight, 0.2f);
+                float u = (float)i / (float)pwidth;
+                float v = (pheight-(float)j) / (float)pheight;
+                Ray r=new Ray(origin,lower_left_corner.
+                        add(horizontal.product(u)).add(vertical.product(v)));
+                Vec3f col=color(r);
+                                
+                int ir= (int)(255.99*col.getValue(0));                
+                int ig= (int)(255.99*col.getValue(1));
+                int ib= (int)(255.99*col.getValue(2)); 
+                
+                
                 /*float r = (float)i / (float)pwidth;
                 float g = (pheight-(float)j) / (float)pheight ;
                 float b = 0.2f;
                 int ir= (int)(255.99*r);                
                 int ig= (int)(255.99*g);
                 int ib= (int)(255.99*b);  
-                */
-                int ir= (int)(255.99*v.getValue(0));                
-                int ig= (int)(255.99*v.getValue(1));
-                int ib= (int)(255.99*v.getValue(2)); 
                 
+                //Vector to storage the RGB
+                Vec3f v=new Vec3f((float)i / (float)pwidth,
+                        (pheight-(float)j) / (float)pheight, 0.2f);
+                
+                */
                 Color color=new Color(ir,ig,ib);                
                 theImage.setRGB(i,j, color.getRGB());                
             }
