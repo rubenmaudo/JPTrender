@@ -77,16 +77,8 @@ public class PathTracer {
                 int ig= (int)(255.99*col.getValue(1));
                 int ib= (int)(255.99*col.getValue(2));
                 
-                Color color;
                 
-                if(ir > 255 || ig >255 || ib>255){
-                    //System.out.printf("Pixel position %s,%s con rgb(%s,%s,%s)%n", i,j, ir, ig, ib);
-                    color=new Color(0,0,0);
-                }else{
-                    color=new Color(ir,ig,ib); 
-                }
-                               
-                               
+                Color color=new Color(ir,ig,ib);   
                 theImage.setRGB(i,j, color.getRGB());                
             }
         }
