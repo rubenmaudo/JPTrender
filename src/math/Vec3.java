@@ -90,6 +90,10 @@ public class Vec3 {
         return (float) Math.sqrt(norm());
     }
     
+    public float squared_length(){
+        return length()*length();
+    }            
+    
     public float getValue(int i){
         switch (i) {
             case 0:

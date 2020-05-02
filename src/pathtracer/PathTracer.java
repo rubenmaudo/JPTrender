@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import math.Intersection;
@@ -23,30 +24,24 @@ import math.Vec3;
  * @author RubenM
  */
 public class PathTracer {
-
-    /*
-    private static float hit_sphere(Vec3 center, float radius, Ray r){
-        Vec3 oc= r.origin().sub(center);
-        float a = dotProduct(r.direction(), r.direction());
-        float b = 2.0f * dotProduct(oc, r.direction());
-        float c = dotProduct(oc,oc) - radius*radius;
-        float discriminant = b*b -4*a*c;
-        if (discriminant < 0){
-            return -1.0f;
-        }else {
-            return (float) ((-b-sqrt(discriminant)) / (2.0*a));
-        }
+    
+    private static Vec3 random_in_unit_sphere(){
+        Vec3 p =new Vec3();
+        do{
+            p=new Vec3((float)Math.random(), (float)Math.random(), (float)Math.random()).product(2.0f)
+                    .sub(new Vec3(1,1,1));
+        }while (p.squared_length() >= 1);
+        return p;
     }
-    */
     
     private static Vec3 color(Ray r, ArrayList<Primitive> list){
         Intersection inters = new Intersection();
             
-        if (inters.hit(list, r, 0.0f, Float.MAX_VALUE)){
-            return new Vec3(inters.getPrim().getNormal().x()+1,
-                    inters.getPrim().getNormal().y()+1,
-                    inters.getPrim().getNormal().z()+1
-            ).product(0.5f);            
+        if (inters.hit(r, 0.001f, Float.MAX_VALUE, list)){
+            Primitive temp= inters.getPrim();
+            Vec3 target = temp.p.add(
+                    temp.normal).add(random_in_unit_sphere());
+            return color(new Ray(temp.p, target.sub(temp.p)),list).product(0.5f);      
         }else{
             Vec3 unit_direction=(r.direction().normalize());
             float t= 0.5f*(unit_direction.y() + 1.0f);    
@@ -61,18 +56,13 @@ public class PathTracer {
      */
     public static void main(String[] args) {
         
-        int pwidth = 800;
-        int pheight = 400;
+        int pwidth = 400;
+        int pheight = 200;
         int ns = 100;
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
-        
-        Vec3 lower_left_corner=new Vec3(-2.0f,-1.0f,-1.0f);
-        Vec3 horizontal=new Vec3(4.0f,0.0f,0.0f);
-        Vec3 vertical=new Vec3(0.0f,2.0f,0.0f);
-        Vec3 origin=new Vec3(0.0f,0.0f,0.0f);
-        
+                
         ArrayList<Primitive> primList= new ArrayList<>();
         primList.add(new Sphere(new Vec3(0,0,-1),0.5f));
         primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f));
@@ -91,6 +81,7 @@ public class PathTracer {
                     col = color(r,primList).add(col);                  
                 }
                 col = col.divide(ns);
+                col = new Vec3((float)sqrt(col.x()), (float)sqrt(col.y()), (float)sqrt(col.z()));
                                 
                 int ir= (int)(255.99*col.getValue(0));                
                 int ig= (int)(255.99*col.getValue(1));
@@ -101,7 +92,7 @@ public class PathTracer {
             }
         }
 
-        File outputfile = new File("render.jpg");
+        File outputfile = new File("renders/render.jpg");
         try {
             ImageIO.write(theImage, "jpg", outputfile);
         } catch (IOException e1) {

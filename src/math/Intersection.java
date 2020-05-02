@@ -7,7 +7,6 @@ package math;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
-import math.Ray;
 
 /**
  *
@@ -23,7 +22,7 @@ public class Intersection {
     
     };
     
-    public boolean hit(ArrayList<Primitive> list, Ray r, float t_min, float t_max){
+    public boolean hit(Ray r, float t_min, float t_max, ArrayList<Primitive> list){
         
         closest_so_far = t_max;
         

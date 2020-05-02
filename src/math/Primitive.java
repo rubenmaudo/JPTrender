@@ -10,9 +10,9 @@ package math;
  * @author RubenM
  */
 public abstract class Primitive {
-    float t;
-    Vec3 p;
-    Vec3 normal;
+    public float t;
+    public Vec3 p;
+    public Vec3 normal;
     
     public abstract boolean hit(Ray r, float t_min, float t_max);
     
