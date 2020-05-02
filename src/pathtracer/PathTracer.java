@@ -5,6 +5,7 @@
  */
 package pathtracer;
 
+import elements.Camera;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -52,18 +53,6 @@ public class PathTracer {
             return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
                 .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
         }
-        /*
-        float t= hit_sphere(new Vec3(0,0,-1), 0.5f, r);
-        if( t>0.0f){
-            Vec3 N = r.point_at_parameter(t).sub(new Vec3(0.0f,0.0f,-1.0f)).normalize();
-            return new Vec3(N.x()+1, N.y()+1, N.z()+1).product(0.5f);
-        }
-        
-        Vec3 unit_direction=(r.direction().normalize());
-        t= 0.5f*(unit_direction.y() + 1.0f);    
-        return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
-                .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
-        */
     }
     
     
@@ -72,8 +61,9 @@ public class PathTracer {
      */
     public static void main(String[] args) {
         
-        int pwidth = 400;
-        int pheight = 200;        
+        int pwidth = 800;
+        int pheight = 400;
+        int ns = 100;
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
@@ -83,27 +73,28 @@ public class PathTracer {
         Vec3 vertical=new Vec3(0.0f,2.0f,0.0f);
         Vec3 origin=new Vec3(0.0f,0.0f,0.0f);
         
-        ArrayList<Primitive> primList= new ArrayList();
+        ArrayList<Primitive> primList= new ArrayList<>();
         primList.add(new Sphere(new Vec3(0,0,-1),0.5f));
         primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f));
         
         
-        
+        Camera cam = new Camera();
         
         for (int j = pheight-1; j>=0; j--) {
             for (int i = 0; i < pwidth; i++) {
                 
-                float u = (float)i / (float)pwidth;
-                float v = (pheight-(float)j) / (float)pheight;
-                Ray r=new Ray(origin,lower_left_corner.
-                        add(horizontal.product(u)).add(vertical.product(v)));
-                
-                Vec3 col=color(r,primList);
+                Vec3 col=new Vec3(0,0,0);
+                for(int s=0; s<ns; s++){
+                    float u = (float)(i + Math.random())  / (float)pwidth;
+                    float v = ((pheight-(float)j)+ (float)Math.random()) / (float)pheight;
+                    Ray r =cam.get_ray(u, v);
+                    col = color(r,primList).add(col);                  
+                }
+                col = col.divide(ns);
                                 
                 int ir= (int)(255.99*col.getValue(0));                
                 int ig= (int)(255.99*col.getValue(1));
-                int ib= (int)(255.99*col.getValue(2));
-                
+                int ib= (int)(255.99*col.getValue(2));                
                 
                 Color color=new Color(ir,ig,ib);   
                 theImage.setRGB(i,j, color.getRGB());                
