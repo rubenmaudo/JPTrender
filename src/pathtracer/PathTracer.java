@@ -9,11 +9,13 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import static java.lang.Math.sqrt;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import math.Intersection;
+import math.Primitive;
 import math.Ray;
+import math.Sphere;
 import math.Vec3;
-import static math.Vec3.dotProduct;
 
 /**
  *
@@ -21,6 +23,7 @@ import static math.Vec3.dotProduct;
  */
 public class PathTracer {
 
+    /*
     private static float hit_sphere(Vec3 center, float radius, Ray r){
         Vec3 oc= r.origin().sub(center);
         float a = dotProduct(r.direction(), r.direction());
@@ -33,8 +36,23 @@ public class PathTracer {
             return (float) ((-b-sqrt(discriminant)) / (2.0*a));
         }
     }
+    */
     
-    private static Vec3 color(Ray r){
+    private static Vec3 color(Ray r, ArrayList<Primitive> list){
+        Intersection inters = new Intersection();
+            
+        if (inters.hit(list, r, 0.0f, Float.MAX_VALUE)){
+            return new Vec3(inters.getPrim().getNormal().x()+1,
+                    inters.getPrim().getNormal().y()+1,
+                    inters.getPrim().getNormal().z()+1
+            ).product(0.5f);            
+        }else{
+            Vec3 unit_direction=(r.direction().normalize());
+            float t= 0.5f*(unit_direction.y() + 1.0f);    
+            return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
+                .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
+        }
+        /*
         float t= hit_sphere(new Vec3(0,0,-1), 0.5f, r);
         if( t>0.0f){
             Vec3 N = r.point_at_parameter(t).sub(new Vec3(0.0f,0.0f,-1.0f)).normalize();
@@ -45,6 +63,7 @@ public class PathTracer {
         t= 0.5f*(unit_direction.y() + 1.0f);    
         return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
                 .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
+        */
     }
     
     
@@ -64,6 +83,13 @@ public class PathTracer {
         Vec3 vertical=new Vec3(0.0f,2.0f,0.0f);
         Vec3 origin=new Vec3(0.0f,0.0f,0.0f);
         
+        ArrayList<Primitive> primList= new ArrayList();
+        primList.add(new Sphere(new Vec3(0,0,-1),0.5f));
+        primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f));
+        
+        
+        
+        
         for (int j = pheight-1; j>=0; j--) {
             for (int i = 0; i < pwidth; i++) {
                 
@@ -71,7 +97,8 @@ public class PathTracer {
                 float v = (pheight-(float)j) / (float)pheight;
                 Ray r=new Ray(origin,lower_left_corner.
                         add(horizontal.product(u)).add(vertical.product(v)));
-                Vec3 col=color(r);
+                
+                Vec3 col=color(r,primList);
                                 
                 int ir= (int)(255.99*col.getValue(0));                
                 int ig= (int)(255.99*col.getValue(1));

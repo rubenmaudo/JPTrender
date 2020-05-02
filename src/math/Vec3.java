@@ -54,6 +54,17 @@ public class Vec3 {
         return new Vec3(x*d, y*d, z*d);
     }
     
+    public Vec3 divide(Vec3 v)
+	{
+		return new Vec3(x / v.x, y / v.y, z / v.z);
+	}
+
+	public Vec3 divide(float f)
+	{
+		return new Vec3(x / f, y / f, z / f);
+	}
+    
+    
     public float dotProduct(Vec3 v){
         return  x*v.x + y*v.y + z*v.z;
     }
@@ -123,6 +134,8 @@ public class Vec3 {
     public String toString (){
         return String.format("Vec3f[%.5f, %.5f, %.5f]", x, y, z);
     }
+
+    
     
     
 }
