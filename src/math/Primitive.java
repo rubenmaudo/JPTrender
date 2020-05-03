@@ -5,6 +5,8 @@
  */
 package math;
 
+import elements.Material;
+
 /**
  *
  * @author RubenM
@@ -13,6 +15,7 @@ public abstract class Primitive {
     public float t;
     public Vec3 p;
     public Vec3 normal;
+    public Material material;
     
     public abstract boolean hit(Ray r, float t_min, float t_max);
     

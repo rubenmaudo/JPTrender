@@ -6,6 +6,8 @@
 package pathtracer;
 
 import elements.Camera;
+import elements.Material;
+import elements.lambertian;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,29 +27,39 @@ import math.Vec3;
  */
 public class PathTracer {
     
-    private static Vec3 random_in_unit_sphere(){
-        Vec3 p =new Vec3();
-        do{
-            p=new Vec3((float)Math.random(), (float)Math.random(), (float)Math.random()).product(2.0f)
-                    .sub(new Vec3(1,1,1));
-        }while (p.squared_length() >= 1);
-        return p;
-    }
     
-    private static Vec3 color(Ray r, ArrayList<Primitive> list){
+    
+    private static Vec3 color(Ray r, ArrayList<Primitive> list, int depth){
         Intersection inters = new Intersection();
+        if (inters.hit(r, 0.001f, Float.MAX_VALUE, list)){
+            Primitive temp= inters.getPrim();
+
+            if(depth<50 && temp.material.scatter(r, inters)){
+                return temp.material.attenuation.product(color(temp.material.scattered, list, depth+1));
+            }else {
+                return new Vec3(0,0,0);
+            }
             
+        }else{
+                //Background
+                Vec3 unit_direction=(r.direction().normalize());
+                float t= 0.5f*(unit_direction.y() + 1.0f);    
+                return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
+                    .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
+        }
+        /*
         if (inters.hit(r, 0.001f, Float.MAX_VALUE, list)){
             Primitive temp= inters.getPrim();
             Vec3 target = temp.p.add(
                     temp.normal).add(random_in_unit_sphere());
-            return color(new Ray(temp.p, target.sub(temp.p)),list).product(0.5f);      
+            return color(new Ray(temp.p, target.sub(temp.p)),list).product(0.5f);            
         }else{
             Vec3 unit_direction=(r.direction().normalize());
             float t= 0.5f*(unit_direction.y() + 1.0f);    
             return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
                 .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
         }
+        */
     }
     
     
@@ -56,16 +68,16 @@ public class PathTracer {
      */
     public static void main(String[] args) {
         
-        int pwidth = 400;
-        int pheight = 200;
-        int ns = 100;
+        int pwidth = 1000;
+        int pheight = 500;
+        int ns = 200;
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
                 
         ArrayList<Primitive> primList= new ArrayList<>();
-        primList.add(new Sphere(new Vec3(0,0,-1),0.5f));
-        primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f));
+        primList.add(new Sphere(new Vec3(0,0,-1),0.5f,new lambertian(new Vec3(0.8f,0.3f,0.3f))));
+        primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f,new lambertian(new Vec3(0.8f,0.8f,0))));
         
         
         Camera cam = new Camera();
@@ -78,7 +90,7 @@ public class PathTracer {
                     float u = (float)(i + Math.random())  / (float)pwidth;
                     float v = ((pheight-(float)j)+ (float)Math.random()) / (float)pheight;
                     Ray r =cam.get_ray(u, v);
-                    col = color(r,primList).add(col);                  
+                    col = color(r,primList,0).add(col);
                 }
                 col = col.divide(ns);
                 col = new Vec3((float)sqrt(col.x()), (float)sqrt(col.y()), (float)sqrt(col.z()));

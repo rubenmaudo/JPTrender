@@ -5,6 +5,7 @@
  */
 package math;
 
+import elements.Material;
 import static math.Vec3.dotProduct;
 import static java.lang.Math.sqrt;
 
@@ -18,9 +19,10 @@ public class Sphere extends Primitive {
     Vec3 center; //Centre
     Float radius; //Radius
     
-    public Sphere(Vec3 cen, float r){
+    public Sphere(Vec3 cen, float r, Material material){
         this.center = cen;
         this.radius = r;
+        this.material= material;
     }
     
     @Override
