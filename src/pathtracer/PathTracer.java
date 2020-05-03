@@ -45,7 +45,7 @@ public class PathTracer {
                 //BACKGROUND COLOR
                 Vec3 unit_direction=(r.direction().normalize());
                 float t= 0.5f*(unit_direction.y() + 1.0f);    
-                return new Vec3(1.0f,1.0f,1.0f).product(1.0f-t)
+                return new Vec3(1f,1f,1f).product(1.0f-t)
                     .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
         }
     }
@@ -56,9 +56,9 @@ public class PathTracer {
      */
     public static void main(String[] args) {
         
-        int pwidth = 1000;
-        int pheight = 500;
-        int ns = 200;
+        int pwidth = 400;
+        int pheight = 200;
+        int ns = 100;
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
