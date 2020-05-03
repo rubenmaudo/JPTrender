@@ -5,7 +5,7 @@
  */
 package math;
 
-import elements.Material;
+import materials.Material;
 
 /**
  *

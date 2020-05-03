@@ -5,7 +5,7 @@
  */
 package math;
 
-import elements.Material;
+import materials.Material;
 import static math.Vec3.dotProduct;
 import static java.lang.Math.sqrt;
 
