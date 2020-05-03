@@ -17,9 +17,13 @@ import math.Vec3;
 public class metal extends Material{
     
     Vec3 albedo;
+    float fuzz;
     
-    public metal (Vec3 a){
+    public metal (Vec3 a, float f){
         this.albedo=a;
+        if (f<1) fuzz=f;
+        else fuzz=1;
+        
     };
     
     @Override
@@ -27,7 +31,7 @@ public class metal extends Material{
         Primitive temp= inters.getPrim();
         Vec3 reflected = reflect(r_in.direction().normalize(),temp.normal);
 
-        this.scattered = new Ray(temp.p, reflected);
+        this.scattered = new Ray(temp.p, reflected.add(random_in_unit_sphere().product(fuzz)));
         this.attenuation= albedo;  
 
         return true;
