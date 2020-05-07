@@ -117,12 +117,6 @@ public class PathTracer {
         graphics.setColor(Color.DARK_GRAY);
         graphics.setFont(new Font("Arial", Font.PLAIN, 10));
         graphics.drawString(text, 3, 10);
-        
-        //Print image
-        File outputfile = new File("renders/render.png");
-
-        try {
-            ImageIO.write(theImage, "png", outputfile);
-        } catch (IOException e1) {  }     
+            
     }    
 }

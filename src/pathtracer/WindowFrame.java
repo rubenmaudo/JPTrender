@@ -1,41 +1,50 @@
 package pathtracer;
 
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.FlowLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class WindowFrame extends JPanel
 {
-    public BufferedImage bi;
+    BufferedImage bi;
+    BufferedImage bi2;
+    boolean imageCheck=true;
     int w;
     int h;
     
-    public void createAndShowGUI(int w, int h, BufferedImage bi)
-    {
+    public void createAndShowGUI(int w, int h, BufferedImage bi){
         this.w=w;
         this.h=h;
         this.bi=bi;
-        JFrame frame = new JFrame("JPTrender");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add( this );
-        frame.setLocationByPlatform( true );
+        
+        JFrame frame = new JFrame();
+        //frame.setDefaultCloseOperation(onClose());
+        frame.getContentPane().setLayout(new FlowLayout());
+        this.add(new JLabel(new ImageIcon(bi)));
+        frame.add(this);        
         frame.pack();
-        frame.setVisible( true );        
+        frame.setVisible(true);
+        frame.setResizable(false);
+        
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                //Print image
+                File outputfile = new File("renders/render.png");
+                try {
+                    ImageIO.write(bi, "png", outputfile);
+                } catch (IOException e1) {  } 
+                System.exit(0);
+            }
+        });
     }
     
-    @Override
-    protected void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.drawImage(bi, 0, 0, this);
-        System.out.println("no");
-    } 
-    
-    public void updateRender(BufferedImage bi2){          
-        this.bi=bi2;
+    public void updateRender(BufferedImage bi){ 
+        this.bi=bi;
         repaint();        
     }
-    
-    
-    
 }
