@@ -9,6 +9,9 @@ import elements.Camera;
 import materials.Material;
 import materials.lambertian;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,10 +31,8 @@ import math.Vec3;
  */
 public class PathTracer {
     
-    
-    
     private static Vec3 color(Ray r, ArrayList<Primitive> list, int depth){
-        Intersection inters = new Intersection();
+        Intersection inters = new Intersection();        
         if (inters.hit(r, 0.001f, Float.MAX_VALUE, list)){
             Primitive temp= inters.getPrim();
 
@@ -55,14 +56,22 @@ public class PathTracer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Flag to control the render time
+        long startTime = System.currentTimeMillis();
         
-        int pwidth = 400;
-        int pheight = 200;
-        int ns = 100;
+        
+        
+        //Render specs
+        int pwidth = 600;
+        int pheight = 300;
+        int ns = 200; //Number of samples
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
-                
+        
+        WindowFrame window=new WindowFrame();
+        window.createAndShowGUI(pwidth,pheight,theImage);        
+            
         ArrayList<Primitive> primList= new ArrayList<>();
         primList.add(new Sphere(new Vec3(0,0,-1),0.5f,new lambertian(new Vec3(0.8f,0.3f,0.3f))));
         primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f,new lambertian(new Vec3(0.8f,0.8f,0))));
@@ -89,16 +98,31 @@ public class PathTracer {
                 int ib= (int)(255.99*col.getValue(2));                
                 
                 Color color=new Color(ir,ig,ib);   
-                theImage.setRGB(i,j, color.getRGB());                
-            }
+                theImage.setRGB(i,j, color.getRGB());
+                
+                window.updateRender(theImage);
+            }            
         }
+        
+        //Control time
+        long endTime = System.currentTimeMillis();
+        long milliseconds = endTime - startTime;
+        long minutes = (milliseconds / 1000) / 60;
+        long seconds = (milliseconds / 1000) % 60;
+        String text="Render time: " + minutes + "m " + seconds + " s";
+        System.out.println(text);
+        
+        //Print text on image
+        Graphics graphics = theImage.getGraphics();
+        graphics.setColor(Color.DARK_GRAY);
+        graphics.setFont(new Font("Arial", Font.PLAIN, 10));
+        graphics.drawString(text, 3, 10);
+        
+        //Print image
+        File outputfile = new File("renders/render.png");
 
-        File outputfile = new File("renders/render.jpg");
         try {
-            ImageIO.write(theImage, "jpg", outputfile);
-        } catch (IOException e1) {
-
-        }
-    }
-    
+            ImageIO.write(theImage, "png", outputfile);
+        } catch (IOException e1) {  }     
+    }    
 }
