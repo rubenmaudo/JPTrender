@@ -99,9 +99,8 @@ public class PathTracer {
                 
                 Color color=new Color(ir,ig,ib);   
                 theImage.setRGB(i,j, color.getRGB());
-                
-                window.updateRender(theImage);
-            }            
+                //window.updateRender(theImage);
+            }
         }
         
         //Control time
@@ -117,6 +116,7 @@ public class PathTracer {
         graphics.setColor(Color.DARK_GRAY);
         graphics.setFont(new Font("Arial", Font.PLAIN, 10));
         graphics.drawString(text, 3, 10);
+        window.updateRender(theImage);
             
     }    
 }

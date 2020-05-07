@@ -11,11 +11,9 @@ import javax.swing.*;
 
 public class WindowFrame extends JPanel
 {
-    BufferedImage bi;
-    BufferedImage bi2;
-    boolean imageCheck=true;
-    int w;
-    int h;
+    BufferedImage bi;    
+    int w; //Width
+    int h; //Height
     
     public void createAndShowGUI(int w, int h, BufferedImage bi){
         this.w=w;
