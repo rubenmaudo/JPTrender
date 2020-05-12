@@ -43,7 +43,7 @@ public class PathTracer {
                 //BACKGROUND COLOR
                 Vec3 unit_direction=(r.direction().normalize());
                 float t= 0.5f*(unit_direction.y() + 1.0f);    
-                return new Vec3(1f,1f,1f).product(1.0f-t)
+                return new Vec3(1f,1f,1f).product(1f-t)
                     .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
         }
     }
@@ -60,8 +60,8 @@ public class PathTracer {
         int pwidth = 1000;
         int pheight = 500;
         boolean progressive = true; //Si esta activo de momento no guarda
-        int ns = 800; //Number of samples
-        int tempNs=0;
+        int ns = 15; //Number of samples
+        int tempNs=1;
         
         BufferedImage theImage = new BufferedImage(pwidth, pheight, 
                 BufferedImage.TYPE_INT_RGB);
@@ -76,6 +76,7 @@ public class PathTracer {
         ArrayList<Primitive> primList= new ArrayList<>();
         primList.add(new Sphere(new Vec3(0,0,-1),0.5f,new lambertian(new Vec3(0.8f,0.3f,0.3f))));
         primList.add(new Sphere(new Vec3(0.45f,-0.4f,-0.7f),0.1f,new metal(new Vec3(0.8f,0.8f,0.8f),0f)));
+        primList.add(new Sphere(new Vec3(-0.45f,-0.4f,-0.7f),0.1f,new metal(new Vec3(1f,0.2f,0.2f),0.4f)));
         primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f,new lambertian(new Vec3(0.8f,0.8f,0))));
         primList.add(new Sphere(new Vec3(1,0,-1),0.5f,new metal(new Vec3(0.8f,0.6f,0.2f),0.9f)));
         primList.add(new Sphere(new Vec3(-1,0,-1),0.5f,new metal(new Vec3(0.8f,0.8f,0.8f),0.2f)));
@@ -83,7 +84,7 @@ public class PathTracer {
         Camera cam = new Camera();
         
         
-        while(tempNs<ns || progressive){
+        while(tempNs<=ns || progressive){
             
             for (int j = pheight-1; j>=0; j--) {
                 for (int i = 0; i < pwidth; i++) {
