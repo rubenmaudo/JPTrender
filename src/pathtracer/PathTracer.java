@@ -6,20 +6,18 @@
 package pathtracer;
 
 import elements.Camera;
-import materials.lambertian;
+import materials.Lambertian;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import static java.lang.Math.sqrt;
+import static math.Utils.*;
+
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import materials.metal;
-import math.Intersection;
-import math.Primitive;
-import math.Ray;
-import math.Sphere;
-import math.Vec3;
+
+import materials.Metal;
+import math.*;
 import windowRender.MainFrame;
 
 /**
@@ -30,11 +28,34 @@ public class PathTracer {
     
     private static Vec3 color(Ray r, ArrayList<Primitive> list, int depth){
         Intersection inters = new Intersection();        
-        if (inters.hit(r, 0.001f, Float.MAX_VALUE, list)){
+
+        /*if(depth<=0)
+            return new Vec3(0,0,0);
+
+        if (inters.hit(r, 0.001, INFINITY, list)) {
+            Primitive temp = inters.getPrim();
+
+            if (depth > 0 && temp.material.scatter(r, inters)) {
+                return temp.material.attenuation.product(color(temp.material.scattered, list, depth - 1));
+            }
+
+        }
+
+        //BACKGROUND COLOR
+        Vec3 unit_direction=(r.direction().normalize());
+        double t= 0.5*(unit_direction.y() + 1);
+        return new Vec3(1,1,1).product(1-t)
+                .add(new Vec3(0.5, 0.7, 1.0).product(t));
+*/
+
+        if(depth<=0)
+            return new Vec3(0,0,0);
+
+        if (inters.hit(r, 0.001, INFINITY, list)){
             Primitive temp= inters.getPrim();
 
-            if(depth<50 && temp.material.scatter(r, inters)){
-                return temp.material.attenuation.product(color(temp.material.scattered, list, depth+1));
+            if(depth>0 && temp.material.scatter(r, inters)){
+                return temp.material.attenuation.product(color(temp.material.scattered, list, depth-1));
             }else {
                 return new Vec3(0,0,0);
             }
@@ -42,10 +63,11 @@ public class PathTracer {
         }else{
                 //BACKGROUND COLOR
                 Vec3 unit_direction=(r.direction().normalize());
-                float t= 0.5f*(unit_direction.y() + 1.0f);    
-                return new Vec3(1f,1f,1f).product(1f-t)
-                    .add(new Vec3(0.5f, 0.7f, 1.0f).product(t));
+                double t= 0.5*(unit_direction.y() + 1);
+                return new Vec3(1,1,1).product(1-t)
+                    .add(new Vec3(0.5, 0.7, 1.0).product(t));
         }
+
     }
        
     /**
@@ -55,46 +77,50 @@ public class PathTracer {
         
         //Flag to control the render time
         long startTime = System.currentTimeMillis();
-        
+
         //Render specs
-        int pwidth = 1000;
-        int pheight = 500;
+        final double aspect_ratio = 16.0 / 9.0 ;
+        int image_width = 1000;
+        int image_height = (int) (image_width/aspect_ratio);
+
         boolean progressive = true; //Si esta activo de momento no guarda
         int ns = 15; //Number of samples
         int tempNs=1;
+
+        int depth =50;//Maximum number of bounces we will allow
         
-        BufferedImage theImage = new BufferedImage(pwidth, pheight, 
+        BufferedImage theImage = new BufferedImage(image_width, image_height,
                 BufferedImage.TYPE_INT_RGB);
         
         MainFrame ventana=new MainFrame(theImage);
         
                 
-        Vec3[][] imagePixels=new Vec3[pwidth][pheight];
-        int[][] imagePixelsNs=new int[pwidth][pheight];
-        Vec3[][] imagePixelsProcesed=new Vec3[pwidth][pheight];
+        Vec3[][] imagePixels=new Vec3[image_width][image_height];
+        int[][] imagePixelsNs=new int[image_width][image_height];
+        Vec3[][] imagePixelsProcesed=new Vec3[image_width][image_height];
             
         ArrayList<Primitive> primList= new ArrayList<>();
-        primList.add(new Sphere(new Vec3(0,0,-1),0.5f,new lambertian(new Vec3(0.8f,0.3f,0.3f))));
-        primList.add(new Sphere(new Vec3(0.45f,-0.4f,-0.7f),0.1f,new metal(new Vec3(0.8f,0.8f,0.8f),0f)));
-        primList.add(new Sphere(new Vec3(-0.45f,-0.4f,-0.7f),0.1f,new metal(new Vec3(1f,0.2f,0.2f),0.4f)));
-        primList.add(new Sphere(new Vec3(0,-100.5f,-1),100f,new lambertian(new Vec3(0.8f,0.8f,0))));
-        primList.add(new Sphere(new Vec3(1,0,-1),0.5f,new metal(new Vec3(0.8f,0.6f,0.2f),0.9f)));
-        primList.add(new Sphere(new Vec3(-1,0,-1),0.5f,new metal(new Vec3(0.8f,0.8f,0.8f),0.2f)));
+        primList.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.8,0.3,0.3))));
+        //primList.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new Vec3(0.8,0.8,0.8),0)));
+        //primList.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Metal(new Vec3(1,0.2,0.2),0.4)));
+        primList.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
+        primList.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
+        primList.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
                 
         Camera cam = new Camera();
         
         
         while(tempNs<=ns || progressive){
             
-            for (int j = pheight-1; j>=0; j--) {
-                for (int i = 0; i < pwidth; i++) {
+            for (int j = 0; j<image_height; j++) {
+                for (int i = 0; i < image_width; i++) {
 
-                    Vec3 col=new Vec3(0,0,0);
+                    Vec3 col;
                     
-                    float u = (float)(i + Math.random())  / (float)pwidth;
-                    float v = ((pheight-(float)j)+ (float)Math.random()) / (float)pheight;
+                    double u = (i + Math.random())  /  image_width;
+                    double v = ((image_height-j) + Math.random()) / image_height;
                     Ray r =cam.get_ray(u, v);
-                    col = color(r,primList,0);
+                    col = color(r,primList,depth);
                     
                     if(imagePixels[i][j]==null){
                         imagePixels[i][j]=new Vec3(0,0,0);
@@ -104,9 +130,10 @@ public class PathTracer {
                     imagePixels[i][j]=imagePixels[i][j].add(col);
                     imagePixelsNs[i][j]=imagePixelsNs[i][j]+1;
                     imagePixelsProcesed[i][j]=imagePixels[i][j].divide(imagePixelsNs[i][j]);
-                    col= new Vec3((float)sqrt(imagePixelsProcesed[i][j].x()), 
-                            (float)sqrt(imagePixelsProcesed[i][j].y()), 
-                            (float)sqrt(imagePixelsProcesed[i][j].z()));
+
+                    col= new Vec3(sqrt(imagePixelsProcesed[i][j].x()),
+                            sqrt(imagePixelsProcesed[i][j].y()),
+                            sqrt(imagePixelsProcesed[i][j].z()));
                     
                     int ir= (int)(255.99*col.getValue(0));                
                     int ig= (int)(255.99*col.getValue(1));

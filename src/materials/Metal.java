@@ -14,24 +14,31 @@ import math.Vec3;
  *
  * @author RubenM
  */
-public class lambertian extends Material{
+public class Metal extends Material{
     
     Vec3 albedo;
+    double fuzz;
     
-    public lambertian (Vec3 a){
+    public Metal(Vec3 a, double f){
         this.albedo=a;
-    };
+        if (f<1) fuzz=f;
+        else fuzz=1;
+        
+    }
     
     @Override
     public boolean scatter(Ray r_in, Intersection inters) {
         Primitive temp= inters.getPrim();
-        Vec3 target = temp.p.add(
-                temp.normal).add(random_in_unit_sphere());
+        Vec3 reflected = reflect(r_in.direction().normalize(),temp.normal);
 
-        this.scattered = new Ray(temp.p, target.sub(temp.p));
+        this.scattered = new Ray(temp.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
         this.attenuation= albedo;  
 
-        return true;
+        return (scattered.direction().dotProduct(temp.normal)>0);
+    }
+    
+    Vec3 reflect(Vec3 v, Vec3 n){
+        return v.sub(n.product(2).product(v.dotProduct(n)));
     }
     
     

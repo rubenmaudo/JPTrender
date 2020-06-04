@@ -1,5 +1,10 @@
 package math;
 
+import java.util.Random;
+
+import static java.lang.Math.*;
+import static math.Utils.*;
+
 /**
  *
  * @author RubenM
@@ -9,24 +14,24 @@ package math;
 public class Vec3 {
     
     //PROPERTIES
-    private float x,y,z;
+    private double x,y,z;
     
     
     //CONSTRUCTOR
     public Vec3(){
-        this.x=0.0f;
-        this.y=0.0f;
-        this.z=0.0f;
+        this.x=0;
+        this.y=0;
+        this.z=0;
     }
     
     
-    public Vec3(float x){
+    public Vec3(double x){
         this.x=x;
         this.y=x;
         this.z=x;
     }    
     
-    public Vec3(float x, float y, float z) {
+    public Vec3(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -38,7 +43,7 @@ public class Vec3 {
         return new Vec3(x+v.x, y+v.y, z+v.z);
     }
     
-    public Vec3 add(float d){
+    public Vec3 add(double d){
         return new Vec3(x+d, y+d, z+d);
     }
     
@@ -46,11 +51,11 @@ public class Vec3 {
         return new Vec3(x-v.x, y-v.y, z-v.z);
     }
     
-    public Vec3 sub(float d){
+    public Vec3 sub(double d){
         return new Vec3(x-d, y-d, z-d);
     }
     
-    public Vec3 product(float d){
+    public Vec3 product(double d){
         return new Vec3(x*d, y*d, z*d);
     }
     
@@ -63,17 +68,17 @@ public class Vec3 {
 		return new Vec3(x / v.x, y / v.y, z / v.z);
 	}
 
-	public Vec3 divide(float f)
+	public Vec3 divide(double v)
 	{
-		return new Vec3(x / f, y / f, z / f);
+		return new Vec3(x / v, y / v, z / v);
 	}
     
     
-    public float dotProduct(Vec3 v){
+    public double dotProduct(Vec3 v){
         return  x*v.x + y*v.y + z*v.z;
     }
     
-    public static float dotProduct(Vec3 v1, Vec3 v2){
+    public static double dotProduct(Vec3 v1, Vec3 v2){
         return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     }
     
@@ -86,19 +91,19 @@ public class Vec3 {
         );
     }
     
-    public float norm(){
+    public double norm(){
         return x*x + y*y + z*z;
     }
     
-    public float length(){        
-        return (float) Math.sqrt(norm());
+    public double length(){        
+        return sqrt(norm());
     }
     
-    public float squared_length(){
+    public double squared_length(){
         return length()*length();
     }            
     
-    public float getValue(int i){
+    public double getValue(int i){
         switch (i) {
             case 0:
                 return this.x;
@@ -107,19 +112,19 @@ public class Vec3 {
             case 2:
                 return this.z;            
             default:
-                return 0.0f;
+                return 0;
         }
     }
 
-    public float x() {
+    public double x() {
         return x;
     }
 
-    public float y() {
+    public double y() {
         return y;
     }
 
-    public float z() {
+    public double z() {
         return z;
     }
     
@@ -127,20 +132,57 @@ public class Vec3 {
     
     //Every coordinate divided by the vector lenght
     public Vec3 normalize(){
-        float len=length();
+        double len=length();
         if(len>0){
-            float invLen=1/len;
+            double invLen=1/len;
             x*=invLen;
             y*=invLen;
             z*=invLen;
         }
         return this;
     }    
-    
+
+    public static double random_double(double min, double max){
+        return min + (max - min) * Math.random();
+    }
+
+    //Return a random vector
+    public static Vec3 random(){
+        Random r = new Random();
+        return new Vec3(Math.random(),Math.random(),Math.random());
+    }
+
+    //Return a random vector within a minimum and a maximum
+    public static Vec3 random(double min, double max){
+        return new Vec3 (random_double(min,max),random_double(min,max),random_double(min,max));
+    }
+
+    public static Vec3 random_in_unit_sphere(){
+        while(true){
+            Vec3 p=random(-1,1);
+            if(p.squared_length()>=1) continue;
+            return p;
+        }
+    }
+
+    public static Vec3 random_in_hemisphere(Vec3 normal){
+        Vec3 in_unit_sphere =random_in_unit_sphere();
+        if(in_unit_sphere.dotProduct(normal)>0) //In the same hemisphere as the normal
+            return in_unit_sphere;
+        else
+            return in_unit_sphere.product(-1);
+    }
+
+    public static Vec3 random_unit_vector(){
+        double a = random_double(0, 2 * Utils.PI);
+        double z = random_double(-1,1);
+        double r = sqrt(1-z*z);
+        return new Vec3 (r*cos(a),r*sin(a),z);
+    }
         
     @Override
     public String toString (){
-        return String.format("Vec3f[%.5f, %.5f, %.5f]", x, y, z);
+        return String.format("Vec3[%.5f, %.5f, %.5f]", x, y, z);
     }
 
     

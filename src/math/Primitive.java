@@ -12,19 +12,31 @@ import materials.Material;
  * @author RubenM
  */
 public abstract class Primitive {
-    public float t;
-    public Vec3 p;
-    public Vec3 normal;
-    public Material material;
-    
-    public abstract boolean hit(Ray r, float t_min, float t_max);
+    public double t;//Distance to the hitting point
+    public Vec3 p;//Point of hitting
+    public Vec3 normal;//Normal
+    public boolean front_face;//Determining if the ray is coming out or going in
+
+    public Material material;//Material type
+
+
+    public abstract boolean hit(Ray r, double t_min, double t_max);
+
+    public void set_face_normal(Ray r, Vec3 outward_normal){
+        front_face=r.direction().dotProduct(outward_normal)<0;
+        if( front_face){
+            normal=outward_normal;
+        }else {normal = outward_normal.product(-1);
+        }
+
+    }
     
 
-    public float getT() {
+    public double getT() {
         return t;
     }
 
-    public void setT(float t) {
+    public void setT(double t) {
         this.t = t;
     }
 

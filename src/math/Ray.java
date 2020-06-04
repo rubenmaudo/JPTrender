@@ -28,7 +28,7 @@ public class Ray {
         return vB;
     }
     
-    public Vec3 point_at_parameter(float t){
+    public Vec3 point_at_parameter(double t){
         return vA.add(vB.product(t));
     }
 }
