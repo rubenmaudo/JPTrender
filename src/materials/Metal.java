@@ -19,9 +19,9 @@ public class Metal extends Material{
     Vec3 albedo;
     double fuzz;
     
-    public Metal(Vec3 a, double f){
+    public Metal(Vec3 a, double fuzziness){
         this.albedo=a;
-        if (f<1) fuzz=f;
+        if (fuzziness<1) fuzz=fuzziness;
         else fuzz=1;
         
     }
@@ -36,10 +36,4 @@ public class Metal extends Material{
 
         return (scattered.direction().dotProduct(temp.normal)>0);
     }
-    
-    Vec3 reflect(Vec3 v, Vec3 n){
-        return v.sub(n.product(2).product(v.dotProduct(n)));
-    }
-    
-    
 }

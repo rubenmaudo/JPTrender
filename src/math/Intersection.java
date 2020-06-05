@@ -24,21 +24,18 @@ public class Intersection {
         
         closest_so_far = t_max;
 
-        ListIterator<Primitive> iterator = list.listIterator();
-        while (iterator.hasNext()){
+        for (Primitive primitive : list) {
 
-            Primitive primitive = iterator.next();
+            if (primitive.hit(r, t_min, closest_so_far)) {
+                if (!hit_anything) {
 
-            if( primitive.hit(r, t_min, closest_so_far) ){
-                if (!hit_anything){
-
-                    prim=primitive;
+                    prim = primitive;
                     closest_so_far = primitive.t;
                     hit_anything = true;
 
-                }else if(primitive.t < closest_so_far ){
+                } else if (primitive.t < closest_so_far) {
                     closest_so_far = primitive.t;
-                    prim= primitive;
+                    prim = primitive;
 
                 }
             }

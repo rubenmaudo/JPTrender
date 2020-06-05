@@ -14,10 +14,10 @@ import math.Vec3;
  */
 public class Camera {
     
-    private Vec3 lower_left_corner;
-    private Vec3 horizontal;
-    private Vec3 vertical;
-    private Vec3 origin;
+    private final Vec3 lower_left_corner;
+    private final Vec3 horizontal;
+    private final Vec3 vertical;
+    private final Vec3 origin;
     
     public Camera(){
 

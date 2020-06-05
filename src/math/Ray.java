@@ -11,7 +11,8 @@ package math;
  */
 public class Ray {
     
-    private Vec3 vA, vB;
+    private final Vec3 vA;
+    private final Vec3 vB;
     
     //CONSTRUCTOR
     public Ray(Vec3 va, Vec3 vb){

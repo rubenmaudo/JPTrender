@@ -6,6 +6,8 @@
 package pathtracer;
 
 import elements.Camera;
+import elements.Scene;
+import materials.Dielectric;
 import materials.Lambertian;
 import java.awt.Color;
 import java.awt.Font;
@@ -27,26 +29,7 @@ import windowRender.MainFrame;
 public class PathTracer {
     
     private static Vec3 color(Ray r, ArrayList<Primitive> list, int depth){
-        Intersection inters = new Intersection();        
-
-        /*if(depth<=0)
-            return new Vec3(0,0,0);
-
-        if (inters.hit(r, 0.001, INFINITY, list)) {
-            Primitive temp = inters.getPrim();
-
-            if (depth > 0 && temp.material.scatter(r, inters)) {
-                return temp.material.attenuation.product(color(temp.material.scattered, list, depth - 1));
-            }
-
-        }
-
-        //BACKGROUND COLOR
-        Vec3 unit_direction=(r.direction().normalize());
-        double t= 0.5*(unit_direction.y() + 1);
-        return new Vec3(1,1,1).product(1-t)
-                .add(new Vec3(0.5, 0.7, 1.0).product(t));
-*/
+        Intersection inters = new Intersection();
 
         if(depth<=0)
             return new Vec3(0,0,0);
@@ -54,20 +37,15 @@ public class PathTracer {
         if (inters.hit(r, 0.001, INFINITY, list)){
             Primitive temp= inters.getPrim();
 
-            if(depth>0 && temp.material.scatter(r, inters)){
+            if(temp.material.scatter(r, inters))
                 return temp.material.attenuation.product(color(temp.material.scattered, list, depth-1));
-            }else {
                 return new Vec3(0,0,0);
-            }
-            
-        }else{
-                //BACKGROUND COLOR
-                Vec3 unit_direction=(r.direction().normalize());
-                double t= 0.5*(unit_direction.y() + 1);
-                return new Vec3(1,1,1).product(1-t)
-                    .add(new Vec3(0.5, 0.7, 1.0).product(t));
         }
 
+        //BACKGROUND COLOR
+        Vec3 unit_direction=(r.direction().normalize());
+        double t= 0.5*(unit_direction.y() + 1);
+        return new Vec3(1,1,1).product(1-t).add(new Vec3(0.5, 0.7, 1.0).product(t));
     }
        
     /**
@@ -98,15 +76,11 @@ public class PathTracer {
         Vec3[][] imagePixels=new Vec3[image_width][image_height];
         int[][] imagePixelsNs=new int[image_width][image_height];
         Vec3[][] imagePixelsProcesed=new Vec3[image_width][image_height];
-            
-        ArrayList<Primitive> primList= new ArrayList<>();
-        primList.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.8,0.3,0.3))));
-        //primList.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new Vec3(0.8,0.8,0.8),0)));
-        //primList.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Metal(new Vec3(1,0.2,0.2),0.4)));
-        primList.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-        primList.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
-        primList.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
-                
+
+        //Create scene
+        ArrayList<Primitive> primList= Scene.generateScene(5);
+
+        //Create camera
         Camera cam = new Camera();
         
         
