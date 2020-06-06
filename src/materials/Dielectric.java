@@ -1,9 +1,6 @@
 package materials;
 
-import math.Intersection;
-import math.Primitive;
-import math.Ray;
-import math.Vec3;
+import math.*;
 
 import static java.lang.Math.min;
 import static java.lang.Math.sqrt;
@@ -17,7 +14,7 @@ public class Dielectric extends Material{
 
     @Override
     public boolean scatter(Ray r_in, Intersection inters) {
-        this.attenuation= new Vec3(1,1,1);
+        this.attenuation= new ColorValue(1,1,1);
         double etai_over_etat;
 
         Primitive temp= inters.getPrim();

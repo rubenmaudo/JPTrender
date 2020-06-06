@@ -6,6 +6,7 @@
 package materials;
 
 import math.Intersection;
+import math.ColorValue;
 import math.Ray;
 import math.Vec3;
 
@@ -17,7 +18,7 @@ import static java.lang.Math.sqrt;
  * @author RubenM
  */
 public abstract class Material {
-    public Vec3 attenuation;
+    public ColorValue attenuation;
     public Ray scattered;
     
     public abstract boolean scatter(Ray r_in, Intersection inters);

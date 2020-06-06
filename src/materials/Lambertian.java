@@ -5,10 +5,7 @@
  */
 package materials;
 
-import math.Intersection;
-import math.Primitive;
-import math.Ray;
-import math.Vec3;
+import math.*;
 
 /**
  *
@@ -16,9 +13,9 @@ import math.Vec3;
  */
 public class Lambertian extends Material{
     
-    Vec3 albedo;
+    ColorValue albedo;
     
-    public Lambertian(Vec3 a){
+    public Lambertian(ColorValue a){
         this.albedo=a;
     }
     

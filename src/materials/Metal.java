@@ -5,10 +5,7 @@
  */
 package materials;
 
-import math.Intersection;
-import math.Primitive;
-import math.Ray;
-import math.Vec3;
+import math.*;
 
 /**
  *
@@ -16,10 +13,10 @@ import math.Vec3;
  */
 public class Metal extends Material{
     
-    Vec3 albedo;
+    ColorValue albedo;
     double fuzz;
     
-    public Metal(Vec3 a, double fuzziness){
+    public Metal(ColorValue a, double fuzziness){
         this.albedo=a;
         if (fuzziness<1) fuzz=fuzziness;
         else fuzz=1;

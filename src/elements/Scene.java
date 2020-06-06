@@ -4,10 +4,7 @@ import materials.Dielectric;
 import materials.Lambertian;
 import materials.Material;
 import materials.Metal;
-import math.Primitive;
-import math.Sphere;
-import math.Utils;
-import math.Vec3;
+import math.*;
 
 import java.util.ArrayList;
 
@@ -19,57 +16,57 @@ public class Scene {
 
         switch(i){
             case 1:
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.8,0.3,0.3))));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
-                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.8,0.3,0.3))));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.8,0.8),0.2)));
 
                 return geometry;
 
             case 2:
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.8,0.3,0.3))));
-                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new Vec3(0.8,0.8,0.8),0)));
-                geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Metal(new Vec3(1,0.2,0.2),0.4)));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
-                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.8,0.3,0.3))));
+                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
+                geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(1,0.2,0.2),0.4)));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.8,0.8),0.2)));
 
                 return geometry;
 
             case 3:
                 geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Dielectric(1.7)));
-                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new Vec3(0.8,0.8,0.8),0)));
+                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
                 geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Dielectric(1.7)));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
-                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.8,0.8),0.2)));
 
                 return geometry;
 
             case 4:
                 //Scene with blue ball and one dielectric
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.1,0.2,0.5))));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0)));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.1,0.2,0.5))));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0)));
                 geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Dielectric(1.5)));
 
                 return geometry;
 
             case 5:
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.8,0.3,0.3))));
-                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new Vec3(0.8,0.8,0.8),0)));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.8,0.3,0.3))));
+                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
                 geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Dielectric(1.5)));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0.9)));
-                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new Vec3(0.8,0.8,0.8),0.2)));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.8,0.8),0.2)));
 
                 return geometry;
 
             case 6:
                 //Scene with buble
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.1,0.2,0.5))));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.8,0.8,0))));
-                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new Vec3(0.8,0.6,0.2),0)));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.1,0.2,0.5))));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0)));
                 geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Dielectric(1.5)));
                 geometry.add(new Sphere(new Vec3(-1,0,-1),-0.49,new Dielectric(1.5)));
 
@@ -78,14 +75,14 @@ public class Scene {
             case 7:
                 //Red & Blue spheres for camera test
                 double R =Math.cos(Utils.PI/4);
-                geometry.add(new Sphere(new Vec3(-R,0,-1),R,new Lambertian(new Vec3(0,0,1))));
-                geometry.add(new Sphere(new Vec3(R,0,-1),R,new Lambertian(new Vec3(1,0,0))));
+                geometry.add(new Sphere(new Vec3(-R,0,-1),R,new Lambertian(new ColorValue(0,0,1))));
+                geometry.add(new Sphere(new Vec3(R,0,-1),R,new Lambertian(new ColorValue(1,0,0))));
 
                 return geometry;
 
             case 8:
                 //Create random scene
-                Material ground_material = new Lambertian(new Vec3(0.5,0.5,0.5));
+                Material ground_material = new Lambertian(new ColorValue(0.5,0.5,0.5));
                 geometry.add(new Sphere(new Vec3(0,-1000,0),1000,ground_material));
 
                 for(int a=-11; a<11; a++){
@@ -98,12 +95,12 @@ public class Scene {
 
                             if(choose_mat < 0.8){
                                 //diffuse
-                                Vec3 albedo = Vec3.random().product(Vec3.random());
+                                ColorValue albedo = ColorValue.randomColorValue().product(ColorValue.randomColorValue());
                                 sphere_material = new Lambertian(albedo);
                                 geometry.add(new Sphere(center,0.2,sphere_material));
                             } else if(choose_mat < 0.95){
                                 //metal
-                                Vec3 albedo = Vec3.random(0.5,1);
+                                ColorValue albedo = ColorValue.randomColorValue(0.5,1);
                                 double fuzz =Vec3.random_double(0,0.5);
                                 sphere_material = new Metal(albedo,fuzz);
                                 geometry.add(new Sphere(center,0.2,sphere_material));
@@ -119,17 +116,17 @@ public class Scene {
                 Material material1 = new Dielectric(1.5);
                 geometry.add(new Sphere(new Vec3(0,1,0),1,material1));
 
-                Material material2 = new Lambertian(new Vec3(0.4,0.2,0.1));
+                Material material2 = new Lambertian(new ColorValue(0.4,0.2,0.1));
                 geometry.add(new Sphere(new Vec3(-4,1,0),1,material2));
 
-                Material material3 = new Metal(new Vec3(0.7,0.6,0.5),0);
+                Material material3 = new Metal(new ColorValue(0.7,0.6,0.5),0);
                 geometry.add(new Sphere(new Vec3(4,1,0),1,material3));
 
                 return geometry;
 
             default:
-                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new Vec3(0.6,0.6,0.6))));
-                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new Vec3(0.6,0.6,0.6))));
+                geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.6,0.6,0.6))));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.6,0.6,0.6))));
 
                 return geometry;
         }

@@ -7,8 +7,7 @@ package pathtracer;
 
 import elements.Camera;
 import elements.Scene;
-import materials.Dielectric;
-import materials.Lambertian;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -18,7 +17,6 @@ import static math.Utils.*;
 
 import java.util.ArrayList;
 
-import materials.Metal;
 import math.*;
 import windowRender.MainFrame;
 
@@ -28,24 +26,26 @@ import windowRender.MainFrame;
  */
 public class PathTracer {
     
-    private static Vec3 color(Ray r, ArrayList<Primitive> list, int depth){
+    private static ColorValue colorRay(Ray r, ArrayList<Primitive> list, int depth){
         Intersection inters = new Intersection();
 
         if(depth<=0)
-            return new Vec3(0,0,0);
+            return new ColorValue(0,0,0);
 
         if (inters.hit(r, 0.001, INFINITY, list)){
             Primitive temp= inters.getPrim();
 
             if(temp.material.scatter(r, inters))
-                return temp.material.attenuation.product(color(temp.material.scattered, list, depth-1));
-                return new Vec3(0,0,0);
+                return temp.material.attenuation.product(colorRay(temp.material.scattered, list, depth-1));
+                return new ColorValue(0,0,0);
         }
 
         //BACKGROUND COLOR
         Vec3 unit_direction=(r.direction().normalize());
         double t= 0.5*(unit_direction.y() + 1);
-        return new Vec3(1,1,1).product(1-t).add(new Vec3(0.5, 0.7, 1.0).product(t));
+
+
+        return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
     }
        
     /**
@@ -73,9 +73,9 @@ public class PathTracer {
         MainFrame ventana=new MainFrame(theImage);
         
                 
-        Vec3[][] imagePixels=new Vec3[image_width][image_height];
+        ColorValue[][] imagePixels=new ColorValue[image_width][image_height];
         int[][] imagePixelsNs=new int[image_width][image_height];
-        Vec3[][] imagePixelsProcesed=new Vec3[image_width][image_height];
+        ColorValue[][] imagePixelsProcesed=new ColorValue[image_width][image_height];
 
         //Create scene
         ArrayList<Primitive> primList= Scene.generateScene(8);
@@ -87,25 +87,24 @@ public class PathTracer {
         double dist_to_focus = 10; //lookfrom.sub(lookat).length();
         double aperture = 0.1;
 
-
         Camera cam = new Camera(lookfrom, lookat, vup, 20
                 , aspect_ratio, aperture, dist_to_focus);
         
-        
+        //Processing the scene
         while(tempNs<=ns || progressive){
             
             for (int j = 0; j<image_height; j++) {
                 for (int i = 0; i < image_width; i++) {
 
-                    Vec3 col;
+                    ColorValue col;
                     
                     double u = (i + Math.random())  /  image_width;
                     double v = ((image_height-j) + Math.random()) / image_height;
                     Ray r =cam.get_ray(u, v);
-                    col = color(r,primList,depth);
+                    col = colorRay(r,primList,depth);
                     
                     if(imagePixels[i][j]==null){
-                        imagePixels[i][j]=new Vec3(0,0,0);
+                        imagePixels[i][j]=new ColorValue(0,0,0);
                         imagePixelsNs[i][j]=0;
                     }
                     
@@ -113,13 +112,13 @@ public class PathTracer {
                     imagePixelsNs[i][j]=imagePixelsNs[i][j]+1;
                     imagePixelsProcesed[i][j]=imagePixels[i][j].divide(imagePixelsNs[i][j]);
 
-                    col= new Vec3(sqrt(imagePixelsProcesed[i][j].x()),
-                            sqrt(imagePixelsProcesed[i][j].y()),
-                            sqrt(imagePixelsProcesed[i][j].z()));
+                    col= new ColorValue(sqrt(imagePixelsProcesed[i][j].vR()),
+                            sqrt(imagePixelsProcesed[i][j].vG()),
+                            sqrt(imagePixelsProcesed[i][j].vB()));
                     
-                    int ir= (int)(255.99*col.getValue(0));                
-                    int ig= (int)(255.99*col.getValue(1));
-                    int ib= (int)(255.99*col.getValue(2));                
+                    int ir= (int)(255.99*col.vR());
+                    int ig= (int)(255.99*col.vG());
+                    int ib= (int)(255.99*col.vB());
 
                     Color color=new Color(ir,ig,ib);   
                     theImage.setRGB(i,j, color.getRGB());
