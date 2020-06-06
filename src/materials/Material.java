@@ -9,6 +9,9 @@ import math.Intersection;
 import math.Ray;
 import math.Vec3;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 /**
  *
  * @author RubenM
@@ -18,14 +21,22 @@ public abstract class Material {
     public Ray scattered;
     
     public abstract boolean scatter(Ray r_in, Intersection inters);
-    
-    static Vec3 random_in_unit_sphere(){
-        Vec3 p =new Vec3();
-        do{
-            p=new Vec3((float)Math.random(), (float)Math.random(), (float)Math.random()).product(2.0f)
-                    .sub(new Vec3(1,1,1));
-        }while (p.squared_length() >= 1);
-        return p;
+
+    Vec3 reflect(Vec3 v, Vec3 n){
+
+        return v.sub(n.product(2).product(v.dotProduct(n)));
     }
 
+    public Vec3 refract(Vec3 uv, Vec3 n, double etai_over_etat){
+        double cos_theta = uv.product(-1).dotProduct(n);
+        Vec3 r_out_parallel = uv.add(n.product(cos_theta)).product(etai_over_etat);
+        Vec3 r_out_perp= n.product(-sqrt(1-r_out_parallel.squared_length()));
+        return r_out_parallel.add(r_out_perp);
+    }
+
+    double schlick(double cosine, double ref_idx){
+        double r0 = (1-ref_idx) / (1+ref_idx);
+        r0= r0 * r0;
+        return r0 + (1-r0) * pow((1- cosine),5);
+    }
 }

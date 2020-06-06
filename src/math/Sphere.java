@@ -17,37 +17,40 @@ import static java.lang.Math.sqrt;
 public class Sphere extends Primitive {
     
     Vec3 center; //Centre
-    Float radius; //Radius
+    double radius; //Radius
     
-    public Sphere(Vec3 cen, float r, Material material){
+    public Sphere(Vec3 cen, double r, Material material){
         this.center = cen;
         this.radius = r;
         this.material= material;
     }
     
     @Override
-    public boolean hit(Ray r, float t_min, float t_max){
+    public boolean hit(Ray r, double t_min, double t_max){
         Vec3 oc= r.origin().sub(center);
-        float a = dotProduct(r.direction(), r.direction());
-        float b = dotProduct(oc, r.direction());
-        float c = dotProduct(oc,oc) - radius*radius;
-        float discriminant = b*b - a*c;
+        double a = dotProduct(r.direction(), r.direction());
+        double half_b = dotProduct(oc, r.direction());
+        double c = dotProduct(oc,oc) - radius*radius;
+        double discriminant = half_b*half_b - a*c;
+
         if (discriminant > 0){
-            float temp = (float) (( -b - sqrt(b*b-a*c))/a);
+            double temp =  (( -half_b - sqrt(half_b*half_b-a*c))/a);
             
             if(temp < t_max && temp > t_min){
                 this.t = temp;
                 this.p = r.point_at_parameter(this.t);
-                this.normal = (this.p.sub(center)).divide(radius);
+                Vec3 outward_normal=(this.p.sub(center)).divide(radius);
+                this.set_face_normal(r,outward_normal);
                 return true;
             }
             
-            temp = (float) (( -b + sqrt(b*b-a*c))/a);
+            temp = (( -half_b + sqrt(half_b*half_b-a*c))/a);
             
             if(temp < t_max && temp > t_min){
                 this.t = temp;
                 this.p = r.point_at_parameter(this.t);
-                this.normal = (this.p.sub(center)).divide(radius);
+                Vec3 outward_normal=(this.p.sub(center)).divide(radius);
+                this.set_face_normal(r,outward_normal);
                 return true;
             }            
         }        

@@ -11,7 +11,8 @@ package math;
  */
 public class Ray {
     
-    private Vec3 vA, vB;
+    private final Vec3 vA;
+    private final Vec3 vB;
     
     //CONSTRUCTOR
     public Ray(Vec3 va, Vec3 vb){
@@ -28,7 +29,7 @@ public class Ray {
         return vB;
     }
     
-    public Vec3 point_at_parameter(float t){
+    public Vec3 point_at_parameter(double t){
         return vA.add(vB.product(t));
     }
 }

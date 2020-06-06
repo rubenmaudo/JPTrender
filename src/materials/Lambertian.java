@@ -14,22 +14,26 @@ import math.Vec3;
  *
  * @author RubenM
  */
-public class lambertian extends Material{
+public class Lambertian extends Material{
     
     Vec3 albedo;
     
-    public lambertian (Vec3 a){
+    public Lambertian(Vec3 a){
         this.albedo=a;
-    };
+    }
     
     @Override
     public boolean scatter(Ray r_in, Intersection inters) {
         Primitive temp= inters.getPrim();
-        Vec3 target = temp.p.add(
-                temp.normal).add(random_in_unit_sphere());
 
-        this.scattered = new Ray(temp.p, target.sub(temp.p));
-        this.attenuation= albedo;  
+        //Calc with scatter in random unit sphere (create more shadows)
+        Vec3 scatter_direction = temp.normal.add(Vec3.random_in_unit_sphere());
+
+        //Calc with scatter in random unit vector (Objects brighter and less shadow)
+        //Vec3 scatter_direction = temp.normal.add(Vec3.random_unit_vector());
+
+        this.scattered = new Ray(temp.p, scatter_direction);
+        this.attenuation= albedo;
 
         return true;
     }
