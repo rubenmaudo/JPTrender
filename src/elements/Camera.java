@@ -6,6 +6,7 @@
 package elements;
 
 import math.Ray;
+import math.Utils;
 import math.Vec3;
 
 /**
@@ -18,25 +19,38 @@ public class Camera {
     private final Vec3 horizontal;
     private final Vec3 vertical;
     private final Vec3 origin;
+    private final Vec3 u,v,w;
+    private final double lens_radius;
     
-    public Camera(){
+    public Camera(Vec3 lookfrom, Vec3 lookat, Vec3 vup, double vfov, double aspect_ratio,
+                  double aperture, double focus_dist){
 
-        final double aspect_ratio = 16.0 / 9.0 ;
-        double viewport_height = 2.0;
+        double theta = Utils.degrees_to_radians(vfov);
+        double h = Math.tan(theta/2);
+        double viewport_height = 2.0 * h;
         double viewport_width =aspect_ratio * viewport_height;
-        double focal_length = 1.0;
 
-        this.origin = new Vec3(0,0,0);
-        this.horizontal = new Vec3(viewport_width,0,0);
-        this.vertical = new Vec3(0, viewport_height, 0);
-        this.lower_left_corner = origin.sub(horizontal.divide(2))
-            .sub(vertical.divide(2))
-                .sub(new Vec3(0,0,focal_length));
+        this.w = lookfrom.sub(lookat).normalize();
+        this.u = vup.cross(w).normalize();
+        this.v = w.cross(u);
+
+        this.origin = lookfrom;
+        this.horizontal = u.product(focus_dist*viewport_width);
+        this.vertical = v.product(focus_dist*viewport_height);
+        this.lower_left_corner = origin.sub(horizontal.divide(2)).sub(vertical.divide(2)).sub(w.product(focus_dist));
+
+        this.lens_radius= aperture / 2;
+
     }
     
-    public Ray get_ray(double u, double v){
-        return new Ray(origin,lower_left_corner.
-                add(horizontal.product(u)).add(vertical.product(v)));
+    public Ray get_ray(double s, double t){
+        Vec3 rd= Vec3.random_in_unit_disk().product(lens_radius);
+        Vec3 offset = u.product(rd.x()).add(v.product(rd.y()));
+
+
+        return new Ray(origin.add(offset),
+                lower_left_corner.add(horizontal.product(s)).add(vertical.product(t)).sub(origin).sub(offset)
+        );
     }
     
 }

@@ -78,10 +78,18 @@ public class PathTracer {
         Vec3[][] imagePixelsProcesed=new Vec3[image_width][image_height];
 
         //Create scene
-        ArrayList<Primitive> primList= Scene.generateScene(5);
+        ArrayList<Primitive> primList= Scene.generateScene(8);
 
         //Create camera
-        Camera cam = new Camera();
+        Vec3 lookfrom=new Vec3(13,2,3);
+        Vec3 lookat=new Vec3(0,0,0);
+        Vec3 vup=new Vec3(0,1,0);
+        double dist_to_focus = 10; //lookfrom.sub(lookat).length();
+        double aperture = 0.1;
+
+
+        Camera cam = new Camera(lookfrom, lookat, vup, 20
+                , aspect_ratio, aperture, dist_to_focus);
         
         
         while(tempNs<=ns || progressive){

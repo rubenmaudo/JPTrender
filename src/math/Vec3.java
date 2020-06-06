@@ -131,6 +131,7 @@ public class Vec3 {
     
     
     //Every coordinate divided by the vector lenght
+    //Also called unit_vector
     public Vec3 normalize(){
         double len=length();
         if(len>0){
@@ -165,6 +166,7 @@ public class Vec3 {
         }
     }
 
+    //Not used
     public static Vec3 random_in_hemisphere(Vec3 normal){
         Vec3 in_unit_sphere =random_in_unit_sphere();
         if(in_unit_sphere.dotProduct(normal)>0) //In the same hemisphere as the normal
@@ -173,13 +175,23 @@ public class Vec3 {
             return in_unit_sphere.product(-1);
     }
 
+    //It can be used in order to vary the result of the lambertian distribution
     public static Vec3 random_unit_vector(){
         double a = random_double(0, 2 * Utils.PI);
         double z = random_double(-1,1);
         double r = sqrt(1-z*z);
         return new Vec3 (r*cos(a),r*sin(a),z);
     }
-        
+
+    public static Vec3 random_in_unit_disk(){
+        while(true){
+            Vec3 p = new Vec3(random_double(-1,1), random_double(-1,1), 0);
+            if (p.squared_length() >= 1) continue;
+            return p;
+        }
+    }
+
+
     @Override
     public String toString (){
         return String.format("Vec3[%.5f, %.5f, %.5f]", x, y, z);
