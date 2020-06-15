@@ -1,14 +1,18 @@
 package math;
 
+import geometry.Primitive;
+
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
+import static math.Utils.INFINITY;
 import static math.Vec3.random_double;
 
 public class ColorValue {
 
     //PROPERTIES
-    private double vR,vG,vB;
-
+    double vR,vG,vB;
 
     //CONSTRUCTOR
     public ColorValue(double vR, double vG, double vB) {
@@ -29,8 +33,56 @@ public class ColorValue {
         this.vB=x;
     }
 
+    public ColorValue(double vR, double vG, double vB, double gammaValue) {
+        this.vR = gammaCorrection(vR,gammaValue);
+        this.vG = gammaCorrection(vG,gammaValue);
+        this.vB = gammaCorrection(vB,gammaValue);
+    }
+
 
     //METHODS
+
+    //Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
+    //and obtaining the color
+    public static ColorValue colorRay(Ray r, ArrayList<Primitive> list, int depth){
+        Hittable_list inters = new Hittable_list();
+
+        if(depth<=0)
+            return new ColorValue(0,0,0);
+
+        if (inters.hit(r, 0.001, INFINITY, list)){
+            Primitive temp= inters.getPrim();
+
+            if(temp.material.scatter(r, inters))
+                return temp.material.getAttenuation().product(colorRay(temp.material.getScattered(), list, depth-1));
+            return new ColorValue(0,0,0);
+        }
+
+        //GENERATE BACKGROUND COLOR
+        Vec3 unit_direction=(r.direction().normalize());
+        double t= 0.5*(unit_direction.y() + 1);
+        return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
+    }
+
+    public static double gammaCorrection(double value, double correctionValue){
+        double gammaCorrection = 1 / correctionValue;
+        return Math.pow(value,gammaCorrection);
+    }
+
+    public static double clamp(double x, double min, double max){
+        if (x < min) return min;
+        if (x > max) return max;
+        return x;
+    }
+
+    public int toRGB(){
+        int R= (int) (256 * clamp(vR,0, 0.999));
+        int G= (int) (256 * clamp(vG,0, 0.999));
+        int B= (int) (256 * clamp(vB,0, 0.999));
+        return new Color(R,G,B).getRGB();
+    }
+
+
     public double get_vR(){
         return vR;
     }

@@ -5,7 +5,7 @@
  */
 package materials;
 
-import math.Intersection;
+import math.Hittable_list;
 import math.ColorValue;
 import math.Ray;
 import math.Vec3;
@@ -18,10 +18,10 @@ import static java.lang.Math.sqrt;
  * @author RubenM
  */
 public abstract class Material {
-    public ColorValue attenuation;
-    public Ray scattered;
+    ColorValue attenuation;
+    Ray scattered;
     
-    public abstract boolean scatter(Ray r_in, Intersection inters);
+    public abstract boolean scatter(Ray r_in, Hittable_list inters);
 
     Vec3 reflect(Vec3 v, Vec3 n){
 
@@ -39,5 +39,21 @@ public abstract class Material {
         double r0 = (1-ref_idx) / (1+ref_idx);
         r0= r0 * r0;
         return r0 + (1-r0) * pow((1- cosine),5);
+    }
+
+    public ColorValue getAttenuation() {
+        return attenuation;
+    }
+
+    public void setAttenuation(ColorValue attenuation) {
+        this.attenuation = attenuation;
+    }
+
+    public Ray getScattered() {
+        return scattered;
+    }
+
+    public void setScattered(Ray scattered) {
+        this.scattered = scattered;
     }
 }

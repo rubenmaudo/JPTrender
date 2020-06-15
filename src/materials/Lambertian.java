@@ -5,6 +5,7 @@
  */
 package materials;
 
+import geometry.Primitive;
 import math.*;
 
 /**
@@ -20,7 +21,7 @@ public class Lambertian extends Material{
     }
     
     @Override
-    public boolean scatter(Ray r_in, Intersection inters) {
+    public boolean scatter(Ray r_in, Hittable_list inters) {
         Primitive temp= inters.getPrim();
 
         //Calc with scatter in random unit sphere (create more shadows)

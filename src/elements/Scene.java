@@ -1,5 +1,7 @@
 package elements;
 
+import geometry.Primitive;
+import geometry.Sphere;
 import materials.Dielectric;
 import materials.Lambertian;
 import materials.Material;
@@ -88,7 +90,7 @@ public class Scene {
                 for(int a=-11; a<11; a++){
                     for(int b=-11; b<11; b++){
                         double choose_mat = Math.random();
-                        Vec3 center = new Vec3(a + 0.9*Math.random(), 0.2 , b + 0.9*Math.random());
+                        Vec3 center = new Vec3(a + 0.8*Math.random(), 0.2 , b + 0.8*Math.random());
 
                         if(center.sub(new Vec3(4,0.2,0)).length()>0.9){
                             Material  sphere_material;

@@ -1,5 +1,6 @@
 package materials;
 
+import geometry.Primitive;
 import math.*;
 
 import static java.lang.Math.min;
@@ -13,7 +14,7 @@ public class Dielectric extends Material{
     }
 
     @Override
-    public boolean scatter(Ray r_in, Intersection inters) {
+    public boolean scatter(Ray r_in, Hittable_list inters) {
         this.attenuation= new ColorValue(1,1,1);
         double etai_over_etat;
 

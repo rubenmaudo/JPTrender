@@ -5,6 +5,7 @@
  */
 package materials;
 
+import geometry.Primitive;
 import math.*;
 
 /**
@@ -24,7 +25,7 @@ public class Metal extends Material{
     }
     
     @Override
-    public boolean scatter(Ray r_in, Intersection inters) {
+    public boolean scatter(Ray r_in, Hittable_list inters) {
         Primitive temp= inters.getPrim();
         Vec3 reflected = reflect(r_in.direction().normalize(),temp.normal);
 
