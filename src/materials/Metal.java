@@ -5,8 +5,8 @@
  */
 package materials;
 
-import geometry.Primitive;
-import math.*;
+import geometry.Hit_record;
+import maths.*;
 
 /**
  *
@@ -25,13 +25,12 @@ public class Metal extends Material{
     }
     
     @Override
-    public boolean scatter(Ray r_in, Hittable_list inters) {
-        Primitive temp= inters.getPrim();
-        Vec3 reflected = reflect(r_in.direction().normalize(),temp.normal);
+    public boolean scatter(Ray r_in, Hit_record rec) {
+        Vec3 reflected = reflect(r_in.direction().normalize(), rec.normal);
 
-        this.scattered = new Ray(temp.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
+        this.scattered = new Ray(rec.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
         this.attenuation= albedo;  
 
-        return (scattered.direction().dotProduct(temp.normal)>0);
+        return (scattered.direction().dotProduct(rec.normal)>0);
     }
 }

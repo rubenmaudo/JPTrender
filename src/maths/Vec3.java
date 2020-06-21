@@ -1,9 +1,8 @@
-package math;
+package maths;
 
 import java.util.Random;
 
 import static java.lang.Math.*;
-import static math.Utils.*;
 
 /**
  *

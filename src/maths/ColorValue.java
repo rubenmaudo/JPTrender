@@ -1,13 +1,12 @@
-package math;
+package maths;
 
-import geometry.Primitive;
+import geometry.Hit_record;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
-import static math.Utils.INFINITY;
-import static math.Vec3.random_double;
+import static maths.Utils.INFINITY;
+import static maths.Vec3.random_double;
 
 public class ColorValue {
 
@@ -44,24 +43,31 @@ public class ColorValue {
 
     //Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
     //and obtaining the color
-    public static ColorValue colorRay(Ray r, ArrayList<Primitive> list, int depth){
-        Hittable_list inters = new Hittable_list();
+    public static ColorValue colorRay(Ray r, Hittable world, int depth){
+
+        //Hit_record rec=new Hit_record();
+
+        Hit_record rec=world.getTemp_rec();
 
         if(depth<=0)
             return new ColorValue(0,0,0);
 
-        if (inters.hit(r, 0.001, INFINITY, list)){
-            Primitive temp= inters.getPrim();
+        if (world.hit(r, 0.001, INFINITY, rec)){
 
-            if(temp.material.scatter(r, inters))
-                return temp.material.getAttenuation().product(colorRay(temp.material.getScattered(), list, depth-1));
-            return new ColorValue(0,0,0);
+            if(rec.material.scatter(r, rec)){
+
+                return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(), new Hittable(world.list), depth-1));
+
+            }else{
+                return new ColorValue(0,0,0);
+            }
         }
 
         //GENERATE BACKGROUND COLOR
         Vec3 unit_direction=(r.direction().normalize());
         double t= 0.5*(unit_direction.y() + 1);
         return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
+
     }
 
     public static double gammaCorrection(double value, double correctionValue){

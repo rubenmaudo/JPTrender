@@ -5,10 +5,10 @@
  */
 package materials;
 
-import math.Hittable_list;
-import math.ColorValue;
-import math.Ray;
-import math.Vec3;
+import geometry.Hit_record;
+import maths.ColorValue;
+import maths.Ray;
+import maths.Vec3;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -21,7 +21,7 @@ public abstract class Material {
     ColorValue attenuation;
     Ray scattered;
     
-    public abstract boolean scatter(Ray r_in, Hittable_list inters);
+    public abstract boolean scatter(Ray r_in, Hit_record rec);
 
     Vec3 reflect(Vec3 v, Vec3 n){
 

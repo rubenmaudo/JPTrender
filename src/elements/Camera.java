@@ -5,9 +5,9 @@
  */
 package elements;
 
-import math.Ray;
-import math.Utils;
-import math.Vec3;
+import maths.Ray;
+import maths.Utils;
+import maths.Vec3;
 
 /**
  *

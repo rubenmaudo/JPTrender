@@ -1,20 +1,19 @@
 package elements;
 
-import geometry.Primitive;
 import geometry.Sphere;
 import materials.Dielectric;
 import materials.Lambertian;
 import materials.Material;
 import materials.Metal;
-import math.*;
+import maths.*;
 
 import java.util.ArrayList;
 
 public class Scene {
 
 
-    public static ArrayList<Primitive> generateScene(int i){
-        ArrayList<Primitive> geometry = new ArrayList<>();
+    public static ArrayList<Sphere> generateScene(int i){
+        ArrayList<Sphere> geometry = new ArrayList<>();
 
         switch(i){
             case 1:

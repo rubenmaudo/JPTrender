@@ -5,8 +5,8 @@
  */
 package materials;
 
-import geometry.Primitive;
-import math.*;
+import geometry.Hit_record;
+import maths.*;
 
 /**
  *
@@ -21,16 +21,15 @@ public class Lambertian extends Material{
     }
     
     @Override
-    public boolean scatter(Ray r_in, Hittable_list inters) {
-        Primitive temp= inters.getPrim();
+    public boolean scatter(Ray r_in, Hit_record rec) {
 
         //Calc with scatter in random unit sphere (create more shadows)
-        Vec3 scatter_direction = temp.normal.add(Vec3.random_in_unit_sphere());
+        Vec3 scatter_direction = rec.normal.add(Vec3.random_in_unit_sphere());
 
         //Calc with scatter in random unit vector (Objects brighter and less shadow)
         //Vec3 scatter_direction = temp.normal.add(Vec3.random_unit_vector());
 
-        this.scattered = new Ray(temp.p, scatter_direction);
+        this.scattered = new Ray(rec.p, scatter_direction);
         this.attenuation= albedo;
 
         return true;

@@ -1,4 +1,4 @@
-package math;
+package maths;
 
 public class Utils {
 

@@ -8,20 +8,15 @@ package pathtracer;
 import elements.Camera;
 import elements.Scene;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
 
-import geometry.Primitive;
-import math.*;
+import geometry.Sphere;
+import maths.*;
 import windowRender.MainFrame;
 
 /**
@@ -29,7 +24,7 @@ import windowRender.MainFrame;
  * @author RubenM
  */
 public class PathTracer {
-       
+
     /**
      * @param args the command line arguments
      */
@@ -39,50 +34,60 @@ public class PathTracer {
         long startTime = System.currentTimeMillis();
 
         //Render specs
-        final double aspect_ratio = 16.0 / 10.6666666667 ;
+        final double aspect_ratio = 16.0 / 10.6666666667;
         int image_width = 1000;
-        int image_height = (int) (image_width/aspect_ratio);
+        int image_height = (int) (image_width / aspect_ratio);
 
-        boolean progressive = true; //Si esta activo de momento no guarda
-        int ns = 16; //Number of samples
+        boolean progressive = false; //Si esta activo de momento no guarda
+        int ns = 15; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
 
         double gammaValue = 2;
-        
+
         BufferedImage theImage = new BufferedImage(image_width, image_height,
                 BufferedImage.TYPE_INT_RGB);
-        
-        MainFrame ventana=new MainFrame(theImage);
-        
-                
-        ColorValue[][] imagePixels=new ColorValue[image_width][image_height];
-        //int[][] imagePixelsNs=new int[image_width][image_height];
-        //ColorValue[][] imagePixelsProcesed=new ColorValue[image_width][image_height];
+
+        MainFrame ventana = new MainFrame(theImage);
+
+
+        ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
+        int[][] imagePixelsNs = new int[image_width][image_height];
+        ColorValue[][] imagePixelsProcesed = new ColorValue[image_width][image_height];
 
         //Create scene
-        ArrayList<Primitive> primList= Scene.generateScene(8);
+        ArrayList<Sphere> primList = Scene.generateScene(8);
 
         //Create camera
-        Vec3 lookfrom=new Vec3(13,2,3);
-        Vec3 lookat=new Vec3(0,0,0);
-        Vec3 vup=new Vec3(0,1,0);
+
+
+        //Scene 8
+        Vec3 lookfrom = new Vec3(13, 2, 3);
+        Vec3 lookat = new Vec3(0, 0, 0);
+        Vec3 vup = new Vec3(0, 1, 0);
         double dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
         double aperture = 0.1;
+
+
+    /*
+        //Scene 5
+        Vec3 lookfrom = new Vec3(13, 2, 3);
+        Vec3 lookat = new Vec3(0, 0, -1);
+        Vec3 vup = new Vec3(0, 1, 0);
+        double dist_to_focus = lookfrom.sub(lookat).length();
+        double aperture = 0.1;
+    */
 
         Camera cam = new Camera(lookfrom, lookat, vup, 20
                 , aspect_ratio, aperture, dist_to_focus);
 
 
-
-
-
         //Generate a list of pixels
-        ArrayList<int[]> pixelList= new ArrayList<>();
-        for (int j = 0; j<image_height; j++) {
+        ArrayList<int[]> pixelList = new ArrayList<>();
+        for (int j = 0; j < image_height; j++) {
             for (int i = 0; i < image_width; i++) {
-                int[] pixelLocation={i,j,0};
+                int[] pixelLocation = {i, j, 0};//Last value is the reference for the Number of pass
                 pixelList.add(pixelLocation);
             }
         }
@@ -91,26 +96,28 @@ public class PathTracer {
         Collections.shuffle(pixelList);
 
         //Create an ArrayList that contain a list of ArrayList with pixels
-        ArrayList<ArrayList<int[]>> listOfPixelGroups= new ArrayList<>();
-        for(int i=0; i<image_height;i++){
+        ArrayList<ArrayList<int[]>> listOfPixelGroups = new ArrayList<>();
+        for (int i = 0; i < image_height; i++) {
             listOfPixelGroups.add(new ArrayList<>());
         }
 
         //Distribute the pixel position along the different group of pixel positions
-        int count=0;
-        for(int[] pixelLocation : pixelList){
+        int count = 0;
+        for (int[] pixelLocation : pixelList) {
             listOfPixelGroups.get(count).add(pixelLocation);
-            if(count+1<image_height){
+            if (count + 1 < image_height) {
                 count++;
-            }else{
-                count=0;
+            } else {
+                count = 0;
             }
         }
 
+
         while(tempNs<=ns || progressive){
 
+
             //ForkJoinPool pool = new ForkJoinPool();
-            ExecutorService executorService = Executors.newFixedThreadPool(1);
+            ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
             int counting=0;
             for (ArrayList<int[]> shufflePixelGroup :  listOfPixelGroups){
@@ -119,7 +126,7 @@ public class PathTracer {
 
 
                 executorService.execute(new ImageProcess_threads_runnable(primList,cam,depth,theImage,
-                                shufflePixelGroup,imagePixels,gammaValue,counting));
+                              shufflePixelGroup,imagePixels,gammaValue,counting));
 
 
                 //pool.execute(new ImageProcess_threads(primList,cam,depth,theImage,
@@ -136,58 +143,64 @@ public class PathTracer {
 
 
 
+
+
         /*
-
-
         //Processing the scene
-        while(tempNs<=ns || progressive){
-            
-            for (int j = 0; j<image_height; j++) {
+        while (tempNs <= ns || progressive) {
+
+            for (int j = 0; j < image_height; j++) {
                 for (int i = 0; i < image_width; i++) {
 
                     ColorValue col;
-                    
-                    double u = (i + Math.random())  /  image_width;
-                    double v = ((image_height-j) + Math.random()) / image_height;
-                    Ray r =cam.get_ray(u, v);
-                    col = ColorValue.colorRay(r,primList,depth);
-                    
-                    if(imagePixels[i][j]==null){
-                        imagePixels[i][j]=new ColorValue(0,0,0);
-                        imagePixelsNs[i][j]=0;
+
+                    double u = (i + Math.random()) / image_width;
+                    double v = ((image_height - j) + Math.random()) / image_height;
+                    Ray r = cam.get_ray(u, v);
+                    col = ColorValue.colorRay(r, new Hittable(primList), depth);
+
+                    if (imagePixels[i][j] == null) {
+                        imagePixels[i][j] = new ColorValue(0, 0, 0);
+                        imagePixelsNs[i][j] = 0;
                     }
-                    
-                    imagePixels[i][j]=imagePixels[i][j].add(col);
-                    imagePixelsNs[i][j]=imagePixelsNs[i][j]+1;
-                    imagePixelsProcesed[i][j]=imagePixels[i][j].divide(imagePixelsNs[i][j]);
+
+                    imagePixels[i][j] = imagePixels[i][j].add(col);
+                    imagePixelsNs[i][j] = imagePixelsNs[i][j] + 1;
+                    imagePixelsProcesed[i][j] = imagePixels[i][j].divide(imagePixelsNs[i][j]);
 
                     //Gamma correction
-                    col= new ColorValue(imagePixelsProcesed[i][j].vR(),
+                    col = new ColorValue(imagePixelsProcesed[i][j].vR(),
                             imagePixelsProcesed[i][j].vG(),
                             imagePixelsProcesed[i][j].vB(),
                             gammaValue);
 
-                    theImage.setRGB(i,j, col.toRGB());
-                                      
+                    theImage.setRGB(i, j, col.toRGB());
+
                 }
             }
+
+
             //Control time
             long endTime = System.currentTimeMillis();
             long milliseconds = endTime - startTime;
             long minutes = (milliseconds / 1000) / 60;
             long seconds = (milliseconds / 1000) % 60;
-            String text="Render Pass: " + tempNs + " / Render time: " + minutes + "m " + seconds + " s";
-            
+            String text = "Render Pass: " + tempNs + " / Render time: " + minutes + "m " + seconds + " s";
+
             //Print text on image
             Graphics graphics = theImage.getGraphics();
             graphics.setColor(Color.DARK_GRAY);
             graphics.setFont(new Font("Arial", Font.PLAIN, 10));
             graphics.drawString(text, 3, 10);
-            
-            
+
+
             ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-                        
+
             tempNs++;
-        }*/
-    }    
+        }
+
+         */
+
+    }
 }
+

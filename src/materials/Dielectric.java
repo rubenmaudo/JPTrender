@@ -1,7 +1,7 @@
 package materials;
 
-import geometry.Primitive;
-import math.*;
+import geometry.Hit_record;
+import maths.*;
 
 import static java.lang.Math.min;
 import static java.lang.Math.sqrt;
@@ -14,12 +14,11 @@ public class Dielectric extends Material{
     }
 
     @Override
-    public boolean scatter(Ray r_in, Hittable_list inters) {
+    public boolean scatter(Ray r_in, Hit_record rec) {
         this.attenuation= new ColorValue(1,1,1);
         double etai_over_etat;
 
-        Primitive temp= inters.getPrim();
-        if(temp.front_face){
+        if(rec.front_face){
             etai_over_etat = 1 / ref_idx;
         }else{
             etai_over_etat = ref_idx;
@@ -27,23 +26,23 @@ public class Dielectric extends Material{
 
         Vec3 unit_direction=r_in.direction().normalize();
 
-        double cos_theta = min(unit_direction.product(-1).dotProduct(temp.normal),1);
+        double cos_theta = min(unit_direction.product(-1).dotProduct(rec.normal),1);
         double sin_theta = sqrt(1 - cos_theta*cos_theta);
         if (etai_over_etat * sin_theta > 1){
-            Vec3 reflected = reflect(unit_direction, temp.normal);
-            this.scattered = new Ray(temp.p,reflected);
+            Vec3 reflected = reflect(unit_direction, rec.normal);
+            this.scattered = new Ray(rec.p,reflected);
             return true;
         }
 
         double reflect_prob = schlick(cos_theta, etai_over_etat);
         if(Math.random()<reflect_prob){
-            Vec3 reflected=reflect(unit_direction, temp.normal);
-            this.scattered =new Ray(temp.p, reflected);
+            Vec3 reflected=reflect(unit_direction, rec.normal);
+            this.scattered =new Ray(rec.p, reflected);
             return true;
         }
 
-        Vec3 refracted = refract(unit_direction,temp.normal,etai_over_etat);
-        this.scattered = new Ray(temp.p,refracted);
+        Vec3 refracted = refract(unit_direction, rec.normal,etai_over_etat);
+        this.scattered = new Ray(rec.p,refracted);
         return true;
     }
 }
