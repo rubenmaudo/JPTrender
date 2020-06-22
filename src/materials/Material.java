@@ -10,6 +10,8 @@ import maths.ColorValue;
 import maths.Ray;
 import maths.Vec3;
 
+import java.io.Serializable;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -17,7 +19,7 @@ import static java.lang.Math.sqrt;
  *
  * @author RubenM
  */
-public abstract class Material {
+public abstract class Material implements Serializable {
     ColorValue attenuation;
     Ray scattered;
     

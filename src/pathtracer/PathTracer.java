@@ -12,12 +12,18 @@ import java.awt.image.BufferedImage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 
+import geometry.Primitive;
 import geometry.Sphere;
 import maths.*;
 import windowRender.MainFrame;
+
+import static java.lang.Thread.sleep;
 
 /**
  *
@@ -39,7 +45,7 @@ public class PathTracer {
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 15; //Number of samples
+        int ns = 16; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
@@ -49,19 +55,23 @@ public class PathTracer {
         BufferedImage theImage = new BufferedImage(image_width, image_height,
                 BufferedImage.TYPE_INT_RGB);
 
+        ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
+
         MainFrame ventana = new MainFrame(theImage);
 
 
-        ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
-        int[][] imagePixelsNs = new int[image_width][image_height];
-        ColorValue[][] imagePixelsProcesed = new ColorValue[image_width][image_height];
+
+
+        //NOT USED ANYMORE
+        //int[][] imagePixelsNs = new int[image_width][image_height];
+        //ColorValue[][] imagePixelsProcesed = new ColorValue[image_width][image_height];
+
 
         //Create scene
-        ArrayList<Sphere> primList = Scene.generateScene(8);
+        //ArrayList<Primitive> primList = Scene.generateScene(8);
+        ArrayList<Primitive> primList = Scene.loadScene();
 
         //Create camera
-
-
         //Scene 8
         Vec3 lookfrom = new Vec3(13, 2, 3);
         Vec3 lookat = new Vec3(0, 0, 0);
@@ -69,20 +79,10 @@ public class PathTracer {
         double dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
         double aperture = 0.1;
 
-
-    /*
-        //Scene 5
-        Vec3 lookfrom = new Vec3(13, 2, 3);
-        Vec3 lookat = new Vec3(0, 0, -1);
-        Vec3 vup = new Vec3(0, 1, 0);
-        double dist_to_focus = lookfrom.sub(lookat).length();
-        double aperture = 0.1;
-    */
-
         Camera cam = new Camera(lookfrom, lookat, vup, 20
                 , aspect_ratio, aperture, dist_to_focus);
 
-
+        /*
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
         for (int j = 0; j < image_height; j++) {
@@ -94,6 +94,7 @@ public class PathTracer {
         //Shuffle the values of the pixels and distribute them in different groups
         //The amount of groups will match with the amount of rows in the image
         Collections.shuffle(pixelList);
+
 
         //Create an ArrayList that contain a list of ArrayList with pixels
         ArrayList<ArrayList<int[]>> listOfPixelGroups = new ArrayList<>();
@@ -112,33 +113,81 @@ public class PathTracer {
             }
         }
 
-
-        while(tempNs<=ns || progressive){
-
-
-            //ForkJoinPool pool = new ForkJoinPool();
-            ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-            int counting=0;
-            for (ArrayList<int[]> shufflePixelGroup :  listOfPixelGroups){
-                counting++;
-                System.out.println("Se ha lanzado la tarea " + counting);
+         */
 
 
-                executorService.execute(new ImageProcess_threads_runnable(primList,cam,depth,theImage,
-                              shufflePixelGroup,imagePixels,gammaValue,counting));
 
-
-                //pool.execute(new ImageProcess_threads(primList,cam,depth,theImage,
-                //        shufflePixelGroup,imagePixels,gammaValue,counting));
+        //Generate a list of pixels
+        List<int[]> pixelList = new ArrayList<>();
+        for (int j = 0; j < image_height; j++) {
+            for (int i = 0; i < image_width; i++) {
+                int[] pixelLocation = {i, j, 0};//Last value is the reference for the Number of pass
+                pixelList.add(pixelLocation);
             }
-            executorService.shutdown();
-            System.out.println("paso por aqui");
+        }
+        //Shuffle the values of the pixels and distribute them in different groups
+        //The amount of groups will match with the amount of rows in the image
+        //Collections.shuffle(pixelList);
+
+
+
+
+        while(tempNs<=ns || progressive) {
+
+
+            ImageProcess_Recursive imageProcess = new ImageProcess_Recursive(primList,
+                    cam,
+                    depth,
+                    theImage,
+                    pixelList,
+                    imagePixels,
+                    gammaValue);
+
+            ForkJoinPool pool = new ForkJoinPool();
+            pool.invoke(imageProcess);
+
+            System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
 
             ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
 
             tempNs++;
         }
+
+
+            /*
+            ForkJoinPool pool = new ForkJoinPool();
+            //ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+            int counting=0;
+            for (ArrayList<int[]> shufflePixelGroup :  listOfPixelGroups){
+                counting++;
+                System.out.println("Se ha lanzado la tarea con ID" + counting + " con " + tempNs + " pases");
+
+
+                //executorService.execute(new ImageProcess_threads_runnable(primList,cam,depth,theImage,
+                //              shufflePixelGroup,imagePixels,gammaValue,counting));
+
+
+                pool.execute(new ImageProcess_threads(primList,cam,depth,theImage,
+                        shufflePixelGroup,imagePixels,gammaValue,counting));
+            }
+            //executorService.shutdown();
+            ForkJoinTask.invokeAll();
+
+            try {
+                sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
+
+            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+
+            tempNs++;
+        }
+
+             */
 
 
 

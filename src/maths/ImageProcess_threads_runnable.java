@@ -1,6 +1,7 @@
 package maths;
 
 import elements.Camera;
+import geometry.Primitive;
 import geometry.Sphere;
 
 import java.awt.image.BufferedImage;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class ImageProcess_threads_runnable implements Runnable {
     int ID;
 
-    ArrayList<Sphere> scene;
+    ArrayList<Primitive> scene;
     Camera cam;
     int depth;
 
@@ -18,7 +19,7 @@ public class ImageProcess_threads_runnable implements Runnable {
     ColorValue[][] imagePixels;
     double gammaValue;
 
-    public ImageProcess_threads_runnable(ArrayList<Sphere> scene,
+    public ImageProcess_threads_runnable(ArrayList<Primitive> scene,
                                          Camera cam,
                                          int depth,
                                          BufferedImage image,
@@ -37,16 +38,13 @@ public class ImageProcess_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
-        System.out.println("Se ha arrancado la tarea " + ID);
+        System.out.println("Se ha arrancado la tarea con ID " + ID);
     }
 
     @Override
     public void run() {
         for(int[] pxLoc : pixelList){
 
-            if (pxLoc[0]==2 && pxLoc[1]==2){
-                System.out.println("FOLLOW FROM HERE");
-            }
             ColorValue col;
 
             double u = (pxLoc[0] + Math.random())  /  image.getWidth();
@@ -70,6 +68,6 @@ public class ImageProcess_threads_runnable implements Runnable {
             image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
         }
 
-        System.out.println("Se ha completado la tarea " + ID);
+        System.out.println("Se ha completado la tarea ID" + ID);
     }
 }

@@ -1,6 +1,7 @@
 package maths;
 
 import elements.Camera;
+import geometry.Primitive;
 import geometry.Sphere;
 
 import java.awt.image.BufferedImage;
@@ -10,7 +11,7 @@ import java.util.concurrent.RecursiveAction;
 public class ImageProcess_threads extends RecursiveAction{
     int ID;
 
-    ArrayList<Sphere> scene;
+    ArrayList<Primitive> scene;
     Camera cam;
     int depth;
 
@@ -19,7 +20,7 @@ public class ImageProcess_threads extends RecursiveAction{
     ColorValue[][] imagePixels;
     double gammaValue;
 
-    public ImageProcess_threads (ArrayList<Sphere> scene,
+    public ImageProcess_threads (ArrayList<Primitive> scene,
                                  Camera cam,
                                  int depth,
                                  BufferedImage image,

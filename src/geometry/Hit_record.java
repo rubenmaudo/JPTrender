@@ -8,12 +8,13 @@ package geometry;
 import materials.Material;
 import maths.Ray;
 import maths.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
  * @author RubenM
  */
-public class Hit_record {//ALSO KNOWN AS PRIMITIVE
+public class Hit_record {
     public double t;//Distance to the hitting point
     public Vec3 p;//Point of hitting
     public Vec3 normal;//Normal
@@ -26,8 +27,6 @@ public class Hit_record {//ALSO KNOWN AS PRIMITIVE
         this.p=new Vec3();
         this.normal=new Vec3();
     }
-
-
 
     public void set_face_normal(Ray r, Vec3 outward_normal){
         front_face=r.direction().dotProduct(outward_normal)<0;

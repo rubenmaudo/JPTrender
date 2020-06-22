@@ -3,12 +3,13 @@ package maths;
 import geometry.Hit_record;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Random;
 
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
 
-public class ColorValue {
+public class ColorValue implements Serializable {
 
     //PROPERTIES
     double vR,vG,vB;

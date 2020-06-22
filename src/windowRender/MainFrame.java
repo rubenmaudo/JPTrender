@@ -67,7 +67,7 @@ public class MainFrame extends JFrame
 
                 Date date = new Date() ;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss") ;
-                File outputfile = new File("renders/render" + dateFormat.format(date) + ".png");
+                File outputfile = new File("Renders/render" + dateFormat.format(date) + ".png");
                 try {
                     ImageIO.write(bi, "png", outputfile);
                 } catch (IOException e1) { e1.printStackTrace(); }

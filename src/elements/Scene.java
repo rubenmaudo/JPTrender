@@ -1,5 +1,6 @@
 package elements;
 
+import geometry.Primitive;
 import geometry.Sphere;
 import materials.Dielectric;
 import materials.Lambertian;
@@ -7,13 +8,13 @@ import materials.Material;
 import materials.Metal;
 import maths.*;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Scene {
 
-
-    public static ArrayList<Sphere> generateScene(int i){
-        ArrayList<Sphere> geometry = new ArrayList<>();
+    public static ArrayList<Primitive> generateScene(int i){
+        ArrayList<Primitive> geometry = new ArrayList<>();
 
         switch(i){
             case 1:
@@ -123,6 +124,8 @@ public class Scene {
                 Material material3 = new Metal(new ColorValue(0.7,0.6,0.5),0);
                 geometry.add(new Sphere(new Vec3(4,1,0),1,material3));
 
+                saveScene(geometry);
+
                 return geometry;
 
             default:
@@ -132,4 +135,44 @@ public class Scene {
                 return geometry;
         }
     }
+
+    public static boolean saveScene(ArrayList<Primitive> scene){
+        try{
+            FileOutputStream fos = new FileOutputStream("Scenes/scene.scn");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(scene);
+            oos.close();
+            fos.close();
+            return true;
+        }
+        catch (IOException ioe){
+            ioe.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+    public static ArrayList<Primitive> loadScene(){
+
+        try{
+            ArrayList<Primitive> scene;
+            FileInputStream fis = new FileInputStream("Scenes/scene.scn");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            scene=(ArrayList)ois.readObject();
+
+            ois.close();
+            fis.close();
+            return scene;
+        }
+        catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        catch (ClassNotFoundException c){
+            c.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -17,18 +17,18 @@ import static java.lang.Math.sqrt;
  *
  * @author RubenM
  */
-public class Sphere{
+public class Sphere extends Primitive{
     
     Vec3 center; //Centre
     double radius; //Radius
-    Material material; //Material
     
     public Sphere(Vec3 cen, double r, Material material){
         this.center = cen;
         this.radius = r;
-        this.material= material;
+        super.material= material;
     }
-    
+
+    @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec){
         Vec3 oc= r.origin().sub(center);
         double a = dotProduct(r.direction(), r.direction());
@@ -37,7 +37,8 @@ public class Sphere{
         double discriminant = half_b*half_b - a*c;
 
         if (discriminant > 0){
-            double temp =  (( -half_b - sqrt(half_b*half_b-a*c))/a);
+            final double sqrt = sqrt(half_b * half_b - a * c);
+            double temp =  (( -half_b - sqrt)/a);
             
             if(temp < t_max && temp > t_min){
                 rec.t = temp;
@@ -50,7 +51,7 @@ public class Sphere{
                 return true;
             }
             
-            temp = (( -half_b + sqrt(half_b*half_b-a*c))/a);
+            temp = (( -half_b + sqrt)/a);
             
             if(temp < t_max && temp > t_min){
                 rec.t = temp;
@@ -65,5 +66,11 @@ public class Sphere{
         }        
         return false;
     }
-    
+
+    @Override
+    public String getDescription() {
+        return "The Spere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
+                "radius is r";
+    }
+
 }
