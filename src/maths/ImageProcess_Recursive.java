@@ -49,13 +49,6 @@ public class ImageProcess_Recursive extends RecursiveAction {
             return;
         }
 
-        /*
-        System.out.println("The list is " + pixelList.size());
-        System.out.println("The half list is " + pixelList.size()/2);
-        System.out.println("The half list +1 is " + ((pixelList.size()/2)+1));
-
-         */
-
         List<int[]> subList1=  pixelList.subList(0,(pixelList.size()+1)/2);
         List<int[]> subList2=  pixelList.subList((pixelList.size()+1)/2,pixelList.size());
 

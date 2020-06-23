@@ -34,7 +34,6 @@ public class MainFrame extends JFrame
     }
     
     public final void initComponents(){
-        long startTime = System.currentTimeMillis();
         setTitle("JPTrender");
         setResizable(true);
         
@@ -51,19 +50,7 @@ public class MainFrame extends JFrame
         
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                //Print image
-                //Control time
-                long endTime = System.currentTimeMillis();
-                long milliseconds = endTime - startTime;
-                long minutes = (milliseconds / 1000) / 60;
-                long seconds = (milliseconds / 1000) % 60;
-                String text = "Render time: " + minutes + "m " + seconds + " s";
 
-                //Print text on image
-                Graphics graphics = bi.getGraphics();
-                graphics.setColor(Color.DARK_GRAY);
-                graphics.setFont(new Font("Arial", Font.PLAIN, 10));
-                graphics.drawString(text, 3, 10);
 
                 Date date = new Date() ;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss") ;

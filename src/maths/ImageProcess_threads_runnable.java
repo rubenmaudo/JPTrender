@@ -38,7 +38,6 @@ public class ImageProcess_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
-        System.out.println("Se ha arrancado la tarea con ID " + ID);
     }
 
     @Override
@@ -67,7 +66,5 @@ public class ImageProcess_threads_runnable implements Runnable {
 
             image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
         }
-
-        System.out.println("Se ha completado la tarea ID" + ID);
     }
 }

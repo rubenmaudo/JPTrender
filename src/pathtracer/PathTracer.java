@@ -8,15 +8,13 @@ package pathtracer;
 import elements.Camera;
 import elements.Scene;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
+import java.util.concurrent.*;
 
 import geometry.Primitive;
 import geometry.Sphere;
@@ -41,11 +39,11 @@ public class PathTracer {
 
         //Render specs
         final double aspect_ratio = 16.0 / 10.6666666667;
-        int image_width = 1000;
+        int image_width = 2000;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 16; //Number of samples
+        int ns = 200; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
@@ -58,13 +56,6 @@ public class PathTracer {
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
 
         MainFrame ventana = new MainFrame(theImage);
-
-
-
-
-        //NOT USED ANYMORE
-        //int[][] imagePixelsNs = new int[image_width][image_height];
-        //ColorValue[][] imagePixelsProcesed = new ColorValue[image_width][image_height];
 
 
         //Create scene
@@ -82,7 +73,7 @@ public class PathTracer {
         Camera cam = new Camera(lookfrom, lookat, vup, 20
                 , aspect_ratio, aperture, dist_to_focus);
 
-        /*
+/*
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
         for (int j = 0; j < image_height; j++) {
@@ -112,10 +103,12 @@ public class PathTracer {
                 count = 0;
             }
         }
+        */
 
-         */
 
 
+
+        //NEW FORKJOIN
 
         //Generate a list of pixels
         List<int[]> pixelList = new ArrayList<>();
@@ -127,14 +120,14 @@ public class PathTracer {
         }
         //Shuffle the values of the pixels and distribute them in different groups
         //The amount of groups will match with the amount of rows in the image
-        //Collections.shuffle(pixelList);
+        Collections.shuffle(pixelList);
 
 
 
+        while (tempNs <= ns || progressive) {
 
-        while(tempNs<=ns || progressive) {
 
-
+            //NEW FORKJOIN
             ImageProcess_Recursive imageProcess = new ImageProcess_Recursive(primList,
                     cam,
                     depth,
@@ -148,87 +141,7 @@ public class PathTracer {
 
             System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
 
-            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-
-            tempNs++;
-        }
-
-
-            /*
-            ForkJoinPool pool = new ForkJoinPool();
-            //ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-            int counting=0;
-            for (ArrayList<int[]> shufflePixelGroup :  listOfPixelGroups){
-                counting++;
-                System.out.println("Se ha lanzado la tarea con ID" + counting + " con " + tempNs + " pases");
-
-
-                //executorService.execute(new ImageProcess_threads_runnable(primList,cam,depth,theImage,
-                //              shufflePixelGroup,imagePixels,gammaValue,counting));
-
-
-                pool.execute(new ImageProcess_threads(primList,cam,depth,theImage,
-                        shufflePixelGroup,imagePixels,gammaValue,counting));
-            }
-            //executorService.shutdown();
-            ForkJoinTask.invokeAll();
-
-            try {
-                sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
-
-            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-
-            tempNs++;
-        }
-
-             */
-
-
-
-
-
-
-        /*
-        //Processing the scene
-        while (tempNs <= ns || progressive) {
-
-            for (int j = 0; j < image_height; j++) {
-                for (int i = 0; i < image_width; i++) {
-
-                    ColorValue col;
-
-                    double u = (i + Math.random()) / image_width;
-                    double v = ((image_height - j) + Math.random()) / image_height;
-                    Ray r = cam.get_ray(u, v);
-                    col = ColorValue.colorRay(r, new Hittable(primList), depth);
-
-                    if (imagePixels[i][j] == null) {
-                        imagePixels[i][j] = new ColorValue(0, 0, 0);
-                        imagePixelsNs[i][j] = 0;
-                    }
-
-                    imagePixels[i][j] = imagePixels[i][j].add(col);
-                    imagePixelsNs[i][j] = imagePixelsNs[i][j] + 1;
-                    imagePixelsProcesed[i][j] = imagePixels[i][j].divide(imagePixelsNs[i][j]);
-
-                    //Gamma correction
-                    col = new ColorValue(imagePixelsProcesed[i][j].vR(),
-                            imagePixelsProcesed[i][j].vG(),
-                            imagePixelsProcesed[i][j].vB(),
-                            gammaValue);
-
-                    theImage.setRGB(i, j, col.toRGB());
-
-                }
-            }
-
-
+            //Print image
             //Control time
             long endTime = System.currentTimeMillis();
             long milliseconds = endTime - startTime;
@@ -242,13 +155,61 @@ public class PathTracer {
             graphics.setFont(new Font("Arial", Font.PLAIN, 10));
             graphics.drawString(text, 3, 10);
 
-
             ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
 
             tempNs++;
-        }
 
-         */
+
+
+
+
+/*
+
+            ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+            int counting = 0;
+            for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
+                counting++;
+
+                executorService.execute(new ImageProcess_threads_runnable(primList, cam, depth, theImage,
+                        shufflePixelGroup, imagePixels, gammaValue, counting));
+
+            }
+
+            executorService.shutdown();
+            try {
+                executorService.awaitTermination(1000, TimeUnit.MINUTES);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
+
+        ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+
+        tempNs++;
+
+ */
+    }
+
+
+            System.out.println("VOY A IMPRIMIR LA PANTALLA CON EL TIEMPO");
+            //Control time
+            long endTime = System.currentTimeMillis();
+            long milliseconds = endTime - startTime;
+            long minutes = (milliseconds / 1000) / 60;
+            long seconds = (milliseconds / 1000) % 60;
+            String text = "Render Pass: " + (tempNs-1) + " / Render time: " + minutes + "m " + seconds + " s";
+
+            //Print text on image
+            Graphics graphics = theImage.getGraphics();
+            graphics.setColor(Color.DARK_GRAY);
+            graphics.setFont(new Font("Arial", Font.PLAIN, 10));
+            graphics.drawString(text, 3, 10);
+
+
+            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+
 
     }
 }
