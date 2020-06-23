@@ -10,6 +10,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
+/**
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class RenderPanel extends JPanel implements MouseWheelListener, MouseListener, MouseMotionListener   {
 
     private final BufferedImage bi;//Image loaded

@@ -6,30 +6,44 @@
 package maths;
 
 /**
- *
- * @author RubenM
- */
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class Ray {
     
-    private final Vec3 vA;
-    private final Vec3 vB;
+    private final Vec3 pointOrigin;
+    private final Vec3 vectorDirection;
     
     //CONSTRUCTOR
-    public Ray(Vec3 va, Vec3 vb){
-        vA=va;
-        vB=vb;        
+    public Ray(Vec3 pO, Vec3 vD){
+        pointOrigin =pO;
+        vectorDirection =vD;
     }
     
     //METHODS
+    /**
+     *
+     * @return origin of ray
+     */
     public Vec3 origin(){
-        return vA;
+        return pointOrigin;
     }
-    
+
+    /**
+     *
+     * @return Direction of Ray
+     */
     public Vec3 direction(){
-        return vB;
+        return vectorDirection;
     }
-    
+
+    /**
+     *
+     * @param t ,Parameter to check position
+     * @return the point at the parameter.
+     */
     public Vec3 point_at_parameter(double t){
-        return vA.add(vB.product(t));
+        return pointOrigin.add(vectorDirection.product(t));
     }
 }

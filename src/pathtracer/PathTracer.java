@@ -13,20 +13,19 @@ import java.awt.image.BufferedImage;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.*;
 
 import geometry.Primitive;
-import geometry.Sphere;
 import maths.*;
 import windowRender.MainFrame;
 
 import static java.lang.Thread.sleep;
 
 /**
- *
- * @author RubenM
- */
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class PathTracer {
 
     /**
@@ -39,11 +38,11 @@ public class PathTracer {
 
         //Render specs
         final double aspect_ratio = 16.0 / 10.6666666667;
-        int image_width = 2000;
+        int image_width = 1000;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 200; //Number of samples
+        int ns = 16; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
@@ -59,11 +58,11 @@ public class PathTracer {
 
 
         //Create scene
-        //ArrayList<Primitive> primList = Scene.generateScene(8);
-        ArrayList<Primitive> primList = Scene.loadScene();
+        ArrayList<Primitive> primList = Scene.generateScene(8);
+        //ArrayList<Primitive> primList = Scene.loadScene();
 
         //Create camera
-        //Scene 8
+        //For scene 8
         Vec3 lookfrom = new Vec3(13, 2, 3);
         Vec3 lookat = new Vec3(0, 0, 0);
         Vec3 vup = new Vec3(0, 1, 0);
@@ -73,7 +72,7 @@ public class PathTracer {
         Camera cam = new Camera(lookfrom, lookat, vup, 20
                 , aspect_ratio, aperture, dist_to_focus);
 
-/*
+
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
         for (int j = 0; j < image_height; j++) {
@@ -103,67 +102,9 @@ public class PathTracer {
                 count = 0;
             }
         }
-        */
-
-
-
-
-        //NEW FORKJOIN
-
-        //Generate a list of pixels
-        List<int[]> pixelList = new ArrayList<>();
-        for (int j = 0; j < image_height; j++) {
-            for (int i = 0; i < image_width; i++) {
-                int[] pixelLocation = {i, j, 0};//Last value is the reference for the Number of pass
-                pixelList.add(pixelLocation);
-            }
-        }
-        //Shuffle the values of the pixels and distribute them in different groups
-        //The amount of groups will match with the amount of rows in the image
-        Collections.shuffle(pixelList);
-
-
 
         while (tempNs <= ns || progressive) {
 
-
-            //NEW FORKJOIN
-            ImageProcess_Recursive imageProcess = new ImageProcess_Recursive(primList,
-                    cam,
-                    depth,
-                    theImage,
-                    pixelList,
-                    imagePixels,
-                    gammaValue);
-
-            ForkJoinPool pool = new ForkJoinPool();
-            pool.invoke(imageProcess);
-
-            System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
-
-            //Print image
-            //Control time
-            long endTime = System.currentTimeMillis();
-            long milliseconds = endTime - startTime;
-            long minutes = (milliseconds / 1000) / 60;
-            long seconds = (milliseconds / 1000) % 60;
-            String text = "Render Pass: " + tempNs + " / Render time: " + minutes + "m " + seconds + " s";
-
-            //Print text on image
-            Graphics graphics = theImage.getGraphics();
-            graphics.setColor(Color.DARK_GRAY);
-            graphics.setFont(new Font("Arial", Font.PLAIN, 10));
-            graphics.drawString(text, 3, 10);
-
-            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-
-            tempNs++;
-
-
-
-
-
-/*
 
             ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -171,7 +112,7 @@ public class PathTracer {
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
                 counting++;
 
-                executorService.execute(new ImageProcess_threads_runnable(primList, cam, depth, theImage,
+                executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, theImage,
                         shufflePixelGroup, imagePixels, gammaValue, counting));
 
             }
@@ -183,34 +124,32 @@ public class PathTracer {
                 e.printStackTrace();
             }
 
-        System.out.println("------------------------------------SE HA COMPLETADO EL PASE " + tempNs + "------------------------------------");
+            System.out.println("------------------------------------IT HAS BEEN COMPLETED THE PASS NUMBER "
+                    + tempNs + "------------------------------------");
 
-        ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-
-        tempNs++;
-
- */
-    }
-
-
-            System.out.println("VOY A IMPRIMIR LA PANTALLA CON EL TIEMPO");
             //Control time
             long endTime = System.currentTimeMillis();
             long milliseconds = endTime - startTime;
             long minutes = (milliseconds / 1000) / 60;
             long seconds = (milliseconds / 1000) % 60;
-            String text = "Render Pass: " + (tempNs-1) + " / Render time: " + minutes + "m " + seconds + " s";
+            String text = "Render Pass: " + (tempNs) + " / Render time: " + minutes + "m " + seconds + " s";
 
             //Print text on image
             Graphics graphics = theImage.getGraphics();
             graphics.setColor(Color.DARK_GRAY);
             graphics.setFont(new Font("Arial", Font.PLAIN, 10));
             graphics.drawString(text, 3, 10);
+            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+
+            tempNs++;
+
+
+    }
+
+
 
 
             ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
-
-
     }
 }
 

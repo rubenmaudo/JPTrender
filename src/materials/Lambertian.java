@@ -9,24 +9,31 @@ import geometry.Hit_record;
 import maths.*;
 
 /**
- *
- * @author RubenM
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
+/*
+ * Standard matte material that is defined just for the color
  */
 public class Lambertian extends Material{
-    
+
+    //LAMBERTIAN FIELDS
     ColorValue albedo;
-    
+
+    //CONSTRUCTOR
     public Lambertian(ColorValue a){
         this.albedo=a;
     }
-    
+
+    //METHODS
     @Override
     public boolean scatter(Ray r_in, Hit_record rec) {
 
-        //Calc with scatter in random unit sphere (create more shadows)
+        //OPTION 1-Calc with scatter in random unit sphere (create more shadows)
         Vec3 scatter_direction = rec.normal.add(Vec3.random_in_unit_sphere());
 
-        //Calc with scatter in random unit vector (Objects brighter and less shadow)
+        //OPTION 2-Calc with scatter in random unit vector (Objects brighter and less shadow)
         //Vec3 scatter_direction = temp.normal.add(Vec3.random_unit_vector());
 
         this.scattered = new Ray(rec.p, scatter_direction);

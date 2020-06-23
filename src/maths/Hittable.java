@@ -12,9 +12,10 @@ import geometry.Sphere;
 import java.util.ArrayList;
 
 /**
- *
- * @author RubenM
- */
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class Hittable {//ALSO CALLED INTERSECTION
 
     ArrayList<Primitive> list;

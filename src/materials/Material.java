@@ -16,46 +16,33 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 /**
- *
- * @author RubenM
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
+/*
+ * Abstract class to be extended in all the materials to be used
  */
 public abstract class Material implements Serializable {
+
+    //MATERIAL FIELDS
     ColorValue attenuation;
     Ray scattered;
-    
+
+    //METHODS
+    //Abstrad method to calc the scatter of the ray that hit the primitive
     public abstract boolean scatter(Ray r_in, Hit_record rec);
 
+    //Calc the reflected ray
     Vec3 reflect(Vec3 v, Vec3 n){
-
         return v.sub(n.product(2).product(v.dotProduct(n)));
-    }
-
-    public Vec3 refract(Vec3 uv, Vec3 n, double etai_over_etat){
-        double cos_theta = uv.product(-1).dotProduct(n);
-        Vec3 r_out_parallel = uv.add(n.product(cos_theta)).product(etai_over_etat);
-        Vec3 r_out_perp= n.product(-sqrt(1-r_out_parallel.squared_length()));
-        return r_out_parallel.add(r_out_perp);
-    }
-
-    double schlick(double cosine, double ref_idx){
-        double r0 = (1-ref_idx) / (1+ref_idx);
-        r0= r0 * r0;
-        return r0 + (1-r0) * pow((1- cosine),5);
     }
 
     public ColorValue getAttenuation() {
         return attenuation;
     }
 
-    public void setAttenuation(ColorValue attenuation) {
-        this.attenuation = attenuation;
-    }
-
     public Ray getScattered() {
         return scattered;
-    }
-
-    public void setScattered(Ray scattered) {
-        this.scattered = scattered;
     }
 }

@@ -9,6 +9,11 @@ import java.util.Random;
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
 
+/**
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class ColorValue implements Serializable {
 
     //PROPERTIES

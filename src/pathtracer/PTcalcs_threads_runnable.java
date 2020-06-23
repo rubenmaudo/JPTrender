@@ -1,14 +1,21 @@
-package maths;
+package pathtracer;
 
 import elements.Camera;
 import geometry.Primitive;
 import geometry.Sphere;
+import maths.ColorValue;
+import maths.Hittable;
+import maths.Ray;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.concurrent.RecursiveAction;
 
-public class ImageProcess_threads extends RecursiveAction{
+/**
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
+public class PTcalcs_threads_runnable implements Runnable {
     int ID;
 
     ArrayList<Primitive> scene;
@@ -20,15 +27,15 @@ public class ImageProcess_threads extends RecursiveAction{
     ColorValue[][] imagePixels;
     double gammaValue;
 
-    public ImageProcess_threads (ArrayList<Primitive> scene,
-                                 Camera cam,
-                                 int depth,
-                                 BufferedImage image,
-                                 ArrayList<int[]> list,
-                                 ColorValue[][] imagePixels,
-                                 double gammaValue,
-                                 int ID
-                                 ){
+    public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
+                                    Camera cam,
+                                    int depth,
+                                    BufferedImage image,
+                                    ArrayList<int[]> list,
+                                    ColorValue[][] imagePixels,
+                                    double gammaValue,
+                                    int ID){
+
         this.scene=scene;
         this.cam=cam;
         this.depth=depth;
@@ -39,12 +46,10 @@ public class ImageProcess_threads extends RecursiveAction{
         this.gammaValue=gammaValue;
 
         this.ID=ID;
-        System.out.println("Se ha arrancado la tarea " + ID);
     }
 
     @Override
-    protected void compute() {
-
+    public void run() {
         for(int[] pxLoc : pixelList){
 
             ColorValue col;
@@ -52,7 +57,7 @@ public class ImageProcess_threads extends RecursiveAction{
             double u = (pxLoc[0] + Math.random())  /  image.getWidth();
             double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
             Ray r =cam.get_ray(u, v);
-            col = ColorValue.colorRay(r,new Hittable(scene),depth);
+            col = ColorValue.colorRay(r, new Hittable(scene),depth);
 
             if (imagePixels[pxLoc[0]][pxLoc[1]]==null){
                 imagePixels[pxLoc[0]][pxLoc[1]]=new ColorValue(0,0,0);
@@ -69,7 +74,5 @@ public class ImageProcess_threads extends RecursiveAction{
 
             image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
         }
-
-        System.out.println("Se ha completado la tarea " + ID);
     }
 }

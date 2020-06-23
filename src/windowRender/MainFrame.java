@@ -11,6 +11,11 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class MainFrame extends JFrame
 {
        

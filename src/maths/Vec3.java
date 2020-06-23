@@ -6,9 +6,9 @@ import java.util.Random;
 import static java.lang.Math.*;
 
 /**
- *
- * @author RubenM
- */
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
 
 //A class to create & operate with points/vectors & colours
 public class Vec3 implements Serializable {

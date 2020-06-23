@@ -14,20 +14,37 @@ import static java.lang.Math.sqrt;
 
 
 /**
- *
- * @author RubenM
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
+/*
+ * A class to identify and do calcs over a sphere
  */
 public class Sphere extends Primitive{
-    
+
+    //SPHERE FIELDS
     Vec3 center; //Centre
     double radius; //Radius
-    
+
+
+    //CONSTRUCTOR
     public Sphere(Vec3 cen, double r, Material material){
         this.center = cen;
         this.radius = r;
         super.material= material;
     }
 
+    //METHODS
+
+    /**
+     * Method that calc if the Ray given impact in the sphere
+     * @param r Ray
+     * @param t_min minimum distance for hit search
+     * @param t_max maximum distance for hit search
+     * @param rec hit record
+     * @return boolean confirming if it impact or not
+     */
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec){
         Vec3 oc= r.origin().sub(center);
@@ -36,10 +53,11 @@ public class Sphere extends Primitive{
         double c = dotProduct(oc,oc) - radius*radius;
         double discriminant = half_b*half_b - a*c;
 
+        //If bigger than 0 it means that the ray hit the sphere
         if (discriminant > 0){
             final double sqrt = sqrt(half_b * half_b - a * c);
             double temp =  (( -half_b - sqrt)/a);
-            
+
             if(temp < t_max && temp > t_min){
                 rec.t = temp;
                 rec.p = r.point_at_parameter(rec.t);
@@ -64,12 +82,12 @@ public class Sphere extends Primitive{
                 return true;
             }            
         }        
-        return false;
+        return false;//The ray doesn't hit the sphere
     }
 
     @Override
     public String getDescription() {
-        return "The Spere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
+        return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
                 "radius is r";
     }
 

@@ -11,8 +11,18 @@ import maths.*;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
 public class Scene {
 
+    /**
+     *
+     * @param i Identefy the scene we want to generate and render
+     * @return Arraylist with all the geometry involved in the scene
+     */
     public static ArrayList<Primitive> generateScene(int i){
         ArrayList<Primitive> geometry = new ArrayList<>();
 
@@ -136,6 +146,11 @@ public class Scene {
         }
     }
 
+    /**
+     * Serialize a scene to a file
+     * @param scene ArrayList off primitives
+     * @return boolean to check if it worked
+     */
     public static boolean saveScene(ArrayList<Primitive> scene){
         try{
             FileOutputStream fos = new FileOutputStream("Scenes/scene.scn");
@@ -152,7 +167,10 @@ public class Scene {
     }
 
 
-
+    /**
+     * Load a previously serialized scene that is saved in the disc
+     * @return a scene
+     */
     public static ArrayList<Primitive> loadScene(){
 
         try{
@@ -160,17 +178,14 @@ public class Scene {
             FileInputStream fis = new FileInputStream("Scenes/scene.scn");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            scene=(ArrayList)ois.readObject();
+            scene=(ArrayList<Primitive>)ois.readObject();
 
             ois.close();
             fis.close();
             return scene;
         }
-        catch (IOException ioe){
+        catch (IOException | ClassNotFoundException ioe){
             ioe.printStackTrace();
-        }
-        catch (ClassNotFoundException c){
-            c.printStackTrace();
         }
         return null;
     }
