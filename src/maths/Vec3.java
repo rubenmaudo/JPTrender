@@ -10,7 +10,7 @@ import static java.lang.Math.*;
  * @since : 23/06/2020, Tue
  **/
 
-//A class to create & operate with points/vectors & colours
+//A class to create & operate with points/vectors
 public class Vec3 implements Serializable {
     
     //PROPERTIES
@@ -127,9 +127,7 @@ public class Vec3 implements Serializable {
         return z;
     }
     
-    
-    
-    //Every coordinate divided by the vector lenght
+    //Every coordinate divided by the vector length
     //Also called unit_vector
     public Vec3 normalize(){
         double len=length();

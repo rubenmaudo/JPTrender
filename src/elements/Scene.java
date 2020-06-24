@@ -138,6 +138,17 @@ public class Scene {
 
                 return geometry;
 
+            case 9:
+                geometry.add(new Sphere(new Vec3(0,0,-1.15),0.5,new Lambertian(new ColorValue(0.8,0.3,0.3))));
+                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
+                geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Dielectric(new ColorValue(1,0.8,1),1.7,0.5)));
+                geometry.add(new Sphere(new Vec3(0,-0.4,-0.7),0.1,new Dielectric(1.7,0.3)));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(1,0.2,0.2),0.4)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+
+                return geometry;
+
             default:
                 geometry.add(new Sphere(new Vec3(0,0,-1),0.5,new Lambertian(new ColorValue(0.6,0.6,0.6))));
                 geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.6,0.6,0.6))));

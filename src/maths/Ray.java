@@ -11,7 +11,8 @@ package maths;
  **/
 
 public class Ray {
-    
+
+    //RAY FIELDS
     private final Vec3 pointOrigin;
     private final Vec3 vectorDirection;
     

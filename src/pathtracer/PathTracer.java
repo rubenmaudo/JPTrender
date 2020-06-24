@@ -37,11 +37,11 @@ public class PathTracer {
         long startTime = System.currentTimeMillis();
 
         //Render specs
-        final double aspect_ratio = 16.0 / 10.6666666667;
+        final double aspect_ratio = 16.0 / 9;
         int image_width = 1000;
         int image_height = (int) (image_width / aspect_ratio);
 
-        boolean progressive = false; //Si esta activo de momento no guarda
+        boolean progressive = true; //Si esta activo de momento no guarda
         int ns = 16; //Number of samples
         int tempNs = 1;
 
@@ -58,19 +58,10 @@ public class PathTracer {
 
 
         //Create scene
-        ArrayList<Primitive> primList = Scene.generateScene(8);
+        ArrayList<Primitive> primList = Scene.generateScene(9);
         //ArrayList<Primitive> primList = Scene.loadScene();
 
-        //Create camera
-        //For scene 8
-        Vec3 lookfrom = new Vec3(13, 2, 3);
-        Vec3 lookat = new Vec3(0, 0, 0);
-        Vec3 vup = new Vec3(0, 1, 0);
-        double dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
-        double aperture = 0.1;
-
-        Camera cam = new Camera(lookfrom, lookat, vup, 20
-                , aspect_ratio, aperture, dist_to_focus);
+        Camera cam=Camera.generateCamera(aspect_ratio,5);
 
 
         //Generate a list of pixels
@@ -105,18 +96,16 @@ public class PathTracer {
 
         while (tempNs <= ns || progressive) {
 
-
             ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-            int counting = 0;
+            int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
-                counting++;
+                ID++;
 
                 executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, theImage,
-                        shufflePixelGroup, imagePixels, gammaValue, counting));
+                        shufflePixelGroup, imagePixels, gammaValue, ID));
 
             }
-
             executorService.shutdown();
             try {
                 executorService.awaitTermination(1000, TimeUnit.MINUTES);

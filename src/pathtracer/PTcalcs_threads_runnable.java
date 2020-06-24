@@ -16,6 +16,8 @@ import java.util.ArrayList;
  **/
 
 public class PTcalcs_threads_runnable implements Runnable {
+
+    //THREAD PARAMETERS
     int ID;
 
     ArrayList<Primitive> scene;
@@ -27,6 +29,7 @@ public class PTcalcs_threads_runnable implements Runnable {
     ColorValue[][] imagePixels;
     double gammaValue;
 
+    //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera cam,
                                     int depth,
@@ -48,6 +51,7 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.ID=ID;
     }
 
+    //METHODS
     @Override
     public void run() {
         for(int[] pxLoc : pixelList){

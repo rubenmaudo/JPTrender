@@ -5,9 +5,18 @@
  */
 package elements;
 
+import geometry.Primitive;
+import geometry.Sphere;
+import materials.Dielectric;
+import materials.Lambertian;
+import materials.Material;
+import materials.Metal;
+import maths.ColorValue;
 import maths.Ray;
 import maths.Utils;
 import maths.Vec3;
+
+import java.util.ArrayList;
 
 /**
  * @author : Ruben Maudo
@@ -61,6 +70,96 @@ public class Camera {
         return new Ray(origin.add(offset),
                 lower_left_corner.add(horizontal.product(s)).add(vertical.product(t)).sub(origin).sub(offset)
         );
+    }
+
+    public static Camera generateCamera(double aspect_ratio, int caneraID){
+
+        Vec3 lookfrom;
+        Vec3 lookat;
+        Vec3 vup;
+        double dist_to_focus; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
+        double aperture;
+
+        Camera camera;
+
+        switch(caneraID){
+            case 1:
+                //Standard camera
+                lookfrom = new Vec3(0, 0, 0);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0.0;
+
+                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 2:
+                //Top left view
+                lookfrom = new Vec3(-2, 2, 1);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0;
+
+                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 3:
+                //Top left view zoomed
+                lookfrom = new Vec3(-2, 2, 1);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0;
+
+                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 4:
+                //back camera
+                lookfrom = new Vec3(0, 0, -3);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0;
+
+                camera = new Camera(lookfrom, lookat, vup, 70, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 5:
+                //side camera
+                lookfrom = new Vec3(-2.5, 0.3, 0.5);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0.12;
+
+                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 6:
+                //Camera for scene 8
+                lookfrom = new Vec3(13, 2, 3);
+                lookat = new Vec3(0, 0, 0);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
+                aperture = 0.1;
+
+                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            default:
+                //Default camera
+                lookfrom = new Vec3(0, 0, 0);
+                lookat = new Vec3(0, 0, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0;
+
+                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+        }
     }
     
 }

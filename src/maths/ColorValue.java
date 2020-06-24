@@ -16,7 +16,7 @@ import static maths.Vec3.random_double;
 
 public class ColorValue implements Serializable {
 
-    //PROPERTIES
+    //COLORVALUE FIELDS
     double vR,vG,vB;
 
     //CONSTRUCTOR
@@ -24,18 +24,6 @@ public class ColorValue implements Serializable {
         this.vR = vR;
         this.vG = vG;
         this.vB = vB;
-    }
-
-    public ColorValue() {
-        this.vR = 0;
-        this.vG = 0;
-        this.vB = 0;
-    }
-
-    public ColorValue(double x){
-        this.vR=x;
-        this.vG=x;
-        this.vB=x;
     }
 
     public ColorValue(double vR, double vG, double vB, double gammaValue) {
@@ -46,18 +34,26 @@ public class ColorValue implements Serializable {
 
 
     //METHODS
-
     //Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
     //and obtaining the color
-    public static ColorValue colorRay(Ray r, Hittable world, int depth){
 
-        //Hit_record rec=new Hit_record();
+    /**
+     * Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
+     * and obtaining the color of the hit object
+     * @param r Ray to use
+     * @param world list of items to hit with other information
+     * @param depth how many bounces are allowed
+     * @return a color value
+     */
+    public static ColorValue colorRay(Ray r, Hittable world, int depth){
 
         Hit_record rec=world.getTemp_rec();
 
+        //if depth is less or equal to 0 we return a black color
         if(depth<=0)
             return new ColorValue(0,0,0);
 
+        //if we get an impact using the ray r we get the ray scattered and recursively trace the ray again
         if (world.hit(r, 0.001, INFINITY, rec)){
 
             if(rec.material.scatter(r, rec)){
@@ -69,42 +65,49 @@ public class ColorValue implements Serializable {
             }
         }
 
-        //GENERATE BACKGROUND COLOR
+
+        /*
+         * If we don't hit anything we return the background
+         */
         Vec3 unit_direction=(r.direction().normalize());
         double t= 0.5*(unit_direction.y() + 1);
         return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
 
     }
 
+    /**
+     * Method to obtain the gamma correction value
+     * @param value initial value
+     * @param correctionValue value for correction
+     * @return double with the gamma correction value
+     */
     public static double gammaCorrection(double value, double correctionValue){
         double gammaCorrection = 1 / correctionValue;
         return Math.pow(value,gammaCorrection);
     }
 
+    /**
+     * Method to clamp the image to max and min values to avoid burned areas
+     * @param x value
+     * @param min min
+     * @param max max
+     * @return return the clamped value (if needed)
+     */
     public static double clamp(double x, double min, double max){
         if (x < min) return min;
         if (x > max) return max;
         return x;
     }
 
+    /**
+     * Transform the colorValues into RGB values
+     * @return a integer with the code of the RBG color
+     */
     public int toRGB(){
         int R= (int) (256 * clamp(vR,0, 0.999));
         int G= (int) (256 * clamp(vG,0, 0.999));
         int B= (int) (256 * clamp(vB,0, 0.999));
         return new Color(R,G,B).getRGB();
-    }
-
-
-    public double get_vR(){
-        return vR;
-    }
-
-    public double get_vG(){
-        return vG;
-    }
-
-    public double get_vB(){
-        return vB;
     }
 
     public double vR(){
@@ -118,7 +121,6 @@ public class ColorValue implements Serializable {
     public double vB(){
         return vB;
     }
-
 
     public ColorValue add(ColorValue c){
         return new ColorValue(vR+c.vR, vG+c.vG, vB+c.vB);
@@ -142,7 +144,6 @@ public class ColorValue implements Serializable {
 
     //Return a random ColourValue
     public static ColorValue randomColorValue(){
-        Random r = new Random();
         return new ColorValue(Math.random(),Math.random(),Math.random());
     }
 
