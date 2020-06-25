@@ -1,36 +1,35 @@
-package math;
+package maths;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import static java.lang.Math.*;
-import static math.Utils.*;
 
 /**
- *
- * @author RubenM
- */
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
 
-//A class to create & operate with points/vectors & colours
-public class Vec3 {
+//A class to create & operate with points/vectors
+public class Vec3 implements Serializable {
     
     //PROPERTIES
     private double x,y,z;
     
     
-    //CONSTRUCTOR
+    //CONSTRUCTORS
     public Vec3(){
         this.x=0;
         this.y=0;
         this.z=0;
     }
     
-    
     public Vec3(double x){
         this.x=x;
         this.y=x;
         this.z=x;
-    }    
-    
+    }
+
     public Vec3(double x, double y, double z) {
         this.x = x;
         this.y = y;
@@ -128,9 +127,7 @@ public class Vec3 {
         return z;
     }
     
-    
-    
-    //Every coordinate divided by the vector lenght
+    //Every coordinate divided by the vector length
     //Also called unit_vector
     public Vec3 normalize(){
         double len=length();

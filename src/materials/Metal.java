@@ -5,32 +5,37 @@
  */
 package materials;
 
-import math.*;
+import geometry.Hit_record;
+import maths.*;
 
 /**
- *
- * @author RubenM
+ * @author : Ruben Maudo
+ * @since : 23/06/2020, Tue
+ **/
+
+/*
+ * Standard reflective material that is defined for the color and the fuzziness
  */
 public class Metal extends Material{
-    
-    ColorValue albedo;
-    double fuzz;
-    
+    //METAL FIELDS
+    ColorValue albedo;//Material "color"
+    double fuzz;//Amount of fuzziness to apply to the reflection
+
+    //CONSTRUCTOR
     public Metal(ColorValue a, double fuzziness){
         this.albedo=a;
         if (fuzziness<1) fuzz=fuzziness;
         else fuzz=1;
-        
     }
-    
-    @Override
-    public boolean scatter(Ray r_in, Intersection inters) {
-        Primitive temp= inters.getPrim();
-        Vec3 reflected = reflect(r_in.direction().normalize(),temp.normal);
 
-        this.scattered = new Ray(temp.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
+    //METHODS
+    @Override
+    public boolean scatter(Ray r_in, Hit_record rec) {
+        Vec3 reflected = reflect(r_in.direction().normalize(), rec.normal);
+
+        this.scattered = new Ray(rec.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
         this.attenuation= albedo;  
 
-        return (scattered.direction().dotProduct(temp.normal)>0);
+        return (scattered.direction().dotProduct(rec.normal)>0);
     }
 }
