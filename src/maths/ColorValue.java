@@ -45,34 +45,29 @@ public class ColorValue implements Serializable {
      * @param depth how many bounces are allowed
      * @return a color value
      */
-    public static ColorValue colorRay(Ray r, Hittable world, int depth){
+    public static ColorValue colorRay(Ray r, Hittable world, int depth) {
 
-        Hit_record rec=world.getTemp_rec();
+        Hit_record rec = world.getTemp_rec();
 
         //if depth is less or equal to 0 we return a black color
-        if(depth<=0)
-            return new ColorValue(0,0,0);
+        if (depth <= 0)
+            return new ColorValue(0, 0, 0);
 
-        //if we get an impact using the ray r we get the ray scattered and recursively trace the ray again
-        if (world.hit(r, 0.001, INFINITY, rec)){
+        //EDITED FROM HERE
 
-            if(rec.material.scatter(r, rec)){
-
-                return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(), new Hittable(world.list), depth-1));
-
-            }else{
-                return new ColorValue(0,0,0);
-            }
+        //Background
+        if (!world.hit(r, 0.001, INFINITY, rec)) {
+            Vec3 unit_direction=(r.direction().normalize());
+            double t= 0.5*(unit_direction.y() + 1);
+            return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
+            //return new ColorValue(0, 0, 0);
         }
 
+        if (!rec.material.scatter(r, rec)) {
+            return rec.material.emitted();
+        }
 
-        /*
-         * If we don't hit anything we return the background
-         */
-        Vec3 unit_direction=(r.direction().normalize());
-        double t= 0.5*(unit_direction.y() + 1);
-        return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
-
+        return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(), new Hittable(world.list), depth - 1));
     }
 
     /**

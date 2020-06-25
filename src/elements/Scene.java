@@ -2,10 +2,7 @@ package elements;
 
 import geometry.Primitive;
 import geometry.Sphere;
-import materials.Dielectric;
-import materials.Lambertian;
-import materials.Material;
-import materials.Metal;
+import materials.*;
 import maths.*;
 
 import java.io.*;
@@ -143,6 +140,18 @@ public class Scene {
                 geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
                 geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Dielectric(new ColorValue(1,0.8,1),1.7,0.5)));
                 geometry.add(new Sphere(new Vec3(0,-0.4,-0.7),0.1,new Dielectric(1.7,0.3)));
+                geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
+                geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(1,0.2,0.2),0.4)));
+                geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));
+
+                return geometry;
+
+            case 10:
+                //Scene with light
+                geometry.add(new Sphere(new Vec3(0,0,-1.15),0.5,new Lambertian(new ColorValue(0.8,0.3,0.3))));
+                geometry.add(new Sphere(new Vec3(0.45,-0.4,-0.7),0.1,new Metal(new ColorValue(0.8,0.8,0.8),0)));
+                geometry.add(new Sphere(new Vec3(-0.45,-0.4,-0.7),0.1,new Diffuse_light(new ColorValue(5,5,5))));
+                geometry.add(new Sphere(new Vec3(0,-0.4,-0.7),0.1,new Dielectric(1.7)));
                 geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0))));
                 geometry.add(new Sphere(new Vec3(1,0,-1),0.5,new Metal(new ColorValue(1,0.2,0.2),0.4)));
                 geometry.add(new Sphere(new Vec3(-1,0,-1),0.5,new Metal(new ColorValue(0.8,0.6,0.2),0.9)));

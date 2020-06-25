@@ -27,11 +27,20 @@ public abstract class Material implements Serializable {
 
     //MATERIAL FIELDS
     ColorValue attenuation;
+    ColorValue emitted;
     Ray scattered;
 
     //METHODS
     //Abstrad method to calc the scatter of the ray that hit the primitive
     public abstract boolean scatter(Ray r_in, Hit_record rec);
+
+    public ColorValue emitted(){
+        if (emitted==null){
+            return new ColorValue(0,0,0);
+        }else{
+            return emitted;
+        }
+    }
 
     //Calc the reflected ray
     Vec3 reflect(Vec3 v, Vec3 n){

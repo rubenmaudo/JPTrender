@@ -38,11 +38,11 @@ public class PathTracer {
 
         //Render specs
         final double aspect_ratio = 16.0 / 9;
-        int image_width = 500;
+        int image_width = 1000;
         int image_height = (int) (image_width / aspect_ratio);
 
-        boolean progressive = true; //Si esta activo de momento no guarda
-        int ns = 16; //Number of samples
+        boolean progressive = false; //Si esta activo de momento no guarda
+        int ns = 20; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
@@ -58,10 +58,14 @@ public class PathTracer {
 
 
         //Create scene
-        ArrayList<Primitive> primList = Scene.generateScene(8);
+        ArrayList<Primitive> primList = Scene.generateScene(10);
         //ArrayList<Primitive> primList = Scene.loadScene();
 
-        Camera cam=Camera.generateCamera(aspect_ratio,6);
+        Camera cam=Camera.generateCamera(aspect_ratio,1);
+
+
+        int availableProcessors=Runtime.getRuntime().availableProcessors();
+        System.out.println(availableProcessors);
 
 
         //Generate a list of pixels
@@ -79,7 +83,7 @@ public class PathTracer {
 
         //Create an ArrayList that contain a list of ArrayList with pixels
         ArrayList<ArrayList<int[]>> listOfPixelGroups = new ArrayList<>();
-        for (int i = 0; i < image_height; i++) {
+        for (int i = 0; i < availableProcessors; i++) {
             listOfPixelGroups.add(new ArrayList<>());
         }
 
@@ -87,7 +91,7 @@ public class PathTracer {
         int count = 0;
         for (int[] pixelLocation : pixelList) {
             listOfPixelGroups.get(count).add(pixelLocation);
-            if (count + 1 < image_height) {
+            if (count + 1 < availableProcessors) {
                 count++;
             } else {
                 count = 0;
