@@ -72,6 +72,12 @@ public class Camera {
         );
     }
 
+    /**
+     * Create a camera with different settings
+     * @param aspect_ratio aspect ratio for the image
+     * @param caneraID ID to identify the camera presettings
+     * @return a Camera object
+     */
     public static Camera generateCamera(double aspect_ratio, int caneraID){
 
         Vec3 lookfrom;

@@ -38,7 +38,7 @@ public class PathTracer {
 
         //Render specs
         final double aspect_ratio = 16.0 / 9;
-        int image_width = 1000;
+        int image_width = 500;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = true; //Si esta activo de momento no guarda
@@ -54,14 +54,14 @@ public class PathTracer {
 
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
 
-        MainFrame ventana = new MainFrame(theImage);
+        MainFrame window = new MainFrame(theImage);
 
 
         //Create scene
-        ArrayList<Primitive> primList = Scene.generateScene(9);
+        ArrayList<Primitive> primList = Scene.generateScene(8);
         //ArrayList<Primitive> primList = Scene.loadScene();
 
-        Camera cam=Camera.generateCamera(aspect_ratio,5);
+        Camera cam=Camera.generateCamera(aspect_ratio,6);
 
 
         //Generate a list of pixels
@@ -103,7 +103,7 @@ public class PathTracer {
                 ID++;
 
                 executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, theImage,
-                        shufflePixelGroup, imagePixels, gammaValue, ID));
+                        shufflePixelGroup, imagePixels, gammaValue, ID, window));
 
             }
             executorService.shutdown();
@@ -128,7 +128,7 @@ public class PathTracer {
             graphics.setColor(Color.DARK_GRAY);
             graphics.setFont(new Font("Arial", Font.PLAIN, 10));
             graphics.drawString(text, 3, 10);
-            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+            window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
 
             tempNs++;
 
@@ -138,7 +138,7 @@ public class PathTracer {
 
 
 
-            ventana.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
+            window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
     }
 }
 

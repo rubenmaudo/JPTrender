@@ -6,7 +6,9 @@ import geometry.Sphere;
 import maths.ColorValue;
 import maths.Hittable;
 import maths.Ray;
+import windowRender.MainFrame;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -29,6 +31,10 @@ public class PTcalcs_threads_runnable implements Runnable {
     ColorValue[][] imagePixels;
     double gammaValue;
 
+    long startTime;
+    MainFrame window;
+    int ns;
+
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera cam,
@@ -37,7 +43,7 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     ArrayList<int[]> list,
                                     ColorValue[][] imagePixels,
                                     double gammaValue,
-                                    int ID){
+                                    int ID, MainFrame window){
 
         this.scene=scene;
         this.cam=cam;
@@ -49,6 +55,9 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
+
+        this.window=window;
+
     }
 
     //METHODS
@@ -77,6 +86,8 @@ public class PTcalcs_threads_runnable implements Runnable {
                     gammaValue);
 
             image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
+
+            window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
         }
     }
 }
