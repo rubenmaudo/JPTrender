@@ -155,6 +155,28 @@ public class Camera {
                 camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
                 return camera;
 
+            case 7:
+                //Standard camera for scene 11 (caustic
+                lookfrom = new Vec3(0, 1.2, 2);
+                lookat = new Vec3(0, 0.5, -1);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = lookfrom.sub(lookat).length();
+                aperture = 0.0;
+
+                camera = new Camera(lookfrom, lookat, vup, 50, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
+            case 8:
+                //Scene cornell box
+                lookfrom = new Vec3(278, 278, -800);
+                lookat = new Vec3(278, 278, 0);
+                vup = new Vec3(0, 1, 0);
+                dist_to_focus = 10;
+                aperture = 0.0;
+
+                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
+                return camera;
+
             default:
                 //Default camera
                 lookfrom = new Vec3(0, 0, 0);

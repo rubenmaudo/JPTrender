@@ -37,12 +37,12 @@ public class PathTracer {
         long startTime = System.currentTimeMillis();
 
         //Render specs
-        final double aspect_ratio = 16.0 / 9;
-        int image_width = 1000;
+        final double aspect_ratio = 16.0 / 16;
+        int image_width = 1500;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 20; //Number of samples
+        int ns = 10000; //Number of samples
         int tempNs = 1;
 
         int depth = 50;//Maximum number of bounces we will allow
@@ -58,10 +58,10 @@ public class PathTracer {
 
 
         //Create scene
-        ArrayList<Primitive> primList = Scene.generateScene(10);
+        ArrayList<Primitive> primList = Scene.generateScene(13);
         //ArrayList<Primitive> primList = Scene.loadScene();
 
-        Camera cam=Camera.generateCamera(aspect_ratio,1);
+        Camera cam=Camera.generateCamera(aspect_ratio,8);
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();
