@@ -31,7 +31,27 @@ public class Plane_xz extends Primitive{
         this.z1=z1;
         this.k=k;
         this.material=material;
-        this.flipped=true;
+        this.flipped=flipped;
+    }
+
+    public Plane_xz(double width, double depth, Vec3 centreBasePoint, Material material){
+        this.x0=centreBasePoint.x()-width/2;
+        this.x1=centreBasePoint.x()+width/2;
+        this.z0=centreBasePoint.z()-depth/2;
+        this.z1=centreBasePoint.z()+depth/2;
+        this.k=centreBasePoint.y();
+        this.material=material;
+        this.flipped=false;
+    }
+
+    public Plane_xz(double width, double depth, Vec3 centreBasePoint,boolean flipped, Material material){
+        this.x0=centreBasePoint.x()-width/2;
+        this.x1=centreBasePoint.x()+width/2;
+        this.z0=centreBasePoint.z()-depth/2;
+        this.z1=centreBasePoint.z()+depth/2;
+        this.k=centreBasePoint.y();
+        this.material=material;
+        this.flipped=flipped;
     }
 
     @Override

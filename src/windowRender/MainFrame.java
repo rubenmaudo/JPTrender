@@ -6,6 +6,9 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
@@ -56,13 +59,22 @@ public class MainFrame extends JFrame
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
 
-
                 Date date = new Date() ;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss") ;
-                File outputfile = new File("Renders/render" + dateFormat.format(date) + ".png");
+                File outputfile;
+                Path path = Paths.get("Renders");
+                if(Files.exists(path)){
+                    outputfile = new File("Renders/render" + dateFormat.format(date) + ".png");
+                }else{
+                    File folder= new File("C:\\JPTrenders\\Renders");
+                    folder.mkdir();
+                    outputfile = new File("C:\\JPTrenders\\Renders\\render" + dateFormat.format(date) + ".png");
+                }
                 try {
                     ImageIO.write(bi, "png", outputfile);
-                } catch (IOException e1) { e1.printStackTrace(); }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 System.exit(0);
             }
         });

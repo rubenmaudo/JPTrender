@@ -31,9 +31,30 @@ public class Plane_xy extends Primitive{
         this.y1=y1;
         this.k=k;
         this.material=material;
-        this.flipped=true;
+        this.flipped=flipped;
     }
 
+    public Plane_xy(double width, double height, Vec3 centreBasePoint, Material material){
+        this.x0=centreBasePoint.x()-width/2;
+        this.x1=centreBasePoint.x()+width/2;
+        this.y0=centreBasePoint.y()-height/2;
+        this.y1=centreBasePoint.y()+height/2;
+        this.k=centreBasePoint.z();
+        this.material=material;
+        this.flipped=false;
+    }
+
+    public Plane_xy(double width, double height, Vec3 centreBasePoint,boolean flipped, Material material){
+        this.x0=centreBasePoint.x()-width/2;
+        this.x1=centreBasePoint.x()+width/2;
+        this.y0=centreBasePoint.y()-height/2;
+        this.y1=centreBasePoint.y()+height/2;
+        this.k=centreBasePoint.z();
+        this.material=material;
+        this.flipped=flipped;
+    }
+
+    //METHODS
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
         double t=(k-r.origin().z()) / r.direction().z();

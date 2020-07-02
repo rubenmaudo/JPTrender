@@ -90,4 +90,10 @@ public class PTcalcs_threads_runnable implements Runnable {
             window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
         }
     }
+
+    private void paintRenderTime(){
+
+    }
+
+
 }

@@ -37,13 +37,12 @@ public class PathTracer {
         long startTime = System.currentTimeMillis();
 
         //Render specs
-        final double aspect_ratio = 16.0 / 16;
-        int image_width = 1500;
+        final double aspect_ratio = 16 / 16;
+        int image_width = 1300;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 10000; //Number of samples
-        int tempNs = 1;
+        int ns = 4000; //Number of samples
 
         int depth = 50;//Maximum number of bounces we will allow
 
@@ -98,9 +97,11 @@ public class PathTracer {
             }
         }
 
+
+        int tempNs = 1;
         while (tempNs <= ns || progressive) {
 
-            ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            ExecutorService executorService = Executors.newFixedThreadPool(availableProcessors);
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
