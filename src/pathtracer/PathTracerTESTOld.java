@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @since : 23/06/2020, Tue
  **/
 
-public class PathTracerTEST extends Thread {
+public class PathTracerTESTOld extends Thread {
 
     private int image_width;
     private int image_height;
@@ -36,8 +36,8 @@ public class PathTracerTEST extends Thread {
     BufferedImage bi;
     ExecutorService executorService;
 
-    public PathTracerTEST(int image_width, int image_height, boolean progressive, int ns,
-                          int depth, double gammaValue, BufferedImage bi) {
+    public PathTracerTESTOld(int image_width, int image_height, boolean progressive, int ns,
+                             int depth, double gammaValue, BufferedImage bi) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -46,8 +46,6 @@ public class PathTracerTEST extends Thread {
         this.depth = depth;
         this.gammaValue = gammaValue;
         this.bi = bi;
-
-        System.out.println(aspect_ratio);
 
         initialiseRender();    }
 
@@ -62,10 +60,7 @@ public class PathTracerTEST extends Thread {
 
         Camera cam=Camera.generateCamera(aspect_ratio,8);
 
-
         int availableProcessors=Runtime.getRuntime().availableProcessors();
-        System.out.println(availableProcessors);
-
 
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();

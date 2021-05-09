@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @since : 23/06/2020, Tue
  **/
 
-public class PTcalcs_threads_runnableSAVED implements Runnable {
+public class PTcalcs_threads_runnableOld implements Runnable {
 
     //THREAD PARAMETERS
     int ID;
@@ -34,14 +34,14 @@ public class PTcalcs_threads_runnableSAVED implements Runnable {
     int ns;
 
     //CONSTRUCTOR
-    public PTcalcs_threads_runnableSAVED(ArrayList<Primitive> scene,
-                                         Camera cam,
-                                         int depth,
-                                         BufferedImage image,
-                                         ArrayList<int[]> list,
-                                         ColorValue[][] imagePixels,
-                                         double gammaValue,
-                                         int ID, MainFrame window){
+    public PTcalcs_threads_runnableOld(ArrayList<Primitive> scene,
+                                       Camera cam,
+                                       int depth,
+                                       BufferedImage image,
+                                       ArrayList<int[]> list,
+                                       ColorValue[][] imagePixels,
+                                       double gammaValue,
+                                       int ID, MainFrame window){
 
         this.scene=scene;
         this.cam=cam;

@@ -6,11 +6,10 @@
 package GUIJPT;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
-import pathtracer.PathTracerTEST;
+import pathtracer.PathTracer;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -206,11 +205,14 @@ public class MainGUI extends javax.swing.JFrame {
         setName("MainFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1295, 720));
         setSize(new java.awt.Dimension(1295, 720));
+        /*
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
+
+         */
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         leftSidePanel.setBackground(new Color(0, 102, 255));
@@ -854,7 +856,7 @@ public class MainGUI extends javax.swing.JFrame {
             //    
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
                 File selectedFile = chooser.getSelectedFile();
-                textRouteRenders.setText(selectedFile.getAbsolutePath()+"/Render_JPTr_.jpg");
+                textRouteRenders.setText(selectedFile.getAbsolutePath());
             }
         }    
     }//GEN-LAST:event_buttonOpenFolderMouseClicked
@@ -867,19 +869,19 @@ public class MainGUI extends javax.swing.JFrame {
         menuOpenScene.setEnabled(false);
         updateProgressBar(1,0);
 
+        renderPanel.removeAll();
+
         render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
         renderPanel.add(new ZoomingPanel(render));
 
-        Thread thread = new Thread(){
+        activeThread=true;
 
-            public void run(){
-                pathTracer= new PathTracerTEST((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
-                        checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(),
-                        (int)spinnerNumRebotes.getValue(), (double)spinnerGamma.getValue(), render);
-            }
-        };
+        pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
+                checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(),
+                (int)spinnerNumRebotes.getValue(), (double)spinnerGamma.getValue(), render, activeThread);
+
+        Thread thread = new Thread(pathTracer){};
         thread.start();
-
 
     }//GEN-LAST:event_renderButtonMouseClicked
 
@@ -890,6 +892,8 @@ public class MainGUI extends javax.swing.JFrame {
         menuOpenScene.setEnabled(true);
         setPanelEnabled(optionsPanel,true);
         updateProgressBar(0,0);
+
+        pathTracer.setActiveThread(false);
 
     }//GEN-LAST:event_stopRenderButtonMouseClicked
 
@@ -960,7 +964,7 @@ public class MainGUI extends javax.swing.JFrame {
         
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File selectedFile = chooser.getSelectedFile();
-            textRouteRenders.setText(selectedFile.getAbsolutePath()+"/Render_JPTr_.jpg");
+            textRouteRenders.setText(selectedFile.getAbsolutePath());
         }
     }//GEN-LAST:event_menuOpenSceneActionPerformed
 
@@ -968,26 +972,10 @@ public class MainGUI extends javax.swing.JFrame {
         dialogDetalles.setVisible(true);
     }//GEN-LAST:event_menuInformacionActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        /*
-        Date date = new Date() ;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
-        File outputfile;
-        Path path = Paths.get("Renders");
-        if(Files.exists(path)){
-            outputfile = new File("Renders\\render " + dateFormat.format(date) + ".png");
-        }else{
-            File folder= new File("C:\\JPTrenders\\Renders");
-            folder.mkdirs();
-            outputfile = new File("C:\\JPTrenders\\Renders\\render " + dateFormat.format(date) + ".png");
-        }
-        try {
-            ImageIO.write(render, "png", outputfile);
-        } catch (IOException e1) {
-        }
-        */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        saveImage();
         System.exit(0);
-    }//GEN-LAST:event_formWindowClosing
+    }
 
     private void updateConfiguracionRenderPanelValues(int item){
         int ratioW=1;
@@ -1139,7 +1127,25 @@ public class MainGUI extends javax.swing.JFrame {
     private void updatePasses(int pase){
         numeroPases.setText("Numero de pases: " + pase);
     }
-    
+
+    private void saveImage(){
+        Date date = new Date() ;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+        File outputfile;
+        System.out.println(textRouteRenders.getText());
+        Path path = Paths.get(textRouteRenders.getText());
+        if(Files.exists(path)){
+            outputfile = new File(textRouteRenders.getText() + "/RenderJPTr_" + dateFormat.format(date) + ".png");
+        }else{
+            File folder= new File(textRouteRenders.getText());
+            folder.mkdirs();
+            outputfile = new File(textRouteRenders.getText() + "/RenderJPTr_" + dateFormat.format(date) + ".png");
+        }
+        try {
+            ImageIO.write(render, "png", outputfile);
+        } catch (IOException e1) {
+        }
+    }
     
     /**
      * @param args the command line arguments
@@ -1185,7 +1191,8 @@ public class MainGUI extends javax.swing.JFrame {
     Timer timer; //Render time
     
     BufferedImage render;
-    PathTracerTEST pathTracer;
+    PathTracer pathTracer;
+    Boolean activeThread;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
