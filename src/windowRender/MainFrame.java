@@ -60,15 +60,15 @@ public class MainFrame extends JFrame
             public void windowClosing(WindowEvent e) {
 
                 Date date = new Date() ;
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss") ;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
                 File outputfile;
                 Path path = Paths.get("Renders");
                 if(Files.exists(path)){
-                    outputfile = new File("Renders/render" + dateFormat.format(date) + ".png");
+                    outputfile = new File("Renders/render " + dateFormat.format(date) + ".png");
                 }else{
                     File folder= new File("C:\\JPTrenders\\Renders");
-                    folder.mkdir();
-                    outputfile = new File("C:\\JPTrenders\\Renders\\render" + dateFormat.format(date) + ".png");
+                    folder.mkdirs();
+                    outputfile = new File("C:\\JPTrenders\\Renders\\render " + dateFormat.format(date) + ".png");
                 }
                 try {
                     ImageIO.write(bi, "png", outputfile);

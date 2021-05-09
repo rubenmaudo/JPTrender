@@ -2,13 +2,11 @@ package pathtracer;
 
 import elements.Camera;
 import geometry.Primitive;
-import geometry.Sphere;
 import maths.ColorValue;
 import maths.Hittable;
 import maths.Ray;
 import windowRender.MainFrame;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -17,7 +15,7 @@ import java.util.ArrayList;
  * @since : 23/06/2020, Tue
  **/
 
-public class PTcalcs_threads_runnable implements Runnable {
+public class PTcalcs_threads_runnableSAVED implements Runnable {
 
     //THREAD PARAMETERS
     int ID;
@@ -31,15 +29,19 @@ public class PTcalcs_threads_runnable implements Runnable {
     ColorValue[][] imagePixels;
     double gammaValue;
 
+    long startTime;
+    MainFrame window;
+    int ns;
+
     //CONSTRUCTOR
-    public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
-                                    Camera cam,
-                                    int depth,
-                                    BufferedImage image,
-                                    ArrayList<int[]> list,
-                                    ColorValue[][] imagePixels,
-                                    double gammaValue,
-                                    int ID){
+    public PTcalcs_threads_runnableSAVED(ArrayList<Primitive> scene,
+                                         Camera cam,
+                                         int depth,
+                                         BufferedImage image,
+                                         ArrayList<int[]> list,
+                                         ColorValue[][] imagePixels,
+                                         double gammaValue,
+                                         int ID, MainFrame window){
 
         this.scene=scene;
         this.cam=cam;
@@ -51,6 +53,9 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
+
+        this.window=window;
+
     }
 
     //METHODS
@@ -79,6 +84,8 @@ public class PTcalcs_threads_runnable implements Runnable {
                     gammaValue);
 
             image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
+
+            window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
         }
     }
 }

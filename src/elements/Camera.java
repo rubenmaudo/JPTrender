@@ -75,10 +75,10 @@ public class Camera {
     /**
      * Create a camera with different settings
      * @param aspect_ratio aspect ratio for the image
-     * @param caneraID ID to identify the camera presettings
+     * @param cameraID ID to identify the camera presettings
      * @return a Camera object
      */
-    public static Camera generateCamera(double aspect_ratio, int caneraID){
+    public static Camera generateCamera(double aspect_ratio, int cameraID){
 
         Vec3 lookfrom;
         Vec3 lookat;
@@ -88,7 +88,7 @@ public class Camera {
 
         Camera camera;
 
-        switch(caneraID){
+        switch(cameraID){
             case 1:
                 //Standard camera
                 lookfrom = new Vec3(0, 0, 0);

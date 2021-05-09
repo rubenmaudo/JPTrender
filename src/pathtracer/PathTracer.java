@@ -28,27 +28,28 @@ import static java.lang.Thread.sleep;
 
 public class PathTracer {
 
+
     /**
-     * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
+    public void doit() {
 
         //Flag to control the render time
         long startTime = System.currentTimeMillis();
 
         //Render specs
         final double aspect_ratio = 16 / 16;
-        int image_width = 1300;
+        int image_width = 600;
         int image_height = (int) (image_width / aspect_ratio);
 
         boolean progressive = false; //Si esta activo de momento no guarda
-        int ns = 4000; //Number of samples
+        int ns = 8000; //Number of samples
 
-        int depth = 50;//Maximum number of bounces we will allow
+        int depth = 5;//Maximum number of bounces we will allow
 
         double gammaValue = 2;
 
-        BufferedImage theImage = new BufferedImage(image_width, image_height,
+        FinalImage theImage = new FinalImage(image_width, image_height,
                 BufferedImage.TYPE_INT_RGB);
 
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
@@ -106,10 +107,10 @@ public class PathTracer {
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
                 ID++;
-
+                /*
                 executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, theImage,
                         shufflePixelGroup, imagePixels, gammaValue, ID, window));
-
+                 */
             }
             executorService.shutdown();
             try {
@@ -121,6 +122,7 @@ public class PathTracer {
             System.out.println("------------------------------------IT HAS BEEN COMPLETED THE PASS NUMBER "
                     + tempNs + "------------------------------------");
 
+            /*
             //Control time
             long endTime = System.currentTimeMillis();
             long milliseconds = endTime - startTime;
@@ -135,7 +137,10 @@ public class PathTracer {
             graphics.drawString(text, 3, 10);
             window.renderPanel.repaint();//ESto hay que cambiarlo (no acceder a las propiedades) mejor metodo.
 
+             */
+
             tempNs++;
+            theImage.setRenderPass(tempNs);
 
 
     }

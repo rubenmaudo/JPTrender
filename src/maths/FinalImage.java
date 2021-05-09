@@ -22,7 +22,7 @@ public class FinalImage extends BufferedImage {
         long milliseconds = endTime - startTime;
         long minutes = (milliseconds / 1000) / 60;
         long seconds = (milliseconds / 1000) % 60;
-        String text = "Render Pass: " + (renderPass) + " / Render time: " + minutes + "m " + seconds + " s";
+        String text = "Render Pass: " + (renderPass) + " || Render time: " + minutes + "m " + seconds + " s";
 
         //Print text on image
         Graphics graphics = this.getGraphics();

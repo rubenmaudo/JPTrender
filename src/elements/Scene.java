@@ -189,14 +189,16 @@ public class Scene {
 
             case 13:
                 ////Cornell box test
+
                 //LIGHT
-                /*
+
                 //Single square light at the top
                 geometry.add(new Plane_xz(230,230,new Vec3(0,555,0), new Diffuse_light(new ColorValue(10,10,10))));
-                */
 
-                /*
+
+
                 //Striped lights white
+                /*
                 geometry.add(new Plane_xz(30,400,new Vec3(-195,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(-130,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(-65,555,0), new Diffuse_light(new ColorValue(5,5,5))));
@@ -204,13 +206,15 @@ public class Scene {
                 geometry.add(new Plane_xz(30,400,new Vec3(65,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(130,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(195,555,0), new Diffuse_light(new ColorValue(5,5,5))));
-                */
+                 */
 
-                
+
+                /*
                 //Striped lights colours
                 geometry.add(new Plane_xz(40,400,new Vec3(-195,555,0), new Diffuse_light(new ColorValue(0.7,70,0.7))));
                 geometry.add(new Plane_xz(40,400,new Vec3(0,555,0), new Diffuse_light(new ColorValue(70,0.7,0.7))));
                 geometry.add(new Plane_xz(40,400,new Vec3(195,555,0), new Diffuse_light(new ColorValue(0.7,0.7,70))));
+                */
 
                 /*
                 //Vertical light right wall intens
@@ -225,23 +229,37 @@ public class Scene {
                 geometry.add(new Plane_xy(556,556,new Vec3(0,278,-278), new Lambertian(new ColorValue(0.73,0.73,0.73))));
 
                 //CONTENT
+                /*
                 //Three spheres, metal mirror, lambertian blue, clear glass
                 geometry.add(new Sphere(new Vec3(-100,70,128),70,new Metal(new ColorValue(1,1,1),0)));
                 geometry.add(new Sphere(new Vec3(0,70,-22),70,new Lambertian(new ColorValue(0.05,0.05,0.65))));
                 geometry.add(new Sphere(new Vec3(100,70,128),70,new Dielectric(1.65)));
+                */
 
-                /*
+
                 //Three spheres, metal with fuzziness, lambertian blue, red dielectric with fuzziness
                 geometry.add(new Sphere(new Vec3(-100,70,128),70,new Metal(new ColorValue(1,1,1),10)));
                 geometry.add(new Sphere(new Vec3(0,70,-22),70,new Lambertian(new ColorValue(0.05,0.05,0.65))));
                 geometry.add(new Sphere(new Vec3(100,70,128),70,new Dielectric(new ColorValue(1,0.2,0.2),1.5,0.25)));
-                 */
+
+
 
                 /*
-                //Two Boxes, one Red and one dielectric
-                geometry.add(new Sphere(new Vec3(-100,70,0),70,new Metal(new ColorValue(1,1,1),0)));
-                geometry.add(new Box(100,100,300, new Vec3(195,0,0),new Dielectric(1.6)));
+                Staircase
+                geometry.add(new Sphere(new Vec3(80,70,130),70,new Metal(new ColorValue(0.3,0.3,1),0.9)));
+                geometry.add(new Sphere(new Vec3(200,110,-178),40,new Metal(new ColorValue(1,1,1),10)));
+                geometry.add(new Sphere(new Vec3(-130,90,0),90,new Lambertian(new ColorValue(1,1,1))));
+                //geometry.add(new Box(10,60,60, new Vec3(268,220,178),new Diffuse_light(new ColorValue(10,10,10))));
+                geometry.add(new Box(60,200,10, new Vec3(200,60,-178),new Dielectric(1.65,0)));
+                geometry.add(new Box(60,200,10, new Vec3(120,120,-178),new Dielectric(1.65,0.2)));
+                geometry.add(new Box(60,200,10, new Vec3(60,180,-178),new Dielectric(1.65,0.4)));
+                geometry.add(new Box(60,200,10, new Vec3(0,240,-178),new Dielectric(1.65,0.6)));
+                geometry.add(new Box(60,200,10, new Vec3(-60,300,-178),new Dielectric(1.65,0.8)));
+                geometry.add(new Box(60,200,10, new Vec3(-120,360,-178),new Dielectric(1.65,1)));
+                geometry.add(new Box(60,200,10, new Vec3(-180,420,-178),new Dielectric(1.65,2)));
+                geometry.add(new Box(60,200,10, new Vec3(-240,480,-178),new Dielectric(1.65,6)));
                 */
+
 
                 return geometry;
 
