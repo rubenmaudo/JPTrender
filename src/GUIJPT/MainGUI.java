@@ -7,33 +7,29 @@ package GUIJPT;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
 import pathtracer.PathTracer;
+import windowRender.CallBackNoPasses;
 
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JColorChooser;
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author RubenM
  */
-public class MainGUI extends javax.swing.JFrame {
+public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
 
     /**
      * Creates new form NewJFrame
@@ -97,6 +93,7 @@ public class MainGUI extends javax.swing.JFrame {
         checkBoxSalvarImagen = new javax.swing.JCheckBox();
         labelGamma = new javax.swing.JLabel();
         spinnerGamma = new javax.swing.JSpinner();
+        buttonSaveRender = new javax.swing.JButton();
         renderPanel = new JPanel();
         renderInfoPanel = new JPanel();
         panelRenderDetails = new JPanel();
@@ -205,14 +202,6 @@ public class MainGUI extends javax.swing.JFrame {
         setName("MainFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1295, 720));
         setSize(new java.awt.Dimension(1295, 720));
-        /*
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
-
-         */
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         leftSidePanel.setBackground(new Color(0, 102, 255));
@@ -600,7 +589,7 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        textRouteRenders.setText(System.getProperty("user.home")+"\\Documents");
+        textRouteRenders.setText(System.getProperty("user.home")+"\\Documents\\JPTR renders");
         textRouteRenders.setMaximumSize(new java.awt.Dimension(2147483647, 25));
         textRouteRenders.setMinimumSize(new java.awt.Dimension(7, 25));
         textRouteRenders.setPreferredSize(new java.awt.Dimension(22, 25));
@@ -617,43 +606,52 @@ public class MainGUI extends javax.swing.JFrame {
 
         spinnerGamma.setModel(new javax.swing.SpinnerNumberModel(2.0d, 0.5d, 4.0d, 0.1d));
 
+        buttonSaveRender.setText("Salvar Render");
+        buttonSaveRender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveRenderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout salidaImagenPanelLayout = new javax.swing.GroupLayout(salidaImagenPanel);
         salidaImagenPanel.setLayout(salidaImagenPanelLayout);
         salidaImagenPanelLayout.setHorizontalGroup(
-            salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(salidaImagenPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(salidaImagenPanelLayout.createSequentialGroup()
-                        .addComponent(buttonOpenFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textRouteRenders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(checkBoxSalvarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                    .addGroup(salidaImagenPanelLayout.createSequentialGroup()
-                        .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelDirectionRender, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(salidaImagenPanelLayout.createSequentialGroup()
-                                .addComponent(labelGamma, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spinnerGamma, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(salidaImagenPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(salidaImagenPanelLayout.createSequentialGroup()
+                                                .addComponent(buttonOpenFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textRouteRenders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(checkBoxSalvarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(salidaImagenPanelLayout.createSequentialGroup()
+                                                .addComponent(labelDirectionRender, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(salidaImagenPanelLayout.createSequentialGroup()
+                                                .addComponent(labelGamma, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(spinnerGamma, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buttonSaveRender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         salidaImagenPanelLayout.setVerticalGroup(
-            salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(salidaImagenPanelLayout.createSequentialGroup()
-                .addComponent(labelDirectionRender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonOpenFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textRouteRenders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBoxSalvarImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelGamma)
-                    .addComponent(spinnerGamma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(salidaImagenPanelLayout.createSequentialGroup()
+                                .addComponent(labelDirectionRender)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(buttonOpenFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textRouteRenders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(checkBoxSalvarImagen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(salidaImagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelGamma)
+                                        .addComponent(spinnerGamma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonSaveRender))
+                                .addContainerGap())
         );
 
         optionsPanel.add(salidaImagenPanel);
@@ -746,7 +744,7 @@ public class MainGUI extends javax.swing.JFrame {
         renderButton.setText("Render");
         renderButton.setAlignmentX(0.5F);
         renderButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 renderButtonMouseClicked(evt);
             }
         });
@@ -756,7 +754,7 @@ public class MainGUI extends javax.swing.JFrame {
         stopRenderButton.setAlignmentX(0.5F);
         stopRenderButton.setEnabled(false);
         stopRenderButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 stopRenderButtonMouseClicked(evt);
             }
         });
@@ -862,38 +860,61 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonOpenFolderMouseClicked
 
     private void renderButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_renderButtonMouseClicked
-        updateRenderTime();
-        renderButton.setEnabled(false);
-        stopRenderButton.setEnabled(true);
-        setPanelEnabled(optionsPanel,false);
-        menuOpenScene.setEnabled(false);
-        updateProgressBar(1,0);
 
-        renderPanel.removeAll();
 
-        render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
-        renderPanel.add(new ZoomingPanel(render));
+        if(listenerRenderButtonActive){
+            pass=0;
+            updateProgressBar=true;
 
-        activeThread=true;
+            numeroPases.setText("Numero de pases:");
+            updateRenderTime();
 
-        pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
-                checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(),
-                (int)spinnerNumRebotes.getValue(), (double)spinnerGamma.getValue(), render, activeThread);
+            listenerRenderButtonActive=false;
+            renderButton.setEnabled(false);
 
-        Thread thread = new Thread(pathTracer){};
-        thread.start();
+            listenerStopButtonActive=true;
+            stopRenderButton.setEnabled(true);
 
-    }//GEN-LAST:event_renderButtonMouseClicked
+            setPanelEnabled(optionsPanel,false);
+            menuOpenScene.setEnabled(false);
+            updateProgressBar(1,0);
+
+            renderPanel.removeAll();
+
+            render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
+            renderPanel.add(new ZoomingPanel(render));
+
+            activeThread=true;
+
+            pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
+                    checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(),
+                    (int)spinnerNumRebotes.getValue(), (double)spinnerGamma.getValue(), render, activeThread,this);
+
+            Thread thread = new Thread(pathTracer){};
+            thread.start();
+        }
+
+    }
 
     private void stopRenderButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stopRenderButtonMouseClicked
-        timer.cancel();
-        renderButton.setEnabled(true);
-        stopRenderButton.setEnabled(false);
-        menuOpenScene.setEnabled(true);
-        setPanelEnabled(optionsPanel,true);
-        updateProgressBar(0,0);
+        if(listenerStopButtonActive){
 
-        pathTracer.setActiveThread(false);
+            timer.cancel();
+
+
+            listenerRenderButtonActive=true;
+            renderButton.setEnabled(true);
+
+            listenerStopButtonActive=false;
+            stopRenderButton.setEnabled(false);
+            menuOpenScene.setEnabled(true);
+            setPanelEnabled(optionsPanel,true);
+            updateProgressBar(0,0);
+
+            pathTracer.setActiveThread(false);
+        }
+
+
 
     }//GEN-LAST:event_stopRenderButtonMouseClicked
 
@@ -972,9 +993,8 @@ public class MainGUI extends javax.swing.JFrame {
         dialogDetalles.setVisible(true);
     }//GEN-LAST:event_menuInformacionActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+    private void buttonSaveRenderActionPerformed(java.awt.event.ActionEvent evt) {
         saveImage();
-        System.exit(0);
     }
 
     private void updateConfiguracionRenderPanelValues(int item){
@@ -1061,7 +1081,9 @@ public class MainGUI extends javax.swing.JFrame {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                
+
+                renderPanel.repaint();
+
                 long partialTime = System.currentTimeMillis();
                 long millis = partialTime - startTime;
                 
@@ -1074,8 +1096,8 @@ public class MainGUI extends javax.swing.JFrame {
                 
                 renderTime.setText("Tiempo de render:  " + time);
             }
-        }, 0, 1000);
-            //timer.cancel();//stop the timer
+        }, 0, 100);
+
     }
     
     void setPanelEnabled(JPanel panel, Boolean isEnabled) {
@@ -1094,45 +1116,99 @@ public class MainGUI extends javax.swing.JFrame {
             spinnerNumPases.setEnabled(false);
         }
     }
-    
-    private void updateProgressBar(int status,int renderPassValue){
-        if(status==1){
-            if (checkBoxNumPases.isSelected()){
-            progressBar.setString("Render progresivo seleccionado");
-            progressBar.setIndeterminate(true);
-            }else{
-                progressBar.setIndeterminate(false);
-                progressBar.setMinimum(0);
-                progressBar.setMaximum((int) spinnerNumPases.getValue());
-                progressBar.setValue(renderPassValue);
-                progressBar.setString("Rendering..." + progressBar.getPercentComplete() + "%");
-            }
-        }else if(status==0){
-            if(progressBar.isIndeterminate()){
-                progressBar.setIndeterminate(false);
-                progressBar.setMinimum(0);
-                progressBar.setMaximum(100);
-                progressBar.setValue(100);
-                progressBar.setString("Render parado");
-            }else{
-                if (progressBar.getValue()==progressBar.getMaximum()){
-                    progressBar.setString("Render completado");
-                }else{
-                    progressBar.setString("Render parado al " + progressBar.getPercentComplete() + "%");
-                }
-            }
-        }
-        
-    }
-    private void updatePasses(int pase){
-        numeroPases.setText("Numero de pases: " + pase);
+
+    @Override
+    public void increasePassesCallBack() {
+        updatePasses();
     }
 
+    private void updatePasses(){
+        pass++;
+        numeroPases.setText("Numero de pases: " + pass);
+        updateProgressBar(2,pass);
+    }
+
+    private void updateProgressBar(int status,int renderPassValue){
+
+        if(updateProgressBar){
+            DecimalFormat df2 = new DecimalFormat("#.##");
+
+            switch (status){
+                case 0://UPDATE BAR WHEN STOP BUTTON IS CLICKED
+                    updateProgressBar=false;
+                    if(progressBar.isIndeterminate()){
+                        progressBar.setIndeterminate(false);
+                        progressBar.setMinimum(0);
+                        progressBar.setMaximum(100);
+                        progressBar.setValue(100);
+                        progressBar.setString("Render parado");
+                    }else{
+                        if (renderPassValue==progressBar.getMaximum()){
+                            progressBar.setString("Render completado");
+                        }else{
+                            progressBar.setString("Render parado al " + df2.format((progressBar.getPercentComplete()*100)) + "%");
+                        }
+                    }
+                    break;
+
+                case 1://UPDATE BAR WHEN RENDER BUTTON IS PUSHED
+                    if (checkBoxNumPases.isSelected()){
+                        progressBar.setString("Render progresivo seleccionado");
+                        progressBar.setIndeterminate(true);
+                    }else{
+                        progressBar.setIndeterminate(false);
+                        progressBar.setMinimum(0);
+                        progressBar.setMaximum((int) spinnerNumPases.getValue());
+                        progressBar.setValue(renderPassValue);
+                        progressBar.setString("Rendering..." + df2.format((progressBar.getPercentComplete()*100)) + "%");
+                    }
+                    break;
+
+                case 2://UPDATE BAR DURING RENDER
+                    if(!progressBar.isIndeterminate()){
+                        progressBar.setMinimum(0);
+                        progressBar.setMaximum((int) spinnerNumPases.getValue());
+                        progressBar.setValue(renderPassValue);
+                        progressBar.setString("Rendering..." + df2.format((progressBar.getPercentComplete()*100)) + "%");
+                    }
+                    if(renderPassValue==progressBar.getMaximum()){
+                        progressBar.setString("Render completado");
+                        timer.cancel();
+
+                        listenerRenderButtonActive=true;
+                        renderButton.setEnabled(true);
+
+                        listenerStopButtonActive=false;
+                        stopRenderButton.setEnabled(false);
+
+                        menuOpenScene.setEnabled(true);
+                        setPanelEnabled(optionsPanel,true);
+                        pathTracer.setActiveThread(false);
+                    };
+                    break;
+            }
+        }
+    }
+
+
     private void saveImage(){
+
+        String text = renderTime.getText() + "   ||   " + numeroPases.getText();
+
+        //Print text on image
+        Graphics graphics = render.getGraphics();
+
+        graphics.setColor(new Color(127,127,127,55));
+        graphics.fillRect(0,0,render.getWidth(), 15);
+
+        graphics.setColor(Color.white);
+        graphics.setFont(new Font("Arial", Font.PLAIN, 10));
+        graphics.drawString(text, 3, 10);
+
+
         Date date = new Date() ;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
         File outputfile;
-        System.out.println(textRouteRenders.getText());
         Path path = Paths.get(textRouteRenders.getText());
         if(Files.exists(path)){
             outputfile = new File(textRouteRenders.getText() + "/RenderJPTr_" + dateFormat.format(date) + ".png");
@@ -1143,7 +1219,12 @@ public class MainGUI extends javax.swing.JFrame {
         }
         try {
             ImageIO.write(render, "png", outputfile);
+
+            JOptionPane.showMessageDialog(new JFrame(), "Imagen guardada en el directorio seleccionado", "Salvar imagen",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No se pudo guardar la imagen", "Salvar imagen",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -1180,6 +1261,8 @@ public class MainGUI extends javax.swing.JFrame {
         });
     }
 
+
+
     // Variables for control
     private boolean flagEnableSpinnerWidthListener;
     private boolean flagEnableSpinnerHeigthListener;
@@ -1193,12 +1276,17 @@ public class MainGUI extends javax.swing.JFrame {
     BufferedImage render;
     PathTracer pathTracer;
     Boolean activeThread;
+    int pass;
+    boolean updateProgressBar=true;
+    boolean listenerRenderButtonActive=true;
+    boolean listenerStopButtonActive=false;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator Separator;
     private JPanel botonPanelColorPrimario;
     private JPanel botonPanelColorSecundario;
+    private javax.swing.JButton buttonSaveRender;
     private javax.swing.JButton buttonOpenFolder;
     private JPanel buttonSettings;
     private javax.swing.JCheckBox checkBoxDegradado;
@@ -1258,5 +1346,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel titleOpciones;
     private javax.swing.JLabel titleProyecto;
     private javax.swing.JLabel titleSideBar;
+
+
     // End of variables declaration//GEN-END:variables
 }

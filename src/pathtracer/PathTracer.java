@@ -5,6 +5,7 @@
  */
 package pathtracer;
 
+import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Scene;
 import geometry.Primitive;
@@ -37,8 +38,10 @@ public class PathTracer implements Runnable {
     BufferedImage bi;
     ExecutorService executorService;
 
+    MainGUI mainGUI;
+
     public PathTracer(int image_width, int image_height, boolean progressive, int ns,
-                      int depth, double gammaValue, BufferedImage bi, boolean activeThread) {
+                      int depth, double gammaValue, BufferedImage bi, boolean activeThread, MainGUI mainGUI) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -48,18 +51,10 @@ public class PathTracer implements Runnable {
         this.gammaValue = gammaValue;
         this.bi = bi;
         this.activeThread=activeThread;
-
-        System.out.println(aspect_ratio);
+        this.mainGUI=mainGUI;
     }
 
-    public void shutdownExecutor(){
-        executorService.shutdownNow();
-        try {
-            executorService.awaitTermination(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @Override
     public void run() {
@@ -73,7 +68,6 @@ public class PathTracer implements Runnable {
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();
-        System.out.println(availableProcessors);
 
 
         //Generate a list of pixels
@@ -129,6 +123,7 @@ public class PathTracer implements Runnable {
             System.out.println("------------------------------------PASS NUMBER "
                     + tempNs + " HAS BEEN COMPLETED------------------------------------");
 
+            mainGUI.increasePassesCallBack();
 
             tempNs++;
 
