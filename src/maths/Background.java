@@ -42,8 +42,7 @@ public class Background {
     }
 
     public static ColorValue fromColorToColorValue(Color color){
-        ColorValue newColorValue= new ColorValue((double)color.getRed()/(double)255,
+        return new ColorValue((double)color.getRed()/(double)255,
                 (double)color.getGreen()/(double)255,(double)color.getBlue()/(double)255);
-        return newColorValue;
     }
 }

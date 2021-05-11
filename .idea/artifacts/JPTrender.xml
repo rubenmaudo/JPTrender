@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="JPTrender:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/JPTrender_jar</output-path>
+  <artifact type="jar" build-on-make="true" name="JPTrender">
+    <output-path>$PROJECT_DIR$/out/artifacts/JPTrender</output-path>
     <root id="archive" name="JPTrender.jar">
       <element id="module-output" name="JPTrender" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/flatlaf-demo-1.1.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/annotations-19.0.0.jar" path-in-jar="/" />
     </root>
   </artifact>

@@ -131,7 +131,6 @@ public class PathTracer implements Runnable {
 
             tempNs++;
 
-            //INTRODUCIR AQUI LA LLAMADA A ACTUALIZAR LA IMAGEN
         }
     }
 
