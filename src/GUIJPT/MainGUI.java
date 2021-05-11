@@ -6,8 +6,8 @@
 package GUIJPT;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
+import maths.Background;
 import pathtracer.PathTracer;
-import windowRender.CallBackNoPasses;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -807,29 +807,40 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonPanelColorSecundarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPanelColorSecundarioMouseClicked
+
+    private void updateBackground(){
+        background.setMainColor(Background.fromColorToColorValue(botonPanelColorPrimario.getBackground()));
+        background.setSecondaryColor(Background.fromColorToColorValue(botonPanelColorSecundario.getBackground()));
+        background.setMixed(checkBoxDegradado.isSelected());
+    }
+
+    private void botonPanelColorSecundarioMouseClicked(java.awt.event.MouseEvent evt) {
+
         if(checkBoxDegradado.isSelected() && botonPanelColorSecundario.isEnabled() ){
-            Color newColor = JColorChooser.showDialog(null, "Selecciona el color secundario", Color.ORANGE);
+            Color newColor = JColorChooser.showDialog(null, "Selecciona el color secundario", colorSaved);
             if (newColor!=null){
+                colorSaved=newColor;
                 botonPanelColorSecundario.setBackground(newColor);
             }
         }
-        
-    }//GEN-LAST:event_botonPanelColorSecundarioMouseClicked
+        updateBackground();
+    }
 
-    private void botonPanelColorPrimarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPanelColorPrimarioMouseClicked
+    private void botonPanelColorPrimarioMouseClicked(java.awt.event.MouseEvent evt) {
         if(botonPanelColorPrimario.isEnabled()){
             Color color=new Color(153,190,255);        
             Color newColor = JColorChooser.showDialog(null, "Selecciona el color principal", color);
             if (newColor!=null){
                 botonPanelColorPrimario.setBackground(newColor);
             }
-        }    
-    }//GEN-LAST:event_botonPanelColorPrimarioMouseClicked
+        }
+        updateBackground();
+    }
 
-    private void checkBoxDegradadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxDegradadoItemStateChanged
+    private void checkBoxDegradadoItemStateChanged(java.awt.event.ItemEvent evt) {
         if(evt.getStateChange()==1){
             labelColorSecundario.setEnabled(true);
+            botonPanelColorSecundario.setEnabled(true);
             botonPanelColorSecundario.setBackground(colorSaved);
             
         }else if(evt.getStateChange()==2){
@@ -838,7 +849,8 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
             labelColorSecundario.setEnabled(false);
             botonPanelColorSecundario.setBackground(color);
         }
-    }//GEN-LAST:event_checkBoxDegradadoItemStateChanged
+        updateBackground();
+    }
 
     private void buttonOpenFolderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonOpenFolderMouseClicked
         if(buttonOpenFolder.isEnabled()){
@@ -887,8 +899,8 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
             activeThread=true;
 
             pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
-                    checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(),
-                    (int)spinnerNumRebotes.getValue(), (double)spinnerGamma.getValue(), render, activeThread,this);
+                    checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
+                    (double)spinnerGamma.getValue(), render, activeThread,this,background);
 
             Thread thread = new Thread(pathTracer){};
             thread.start();
@@ -1276,10 +1288,13 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     BufferedImage render;
     PathTracer pathTracer;
     Boolean activeThread;
+
     int pass;
     boolean updateProgressBar=true;
     boolean listenerRenderButtonActive=true;
     boolean listenerStopButtonActive=false;
+
+    Background background=new Background();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

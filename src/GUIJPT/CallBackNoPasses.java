@@ -1,4 +1,4 @@
-package windowRender;
+package GUIJPT;
 
 /**
  * @author : Ruben Maudo

@@ -45,7 +45,7 @@ public class ColorValue implements Serializable {
      * @param depth how many bounces are allowed
      * @return a color value
      */
-    public static ColorValue colorRay(Ray r, Hittable world, int depth) {
+    public static ColorValue colorRay(Ray r, Hittable world, int depth, Background background) {
 
         Hit_record rec = world.getTemp_rec();
 
@@ -59,15 +59,24 @@ public class ColorValue implements Serializable {
         if (!world.hit(r, 0.001, INFINITY, rec)) {
             Vec3 unit_direction=(r.direction().normalize());
             double t= 0.5*(unit_direction.y() + 1);
-            //return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
+
+            if (background.getMixed()){
+                return background.getSecondaryColor().product(1-t).add(background.getMainColor().product(t));
+            }else return background.getMainColor();
+
+            /*
+            return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
             return new ColorValue(0, 0, 0);
+
+             */
         }
 
         if (!rec.material.scatter(r, rec)) {
             return rec.material.emitted();
         }
 
-        return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(), new Hittable(world.list), depth - 1));
+        return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(),
+                new Hittable(world.list), depth - 1, background));
     }
 
     /**

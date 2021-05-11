@@ -9,6 +9,7 @@ import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Scene;
 import geometry.Primitive;
+import maths.Background;
 import maths.ColorValue;
 
 import java.awt.image.BufferedImage;
@@ -40,8 +41,10 @@ public class PathTracer implements Runnable {
 
     MainGUI mainGUI;
 
-    public PathTracer(int image_width, int image_height, boolean progressive, int ns,
-                      int depth, double gammaValue, BufferedImage bi, boolean activeThread, MainGUI mainGUI) {
+    Background background;
+
+    public PathTracer(int image_width, int image_height, boolean progressive, int ns, int depth, double gammaValue,
+                      BufferedImage bi, boolean activeThread, MainGUI mainGUI, Background background) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -52,6 +55,7 @@ public class PathTracer implements Runnable {
         this.bi = bi;
         this.activeThread=activeThread;
         this.mainGUI=mainGUI;
+        this.background=background;
     }
 
 
@@ -110,7 +114,7 @@ public class PathTracer implements Runnable {
                 ID++;
 
                 executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, bi,
-                        shufflePixelGroup, imagePixels, gammaValue, ID));
+                        shufflePixelGroup, imagePixels, gammaValue, ID,background));
 
             }
             executorService.shutdown();

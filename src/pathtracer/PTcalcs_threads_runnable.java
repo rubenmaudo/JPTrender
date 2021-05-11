@@ -3,6 +3,7 @@ package pathtracer;
 import elements.Camera;
 import geometry.Primitive;
 import geometry.Sphere;
+import maths.Background;
 import maths.ColorValue;
 import maths.Hittable;
 import maths.Ray;
@@ -31,6 +32,8 @@ public class PTcalcs_threads_runnable implements Runnable {
     ColorValue[][] imagePixels;
     double gammaValue;
 
+    Background background;
+
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera cam,
@@ -39,7 +42,7 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     ArrayList<int[]> list,
                                     ColorValue[][] imagePixels,
                                     double gammaValue,
-                                    int ID){
+                                    int ID, Background background){
 
         this.scene=scene;
         this.cam=cam;
@@ -51,6 +54,7 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
+        this.background=background;
     }
 
     //METHODS
@@ -63,7 +67,7 @@ public class PTcalcs_threads_runnable implements Runnable {
             double u = (pxLoc[0] + Math.random())  /  image.getWidth();
             double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
             Ray r =cam.get_ray(u, v);
-            col = ColorValue.colorRay(r, new Hittable(scene),depth);
+            col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
 
             if (imagePixels[pxLoc[0]][pxLoc[1]]==null){
                 imagePixels[pxLoc[0]][pxLoc[1]]=new ColorValue(0,0,0);
