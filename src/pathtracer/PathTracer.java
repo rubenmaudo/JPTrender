@@ -44,7 +44,7 @@ public class PathTracer implements Runnable {
     Background background;
 
     public PathTracer(int image_width, int image_height, boolean progressive, int ns, int depth, double gammaValue,
-                      BufferedImage bi, boolean activeThread, MainGUI mainGUI, Background background) {
+                      BufferedImage bi, MainGUI mainGUI, Background background) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -53,7 +53,6 @@ public class PathTracer implements Runnable {
         this.depth = depth;
         this.gammaValue = gammaValue;
         this.bi = bi;
-        this.activeThread=activeThread;
         this.mainGUI=mainGUI;
         this.background=background;
     }
@@ -104,10 +103,12 @@ public class PathTracer implements Runnable {
             }
         }
 
+        activeThread=true;
+
         int tempNs = 1;
         while ((tempNs <= ns || progressive)&& activeThread) {
 
-            executorService = Executors.newFixedThreadPool(availableProcessors);
+            executorService = Executors.newFixedThreadPool(1);
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {

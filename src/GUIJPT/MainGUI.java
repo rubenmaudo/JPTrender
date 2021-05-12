@@ -884,11 +884,9 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
             render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
             renderPanel.add(new ZoomingPanel(render));
 
-            activeThread=true;
-
             pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
                     checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
-                    (double)spinnerGamma.getValue(), render, activeThread,this,background);
+                    (double)spinnerGamma.getValue(), render,this,background);
 
             Thread thread = new Thread(pathTracer){};
             thread.start();
@@ -1152,6 +1150,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
                     if (checkBoxNumPases.isSelected()){
                         progressBar.setString("Render progresivo seleccionado");
                         progressBar.setIndeterminate(true);
+                        progressBar.setMaximum(Integer.MAX_VALUE);
                     }else{
                         progressBar.setIndeterminate(false);
                         progressBar.setMinimum(0);
@@ -1272,7 +1271,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     
     BufferedImage render;
     PathTracer pathTracer;
-    Boolean activeThread;
+    Boolean activeThread=true;
 
     int pass;
     boolean updateProgressBar=true;
