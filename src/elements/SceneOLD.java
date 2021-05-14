@@ -2,9 +2,10 @@ package elements;
 
 import geometry.*;
 import materials.*;
-import maths.*;
+import maths.ColorValue;
+import maths.Utils;
+import maths.Vec3;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @since : 23/06/2020, Tue
  **/
 
-public class Scene {
+public class SceneOLD {
 
     /**
      *

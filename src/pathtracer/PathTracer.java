@@ -8,9 +8,11 @@ package pathtracer;
 import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Scene;
+import elements.SceneLoader;
 import geometry.Primitive;
 import maths.Background;
 import maths.ColorValue;
+import maths.Vec3;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -43,8 +45,10 @@ public class PathTracer implements Runnable {
 
     Background background;
 
+    SceneLoader sceneLoader;
+
     public PathTracer(int image_width, int image_height, boolean progressive, int ns, int depth, double gammaValue,
-                      BufferedImage bi, MainGUI mainGUI, Background background) {
+                      BufferedImage bi, MainGUI mainGUI, Background background, SceneLoader sceneLoader) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -55,6 +59,7 @@ public class PathTracer implements Runnable {
         this.bi = bi;
         this.mainGUI=mainGUI;
         this.background=background;
+        this.sceneLoader=sceneLoader;
     }
 
 
@@ -63,11 +68,25 @@ public class PathTracer implements Runnable {
     public void run() {
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
 
+        /*
         //Create scene
         ArrayList<Primitive> primList = Scene.generateScene(13);
         //ArrayList<Primitive> primList = Scene.loadScene();
 
         Camera cam=Camera.generateCamera(aspect_ratio,8);
+        */
+
+        ArrayList<Primitive> primList =sceneLoader.getGeometry();
+        Camera cam=new Camera(
+                sceneLoader.getLookfrom(),
+                sceneLoader.getLookat(),
+                sceneLoader.getVup(),
+                sceneLoader.getVfov(),
+                aspect_ratio,
+                sceneLoader.getAperture(),
+                sceneLoader.getFocus_dist(),
+                sceneLoader.getAutofocus()
+                );
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();

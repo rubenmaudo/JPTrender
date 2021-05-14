@@ -32,10 +32,15 @@ public class Camera {
     private final Vec3 origin;
     private final Vec3 u,v,w; //Parameters to create an orthonormal basis to describe camera orientation
     private final double lens_radius;
+    private int autofocus;
 
     //CAMERA CONSTRUCTOR
     public Camera(Vec3 lookfrom, Vec3 lookat, Vec3 vup, double vfov, double aspect_ratio,
-                  double aperture, double focus_dist){
+                  double aperture, double focus_dist, int autofocus){
+
+        if(autofocus==1){
+            focus_dist=lookfrom.sub(lookat).length();
+        }
 
         double theta = Utils.degrees_to_radians(vfov);//FieldOfView changed to radians
         double h = Math.tan(theta/2);
@@ -52,6 +57,7 @@ public class Camera {
         //Parameter to identify the left corner of the picture to "take" that will be used as a reference
         this.lower_left_corner = origin.sub(horizontal.divide(2)).sub(vertical.divide(2)).sub(w.product(focus_dist));
         this.lens_radius= aperture / 2;//Size of the lens to determine the aperture to be used
+        this.autofocus=autofocus;
     }
 
 
@@ -72,12 +78,14 @@ public class Camera {
         );
     }
 
+
     /**
      * Create a camera with different settings
      * @param aspect_ratio aspect ratio for the image
      * @param cameraID ID to identify the camera presettings
      * @return a Camera object
      */
+    /*
     public static Camera generateCamera(double aspect_ratio, int cameraID){
 
         Vec3 lookfrom;
@@ -188,6 +196,7 @@ public class Camera {
                 camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
                 return camera;
         }
-    }
+
+    }*/
     
 }

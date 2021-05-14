@@ -6,6 +6,7 @@
 package GUIJPT;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
+import elements.SceneLoader;
 import maths.Background;
 import pathtracer.PathTracer;
 
@@ -886,7 +887,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
 
             pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
                     checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
-                    (double)spinnerGamma.getValue(), render,this,background);
+                    (double)spinnerGamma.getValue(), render,this,background, sceneLoader);
 
             Thread thread = new Thread(pathTracer){};
             thread.start();
@@ -968,21 +969,22 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         }
     }//GEN-LAST:event_spinnerAnchoStateChanged
 
-    private void menuOpenSceneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenSceneActionPerformed
+    private void menuOpenSceneActionPerformed(java.awt.event.ActionEvent evt) {
         JFileChooser chooser;
         chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File(System.getProperty("user.home")+"/Documents"));
+        chooser.setCurrentDirectory(new File(startingPath));
         chooser.setDialogTitle("Seleccione archivo");
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPT RENDER FILES", "jpt", "jptr");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPT RENDER FILES", "xml");
         chooser.setFileFilter(filter);
         
         chooser.setAcceptAllFileFilterUsed(false);
         
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File selectedFile = chooser.getSelectedFile();
-            textRouteRenders.setText(selectedFile.getAbsolutePath());
+            startingPath=selectedFile.getAbsolutePath();
+            sceneLoader=new SceneLoader(selectedFile.getAbsolutePath());
         }
-    }//GEN-LAST:event_menuOpenSceneActionPerformed
+    }
 
     private void menuInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInformacionActionPerformed
         dialogDetalles.setVisible(true);
@@ -1279,6 +1281,10 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     boolean listenerStopButtonActive=false;
 
     Background background=new Background();
+
+    SceneLoader sceneLoader;
+
+    String startingPath=System.getProperty("user.home")+"/Documents";
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
