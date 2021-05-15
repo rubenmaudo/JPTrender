@@ -4,6 +4,9 @@ import materials.Material;
 import maths.Hittable;
 import maths.Ray;
 import maths.Vec3;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 
@@ -12,9 +15,21 @@ import java.util.ArrayList;
  * @since : 28/06/2020
  **/
 public class Box extends Primitive{
+    double width;
+    double depth;
+    double height;
+    Vec3 centreBasePoint;
+    Material material;
+
     ArrayList<Primitive> planesList;
 
     public Box(double width, double depth, double height, Vec3 centreBasePoint, Material material){
+        this.width=width;
+        this.depth=depth;
+        this.height=height;
+        this.centreBasePoint=centreBasePoint;
+        this.material=material;
+
         planesList=new ArrayList<>();
         planesList.add(new Plane_xz(width, depth, new Vec3(centreBasePoint.x(),centreBasePoint.y()+height,centreBasePoint.z()),material));
         planesList.add(new Plane_xz(width, depth, centreBasePoint,true,material));
@@ -37,5 +52,20 @@ public class Box extends Primitive{
     @Override
     String getDescription() {
         return null;
+    }
+
+    @Override
+    public Node getGeomety(Document doc) {
+        Element box=doc.createElement("Box");
+        box.setAttribute("width", String.valueOf(this.width));
+        box.setAttribute("depth", String.valueOf(this.depth));
+        box.setAttribute("height", String.valueOf(this.height));
+        box.setAttribute("centreBasePointX", String.valueOf(this.centreBasePoint.getValue(0)));
+        box.setAttribute("centreBasePointY", String.valueOf(this.centreBasePoint.getValue(1)));
+        box.setAttribute("centreBasePointZ", String.valueOf(this.centreBasePoint.getValue(2)));
+
+        box.appendChild(material.getMaterial(doc));
+
+        return box;
     }
 }

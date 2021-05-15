@@ -43,26 +43,7 @@ class ZoomAndPanePanel extends JPanel {
   @Override protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g.create();
-    //g2.setPaint(new Color(0x55_FF_00_00, true));
-    //Rectangle r = new Rectangle(500, 140, 150, 150);
-
-    // use: AffineTransform#concatenate(...) and Graphics2D#setTransform(...)
-    // https://docs.oracle.com/javase/8/docs/api/java/awt/geom/AffineTransform.html#concatenate-java.awt.geom.AffineTransform-
-    // AffineTransform at = g2.getTransform();
-    // at.concatenate(zoomTransform);
-    // g2.setTransform(at);
-    // g2.drawImage(img, 0, 0, this);
-    // g2.fill(r);
-
-    // or use: Graphics2D#drawImage(Image, AffineTransform, ImageObserver)
-    // https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html#drawImage-java.awt.Image-java.awt.geom.AffineTransform-java.awt.image.ImageObserver-
-    g2.drawImage(img, zoomTransform, this); // or: g2.drawRenderedImage((RenderedImage) img, zoomTransform);
-    //g2.fill(zoomTransform.createTransformedShape(r));
-
-    // BAD EXAMPLE
-    // g2.setTransform(zoomTransform);
-    // g2.drawImage(img, 0, 0, this);
-
+    g2.drawImage(img, zoomTransform, this);
     g2.dispose();
   }
 
@@ -86,7 +67,7 @@ class ZoomAndPanePanel extends JPanel {
   protected class ZoomHandler extends MouseAdapter {
     private static final double ZOOM_MULTIPLICATION_FACTOR = 1.2;
     private static final int MIN_ZOOM = -10;
-    private static final int MAX_ZOOM = 10;
+    private static final int MAX_ZOOM = 20;
     private static final int EXTENT = 1;
     private final BoundedRangeModel zoomRange = new DefaultBoundedRangeModel(0, EXTENT, MIN_ZOOM, MAX_ZOOM + EXTENT);
 

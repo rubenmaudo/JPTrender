@@ -109,6 +109,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuOpenScene = new javax.swing.JMenuItem();
+        menuReOpenScene = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuInformacion = new javax.swing.JMenuItem();
 
@@ -773,6 +774,15 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         });
         menuFile.add(menuOpenScene);
 
+        menuReOpenScene.setText("Recargar Escena");
+        menuReOpenScene.setIconTextGap(0);
+        menuReOpenScene.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuReOpenSceneActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuReOpenScene);
+
         menuBar.add(menuFile);
 
         menuHelp.setText("Ayuda");
@@ -806,9 +816,9 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     private void botonPanelColorSecundarioMouseClicked(java.awt.event.MouseEvent evt) {
 
         if(checkBoxDegradado.isSelected() && botonPanelColorSecundario.isEnabled() ){
-            Color newColor = JColorChooser.showDialog(null, "Selecciona el color secundario", colorSaved);
+            Color newColor = JColorChooser.showDialog(null, "Selecciona el color secundario", colorSecondarySaved);
             if (newColor!=null){
-                colorSaved=newColor;
+                colorSecondarySaved =newColor;
                 botonPanelColorSecundario.setBackground(newColor);
             }
         }
@@ -817,9 +827,9 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
 
     private void botonPanelColorPrimarioMouseClicked(java.awt.event.MouseEvent evt) {
         if(botonPanelColorPrimario.isEnabled()){
-            Color color=new Color(153,190,255);        
-            Color newColor = JColorChooser.showDialog(null, "Selecciona el color principal", color);
+            Color newColor = JColorChooser.showDialog(null, "Selecciona el color principal", colorPrimarySaved);
             if (newColor!=null){
+                colorPrimarySaved=newColor;
                 botonPanelColorPrimario.setBackground(newColor);
             }
         }
@@ -830,10 +840,10 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         if(evt.getStateChange()==1){
             labelColorSecundario.setEnabled(true);
             botonPanelColorSecundario.setEnabled(true);
-            botonPanelColorSecundario.setBackground(colorSaved);
+            botonPanelColorSecundario.setBackground(colorSecondarySaved);
             
         }else if(evt.getStateChange()==2){
-            colorSaved=botonPanelColorSecundario.getBackground();
+            colorSecondarySaved =botonPanelColorSecundario.getBackground();
             Color color=new Color(200,200,200);
             labelColorSecundario.setEnabled(false);
             botonPanelColorSecundario.setBackground(color);
@@ -878,6 +888,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
 
             setPanelEnabled(optionsPanel,false);
             menuOpenScene.setEnabled(false);
+            menuReOpenScene.setEnabled(false);
             updateProgressBar(1,0);
 
             renderPanel.removeAll();
@@ -907,6 +918,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
             listenerStopButtonActive=false;
             stopRenderButton.setEnabled(false);
             menuOpenScene.setEnabled(true);
+            menuReOpenScene.setEnabled(true);
             setPanelEnabled(optionsPanel,true);
             updateProgressBar(0,0);
 
@@ -982,8 +994,12 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File selectedFile = chooser.getSelectedFile();
             startingPath=selectedFile.getAbsolutePath();
-            sceneLoader=new SceneLoader(selectedFile.getAbsolutePath());
+            sceneLoader=new SceneLoader(startingPath);
         }
+    }
+
+    private void menuReOpenSceneActionPerformed(java.awt.event.ActionEvent evt) {
+            sceneLoader=new SceneLoader(startingPath);
     }
 
     private void menuInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInformacionActionPerformed
@@ -1180,6 +1196,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
                         stopRenderButton.setEnabled(false);
 
                         menuOpenScene.setEnabled(true);
+                        menuReOpenScene.setEnabled(true);
                         setPanelEnabled(optionsPanel,true);
                         pathTracer.setActiveThread(false);
                     };
@@ -1266,7 +1283,8 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     private boolean flagEnableSpinnerHeigthListener;
     private boolean flagButtonSettigns;  
     
-    Color colorSaved = Color.ORANGE;//Secondary color saved
+    Color colorSecondarySaved = Color.ORANGE;//Secondary color saved
+    Color colorPrimarySaved = new Color(153,190,255);
     
     long startTime;//Flag to control the render time
     Timer timer; //Render time
@@ -1282,9 +1300,10 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
 
     Background background=new Background();
 
-    SceneLoader sceneLoader;
+
 
     String startingPath=System.getProperty("user.home")+"/Documents";
+    SceneLoader sceneLoader=new SceneLoader("src/resourcesGUI/CornellBox1Light3SpheresFuzz.xml");
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1324,6 +1343,7 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuInformacion;
     private javax.swing.JMenuItem menuOpenScene;
+    private javax.swing.JMenuItem menuReOpenScene;
     private javax.swing.JLabel numeroPases;
     private JPanel optionsPanel;
     private JPanel panelBotonesRender;

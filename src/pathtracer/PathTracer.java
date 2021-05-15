@@ -9,12 +9,14 @@ import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Scene;
 import elements.SceneLoader;
+import elements.SceneSaver;
 import geometry.Primitive;
 import maths.Background;
 import maths.ColorValue;
 import maths.Vec3;
 
 import java.awt.image.BufferedImage;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
@@ -31,7 +33,7 @@ public class PathTracer implements Runnable {
     private int image_width;
     private int image_height;
     double aspect_ratio;
-    boolean progressive; //Path tracer set to progressive, it run unlimited
+    boolean progressive; //Path tracer set to progressive, it run unlimited passes
     int ns; //Number of samples
     int depth; //Maximum number of bounces we will allow
     double gammaValue;
@@ -68,13 +70,15 @@ public class PathTracer implements Runnable {
     public void run() {
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
 
+
+
         /*
+        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
         //Create scene
         ArrayList<Primitive> primList = Scene.generateScene(13);
         //ArrayList<Primitive> primList = Scene.loadScene();
-
         Camera cam=Camera.generateCamera(aspect_ratio,8);
-        */
+         */
 
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
         Camera cam=new Camera(
@@ -87,6 +91,18 @@ public class PathTracer implements Runnable {
                 sceneLoader.getFocus_dist(),
                 sceneLoader.getAutofocus()
                 );
+
+
+        /*
+        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
+        //ACTIVATE FOR SAVE SCENES
+        SceneSaver sceneSaver=new SceneSaver(
+                primList,
+                cam,
+                "C:\\Users\\RubenM\\Documents\\JPTR scenes\\Generated\\Generated1.xml"
+                );
+         */
+
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();

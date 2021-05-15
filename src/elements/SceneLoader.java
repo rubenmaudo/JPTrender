@@ -58,7 +58,6 @@ public class SceneLoader {
         }
 
         Element root = document.getDocumentElement();
-        System.out.println(root.getNodeName());
 
         //CAMERA PARAMETERS
         Element elementCamera= (Element) document.getElementsByTagName("Camera").item(0);

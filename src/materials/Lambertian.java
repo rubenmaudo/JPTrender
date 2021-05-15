@@ -7,6 +7,9 @@ package materials;
 
 import geometry.Hit_record;
 import maths.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * @author : Ruben Maudo
@@ -41,6 +44,16 @@ public class Lambertian extends Material{
 
         return true;
     }
-    
-    
+
+    @Override
+    public Node getMaterial(Document doc) {
+        Element lambertian=doc.createElement("Material");
+        lambertian.setAttribute("type", "lambertian");
+        lambertian.setAttribute("ColorR", String.valueOf(this.albedo.vR()));
+        lambertian.setAttribute("ColorG", String.valueOf(this.albedo.vG()));
+        lambertian.setAttribute("ColorB", String.valueOf(this.albedo.vB()));
+
+        return lambertian;
+    }
+
 }

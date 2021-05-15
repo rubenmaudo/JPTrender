@@ -7,6 +7,9 @@ package materials;
 
 import geometry.Hit_record;
 import maths.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * @author : Ruben Maudo
@@ -37,5 +40,17 @@ public class Metal extends Material{
         this.attenuation= albedo;  
 
         return (scattered.direction().dotProduct(rec.normal)>0);
+    }
+
+    @Override
+    public Node getMaterial(Document doc) {
+        Element metal=doc.createElement("Material");
+        metal.setAttribute("type", "metal");
+        metal.setAttribute("ColorR", String.valueOf(this.albedo.vR()));
+        metal.setAttribute("ColorG", String.valueOf(this.albedo.vG()));
+        metal.setAttribute("ColorB", String.valueOf(this.albedo.vB()));
+        metal.setAttribute("fuzziness", String.valueOf(this.fuzz));
+
+        return metal;
     }
 }

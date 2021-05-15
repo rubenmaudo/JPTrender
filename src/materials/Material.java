@@ -9,6 +9,9 @@ import geometry.Hit_record;
 import maths.ColorValue;
 import maths.Ray;
 import maths.Vec3;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import java.io.Serializable;
 
@@ -54,4 +57,8 @@ public abstract class Material implements Serializable {
     public Ray getScattered() {
         return scattered;
     }
+
+
+    public abstract Node getMaterial(Document doc);
+
 }

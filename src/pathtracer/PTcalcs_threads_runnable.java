@@ -7,7 +7,6 @@ import maths.Background;
 import maths.ColorValue;
 import maths.Hittable;
 import maths.Ray;
-import windowRender.MainFrame;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

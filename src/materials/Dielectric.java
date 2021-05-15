@@ -2,6 +2,9 @@ package materials;
 
 import geometry.Hit_record;
 import maths.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import static java.lang.Math.*;
 
@@ -121,6 +124,19 @@ public class Dielectric extends Material{
         double r0 = (1-ref_idx) / (1+ref_idx);
         r0= r0 * r0;
         return r0 + (1-r0) * pow((1- cosine),5);
+    }
+
+    @Override
+    public Node getMaterial(Document doc) {
+        Element dielectric=doc.createElement("Material");
+        dielectric.setAttribute("type", "dielectric");
+        dielectric.setAttribute("ColorR", String.valueOf(this.attenuation.vR()));
+        dielectric.setAttribute("ColorG", String.valueOf(this.attenuation.vG()));
+        dielectric.setAttribute("ColorB", String.valueOf(this.attenuation.vB()));
+        dielectric.setAttribute("ri", String.valueOf(this.ref_idx));
+        dielectric.setAttribute("fuzziness", String.valueOf(this.fuzz));
+
+        return dielectric;
     }
 
 }

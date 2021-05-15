@@ -8,6 +8,9 @@ package geometry;
 import materials.Material;
 import maths.Ray;
 import maths.Vec3;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import static maths.Vec3.dotProduct;
 import static java.lang.Math.sqrt;
@@ -89,6 +92,19 @@ public class Sphere extends Primitive{
     public String getDescription() {
         return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
                 "radius is r";
+    }
+
+    @Override
+    public Node getGeomety(Document doc) {
+        Element sphere=doc.createElement("Sphere");
+        sphere.setAttribute("radius", String.valueOf(this.radius));
+        sphere.setAttribute("CentreX", String.valueOf(this.center.getValue(0)));
+        sphere.setAttribute("CentreY", String.valueOf(this.center.getValue(1)));
+        sphere.setAttribute("CentreZ", String.valueOf(this.center.getValue(2)));
+
+        sphere.appendChild(material.getMaterial(doc));
+
+        return sphere;
     }
 
 }

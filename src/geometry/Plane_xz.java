@@ -3,6 +3,9 @@ package geometry;
 import materials.Material;
 import maths.Ray;
 import maths.Vec3;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * @author : Ruben Maudo
@@ -11,7 +14,12 @@ import maths.Vec3;
 public class Plane_xz extends Primitive{
     //PLANE FIELDS
     double x0,x1,z0,z1,k;
+
+    double width;
+    double depth;
+    Vec3 centreBasePoint;
     boolean flipped;
+    Material material;
 
     //CONSTRUCTOR
     public Plane_xz(double x0, double x1, double z0, double z1, double k, Material material){
@@ -35,23 +43,32 @@ public class Plane_xz extends Primitive{
     }
 
     public Plane_xz(double width, double depth, Vec3 centreBasePoint, Material material){
+        this.width=width;
+        this.depth=depth;
+        this.centreBasePoint=centreBasePoint;
+        this.flipped=false;
+        this.material=material;
+
         this.x0=centreBasePoint.x()-width/2;
         this.x1=centreBasePoint.x()+width/2;
         this.z0=centreBasePoint.z()-depth/2;
         this.z1=centreBasePoint.z()+depth/2;
         this.k=centreBasePoint.y();
         this.material=material;
-        this.flipped=false;
     }
 
     public Plane_xz(double width, double depth, Vec3 centreBasePoint,boolean flipped, Material material){
+        this.width=width;
+        this.depth=depth;
+        this.centreBasePoint=centreBasePoint;
+        this.flipped=flipped;
+        this.material=material;
+
         this.x0=centreBasePoint.x()-width/2;
         this.x1=centreBasePoint.x()+width/2;
         this.z0=centreBasePoint.z()-depth/2;
         this.z1=centreBasePoint.z()+depth/2;
         this.k=centreBasePoint.y();
-        this.material=material;
-        this.flipped=flipped;
     }
 
     @Override
@@ -89,5 +106,20 @@ public class Plane_xz extends Primitive{
     @Override
     String getDescription() {
         return "A plane";
+    }
+
+    @Override
+    public Node getGeomety(Document doc) {
+        Element planeXZ=doc.createElement("PlaneXZ");
+        planeXZ.setAttribute("width", String.valueOf(this.width));
+        planeXZ.setAttribute("depth", String.valueOf(this.depth));
+        planeXZ.setAttribute("centreBasePointX", String.valueOf(this.centreBasePoint.getValue(0)));
+        planeXZ.setAttribute("centreBasePointY", String.valueOf(this.centreBasePoint.getValue(1)));
+        planeXZ.setAttribute("centreBasePointZ", String.valueOf(this.centreBasePoint.getValue(2)));
+        planeXZ.setAttribute("flipped", String.valueOf(this.flipped));
+
+        planeXZ.appendChild(material.getMaterial(doc));
+
+        return planeXZ;
     }
 }

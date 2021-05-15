@@ -2,6 +2,8 @@ package geometry;
 
 import materials.Material;
 import maths.Ray;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 import java.io.Serializable;
 
@@ -24,5 +26,7 @@ public abstract class Primitive implements Serializable {
 
     //Create a description for the primitive and its parameters
     abstract String getDescription();
+
+    public abstract Node getGeomety(Document doc);
 
 }

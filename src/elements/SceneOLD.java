@@ -184,7 +184,7 @@ public class SceneOLD {
                 geometry.add(new Sphere(new Vec3(0.65,0,-1.15),0.5,new Lambertian(new ColorValue(1,0.1,0.1))));
                 geometry.add(new Sphere(new Vec3(-0.65,0,-1.15),0.5,new Lambertian(new ColorValue(0.1,0.1,1))));
                 //geometry.add(new Sphere(new Vec3(0,-100.5,-1),100,new Lambertian(new ColorValue(0.8,0.8,0.8))));
-                geometry.add(new Plane_xz(-100,100,-100,100,-0.5,new Lambertian(new ColorValue(1,1,1))));
+                geometry.add(new Plane_xz(200,200,new Vec3(0,-0.5,0),false,new Lambertian(new ColorValue(1,1,1))));
 
                 return geometry;
 

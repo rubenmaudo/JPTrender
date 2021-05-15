@@ -15,6 +15,9 @@ import maths.ColorValue;
 import maths.Ray;
 import maths.Utils;
 import maths.Vec3;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 
@@ -25,18 +28,35 @@ import java.util.ArrayList;
 
 public class Camera {
 
-    //CAMERA FIELDS
+    //CONSTRUCTOR FIELDS
+    private Vec3 lookfrom;
+    private Vec3 lookat;
+    private Vec3 vup;
+    private double vfov;
+    private double aperture;
+    private double focus_dist;
+    private int autofocus;
+
+    //CAMERA FINAL FIELDS
     private final Vec3 lower_left_corner;
     private final Vec3 horizontal;
     private final Vec3 vertical;
     private final Vec3 origin;
     private final Vec3 u,v,w; //Parameters to create an orthonormal basis to describe camera orientation
     private final double lens_radius;
-    private int autofocus;
+
 
     //CAMERA CONSTRUCTOR
     public Camera(Vec3 lookfrom, Vec3 lookat, Vec3 vup, double vfov, double aspect_ratio,
                   double aperture, double focus_dist, int autofocus){
+
+        this.lookfrom=lookfrom;
+        this.lookat=lookat;
+        this.vup=vup;
+        this.vfov=vfov;
+        this.aperture=aperture;
+        this.focus_dist=focus_dist;
+        this.autofocus=autofocus;
 
         if(autofocus==1){
             focus_dist=lookfrom.sub(lookat).length();
@@ -85,7 +105,7 @@ public class Camera {
      * @param cameraID ID to identify the camera presettings
      * @return a Camera object
      */
-    /*
+
     public static Camera generateCamera(double aspect_ratio, int cameraID){
 
         Vec3 lookfrom;
@@ -105,7 +125,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0.0;
 
-                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 2:
@@ -116,7 +136,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0;
 
-                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 3:
@@ -127,7 +147,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0;
 
-                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 4:
@@ -138,7 +158,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0;
 
-                camera = new Camera(lookfrom, lookat, vup, 70, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 70, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 5:
@@ -149,7 +169,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0.12;
 
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 6:
@@ -160,7 +180,7 @@ public class Camera {
                 dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
                 aperture = 0.1;
 
-                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus,0);
                 return camera;
 
             case 7:
@@ -171,7 +191,7 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0.0;
 
-                camera = new Camera(lookfrom, lookat, vup, 50, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 50, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             case 8:
@@ -182,7 +202,7 @@ public class Camera {
                 dist_to_focus = 10;
                 aperture = 0.0;
 
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
 
             default:
@@ -193,10 +213,38 @@ public class Camera {
                 dist_to_focus = lookfrom.sub(lookat).length();
                 aperture = 0;
 
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus);
+                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
                 return camera;
         }
 
-    }*/
-    
+    }
+
+    //PARSE FROM CAMERA TO XML TAGS
+    public Node getCamera(Document doc){
+        Element camera=doc.createElement("Camera");
+        camera.setAttribute("vfov", String.valueOf(this.vfov));
+        camera.setAttribute("aperture", String.valueOf(this.aperture));
+        camera.setAttribute("focus_dist", String.valueOf(this.focus_dist));
+        camera.setAttribute("autofocus", String.valueOf(this.autofocus));
+
+        Element lookfrom=doc.createElement("lookfrom");
+        camera.appendChild(lookfrom);
+        lookfrom.setAttribute("X",String.valueOf(this.lookfrom.getValue(0)));
+        lookfrom.setAttribute("Y",String.valueOf(this.lookfrom.getValue(1)));
+        lookfrom.setAttribute("Z",String.valueOf(this.lookfrom.getValue(2)));
+
+        Element lookat=doc.createElement("lookat");
+        camera.appendChild(lookat);
+        lookat.setAttribute("X",String.valueOf(this.lookat.getValue(0)));
+        lookat.setAttribute("Y",String.valueOf(this.lookat.getValue(1)));
+        lookat.setAttribute("Z",String.valueOf(this.lookat.getValue(2)));
+
+        Element vup=doc.createElement("vup");
+        camera.appendChild(vup);
+        vup.setAttribute("X",String.valueOf(this.vup.getValue(0)));
+        vup.setAttribute("Y",String.valueOf(this.vup.getValue(1)));
+        vup.setAttribute("Z",String.valueOf(this.vup.getValue(2)));
+        return camera;
+    }
+
 }
