@@ -2,13 +2,11 @@ package pathtracer;
 
 import elements.Camera;
 import geometry.Primitive;
-import geometry.Sphere;
 import maths.Background;
 import maths.ColorValue;
 import maths.Hittable;
 import maths.Ray;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -23,7 +21,7 @@ public class PTcalcs_threads_runnable implements Runnable {
     int ID;
 
     ArrayList<Primitive> scene;
-    Camera cam;
+    Camera camera;
     int depth;
 
     BufferedImage image;
@@ -35,7 +33,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
-                                    Camera cam,
+                                    Camera camera,
                                     int depth,
                                     BufferedImage image,
                                     ArrayList<int[]> list,
@@ -44,7 +42,7 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     int ID, Background background){
 
         this.scene=scene;
-        this.cam=cam;
+        this.camera =camera;
         this.depth=depth;
 
         this.image=image;
@@ -65,7 +63,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
             double u = (pxLoc[0] + Math.random())  /  image.getWidth();
             double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
-            Ray r =cam.get_ray(u, v);
+            Ray r = camera.get_ray(u, v);
             col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
 
             if (imagePixels[pxLoc[0]][pxLoc[1]]==null){

@@ -11,6 +11,9 @@ public class Background {
     private ColorValue secondaryColor;
     private Boolean mixed;
 
+    /**
+     * Constructor to create a background
+     */
     public Background() {
         mainColor=new ColorValue(0.6,0.745098039,1);
         secondaryColor=new ColorValue(1,0.78431372,0);

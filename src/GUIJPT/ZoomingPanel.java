@@ -14,13 +14,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * Render Panel that control the zooming of the image
+ */
 public final class ZoomingPanel extends JPanel {
   BufferedImage bi;
   public ZoomingPanel(BufferedImage bi) {
     super(new BorderLayout());
-    //CHANGED BY RUBEN
-    //Image img = ImageIO.read(getClass().getResource("/resources/CRW_3857_JFR.jpg"));
-    //BufferedImage bi=new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
     this.bi=bi;
     add(new JScrollPane(new ZoomAndPanePanel(bi)));
     setPreferredSize(new Dimension(320, 240));

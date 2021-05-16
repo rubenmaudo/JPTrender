@@ -198,7 +198,7 @@ public class Scene {
                 */
 
                 //Striped lights white
-
+                /*
                 geometry.add(new Plane_xz(30,400,new Vec3(-195,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(-130,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(-65,555,0), new Diffuse_light(new ColorValue(5,5,5))));
@@ -206,15 +206,15 @@ public class Scene {
                 geometry.add(new Plane_xz(30,400,new Vec3(65,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(130,555,0), new Diffuse_light(new ColorValue(5,5,5))));
                 geometry.add(new Plane_xz(30,400,new Vec3(195,555,0), new Diffuse_light(new ColorValue(5,5,5))));
+                */
 
 
 
-                /*
                 //Striped lights colours
                 geometry.add(new Plane_xz(40,400,new Vec3(-195,555,0), new Diffuse_light(new ColorValue(0.7,70,0.7))));
                 geometry.add(new Plane_xz(40,400,new Vec3(0,555,0), new Diffuse_light(new ColorValue(70,0.7,0.7))));
                 geometry.add(new Plane_xz(40,400,new Vec3(195,555,0), new Diffuse_light(new ColorValue(0.7,0.7,70))));
-                */
+
 
 
                 /*
@@ -232,12 +232,12 @@ public class Scene {
 
                 //CONTENT
 
-                /*
+
                 //Three spheres, metal mirror, lambertian blue, clear glass
                 geometry.add(new Sphere(new Vec3(-100,70,128),70,new Metal(new ColorValue(1,1,1),0)));
                 geometry.add(new Sphere(new Vec3(0,70,-22),70,new Lambertian(new ColorValue(0.05,0.05,0.65))));
                 geometry.add(new Sphere(new Vec3(100,70,128),70,new Dielectric(1.65)));
-                */
+
 
 
 
@@ -249,8 +249,7 @@ public class Scene {
                 */
 
 
-
-
+                /*
                 //Staircase
                 geometry.add(new Sphere(new Vec3(80,70,130),70,new Metal(new ColorValue(0.3,0.3,1),0.9)));
                 geometry.add(new Sphere(new Vec3(200,110,-178),40,new Metal(new ColorValue(1,1,1),10)));
@@ -264,6 +263,7 @@ public class Scene {
                 geometry.add(new Box(60,200,10, new Vec3(-120,360,-178),new Dielectric(1.65,1)));
                 geometry.add(new Box(60,200,10, new Vec3(-180,420,-178),new Dielectric(1.65,2)));
                 geometry.add(new Box(60,200,10, new Vec3(-240,480,-178),new Dielectric(1.65,6)));
+                */
 
 
 

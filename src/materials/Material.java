@@ -34,8 +34,14 @@ public abstract class Material implements Serializable {
     Ray scattered;
 
     //METHODS
-    //Abstrad method to calc the scatter of the ray that hit the primitive
+    /**
+     * Abstrad method to calc the scatter of the ray that hit the primitive
+     * @param r_in
+     * @param rec
+     * @return
+     */
     public abstract boolean scatter(Ray r_in, Hit_record rec);
+
 
     public ColorValue emitted(){
         if (emitted==null){
@@ -58,7 +64,5 @@ public abstract class Material implements Serializable {
         return scattered;
     }
 
-
     public abstract Node getMaterial(Document doc);
-
 }

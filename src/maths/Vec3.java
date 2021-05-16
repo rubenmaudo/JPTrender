@@ -10,7 +10,9 @@ import static java.lang.Math.*;
  * @since : 23/06/2020, Tue
  **/
 
-//A class to create & operate with points/vectors
+/**
+ * A class to create & operate with points/vectors
+ */
 public class Vec3 implements Serializable {
     
     //PROPERTIES

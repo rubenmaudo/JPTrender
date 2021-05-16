@@ -30,7 +30,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author RubenM
  */
-public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
+public class MainGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
@@ -1231,20 +1231,20 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         }
     }
 
-    @Override
-    public void increasePassesCallBack() {
-        updatePasses();
-    }
-
     /**
-     * Method to update the number of passes from the callback
+     * Method to update the number of passes from the callback of pathTracer
      */
-    private void updatePasses(){
+    public void updatePasses(){
         pass++;
         numeroPases.setText("Numero de pases: " + pass);
         updateProgressBar(2,pass);
     }
 
+    /**
+     * Method to control the progress bar
+     * @param status Current status, rendering,stop,etc.
+     * @param renderPassValue Data to update bar
+     */
     private void updateProgressBar(int status,int renderPassValue){
 
         if(updateProgressBar){
@@ -1303,6 +1303,8 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
                         menuReOpenScene.setEnabled(true);
                         setPanelEnabled(optionsPanel,true);
                         pathTracer.setActiveThread(false);
+
+                        //When the render complete it saves the image
                         if(checkBoxSalvarImagen.isSelected()) {
                             saveImage();
                         }
@@ -1312,7 +1314,9 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
         }
     }
 
-
+    /**
+     * Method to save the image rendered
+     */
     private void saveImage(){
 
         String text = renderTime.getText() + "   ||   " + numeroPases.getText();
@@ -1391,32 +1395,25 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     private boolean flagButtonSettigns;  
     
     Color colorSecondarySaved = Color.ORANGE;//Secondary color saved
-    Color colorPrimarySaved = new Color(153,190,255);
+    Color colorPrimarySaved = new Color(153,190,255);//Primary color for background
+    Background background=new Background();//Backgroun object to be passed to the pathTracer
     
     long startTime;//Flag to control the render time
-    Timer timer; //Render time
+    Timer timer; //Render time timer
     
-    BufferedImage render;
-    PathTracer pathTracer;
-    Boolean activeThread=true;
+    BufferedImage render; //Image to be render in
+    PathTracer pathTracer; //Thread of render engine
 
-    int pass;
+    int pass; //Number of passes
     boolean updateProgressBar=true;
     boolean listenerRenderButtonActive=true;
     boolean listenerStopButtonActive=false;
 
-    Background background=new Background();
-
-
-
+    //Parameter for the scene loader
     String sceneFilePath =System.getProperty("user.home")+"/Documents";
     SceneLoader sceneLoader=new SceneLoader("startScene");
 
-
-
-
-
-
+    //GENERATED GUI OBJECTS
     private javax.swing.JSeparator Separator;
     private JPanel botonPanelColorPrimario;
     private JPanel botonPanelColorSecundario;
@@ -1481,7 +1478,4 @@ public class MainGUI extends javax.swing.JFrame implements CallBackNoPasses {
     private javax.swing.JLabel titleOpciones;
     private javax.swing.JLabel titleProyecto;
     private javax.swing.JLabel titleSideBar;
-
-
-
 }

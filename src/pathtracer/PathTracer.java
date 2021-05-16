@@ -13,10 +13,8 @@ import elements.SceneSaver;
 import geometry.Primitive;
 import maths.Background;
 import maths.ColorValue;
-import maths.Vec3;
 
 import java.awt.image.BufferedImage;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
@@ -33,29 +31,38 @@ public class PathTracer implements Runnable {
     private int image_width;
     private int image_height;
     double aspect_ratio;
-    boolean progressive; //Path tracer set to progressive, it run unlimited passes
-    int ns; //Number of samples
+    boolean progressive; //If path tracer set to progressive, it run unlimited passes until you stop it
+    int np; //Number of passes
     int depth; //Maximum number of bounces we will allow
     double gammaValue;
+    boolean activeThread;//Flag to control if the thread should be working or not
+    BufferedImage bi;//Image to be rendered to
+    ExecutorService executorService;//Thread pool
 
-    boolean activeThread;
-
-    BufferedImage bi;
-    ExecutorService executorService;
-
-    MainGUI mainGUI;
-
+    MainGUI mainGUI;//Used to send the callback of passes increased
     Background background;
-
     SceneLoader sceneLoader;
 
-    public PathTracer(int image_width, int image_height, boolean progressive, int ns, int depth, double gammaValue,
+    /**
+     * Constructor to initialise the object using the parameters given
+     * @param image_width
+     * @param image_height
+     * @param progressive Boolean to control if the thread pool should keep working
+     * @param np Number of passes
+     * @param depth Number of bounces allowed
+     * @param gammaValue
+     * @param bi Image to render to
+     * @param mainGUI
+     * @param background
+     * @param sceneLoader
+     */
+    public PathTracer(int image_width, int image_height, boolean progressive, int np, int depth, double gammaValue,
                       BufferedImage bi, MainGUI mainGUI, Background background, SceneLoader sceneLoader) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
         this.progressive = progressive;
-        this.ns = ns;
+        this.np = np;
         this.depth = depth;
         this.gammaValue = gammaValue;
         this.bi = bi;
@@ -68,8 +75,8 @@ public class PathTracer implements Runnable {
 
     @Override
     public void run() {
+        //Create an array of all the pixels on the image
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
-
 
 
         /*
@@ -78,8 +85,17 @@ public class PathTracer implements Runnable {
         ArrayList<Primitive> primList = Scene.generateScene(13);
         //ArrayList<Primitive> primList = Scene.loadScene();
         Camera cam=Camera.generateCamera(aspect_ratio,8);
-         */
 
+        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
+        //ACTIVATE FOR SAVE SCENES
+        SceneSaver sceneSaver=new SceneSaver(
+                primList,
+                cam,
+                "C:\\Users\\RubenM\\Documents\\JPTR scenes\\Generated\\Generated1.xml"
+                );
+        */
+
+        //Create a new scene and camera fron the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
         Camera cam=new Camera(
                 sceneLoader.getLookfrom(),
@@ -90,23 +106,9 @@ public class PathTracer implements Runnable {
                 sceneLoader.getAperture(),
                 sceneLoader.getFocus_dist(),
                 sceneLoader.getAutofocus()
-                );
+        );
 
-
-        /*
-        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
-        //ACTIVATE FOR SAVE SCENES
-        SceneSaver sceneSaver=new SceneSaver(
-                primList,
-                cam,
-                "C:\\Users\\RubenM\\Documents\\JPTR scenes\\Generated\\Generated1.xml"
-                );
-         */
-
-
-
-        int availableProcessors=Runtime.getRuntime().availableProcessors();
-
+        int availableProcessors=Runtime.getRuntime().availableProcessors();//Check the proccessors available
 
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
@@ -138,12 +140,12 @@ public class PathTracer implements Runnable {
             }
         }
 
-        activeThread=true;
+        activeThread=true;//Initialise the thread
 
-        int tempNs = 1;
-        while ((tempNs <= ns || progressive)&& activeThread) {
+        int tempNs = 1;//Initialise the passes number
+        while ((tempNs <= np || progressive)&& activeThread) {
 
-            executorService = Executors.newFixedThreadPool(1);
+            executorService = Executors.newFixedThreadPool(1);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
@@ -163,13 +165,15 @@ public class PathTracer implements Runnable {
             System.out.println("------------------------------------PASS NUMBER "
                     + tempNs + " HAS BEEN COMPLETED------------------------------------");
 
-            mainGUI.increasePassesCallBack();
-
+            mainGUI.updatePasses();//Update the pass number
             tempNs++;
-
         }
     }
 
+    /**
+     * Change the value of active thread to stop or start the render
+     * @param activeThread
+     */
     public void setActiveThread(boolean activeThread) {
         this.activeThread = activeThread;
     }

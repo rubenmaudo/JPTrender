@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.plaf.basic.BasicLabelUI;
 
 /**
- *
+ * Create a Jlabel in vertical
  * @author RubenM
  */
 public class VerticalLabelUI extends BasicLabelUI {
