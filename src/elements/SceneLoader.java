@@ -25,6 +25,11 @@ import java.util.ArrayList;
  **/
 public class SceneLoader {
 
+    final int STARTING=0;
+    final int LOADED=1;
+    final int NONELOADED=2;
+    int flagControlState =0;
+
     //CAMERA FIELDS
     Vec3 lookfrom;
     Vec3 lookat;
@@ -38,6 +43,10 @@ public class SceneLoader {
     ArrayList<Primitive> geometry = new ArrayList<>();
 
 
+    /**
+     * Constructor to read a xml and load all the camera, objects and materials
+     * @param filePath
+     */
     public SceneLoader(String filePath){
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,16 +55,22 @@ public class SceneLoader {
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
+            flagControlState =NONELOADED;
         }
 
         Document document = null;
+
+        //Depending on fresh start or selected scene it will load one file or another
         try {
-            document = builder.parse(new File( filePath));
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if(filePath.equals("startScene")){
+
+                document = builder.parse(SceneLoader.class.getResourceAsStream("/resources/CornellBox1Light3SpheresFuzz.xml"));
+                flagControlState =STARTING;
+
+            }else{
+                document = builder.parse(new File(filePath));
+                flagControlState =LOADED;
+            }
 
         Element root = document.getDocumentElement();
 
@@ -274,10 +289,22 @@ public class SceneLoader {
                  */
             }
         }
+
+        } catch (SAXException e) {
+            e.printStackTrace();
+            flagControlState =NONELOADED;
+        } catch (IOException e) {
+            e.printStackTrace();
+            flagControlState =NONELOADED;
+        }
     }
 
 
-
+    /**
+     * Method that receive an element of the XML readed and return the Material instance
+     * @param element
+     * @return
+     */
     private Material scanMaterial(@NotNull Element element){
 
         Material materialToReturn = null;
@@ -355,5 +382,9 @@ public class SceneLoader {
 
     public ArrayList<Primitive> getGeometry() {
         return geometry;
+    }
+
+    public int getFlagControlState(){
+        return flagControlState;
     }
 }

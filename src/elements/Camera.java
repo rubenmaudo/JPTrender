@@ -47,6 +47,18 @@ public class Camera {
 
 
     //CAMERA CONSTRUCTOR
+
+    /**
+     *
+     * @param lookfrom Point from where the camera will look from
+     * @param lookat Point where the camera will be aiming
+     * @param vup Vertical vector to identify the vertical position of the camera
+     * @param vfov Field of view (equivalent to camera lense mm)
+     * @param aspect_ratio Aspect ratio of image
+     * @param aperture
+     * @param focus_dist Focus distance
+     * @param autofocus Flag to activate or deactivate the camera
+     */
     public Camera(Vec3 lookfrom, Vec3 lookat, Vec3 vup, double vfov, double aspect_ratio,
                   double aperture, double focus_dist, int autofocus){
 
@@ -100,7 +112,8 @@ public class Camera {
 
 
     /**
-     * Create a camera with different settings
+     * Create a camera with different settings, old method used to create cameras
+     * @deprecated
      * @param aspect_ratio aspect ratio for the image
      * @param cameraID ID to identify the camera presettings
      * @return a Camera object
@@ -220,6 +233,11 @@ public class Camera {
     }
 
     //PARSE FROM CAMERA TO XML TAGS
+    /**
+     * Method to obtain details from camera class and convert it to XML
+     * @param doc
+     * @return
+     */
     public Node getCamera(Document doc){
         Element camera=doc.createElement("Camera");
         camera.setAttribute("vfov", String.valueOf(this.vfov));

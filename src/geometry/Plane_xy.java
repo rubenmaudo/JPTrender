@@ -22,6 +22,16 @@ public class Plane_xy extends Primitive{
     Material material;
 
     //CONSTRUCTOR
+
+    /**
+     * Constructor that create a plane based in insertion points
+     * @param x0
+     * @param x1
+     * @param y0
+     * @param y1
+     * @param k
+     * @param material
+     */
     public Plane_xy(double x0, double x1, double y0, double y1, double k, Material material){
         this.x0=x0;
         this.x1=x1;
@@ -32,6 +42,16 @@ public class Plane_xy extends Primitive{
         this.flipped=false;
     }
 
+    /**
+     * Constructor that create a plane based in insertion points
+     * @param x0
+     * @param x1
+     * @param y0
+     * @param y1
+     * @param k
+     * @param flipped
+     * @param material
+     */
     public Plane_xy(double x0, double x1, double y0, double y1, double k,boolean flipped, Material material){
         this.x0=x0;
         this.x1=x1;
@@ -42,6 +62,13 @@ public class Plane_xy extends Primitive{
         this.flipped=flipped;
     }
 
+    /**
+     * Constructor that create a plane based in parameters
+     * @param width
+     * @param height
+     * @param centreBasePoint Base of plane
+     * @param material
+     */
     public Plane_xy(double width, double height, Vec3 centreBasePoint, Material material){
         this.width=width;
         this.height=height;
@@ -57,6 +84,14 @@ public class Plane_xy extends Primitive{
         this.material=material;
     }
 
+    /**
+     * Constructor that create a plane based in parameters
+     * @param width
+     * @param height
+     * @param centreBasePoint
+     * @param flipped
+     * @param material
+     */
     public Plane_xy(double width, double height, Vec3 centreBasePoint,boolean flipped, Material material){
         this.width=width;
         this.height=height;
@@ -103,6 +138,7 @@ public class Plane_xy extends Primitive{
         rec.p=r.point_at_parameter(t);
         return true;
     }
+
     //-----------------TO BE DEFINED IN FUTURE-----------------
     public boolean bounding_box(double t0, double t1){
         return false;

@@ -23,6 +23,14 @@ public class Box extends Primitive{
 
     ArrayList<Primitive> planesList;
 
+    /**
+     * Constructor that create a box object based on parameters passed
+     * @param width
+     * @param depth
+     * @param height
+     * @param centreBasePoint Base X,Y,Z
+     * @param material
+     */
     public Box(double width, double depth, double height, Vec3 centreBasePoint, Material material){
         this.width=width;
         this.depth=depth;
@@ -30,6 +38,7 @@ public class Box extends Primitive{
         this.centreBasePoint=centreBasePoint;
         this.material=material;
 
+        //The box is created based on combination of flats
         planesList=new ArrayList<>();
         planesList.add(new Plane_xz(width, depth, new Vec3(centreBasePoint.x(),centreBasePoint.y()+height,centreBasePoint.z()),material));
         planesList.add(new Plane_xz(width, depth, centreBasePoint,true,material));

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Scene {
 
     /**
-     *
+     * @deprecated
      * @param i Identefy the scene we want to generate and render
      * @return Arraylist with all the geometry involved in the scene
      */
@@ -280,6 +280,7 @@ public class Scene {
 
     /**
      * Serialize a scene to a file
+     * @deprecated
      * @param scene ArrayList off primitives
      * @return boolean to check if it worked
      */
@@ -301,6 +302,7 @@ public class Scene {
 
     /**
      * Load a previously serialized scene that is saved in the disc
+     * @deprecated
      * @return a scene
      */
     public static ArrayList<Primitive> loadScene(){

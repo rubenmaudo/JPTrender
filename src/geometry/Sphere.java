@@ -32,6 +32,13 @@ public class Sphere extends Primitive{
 
 
     //CONSTRUCTOR
+
+    /**
+     * Constructor of Sphere based on radius and centre
+     * @param cen
+     * @param r
+     * @param material
+     */
     public Sphere(Vec3 cen, double r, Material material){
         this.center = cen;
         this.radius = r;
@@ -39,7 +46,6 @@ public class Sphere extends Primitive{
     }
 
     //METHODS
-
     /**
      * Method that calc if the Ray given impact in the sphere
      * @param r Ray

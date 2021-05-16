@@ -22,6 +22,16 @@ public class Plane_yz extends Primitive{
     Material material;
 
     //CONSTRUCTOR
+
+    /**
+     * Constructor that create a plane based in insertion points
+     * @param y0
+     * @param y1
+     * @param z0
+     * @param z1
+     * @param k
+     * @param material
+     */
     public Plane_yz( double y0, double y1, double z0, double z1, double k, Material material){
         this.y0=y0;
         this.y1=y1;
@@ -32,6 +42,16 @@ public class Plane_yz extends Primitive{
         this.flipped=false;
     }
 
+    /**
+     * Constructor that create a plane based in insertion points
+     * @param y0
+     * @param y1
+     * @param z0
+     * @param z1
+     * @param k
+     * @param flipped
+     * @param material
+     */
     public Plane_yz( double y0, double y1, double z0, double z1, double k, boolean flipped, Material material){
         this.y0=y0;
         this.y1=y1;
@@ -42,6 +62,13 @@ public class Plane_yz extends Primitive{
         this.flipped=true;
     }
 
+    /**
+     * Constructor that create a plane based in parameters
+     * @param width
+     * @param height
+     * @param centreBasePoint
+     * @param material
+     */
     public Plane_yz(double width, double height, Vec3 centreBasePoint, Material material){
         this.width=width;
         this.height=height;
@@ -56,6 +83,14 @@ public class Plane_yz extends Primitive{
         this.k=centreBasePoint.x();
     }
 
+    /**
+     * Constructor that create a plane based in parameters
+     * @param width
+     * @param height
+     * @param centreBasePoint
+     * @param flipped
+     * @param material
+     */
     public Plane_yz(double width, double height, Vec3 centreBasePoint,boolean flipped, Material material){
         this.width=width;
         this.height=height;

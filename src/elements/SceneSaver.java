@@ -24,6 +24,12 @@ public class SceneSaver {
     Camera camera;
     String path;
 
+    /**
+     * Constructor that receive geometry, camera and path, to create an xml from the instances created previously
+     * @param geometry
+     * @param camera
+     * @param path
+     */
     public SceneSaver( ArrayList<Primitive> geometry,Camera camera,String path) {
 
         this.geometry = geometry;
@@ -58,15 +64,14 @@ public class SceneSaver {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
 
-            //write to console or file
+            //write to console
             //StreamResult console = new StreamResult(System.out);
 
             StreamResult file = new StreamResult(new File(path));
 
-            //write data
+            //write data in to console
             //transformer.transform(source, console);
             transformer.transform(source, file);
-            System.out.println("DONE");
 
         } catch (ParserConfigurationException | TransformerConfigurationException e) {
             e.printStackTrace();

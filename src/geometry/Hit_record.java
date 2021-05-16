@@ -36,7 +36,6 @@ public class Hit_record {
     }
 
     //METHODS
-
     /**
      * Method to check and set the face normal to the "world"
      * @param r ray

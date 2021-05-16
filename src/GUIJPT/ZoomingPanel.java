@@ -19,7 +19,7 @@ public final class ZoomingPanel extends JPanel {
   public ZoomingPanel(BufferedImage bi) {
     super(new BorderLayout());
     //CHANGED BY RUBEN
-    //Image img = ImageIO.read(getClass().getResource("/resourcesGUI/CRW_3857_JFR.jpg"));
+    //Image img = ImageIO.read(getClass().getResource("/resources/CRW_3857_JFR.jpg"));
     //BufferedImage bi=new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
     this.bi=bi;
     add(new JScrollPane(new ZoomAndPanePanel(bi)));

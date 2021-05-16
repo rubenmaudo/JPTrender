@@ -33,7 +33,6 @@ public class Hittable {
     }
 
     //METHODS
-
     /**
      * Main method for the path tracer, help to check if there is an intersection between ray and primitive
      * @param r Ray
