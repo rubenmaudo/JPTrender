@@ -11,6 +11,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import java.awt.*;
+
 /**
  * @author : Ruben Maudo
  * @since : 23/06/2020, Tue
@@ -55,5 +57,11 @@ public class Lambertian extends Material{
 
         return lambertian;
     }
+
+    @Override
+    public Material clone() {
+        return new Lambertian(ColorValue.clone(this.albedo));
+    }
+
 
 }

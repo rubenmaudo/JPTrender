@@ -44,4 +44,11 @@ public class Diffuse_light extends Material{
         return light;
     }
 
+
+
+    @Override
+    public Material clone() {
+        return new Diffuse_light(ColorValue.clone(this.emitted));
+    }
+
 }

@@ -161,6 +161,9 @@ public class ColorValue implements Serializable {
         return String.format("ColorValue[%.5f, %.5f, %.5f]", vR, vG, vB);
     }
 
+    public static ColorValue clone(ColorValue colorValue){
+        return new ColorValue(colorValue.vR(), colorValue.vG(), colorValue.vB());
+    }
 
 
 

@@ -384,6 +384,10 @@ public class SceneLoader {
         return geometry;
     }
 
+    public Camera getCamera(Double aspect_ratio){
+        return new Camera(lookfrom,lookat,vup,vfov,aspect_ratio,aperture,focus_dist,autofocus);
+    }
+
     public int getFlagControlState(){
         return flagControlState;
     }

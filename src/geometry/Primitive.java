@@ -44,4 +44,11 @@ public abstract class Primitive implements Serializable {
      */
     public abstract Node getGeomety(Document doc);
 
+    /**
+     * Clone primitive object
+     *
+     * @return
+     */
+    public abstract Primitive clone();
+
 }

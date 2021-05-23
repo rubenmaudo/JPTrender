@@ -77,4 +77,29 @@ public class Box extends Primitive{
 
         return box;
     }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getDepth() {
+        return depth;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public Vec3 getCentreBasePoint() {
+        return centreBasePoint;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    @Override
+    public Primitive clone() {
+        return new Box(this.getWidth(),this.getDepth(),this.getHeight(),Vec3.clone(this.getCentreBasePoint()),this.getMaterial().clone());
+    }
 }

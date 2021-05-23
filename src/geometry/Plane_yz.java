@@ -156,4 +156,29 @@ public class Plane_yz extends Primitive{
 
         return planeYZ;
     }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public Vec3 getCentreBasePoint() {
+        return centreBasePoint;
+    }
+
+    public boolean isFlipped() {
+        return flipped;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    @Override
+    public Primitive clone() {
+        return new Plane_yz(this.getWidth(), this.getHeight(), Vec3.clone(this.getCentreBasePoint()), this.isFlipped(), this.getMaterial().clone());
+    }
 }

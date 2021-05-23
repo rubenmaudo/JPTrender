@@ -97,16 +97,7 @@ public class PathTracer implements Runnable {
 
         //Create a new scene and camera fron the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
-        Camera cam=new Camera(
-                sceneLoader.getLookfrom(),
-                sceneLoader.getLookat(),
-                sceneLoader.getVup(),
-                sceneLoader.getVfov(),
-                aspect_ratio,
-                sceneLoader.getAperture(),
-                sceneLoader.getFocus_dist(),
-                sceneLoader.getAutofocus()
-        );
+        Camera cam=sceneLoader.getCamera(aspect_ratio);
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();//Check the proccessors available
 
@@ -145,7 +136,7 @@ public class PathTracer implements Runnable {
         int tempNs = 1;//Initialise the passes number
         while ((tempNs <= np || progressive)&& activeThread) {
 
-            executorService = Executors.newFixedThreadPool(1);//Thread pool
+            executorService = Executors.newFixedThreadPool(9);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {

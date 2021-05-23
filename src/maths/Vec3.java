@@ -190,6 +190,9 @@ public class Vec3 implements Serializable {
         }
     }
 
+    public static Vec3 clone(Vec3 vec3){
+        return(new Vec3(vec3.x(),vec3.y(),vec3.z()));
+    }
 
     @Override
     public String toString (){

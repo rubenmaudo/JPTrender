@@ -113,4 +113,21 @@ public class Sphere extends Primitive{
         return sphere;
     }
 
+    public Vec3 getCenter() {
+        return center;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public Material getMaterial(){
+        return material;
+    }
+
+    @Override
+    public Primitive clone() {
+        return new Sphere(Vec3.clone(this.getCenter()),this.getRadius(),this.getMaterial().clone());
+    }
+
 }

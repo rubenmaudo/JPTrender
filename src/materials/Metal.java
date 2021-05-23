@@ -53,4 +53,20 @@ public class Metal extends Material{
 
         return metal;
     }
+
+
+
+
+    public ColorValue getAlbedo() {
+        return albedo;
+    }
+
+    public double getFuzz() {
+        return fuzz;
+    }
+
+    @Override
+    public Material clone(){
+        return new Metal(ColorValue.clone(this.getAlbedo()),this.getFuzz());
+    }
 }
