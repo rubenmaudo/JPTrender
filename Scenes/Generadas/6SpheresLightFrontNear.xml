@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Scene>
+    <Camera aperture="0.0" autofocus="1" focus_dist="1.0" vfov="90.0">
+        <lookfrom X="0.0" Y="0.0" Z="0.0"/>
+        <lookat X="0.0" Y="0.0" Z="-1.0"/>
+        <vup X="0.0" Y="1.0" Z="0.0"/>
+    </Camera>
+    <Sphere CentreX="0.0" CentreY="0.0" CentreZ="-1.15" radius="0.5">
+        <Material ColorB="0.3" ColorG="0.3" ColorR="0.8" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.45" CentreY="-0.4" CentreZ="-0.7" radius="0.1">
+        <Material ColorB="0.8" ColorG="0.8" ColorR="0.8" fuzziness="0.0" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-0.45" CentreY="-0.4" CentreZ="-0.7" radius="0.1">
+        <Material ColorB="5.0" ColorG="5.0" ColorR="5.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="0.0" CentreY="-0.4" CentreZ="-0.7" radius="0.1">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.7" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="0.0" CentreY="-100.5" CentreZ="-1.0" radius="100.0">
+        <Material ColorB="0.0" ColorG="0.8" ColorR="0.8" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.0" CentreY="0.0" CentreZ="-1.0" radius="0.5">
+        <Material ColorB="0.2" ColorG="0.2" ColorR="1.0" fuzziness="0.4" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-1.0" CentreY="0.0" CentreZ="-1.0" radius="0.5">
+        <Material ColorB="0.2" ColorG="0.6" ColorR="0.8" fuzziness="0.9" type="metal"/>
+    </Sphere>
+</Scene>

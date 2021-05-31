@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Scene>
+    <Camera aperture="0.0" autofocus="1" focus_dist="10.0" vfov="40.0">
+        <lookfrom X="0.0" Y="278.0" Z="1078.0"/>
+        <lookat X="0.0" Y="278.0" Z="0.0"/>
+        <vup X="0.0" Y="1.0" Z="0.0"/>
+    </Camera>
+    <PlaneXZ centreBasePointX="-195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+        <Material ColorB="0.7" ColorG="70.0" ColorR="0.7" type="light"/>
+    </PlaneXZ>
+    <PlaneXZ centreBasePointX="0.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+        <Material ColorB="0.7" ColorG="0.7" ColorR="70.0" type="light"/>
+    </PlaneXZ>
+    <PlaneXZ centreBasePointX="195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+        <Material ColorB="70.0" ColorG="0.7" ColorR="0.7" type="light"/>
+    </PlaneXZ>
+    <PlaneYZ centreBasePointX="-278.0" centreBasePointY="278.0" centreBasePointZ="0.0" flipped="false" height="556.0" width="556.0">
+        <Material ColorB="0.05" ColorG="0.05" ColorR="0.65" type="lambertian"/>
+    </PlaneYZ>
+    <PlaneYZ centreBasePointX="278.0" centreBasePointY="278.0" centreBasePointZ="0.0" flipped="false" height="556.0" width="556.0">
+        <Material ColorB="0.15" ColorG="0.45" ColorR="0.12" type="lambertian"/>
+    </PlaneYZ>
+    <PlaneXZ centreBasePointX="0.0" centreBasePointY="0.0" centreBasePointZ="0.0" depth="556.0" flipped="false" width="556.0">
+        <Material ColorB="0.73" ColorG="0.73" ColorR="0.73" type="lambertian"/>
+    </PlaneXZ>
+    <PlaneXZ centreBasePointX="0.0" centreBasePointY="556.0" centreBasePointZ="0.0" depth="556.0" flipped="false" width="556.0">
+        <Material ColorB="0.73" ColorG="0.73" ColorR="0.73" type="lambertian"/>
+    </PlaneXZ>
+    <PlaneXY centreBasePointX="0.0" centreBasePointY="278.0" centreBasePointZ="-278.0" flipped="false" height="556.0" width="556.0">
+        <Material ColorB="0.73" ColorG="0.73" ColorR="0.73" type="lambertian"/>
+    </PlaneXY>
+    <Sphere CentreX="-100.0" CentreY="70.0" CentreZ="128.0" radius="70.0">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="0.0" CentreY="70.0" CentreZ="-22.0" radius="70.0">
+        <Material ColorB="0.65" ColorG="0.05" ColorR="0.05" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="100.0" CentreY="70.0" CentreZ="128.0" radius="70.0">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.65" type="dielectric"/>
+    </Sphere>
+</Scene>

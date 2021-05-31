@@ -35,16 +35,4 @@
   <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
     <Material type="dielectric" ColorR="1" ColorG="0.2" ColorB="0.2" ri="1.5" fuzziness="0.25" />
   </Sphere>
-  <Box width="1" depth="2" height="3" centreBasePointX="4" centreBasePointY="5" centreBasePointZ="6">
-    <Material type="metal" ColorR="0.4" ColorG="0.5" ColorB="0.6" fuzziness="0" />
-  </Box>
-  <PlaneXY width="1" height="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true">
-    <Material type="metal" ColorR="0.1" ColorG="0.2" ColorB="0.3" fuzziness="0" />
-  </PlaneXY>
-  <PlaneXZ width="1" depth="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true">
-    <Material type="dielectric" ColorR="0.1" ColorG="0.2" ColorB="0.3" ri="1.66" fuzziness="0" />
-  </PlaneXZ>
-  <PlaneYZ width="1" height="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true">
-    <Material type="light" ColorR="100" ColorG="100" ColorB="100" />
-  </PlaneYZ>
 </Scene>

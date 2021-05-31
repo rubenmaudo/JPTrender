@@ -136,7 +136,7 @@ public class PathTracer implements Runnable {
         int tempNs = 1;//Initialise the passes number
         while ((tempNs <= np || progressive)&& activeThread) {
 
-            executorService = Executors.newFixedThreadPool(9);//Thread pool
+            executorService = Executors.newFixedThreadPool(8);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {

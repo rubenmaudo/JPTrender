@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene>
+  <!--CAMERA PARAMETERS-->
+  <Camera vfov="15.12" aperture="0.2" focus_dist="3" autofocus="1">
+    <lookfrom X="1" Y="2" Z="3" />
+    <lookat X="4" Y="5" Z="6" />
+    <vup X="7" Y="8" Z="9" />
+  </Camera>
+  <!--GEOMETRY PARAMETERS-->
+  <!--SPHERE-->
+  <Sphere radius="1" CentreX="2" CentreY="3" CentreZ="4"></Sphere>
+  <!--BOX-->
+  <Box width="1" depth="2" height="3" centreBasePointX="4" centreBasePointY="5" centreBasePointZ="6" />
+  <!--PLANE XY-->
+  <PlaneXY width="1" height="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true" />
+  <!--PLANE XZ-->
+  <PlaneXZ width="1" depth="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true" />
+  <!--PLANE YZ-->
+  <PlaneYZ width="1" height="2" centreBasePointX="3" centreBasePointY="4" centreBasePointZ="5" flipped="true" />
+  <!--///////////MATERIALS\\\\\\\\\\\-->
+  <!--LAMBERTIAN-->
+  <Material type="lambertian" ColorR="0.1" ColorG="0.2" ColorB="0.3">
+    <!--METAL-->
+  </Material>
+  <Material type="metal" ColorR="0.1" ColorG="0.2" ColorB="0.3" fuzziness="0" />
+  <!--DIELECTRIC-->
+  <Material type="dielectric" ColorR="0.1" ColorG="0.2" ColorB="0.3" ri="1.66" fuzziness="0" />
+  <!--LIGHT-->
+  <Material type="light" ColorR="100" ColorG="100" ColorB="100" />
+</Scene>

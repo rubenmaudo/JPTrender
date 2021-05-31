@@ -54,11 +54,14 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.gammaValue=gammaValue;
 
         this.ID=ID;
-        this.background=background;
+        this.background=Background.clone(background);
 
         //this.scene=scene;
 
+        this.camera=camera.clone();
+
         this.scene=new ArrayList<Primitive>();
+
         for( Primitive prim : scene){
             Primitive geometry=prim.clone();
             this.scene.add(geometry);
@@ -68,6 +71,8 @@ public class PTcalcs_threads_runnable implements Runnable {
     //METHODS
     @Override
     public void run() {
+        long startTime0=System.nanoTime();
+
         for(int[] pxLoc : pixelList){
             long startTime1=0;
             long startTime2=0;
@@ -78,51 +83,41 @@ public class PTcalcs_threads_runnable implements Runnable {
             long partialTime3=0;
             long partialTime4=0;
 
+            //
             if(pxLoc[0]==300 && pxLoc[1]==300){
                 startTime1= System.nanoTime();
             }
 
-
-
-
-
             ColorValue col;
 
             double u = (pxLoc[0] + Math.random())  /  image.getWidth();
-            double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
-            Ray r = camera.get_ray(u, v);
-            col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
 
+            //
             if(pxLoc[0]==300 && pxLoc[1]==300){
                 partialTime1 =System.nanoTime();
                 startTime2=  System.nanoTime();
             }
 
-            if (imagePixels[pxLoc[0]][pxLoc[1]]==null){
-                imagePixels[pxLoc[0]][pxLoc[1]]=new ColorValue(0,0,0);
-            }
+            double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
 
-            imagePixels[pxLoc[0]][pxLoc[1]]=imagePixels[pxLoc[0]][pxLoc[1]].add(col);
-            pxLoc[2]=pxLoc[2]+1;
-
+            //
             if(pxLoc[0]==300 && pxLoc[1]==300){
                 partialTime2 =  System.nanoTime();
                 startTime3=  System.nanoTime();
             }
 
-            //Gamma correction
-            col= new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vR(),
-                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vG(),
-                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vB(),
-                    gammaValue);
+            Ray r = camera.get_ray(u, v);
 
+            //
             if(pxLoc[0]==300 && pxLoc[1]==300){
                 partialTime3 =  System.nanoTime();
                 startTime4=  System.nanoTime();
             }
 
-            image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
+            col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
 
+
+            //
             if(pxLoc[0]==300 && pxLoc[1]==300){
                 partialTime4 =  System.nanoTime();
 
@@ -136,6 +131,34 @@ public class PTcalcs_threads_runnable implements Runnable {
                 System.out.println(millis3);
                 System.out.println(millis4);
             }
+
+            if (imagePixels[pxLoc[0]][pxLoc[1]]==null){
+                imagePixels[pxLoc[0]][pxLoc[1]]=new ColorValue(0,0,0);
+            }
+
+            imagePixels[pxLoc[0]][pxLoc[1]]=imagePixels[pxLoc[0]][pxLoc[1]].add(col);
+            pxLoc[2]=pxLoc[2]+1;
+
+
+
+            //Gamma correction
+            col= new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vR(),
+                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vG(),
+                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vB(),
+                    gammaValue);
+
+
+
+            image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
+
+
+
+
         }
+        long partialTime0 =  System.nanoTime();
+        long millis0 = (partialTime0 - startTime0)/1000000;
+        System.out.println("The thread "+ ID + " = "+millis0);
     }
+
+
 }

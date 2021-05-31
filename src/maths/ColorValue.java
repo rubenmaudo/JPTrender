@@ -63,12 +63,6 @@ public class ColorValue implements Serializable {
             if (background.getMixed()){
                 return background.getSecondaryColor().product(1-t).add(background.getMainColor().product(t));
             }else return background.getMainColor();
-
-            /*
-            return new ColorValue(1,1,1).product(1-t).add(new ColorValue(0.5, 0.7, 1.0).product(t));
-            return new ColorValue(0, 0, 0);
-
-             */
         }
 
         if (!rec.material.scatter(r, rec)) {

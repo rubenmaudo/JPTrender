@@ -15,9 +15,15 @@ public class Background {
      * Constructor to create a background
      */
     public Background() {
-        mainColor=new ColorValue(0.6,0.745098039,1);
-        secondaryColor=new ColorValue(1,0.78431372,0);
-        mixed=false;
+        this.mainColor=new ColorValue(0.6,0.745098039,1);
+        this.secondaryColor=new ColorValue(1,0.78431372,0);
+        this.mixed=false;
+    }
+
+    public Background(ColorValue mainColor, ColorValue secondaryColor, Boolean mixed) {
+        this.mainColor=mainColor;
+        this.secondaryColor=secondaryColor;
+        this.mixed=mixed;
     }
 
     public ColorValue getMainColor() {
@@ -47,5 +53,13 @@ public class Background {
     public static ColorValue fromColorToColorValue(Color color){
         return new ColorValue((double)color.getRed()/(double)255,
                 (double)color.getGreen()/(double)255,(double)color.getBlue()/(double)255);
+    }
+
+
+
+    public static Background clone(Background background){
+        return new Background(background.getMainColor(),
+                background.getSecondaryColor(),
+                background.getMixed());
     }
 }

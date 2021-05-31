@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Scene>
+    <Camera aperture="0.1" autofocus="0" focus_dist="10.0" vfov="20.0">
+        <lookfrom X="13.0" Y="2.0" Z="3.0"/>
+        <lookat X="0.0" Y="0.0" Z="0.0"/>
+        <vup X="0.0" Y="1.0" Z="0.0"/>
+    </Camera>
+    <Sphere CentreX="0.0" CentreY="-1000.0" CentreZ="0.0" radius="1000.0">
+        <Material ColorB="0.5" ColorG="0.5" ColorR="0.5" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.525853087194866" CentreY="0.2" CentreZ="-10.848106420169731" radius="0.2">
+        <Material ColorB="0.030791413111995417" ColorG="0.12338745710336271" ColorR="0.10347080195097316" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.408185298050109" CentreY="0.2" CentreZ="-9.2419815058911" radius="0.2">
+        <Material ColorB="0.1708763643147042" ColorG="0.3409977726921575" ColorR="0.2907347246180973" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.531685246125956" CentreY="0.2" CentreZ="-8.387545546994573" radius="0.2">
+        <Material ColorB="0.1106357004455637" ColorG="0.38979490314883897" ColorR="0.7210326506705257" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.78485453542776" CentreY="0.2" CentreZ="-7.872934049472563" radius="0.2">
+        <Material ColorB="0.005715297982019775" ColorG="0.007980457998411006" ColorR="0.18223239850595108" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.479289401336997" CentreY="0.2" CentreZ="-6.506348640882375" radius="0.2">
+        <Material ColorB="0.410879960402166" ColorG="0.6391600251292104" ColorR="0.1253120993972671" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.399509491144864" CentreY="0.2" CentreZ="-5.209217799164588" radius="0.2">
+        <Material ColorB="0.6048237197982466" ColorG="0.11237445240389717" ColorR="0.10733884358151621" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.831872806423682" CentreY="0.2" CentreZ="-4.591926674065014" radius="0.2">
+        <Material ColorB="0.11217148855206101" ColorG="0.43504932750220976" ColorR="0.4522772576660751" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.583259648693899" CentreY="0.2" CentreZ="-3.834431388345413" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-10.77370999960852" CentreY="0.2" CentreZ="-2.861263906540732" radius="0.2">
+        <Material ColorB="0.6432768091765024" ColorG="0.02489220347393216" ColorR="0.5006163301452359" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.508524576905756" CentreY="0.2" CentreZ="-1.9551217089357404" radius="0.2">
+        <Material ColorB="0.0011557271918483357" ColorG="0.02524806474867423" ColorR="0.18342029983269123" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.446867465636293" CentreY="0.2" CentreZ="-0.7028941486506284" radius="0.2">
+        <Material ColorB="0.5007980901717632" ColorG="0.6166483029864547" ColorR="0.6065425207846166" fuzziness="0.1836086072108024" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-10.403970849330182" CentreY="0.2" CentreZ="0.16277406791015805" radius="0.2">
+        <Material ColorB="0.15836923345039633" ColorG="0.08197263437936024" ColorR="0.7504671164489609" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.810455330824675" CentreY="0.2" CentreZ="1.7028321277401945" radius="0.2">
+        <Material ColorB="0.09545150504062341" ColorG="0.6773688683907161" ColorR="0.037964725465525935" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.389964515066774" CentreY="0.2" CentreZ="2.416295093657916" radius="0.2">
+        <Material ColorB="0.35698141965489355" ColorG="0.18369592623255948" ColorR="0.05282145106770465" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.766319603820731" CentreY="0.2" CentreZ="3.0404376165705664" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-10.992027686028615" CentreY="0.2" CentreZ="4.478841022085561" radius="0.2">
+        <Material ColorB="0.5691890803928331" ColorG="0.5703775179722939" ColorR="0.1509935346723218" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.525913107069979" CentreY="0.2" CentreZ="5.594308716547719" radius="0.2">
+        <Material ColorB="0.2965436940467788" ColorG="0.311152046267382" ColorR="0.039630832833421996" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.78982783752542" CentreY="0.2" CentreZ="6.329791351236348" radius="0.2">
+        <Material ColorB="0.2229953611937171" ColorG="0.15122115137797246" ColorR="0.006849420724455243" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.724293411637674" CentreY="0.2" CentreZ="7.260876388131732" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-10.416955363908164" CentreY="0.2" CentreZ="8.322674227307541" radius="0.2">
+        <Material ColorB="0.09614936816877115" ColorG="0.2241564185694414" ColorR="0.024384514243350742" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.824484511241215" CentreY="0.2" CentreZ="9.437565716886514" radius="0.2">
+        <Material ColorB="0.7954804597892633" ColorG="0.7745692511142668" ColorR="0.47513363955493915" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-10.937136723238552" CentreY="0.2" CentreZ="10.322745244915565" radius="0.2">
+        <Material ColorB="0.07870955142210131" ColorG="0.2448070708822572" ColorR="0.019500103846929757" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.546477161824651" CentreY="0.2" CentreZ="-10.837706668913228" radius="0.2">
+        <Material ColorB="0.001219815658620876" ColorG="0.1128310924569733" ColorR="0.036663994214285775" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.932472407389254" CentreY="0.2" CentreZ="-9.676167632936426" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-9.691357545292405" CentreY="0.2" CentreZ="-8.939579420677426" radius="0.2">
+        <Material ColorB="0.004543309433623397" ColorG="0.5332854019386314" ColorR="0.0173167391645629" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.920632899780848" CentreY="0.2" CentreZ="-7.330905736993031" radius="0.2">
+        <Material ColorB="0.4808201934134403" ColorG="0.3201651815956573" ColorR="0.062355040818747695" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.535753738114193" CentreY="0.2" CentreZ="-6.9456694449864695" radius="0.2">
+        <Material ColorB="0.5401342092922503" ColorG="0.8929717167637661" ColorR="0.7291149135402346" fuzziness="0.2380365759420745" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-9.44823176764979" CentreY="0.2" CentreZ="-5.825683415743591" radius="0.2">
+        <Material ColorB="0.08203457626835506" ColorG="0.03828557936963912" ColorR="0.11488872320767027" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.587492212716315" CentreY="0.2" CentreZ="-4.407588676410435" radius="0.2">
+        <Material ColorB="0.2964740141375636" ColorG="0.32349002153925444" ColorR="0.7366792491982069" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.66603947846169" CentreY="0.2" CentreZ="-3.6466910971493145" radius="0.2">
+        <Material ColorB="0.660029891488373" ColorG="0.006939356742051202" ColorR="0.29708690226334034" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.8267624979507" CentreY="0.2" CentreZ="-2.4372207443806126" radius="0.2">
+        <Material ColorB="0.11832108449955539" ColorG="0.3710963091818258" ColorR="0.20043347838642905" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.870347578257643" CentreY="0.2" CentreZ="-1.5955280248020363" radius="0.2">
+        <Material ColorB="0.3364487360074663" ColorG="6.699732240302863E-5" ColorR="0.35115871553533734" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.607360492400357" CentreY="0.2" CentreZ="-0.4569277631685742" radius="0.2">
+        <Material ColorB="0.07517119205446814" ColorG="0.3073714142264936" ColorR="0.07454572934948454" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.21001916127237" CentreY="0.2" CentreZ="0.26326255851191516" radius="0.2">
+        <Material ColorB="0.1288863592331983" ColorG="0.1975448105238179" ColorR="0.6709148304928773" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.50799624320396" CentreY="0.2" CentreZ="1.2510410676324801" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-9.70494389844971" CentreY="0.2" CentreZ="2.1012347962824096" radius="0.2">
+        <Material ColorB="0.09128758288941508" ColorG="0.1578905083452529" ColorR="0.1584470362539559" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.74076042038993" CentreY="0.2" CentreZ="3.0066728882157068" radius="0.2">
+        <Material ColorB="0.7753984091268722" ColorG="0.1810835679854858" ColorR="0.014477734485542171" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.689216930942226" CentreY="0.2" CentreZ="4.255900427803245" radius="0.2">
+        <Material ColorB="0.15684887783816143" ColorG="0.13087410393079174" ColorR="0.24178322893521778" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.93082380545652" CentreY="0.2" CentreZ="5.76260430704847" radius="0.2">
+        <Material ColorB="0.13738479594308384" ColorG="0.11378155016429807" ColorR="0.0658890342062088" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.87969856323311" CentreY="0.2" CentreZ="6.663634619929316" radius="0.2">
+        <Material ColorB="0.7256361288347326" ColorG="0.057383199354374706" ColorR="0.09593189993194355" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.59250104667318" CentreY="0.2" CentreZ="7.633196698925876" radius="0.2">
+        <Material ColorB="0.02611440903189923" ColorG="0.04515154231960766" ColorR="0.003769435567296385" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.901499150794539" CentreY="0.2" CentreZ="8.568428514701205" radius="0.2">
+        <Material ColorB="0.05770167315719572" ColorG="0.07755221832108518" ColorR="0.07499618935613005" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-9.664585560774933" CentreY="0.2" CentreZ="9.30190842327948" radius="0.2">
+        <Material ColorB="0.867240587470631" ColorG="0.851329890120962" ColorR="0.966343864046546" fuzziness="0.4532575558065942" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-9.946458073488685" CentreY="0.2" CentreZ="10.680583359650981" radius="0.2">
+        <Material ColorB="0.0915333398547826" ColorG="0.49888999461809064" ColorR="0.01880322826616112" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.877714292859519" CentreY="0.2" CentreZ="-10.771769255818487" radius="0.2">
+        <Material ColorB="8.520574421017819E-4" ColorG="0.04557503472824828" ColorR="0.5699824434274815" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.467312292679507" CentreY="0.2" CentreZ="-9.262669086023646" radius="0.2">
+        <Material ColorB="0.20870480521284365" ColorG="0.010202888302314287" ColorR="0.48081430115137214" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.891745802396564" CentreY="0.2" CentreZ="-8.320470778246712" radius="0.2">
+        <Material ColorB="0.15611637528239786" ColorG="0.1716789250934354" ColorR="0.62580325501333" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.243386263101844" CentreY="0.2" CentreZ="-7.856893185188073" radius="0.2">
+        <Material ColorB="0.3545326291094749" ColorG="0.08202965840733839" ColorR="0.20586735345151627" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.25530639899464" CentreY="0.2" CentreZ="-6.847612124033609" radius="0.2">
+        <Material ColorB="0.06630109426295784" ColorG="0.1304165725481005" ColorR="0.0943330280474622" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.244420534815765" CentreY="0.2" CentreZ="-5.4413817961984705" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-8.437679887821158" CentreY="0.2" CentreZ="-4.9133366548108235" radius="0.2">
+        <Material ColorB="0.811546655355383" ColorG="0.7135497840977729" ColorR="0.5172871448161285" fuzziness="0.43113317465420786" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-8.409936052737951" CentreY="0.2" CentreZ="-3.869601484457772" radius="0.2">
+        <Material ColorB="0.48577157114301484" ColorG="0.02510984866005213" ColorR="0.23550207384624397" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.241022266177506" CentreY="0.2" CentreZ="-2.992771818165563" radius="0.2">
+        <Material ColorB="0.1925864277534414" ColorG="0.5765957825529782" ColorR="0.5648234873030948" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.5401593169104" CentreY="0.2" CentreZ="-1.700849320397062" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-8.340493813878656" CentreY="0.2" CentreZ="-0.7156955755775489" radius="0.2">
+        <Material ColorB="0.3928209012786298" ColorG="0.17579704910627547" ColorR="0.928705440871114" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.533297446903175" CentreY="0.2" CentreZ="0.06626861274941867" radius="0.2">
+        <Material ColorB="0.21602393693046723" ColorG="0.3259124809211549" ColorR="0.4653512323045291" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.760053649147677" CentreY="0.2" CentreZ="1.2593650239764658" radius="0.2">
+        <Material ColorB="0.7091599187437168" ColorG="0.04871258610695116" ColorR="0.509404877267885" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.526216574915832" CentreY="0.2" CentreZ="2.6624244498034" radius="0.2">
+        <Material ColorB="0.20276935304754998" ColorG="0.09413476833813553" ColorR="0.4185944436929777" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.7956289006068" CentreY="0.2" CentreZ="3.3130363309496778" radius="0.2">
+        <Material ColorB="0.0015548552773272265" ColorG="0.5785378058756764" ColorR="0.05489489677038317" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.906487793133955" CentreY="0.2" CentreZ="4.493263237577582" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-8.86131586441433" CentreY="0.2" CentreZ="5.185321367188832" radius="0.2">
+        <Material ColorB="0.04145194715131262" ColorG="0.5980246437667105" ColorR="0.008262748642200472" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.549873132000888" CentreY="0.2" CentreZ="6.27563178176787" radius="0.2">
+        <Material ColorB="0.2708060190796698" ColorG="0.3234085491248442" ColorR="0.4976504197903231" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.395345202426768" CentreY="0.2" CentreZ="7.407188215834646" radius="0.2">
+        <Material ColorB="0.23548234943545626" ColorG="0.17936237736212493" ColorR="0.00812252001004615" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.955120440496328" CentreY="0.2" CentreZ="8.54648764724189" radius="0.2">
+        <Material ColorB="0.20061217622936442" ColorG="0.035095972598554084" ColorR="0.0706326084860167" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.62366588957419" CentreY="0.2" CentreZ="9.796545272467766" radius="0.2">
+        <Material ColorB="0.030614596456790433" ColorG="0.937052327383187" ColorR="0.02733615525198644" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-8.786026923998588" CentreY="0.2" CentreZ="10.156634717569126" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-7.386071461599673" CentreY="0.2" CentreZ="-10.476200668817329" radius="0.2">
+        <Material ColorB="0.10934753566947653" ColorG="0.47256730580408934" ColorR="0.14274818185420304" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.733269894875848" CentreY="0.2" CentreZ="-9.735481832459094" radius="0.2">
+        <Material ColorB="0.006659859949892307" ColorG="0.11500838888982357" ColorR="0.26195256464477945" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.612488443727019" CentreY="0.2" CentreZ="-8.717519283589468" radius="0.2">
+        <Material ColorB="8.616879858190372E-4" ColorG="0.6065352663221087" ColorR="0.04455472788832813" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.817768278436027" CentreY="0.2" CentreZ="-7.275790208888893" radius="0.2">
+        <Material ColorB="0.5268219691378245" ColorG="0.37069558114519546" ColorR="0.2949859764852534" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.291065894629108" CentreY="0.2" CentreZ="-6.299666319145623" radius="0.2">
+        <Material ColorB="0.1295436645720473" ColorG="0.0417453886724804" ColorR="0.2749151516920536" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.208145214296138" CentreY="0.2" CentreZ="-5.399703206358048" radius="0.2">
+        <Material ColorB="0.2719750581996153" ColorG="0.004842664320910603" ColorR="0.5573851196963423" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.716327854944865" CentreY="0.2" CentreZ="-4.5242252661763365" radius="0.2">
+        <Material ColorB="0.00429591497283952" ColorG="0.24315740657323243" ColorR="0.2657594446586725" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.575546594899773" CentreY="0.2" CentreZ="-3.2630344926130723" radius="0.2">
+        <Material ColorB="0.13973330293786543" ColorG="0.0996139180527976" ColorR="0.1196205664401123" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.743621581015391" CentreY="0.2" CentreZ="-2.465245371442699" radius="0.2">
+        <Material ColorB="0.547525887696678" ColorG="0.0343841378505108" ColorR="0.7270346207111953" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.87281203157783" CentreY="0.2" CentreZ="-1.8711252839283068" radius="0.2">
+        <Material ColorB="0.13232621430582972" ColorG="0.4997885687409928" ColorR="0.05194306976410767" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.369878912176881" CentreY="0.2" CentreZ="-0.7935794629921319" radius="0.2">
+        <Material ColorB="0.5065730700614441" ColorG="0.03358747852429981" ColorR="0.1508903998070777" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.613969466485068" CentreY="0.2" CentreZ="0.560327526386138" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-7.672545116241145" CentreY="0.2" CentreZ="1.1632301372299356" radius="0.2">
+        <Material ColorB="0.4919862425460858" ColorG="0.7318808277156307" ColorR="0.00298180936500404" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.449052903267159" CentreY="0.2" CentreZ="2.263185534870661" radius="0.2">
+        <Material ColorB="0.2961926788237216" ColorG="0.5381051294548885" ColorR="0.5665727707879489" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.410116728060436" CentreY="0.2" CentreZ="3.483239375342424" radius="0.2">
+        <Material ColorB="0.4942321167716777" ColorG="0.5416098738246105" ColorR="0.04156367716993473" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.417073744475729" CentreY="0.2" CentreZ="4.198665780051583" radius="0.2">
+        <Material ColorB="0.5519996362989947" ColorG="0.22120002257503749" ColorR="0.11475273981612631" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.304878591871144" CentreY="0.2" CentreZ="5.2134422276967145" radius="0.2">
+        <Material ColorB="0.03373630589350637" ColorG="0.13815809865912226" ColorR="0.22472813936768807" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.472768145809895" CentreY="0.2" CentreZ="6.260027850837421" radius="0.2">
+        <Material ColorB="0.22768224750121704" ColorG="0.3865320518889229" ColorR="0.5675766274024259" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.232909319636822" CentreY="0.2" CentreZ="7.200812403763245" radius="0.2">
+        <Material ColorB="0.0510453113114964" ColorG="0.46846557798040767" ColorR="0.4120797382730857" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.354344140802287" CentreY="0.2" CentreZ="8.484896665896967" radius="0.2">
+        <Material ColorB="0.5655900996456089" ColorG="0.11484614360735237" ColorR="0.23319362503346666" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.29867752855314" CentreY="0.2" CentreZ="9.105919941882053" radius="0.2">
+        <Material ColorB="0.021538923164756984" ColorG="0.1288654670301255" ColorR="0.07052546630118106" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-7.638171053853384" CentreY="0.2" CentreZ="10.189525886436375" radius="0.2">
+        <Material ColorB="0.7244548216119353" ColorG="0.06375675265185203" ColorR="0.39393175086015764" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.811648806786565" CentreY="0.2" CentreZ="-10.724845910452737" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-6.849971811058077" CentreY="0.2" CentreZ="-9.369780668829215" radius="0.2">
+        <Material ColorB="0.5066734374420845" ColorG="0.5480004217509189" ColorR="0.6458645089742066" fuzziness="0.048703009744670955" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-6.470075178691489" CentreY="0.2" CentreZ="-8.85869623431832" radius="0.2">
+        <Material ColorB="0.40852304792062655" ColorG="0.07506277091036535" ColorR="0.21488417533802492" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.465648954126596" CentreY="0.2" CentreZ="-7.334112879037251" radius="0.2">
+        <Material ColorB="0.15424851936113493" ColorG="0.012541124332421091" ColorR="0.11307363190737749" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.95077764654895" CentreY="0.2" CentreZ="-6.431204434906542" radius="0.2">
+        <Material ColorB="0.1120243171651954" ColorG="0.023342482032278754" ColorR="0.4751140672050943" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.885325730495572" CentreY="0.2" CentreZ="-5.252496421484625" radius="0.2">
+        <Material ColorB="0.7321515570553885" ColorG="0.5998948960588948" ColorR="0.8363785550591865" fuzziness="0.16969280650861118" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-6.380806374308034" CentreY="0.2" CentreZ="-4.599397797636714" radius="0.2">
+        <Material ColorB="0.10309618874724144" ColorG="0.8994017263086705" ColorR="0.1751219572309084" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.381324663358783" CentreY="0.2" CentreZ="-3.339353006397111" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-6.250478599810412" CentreY="0.2" CentreZ="-2.430187199561684" radius="0.2">
+        <Material ColorB="0.7293363823053165" ColorG="0.19355131413024185" ColorR="0.28690515559302116" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.205192099860722" CentreY="0.2" CentreZ="-1.7242618698995946" radius="0.2">
+        <Material ColorB="0.06939859832943435" ColorG="0.11116440762359844" ColorR="0.6952813941734083" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.514976762952211" CentreY="0.2" CentreZ="-0.8590605197358184" radius="0.2">
+        <Material ColorB="0.3499479981746921" ColorG="0.033305530066786965" ColorR="0.19872071896088314" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.245744223656288" CentreY="0.2" CentreZ="0.6026461514716122" radius="0.2">
+        <Material ColorB="0.4065360301565255" ColorG="0.5901875989573978" ColorR="0.17564740490012495" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.921263638229265" CentreY="0.2" CentreZ="1.6149839644249693" radius="0.2">
+        <Material ColorB="0.2436802674593662" ColorG="0.04852351619579587" ColorR="0.12344588827658586" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.8389088120872215" CentreY="0.2" CentreZ="2.6033722940903616" radius="0.2">
+        <Material ColorB="0.6668244333319278" ColorG="0.6854536950251785" ColorR="0.009010232303548305" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.524372174186022" CentreY="0.2" CentreZ="3.2673802719246097" radius="0.2">
+        <Material ColorB="0.03927496231851944" ColorG="0.2163247206044048" ColorR="0.08686688667079377" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.861887720640731" CentreY="0.2" CentreZ="4.494161922226002" radius="0.2">
+        <Material ColorB="0.06848337745388017" ColorG="0.007230786589985567" ColorR="0.022161089797794527" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.809633576344839" CentreY="0.2" CentreZ="5.731381369033375" radius="0.2">
+        <Material ColorB="0.09712800607282875" ColorG="0.013486601640818607" ColorR="0.18417699556292708" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.990704200247677" CentreY="0.2" CentreZ="6.427959821871006" radius="0.2">
+        <Material ColorB="0.5752004401036483" ColorG="0.5196226755185976" ColorR="0.8842362167349922" fuzziness="0.06254157794622217" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-6.264763168406796" CentreY="0.2" CentreZ="7.728757900953478" radius="0.2">
+        <Material ColorB="0.06941797393382156" ColorG="0.371616263956484" ColorR="0.38227737755297836" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.979723549665447" CentreY="0.2" CentreZ="8.432258728660441" radius="0.2">
+        <Material ColorB="0.007757780421969642" ColorG="0.051755488022703446" ColorR="0.07080718252754582" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.76034808469813" CentreY="0.2" CentreZ="9.174176734262687" radius="0.2">
+        <Material ColorB="2.1105962354666774E-4" ColorG="0.04739462164643546" ColorR="0.3128882442616252" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-6.938222588064928" CentreY="0.2" CentreZ="10.413645594837089" radius="0.2">
+        <Material ColorB="0.3755478697526674" ColorG="0.11810223728621043" ColorR="0.6336638592414413" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.392070088923271" CentreY="0.2" CentreZ="-10.503307126654844" radius="0.2">
+        <Material ColorB="0.5213110131198582" ColorG="0.09188998785632221" ColorR="0.040556909525735575" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.762730373950616" CentreY="0.2" CentreZ="-9.378149962554447" radius="0.2">
+        <Material ColorB="0.45269058444343924" ColorG="0.48277743646888005" ColorR="0.4530336228319753" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.649347532600044" CentreY="0.2" CentreZ="-8.893205391444736" radius="0.2">
+        <Material ColorB="0.9537099131583067" ColorG="0.6465091638877913" ColorR="0.6182519912630575" fuzziness="0.4714743777637911" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-5.693328437583049" CentreY="0.2" CentreZ="-7.410410887002827" radius="0.2">
+        <Material ColorB="0.8937284921595794" ColorG="0.7184445750161639" ColorR="0.8440706966867226" fuzziness="0.02415123626450133" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-5.7352986513931" CentreY="0.2" CentreZ="-6.426720275308432" radius="0.2">
+        <Material ColorB="0.09011009461963163" ColorG="0.31905463435812764" ColorR="0.6850339176974898" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.6186646173204915" CentreY="0.2" CentreZ="-5.482234573173765" radius="0.2">
+        <Material ColorB="0.0747495087575418" ColorG="0.04601554966838695" ColorR="0.23767495344255782" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.824739393261584" CentreY="0.2" CentreZ="-4.661096666328982" radius="0.2">
+        <Material ColorB="0.5510783273712171" ColorG="0.5225181992891431" ColorR="0.14400411901910032" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.8148922008163035" CentreY="0.2" CentreZ="-3.8732220472783476" radius="0.2">
+        <Material ColorB="0.19162298222631338" ColorG="0.02268922623972396" ColorR="0.05701139478368697" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.821068897823629" CentreY="0.2" CentreZ="-2.6259437561729753" radius="0.2">
+        <Material ColorB="0.010809638326479784" ColorG="0.2802194792540798" ColorR="0.0181092045118901" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.2107127234741775" CentreY="0.2" CentreZ="-1.6029830505823663" radius="0.2">
+        <Material ColorB="0.12700255956214354" ColorG="0.10598384897978924" ColorR="0.04503892335661155" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.329189093485393" CentreY="0.2" CentreZ="-0.6346661643707312" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-5.915569590310939" CentreY="0.2" CentreZ="0.7825309984828822" radius="0.2">
+        <Material ColorB="0.31939642690671466" ColorG="0.01410035398702875" ColorR="0.2288358728494173" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.431393993568065" CentreY="0.2" CentreZ="1.1430309488565373" radius="0.2">
+        <Material ColorB="0.4872034158043242" ColorG="0.23872554104136404" ColorR="0.0680941499098375" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.764035366079197" CentreY="0.2" CentreZ="2.7854368163111705" radius="0.2">
+        <Material ColorB="0.3287574503465731" ColorG="0.6693056202777306" ColorR="0.06881160106584992" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.518475189262361" CentreY="0.2" CentreZ="3.694886135879144" radius="0.2">
+        <Material ColorB="0.008284042848611409" ColorG="0.04733970801155183" ColorR="0.29335198334220636" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.963920129358575" CentreY="0.2" CentreZ="4.433961378030433" radius="0.2">
+        <Material ColorB="0.9716099768669105" ColorG="0.9698227666171889" ColorR="0.9367867586817793" fuzziness="0.19563795568076398" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-5.612971326446245" CentreY="0.2" CentreZ="5.23018681077509" radius="0.2">
+        <Material ColorB="0.471387910335799" ColorG="7.852879003253237E-5" ColorR="0.18242136305558382" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.659367576430429" CentreY="0.2" CentreZ="6.587062369944439" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-5.911886628186332" CentreY="0.2" CentreZ="7.298707395048266" radius="0.2">
+        <Material ColorB="0.09112337129244208" ColorG="0.013622286294838725" ColorR="0.31977047864766156" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.686050348053236" CentreY="0.2" CentreZ="8.518093603644195" radius="0.2">
+        <Material ColorB="0.7329973541732799" ColorG="0.9017578976630349" ColorR="0.6024979132708983" fuzziness="0.33420906330783423" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-5.463986491694909" CentreY="0.2" CentreZ="9.366317322162313" radius="0.2">
+        <Material ColorB="0.026511518524480308" ColorG="0.42819652588971807" ColorR="0.008853277556078572" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-5.884989778546076" CentreY="0.2" CentreZ="10.631722423239086" radius="0.2">
+        <Material ColorB="0.4394036212890254" ColorG="0.00646960520789502" ColorR="0.1528177485927631" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.2327506163576905" CentreY="0.2" CentreZ="-10.385335976342656" radius="0.2">
+        <Material ColorB="0.6962210408561189" ColorG="0.667770071249316" ColorR="0.801135610785691" fuzziness="0.3388393870843641" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-4.3695732695201865" CentreY="0.2" CentreZ="-9.699132310472395" radius="0.2">
+        <Material ColorB="0.06628474006374899" ColorG="0.28049997488974476" ColorR="0.18004245927893675" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.9308101824307835" CentreY="0.2" CentreZ="-8.323908973554031" radius="0.2">
+        <Material ColorB="0.6192648063709152" ColorG="0.9103113242304024" ColorR="0.7285682183947484" fuzziness="0.378527209993981" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-4.697692753172467" CentreY="0.2" CentreZ="-7.47208278017467" radius="0.2">
+        <Material ColorB="0.18890411773260019" ColorG="0.11259239620813558" ColorR="0.27602990485088513" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.3872457104550815" CentreY="0.2" CentreZ="-6.478298671083968" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-4.2559922897834515" CentreY="0.2" CentreZ="-5.7580128429177915" radius="0.2">
+        <Material ColorB="0.9581089218316089" ColorG="0.9897484533697367" ColorR="0.527891392522523" fuzziness="0.42918693914253103" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-4.678514333031112" CentreY="0.2" CentreZ="-4.728493846698975" radius="0.2">
+        <Material ColorB="0.14564860744354677" ColorG="0.09770955491484389" ColorR="0.3888648315219632" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.251648391043274" CentreY="0.2" CentreZ="-3.7019821660455845" radius="0.2">
+        <Material ColorB="0.31254960372311213" ColorG="0.2683166807816084" ColorR="0.28362097909695505" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.727881473082294" CentreY="0.2" CentreZ="-2.5582300274911676" radius="0.2">
+        <Material ColorB="0.01624030454160526" ColorG="0.04902501805373595" ColorR="0.8082726788845803" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.308294715710764" CentreY="0.2" CentreZ="-1.9572008603865156" radius="0.2">
+        <Material ColorB="0.5733949565559696" ColorG="0.013804041976182029" ColorR="0.021267272503417818" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.3810732508925945" CentreY="0.2" CentreZ="-0.545900979465908" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-4.344597124767034" CentreY="0.2" CentreZ="0.7086493513828622" radius="0.2">
+        <Material ColorB="0.5329607902083908" ColorG="0.19840314377356724" ColorR="0.17525038615458108" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.939900807074297" CentreY="0.2" CentreZ="1.2146768969323467" radius="0.2">
+        <Material ColorB="0.6558565195439137" ColorG="0.8234619818997304" ColorR="0.04935544985182536" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.429182733851538" CentreY="0.2" CentreZ="2.5002984375269253" radius="0.2">
+        <Material ColorB="0.28175488188252956" ColorG="0.4334552438051947" ColorR="0.0017015047539199876" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.421765503430754" CentreY="0.2" CentreZ="3.0194381627053253" radius="0.2">
+        <Material ColorB="0.21832095338096258" ColorG="0.06816871000455908" ColorR="0.03817498889577751" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.466504715939274" CentreY="0.2" CentreZ="4.453076323847587" radius="0.2">
+        <Material ColorB="0.002113298336713885" ColorG="0.07384605201996024" ColorR="0.020472998936651804" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.5620004508750736" CentreY="0.2" CentreZ="5.565156521201423" radius="0.2">
+        <Material ColorB="0.37485536038504064" ColorG="0.2902201184262483" ColorR="0.13431936207389913" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.890121162683443" CentreY="0.2" CentreZ="6.5290254434766934" radius="0.2">
+        <Material ColorB="0.008848632546875068" ColorG="0.5691678390004407" ColorR="0.02772033750912238" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.904828339569133" CentreY="0.2" CentreZ="7.447101932703887" radius="0.2">
+        <Material ColorB="0.36454614249310213" ColorG="0.08503804054047047" ColorR="0.11378457086001709" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.223449241729712" CentreY="0.2" CentreZ="8.163185285355567" radius="0.2">
+        <Material ColorB="0.09376099082786034" ColorG="0.40112688652870265" ColorR="0.18672320815239973" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.488793226001703" CentreY="0.2" CentreZ="9.415524452545837" radius="0.2">
+        <Material ColorB="0.0807768548591709" ColorG="0.07523225938395309" ColorR="0.0051327547569620345" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-4.822849663914241" CentreY="0.2" CentreZ="10.160249870198813" radius="0.2">
+        <Material ColorB="0.7051078150749734" ColorG="0.8395400895505816" ColorR="0.7371458523372536" fuzziness="0.11880090827993867" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-3.393068501197882" CentreY="0.2" CentreZ="-10.286532538770658" radius="0.2">
+        <Material ColorB="0.2098248727599491" ColorG="0.10377724705477677" ColorR="0.3394526868570206" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.917364958198946" CentreY="0.2" CentreZ="-9.759269077518871" radius="0.2">
+        <Material ColorB="0.05094358079233527" ColorG="0.14138002622459478" ColorR="0.11878800297127183" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.411525025245047" CentreY="0.2" CentreZ="-8.228431608107865" radius="0.2">
+        <Material ColorB="0.005303640057524282" ColorG="0.15488175289348138" ColorR="0.1110163968032595" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.384590798854614" CentreY="0.2" CentreZ="-7.200814341296898" radius="0.2">
+        <Material ColorB="0.8593174608532288" ColorG="0.3809529673115443" ColorR="0.36757922418708433" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.8361362784020874" CentreY="0.2" CentreZ="-6.27333340054947" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-3.4645720068828783" CentreY="0.2" CentreZ="-5.545740881233414" radius="0.2">
+        <Material ColorB="0.1506701454065975" ColorG="0.24609352461759046" ColorR="0.12773882700608818" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.532511772219056" CentreY="0.2" CentreZ="-4.215720542052658" radius="0.2">
+        <Material ColorB="0.7929776756291721" ColorG="0.1843915436700254" ColorR="0.7284565251439471" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.285097468046037" CentreY="0.2" CentreZ="-3.97933140763637" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-3.549154579895497" CentreY="0.2" CentreZ="-2.962848864377265" radius="0.2">
+        <Material ColorB="0.18328978985128447" ColorG="0.12241692766540122" ColorR="0.05134511357831168" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.763689245889317" CentreY="0.2" CentreZ="-1.3472582599229521" radius="0.2">
+        <Material ColorB="0.06250281481071991" ColorG="0.7177528044481393" ColorR="0.016928083070143728" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.4740643543033394" CentreY="0.2" CentreZ="-0.45851250361722784" radius="0.2">
+        <Material ColorB="0.4651022802184295" ColorG="0.3466987827810566" ColorR="0.3766148868912033" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.224892216515208" CentreY="0.2" CentreZ="0.2045515067635334" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-3.2485525245340456" CentreY="0.2" CentreZ="1.468165325191873" radius="0.2">
+        <Material ColorB="0.593019448319327" ColorG="0.015813577226157647" ColorR="0.49236303327785796" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.869274209152695" CentreY="0.2" CentreZ="2.2068258768341407" radius="0.2">
+        <Material ColorB="0.07575782387162579" ColorG="0.25138320068659364" ColorR="0.5235979441799377" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.6530758159961465" CentreY="0.2" CentreZ="3.1896462698116212" radius="0.2">
+        <Material ColorB="0.320527001019289" ColorG="0.05310191160170782" ColorR="0.053096159876491356" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.632233088100075" CentreY="0.2" CentreZ="4.092717608038591" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-3.7693764832801304" CentreY="0.2" CentreZ="5.182245467474034" radius="0.2">
+        <Material ColorB="0.006658256591491888" ColorG="0.46556257114698374" ColorR="0.25334585481843486" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.7200701916470895" CentreY="0.2" CentreZ="6.518127154512237" radius="0.2">
+        <Material ColorB="0.08162409917776252" ColorG="0.16252894981856128" ColorR="0.19220484451267378" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.356436156592089" CentreY="0.2" CentreZ="7.256345655285944" radius="0.2">
+        <Material ColorB="0.2738998627374472" ColorG="0.9510568952929519" ColorR="0.1688256379641491" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.334345956158749" CentreY="0.2" CentreZ="8.006385671414824" radius="0.2">
+        <Material ColorB="0.3855693124832847" ColorG="0.6782501064917626" ColorR="0.2524058521690522" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-3.3608507770613696" CentreY="0.2" CentreZ="9.66656906712932" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-3.9332023968738823" CentreY="0.2" CentreZ="10.532237962007025" radius="0.2">
+        <Material ColorB="0.15782636970740344" ColorG="0.3799323288011829" ColorR="0.507875385321118" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.792427464987411" CentreY="0.2" CentreZ="-10.660106245280177" radius="0.2">
+        <Material ColorB="0.8303708918952553" ColorG="0.9066474762531307" ColorR="0.6951139711569181" fuzziness="0.430061351486559" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-2.446819225043654" CentreY="0.2" CentreZ="-9.257364272838142" radius="0.2">
+        <Material ColorB="0.259923988240718" ColorG="0.6618414635486722" ColorR="0.5951177789395574" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.379326053036113" CentreY="0.2" CentreZ="-8.739273960004756" radius="0.2">
+        <Material ColorB="0.1197983415576669" ColorG="0.394244677390516" ColorR="0.16644723117135585" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.4791740305844776" CentreY="0.2" CentreZ="-7.818396078724925" radius="0.2">
+        <Material ColorB="0.09074697004115909" ColorG="0.3221447046974919" ColorR="0.005850856691369129" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.8446640203315936" CentreY="0.2" CentreZ="-6.216338367551017" radius="0.2">
+        <Material ColorB="0.01405587549301725" ColorG="0.08585742419809966" ColorR="0.3917892954240347" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.429713039301333" CentreY="0.2" CentreZ="-5.693322261302347" radius="0.2">
+        <Material ColorB="0.3930265722391373" ColorG="0.513660946161777" ColorR="0.18450457016930827" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.3968990211016674" CentreY="0.2" CentreZ="-4.998860826962815" radius="0.2">
+        <Material ColorB="0.010365273487708934" ColorG="0.3125448549222455" ColorR="0.035522033191842606" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.6374196814089483" CentreY="0.2" CentreZ="-3.501143598589536" radius="0.2">
+        <Material ColorB="0.03233171419664605" ColorG="0.4914122803077645" ColorR="0.020754572906488918" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.526083130061437" CentreY="0.2" CentreZ="-2.555701720288617" radius="0.2">
+        <Material ColorB="0.25760199396372224" ColorG="0.3193497976938596" ColorR="0.2963192429921496" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.255749605950918" CentreY="0.2" CentreZ="-1.34462558089638" radius="0.2">
+        <Material ColorB="0.20624815287248036" ColorG="0.36140198502131515" ColorR="0.1146276461077703" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.972798706789952" CentreY="0.2" CentreZ="-0.26018904976480783" radius="0.2">
+        <Material ColorB="0.7064702165909861" ColorG="0.8055278391615156" ColorR="0.5409313111519649" fuzziness="0.35016398199707743" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-2.8367906714367734" CentreY="0.2" CentreZ="0.15851801806526267" radius="0.2">
+        <Material ColorB="0.040684638145204455" ColorG="0.30812840352583504" ColorR="0.062213165324790966" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.572188910479138" CentreY="0.2" CentreZ="1.3774484511530747" radius="0.2">
+        <Material ColorB="0.2737784588879115" ColorG="0.22503584791732392" ColorR="0.07973948759936263" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.9715373770547737" CentreY="0.2" CentreZ="2.3408743129467653" radius="0.2">
+        <Material ColorB="0.9652945039657583" ColorG="0.9015654309919012" ColorR="0.5115734979095077" fuzziness="0.4965407904070427" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-2.229855080701877" CentreY="0.2" CentreZ="3.648180258641809" radius="0.2">
+        <Material ColorB="0.4028806942694657" ColorG="0.08539886864935235" ColorR="0.0738868505255513" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.489144748636141" CentreY="0.2" CentreZ="4.665159349283947" radius="0.2">
+        <Material ColorB="0.8466432319789131" ColorG="0.6239990955968421" ColorR="0.08042641840509898" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.8772252402098744" CentreY="0.2" CentreZ="5.169380810993897" radius="0.2">
+        <Material ColorB="0.6837168147232114" ColorG="0.9658243439087614" ColorR="0.8370229092085779" fuzziness="0.20689357896031219" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-2.540436960548707" CentreY="0.2" CentreZ="6.731101931048958" radius="0.2">
+        <Material ColorB="0.19316848952285842" ColorG="0.23635721759279052" ColorR="0.6376762327189974" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.575110194004465" CentreY="0.2" CentreZ="7.643117043147513" radius="0.2">
+        <Material ColorB="0.525211387060962" ColorG="0.9160370265231687" ColorR="0.5988394592368556" fuzziness="0.39988147021263953" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-2.410814841336445" CentreY="0.2" CentreZ="8.429928077566649" radius="0.2">
+        <Material ColorB="0.19766382235587954" ColorG="0.0030841575087658933" ColorR="0.577518054733214" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.531873944243435" CentreY="0.2" CentreZ="9.269595336123452" radius="0.2">
+        <Material ColorB="0.36343533735643946" ColorG="0.05904505492625975" ColorR="0.13887760857970877" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-2.711939664712636" CentreY="0.2" CentreZ="10.20735739489811" radius="0.2">
+        <Material ColorB="0.4847035234047337" ColorG="0.24973431628116438" ColorR="0.16068538990094158" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.8827552331176443" CentreY="0.2" CentreZ="-10.455419070614116" radius="0.2">
+        <Material ColorB="0.11819670900048686" ColorG="0.37783394665177417" ColorR="0.07004418544167927" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.2434854200152348" CentreY="0.2" CentreZ="-9.56323295538456" radius="0.2">
+        <Material ColorB="0.8982076693061275" ColorG="0.7888282104629151" ColorR="0.7078106611257003" fuzziness="0.30544923459634765" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-1.8144346025083715" CentreY="0.2" CentreZ="-8.223683933009847" radius="0.2">
+        <Material ColorB="0.641923594630288" ColorG="0.10463048256353392" ColorR="0.6086146526927843" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.9265469380968854" CentreY="0.2" CentreZ="-7.986690626555597" radius="0.2">
+        <Material ColorB="0.2933108645487424" ColorG="0.1109010006020124" ColorR="0.2523292365495253" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.4516840483574533" CentreY="0.2" CentreZ="-6.6315864062564485" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-1.5743741666828643" CentreY="0.2" CentreZ="-5.783017744862586" radius="0.2">
+        <Material ColorB="0.6940891192704994" ColorG="0.7687411444275951" ColorR="0.9362119801288595" fuzziness="0.17792291279393085" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-1.654425969226317" CentreY="0.2" CentreZ="-4.708936494442773" radius="0.2">
+        <Material ColorB="0.5873517471006646" ColorG="0.9775310776184231" ColorR="0.5969531417459891" fuzziness="0.44701488594421834" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-1.4140092417294925" CentreY="0.2" CentreZ="-3.8713151423504146" radius="0.2">
+        <Material ColorB="0.21509687561952778" ColorG="0.22862963254453678" ColorR="0.07510798106161068" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.5138615781316305" CentreY="0.2" CentreZ="-2.3078771633738966" radius="0.2">
+        <Material ColorB="0.1497222217416838" ColorG="0.650339474418175" ColorR="0.8388512840242104" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.5606197084500137" CentreY="0.2" CentreZ="-1.52033122293375" radius="0.2">
+        <Material ColorB="0.466481199906063" ColorG="0.23340254331416288" ColorR="0.003934464697191217" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.9105419535533483" CentreY="0.2" CentreZ="-0.9852743909294126" radius="0.2">
+        <Material ColorB="0.34151704606213207" ColorG="0.021457019614861232" ColorR="0.4867135045893307" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.7473328417901777" CentreY="0.2" CentreZ="0.7673199484028417" radius="0.2">
+        <Material ColorB="0.017750965635524637" ColorG="0.42034842595030697" ColorR="0.3109276504091724" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.9184652941222677" CentreY="0.2" CentreZ="1.7029487225739117" radius="0.2">
+        <Material ColorB="0.24120813723525897" ColorG="0.15033147902965197" ColorR="0.17299802959512844" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.7805928223391683" CentreY="0.2" CentreZ="2.1299597139556266" radius="0.2">
+        <Material ColorB="0.022633408077317008" ColorG="0.11497209597635989" ColorR="0.07434857774477771" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.6090292289426078" CentreY="0.2" CentreZ="3.7014961138749953" radius="0.2">
+        <Material ColorB="0.35971847401302237" ColorG="0.07311519612049902" ColorR="0.08764763775548928" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.710238490010981" CentreY="0.2" CentreZ="4.437571917444737" radius="0.2">
+        <Material ColorB="0.06698357095832085" ColorG="0.7232346994422436" ColorR="0.1079837139229622" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.958109174424969" CentreY="0.2" CentreZ="5.124506489612471" radius="0.2">
+        <Material ColorB="0.28869343622719784" ColorG="0.21696066875045278" ColorR="0.3253356881098496" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.245167966366832" CentreY="0.2" CentreZ="6.0627505222980975" radius="0.2">
+        <Material ColorB="0.29666190677482834" ColorG="0.5526046553912894" ColorR="0.6814860985174793" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.4099202016305634" CentreY="0.2" CentreZ="7.368230039516006" radius="0.2">
+        <Material ColorB="0.682611610246734" ColorG="0.8349193668493992" ColorR="0.7053188303129645" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.5378381802594543" CentreY="0.2" CentreZ="8.781731618869589" radius="0.2">
+        <Material ColorB="0.29202238669530867" ColorG="0.058165674797158465" ColorR="0.18979094954560188" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.3164821346137814" CentreY="0.2" CentreZ="9.416211739272882" radius="0.2">
+        <Material ColorB="0.34692090183452845" ColorG="0.380112641850392" ColorR="0.12991291110746442" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-1.6019346062654702" CentreY="0.2" CentreZ="10.55155814567065" radius="0.2">
+        <Material ColorB="0.1268129524029015" ColorG="0.01389281783786125" ColorR="0.30555285890782147" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.9328970591068318" CentreY="0.2" CentreZ="-10.820430000959913" radius="0.2">
+        <Material ColorB="0.07366557563718101" ColorG="0.0916829965132173" ColorR="0.21360288968460978" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.9393602249448239" CentreY="0.2" CentreZ="-9.673164179051371" radius="0.2">
+        <Material ColorB="0.04197319033187682" ColorG="0.7912503167926864" ColorR="0.015781819960522435" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.20291763036717025" CentreY="0.2" CentreZ="-8.21301575442706" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="-0.2412517598034366" CentreY="0.2" CentreZ="-7.363480441158697" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-0.6701502955634466" CentreY="0.2" CentreZ="-6.875882068709891" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-0.5945349638389621" CentreY="0.2" CentreZ="-5.231127343136385" radius="0.2">
+        <Material ColorB="0.1423797307826948" ColorG="0.36709896501785433" ColorR="0.28245175557495283" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.4235055198779901" CentreY="0.2" CentreZ="-4.958843478628844" radius="0.2">
+        <Material ColorB="0.3983121379447511" ColorG="0.0946595211569967" ColorR="0.1631903131199008" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.31258782978120836" CentreY="0.2" CentreZ="-3.444216012176631" radius="0.2">
+        <Material ColorB="0.005886304901564355" ColorG="0.21422837657752822" ColorR="0.6504513645463796" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.6867195914481429" CentreY="0.2" CentreZ="-2.6334282465589705" radius="0.2">
+        <Material ColorB="0.021500696482714767" ColorG="0.03004151016247292" ColorR="0.11585226305626721" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.7275814195399758" CentreY="0.2" CentreZ="-1.4685799028818813" radius="0.2">
+        <Material ColorB="0.27713163736937785" ColorG="0.47410970348779974" ColorR="0.7045167013000622" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.40530258745532655" CentreY="0.2" CentreZ="-0.8243694524800745" radius="0.2">
+        <Material ColorB="0.5112483227775639" ColorG="0.5620846293256985" ColorR="0.9936188385199424" fuzziness="0.1330514650515851" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-0.48243995036560616" CentreY="0.2" CentreZ="0.11222551206832217" radius="0.2">
+        <Material ColorB="0.014397461235488428" ColorG="0.5417632218809122" ColorR="0.10476336026019564" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.2827662669932073" CentreY="0.2" CentreZ="1.5382037128833488" radius="0.2">
+        <Material ColorB="0.41437174464806337" ColorG="0.0570934241562073" ColorR="0.1597765881078" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.38004606078317604" CentreY="0.2" CentreZ="2.456036225464116" radius="0.2">
+        <Material ColorB="0.6057357671503556" ColorG="0.25347035599825884" ColorR="0.10199896201537514" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.8397119975604033" CentreY="0.2" CentreZ="3.1955221283132844" radius="0.2">
+        <Material ColorB="0.05699639298015624" ColorG="0.062233884559994734" ColorR="0.20059765562621168" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.4283067341049802" CentreY="0.2" CentreZ="4.123827250280076" radius="0.2">
+        <Material ColorB="0.11710913583033969" ColorG="0.1544290776931233" ColorR="0.5968128456430444" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.7450344470985586" CentreY="0.2" CentreZ="5.16216522215595" radius="0.2">
+        <Material ColorB="0.0465162472186361" ColorG="0.012824627656354564" ColorR="0.02116471882886164" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.690517378584977" CentreY="0.2" CentreZ="6.630593121336159" radius="0.2">
+        <Material ColorB="0.5480318929954857" ColorG="7.910910293756814E-4" ColorR="0.46641619319250377" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.6947424411901615" CentreY="0.2" CentreZ="7.752044373820678" radius="0.2">
+        <Material ColorB="0.023107585073189333" ColorG="0.008500970825599068" ColorR="0.09501683678444571" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.5462481648757405" CentreY="0.2" CentreZ="8.149232634840324" radius="0.2">
+        <Material ColorB="0.010034897308567797" ColorG="0.20265897983442144" ColorR="0.31404393265627517" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.3496136233117172" CentreY="0.2" CentreZ="9.786730325694883" radius="0.2">
+        <Material ColorB="0.5567839078718724" ColorG="0.1546927624168964" ColorR="0.4634007258877515" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="-0.3755920111413097" CentreY="0.2" CentreZ="10.531594890205739" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="0.2475064608731078" CentreY="0.2" CentreZ="-10.565811456290332" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="0.06653702352022775" CentreY="0.2" CentreZ="-9.322680846562486" radius="0.2">
+        <Material ColorB="0.37491943060974064" ColorG="0.6849178723851395" ColorR="0.1080561005761632" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.27420386967357263" CentreY="0.2" CentreZ="-8.239695081964145" radius="0.2">
+        <Material ColorB="0.43309076258276213" ColorG="0.0049075861697602" ColorR="0.32124254909128924" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.6679536934111668" CentreY="0.2" CentreZ="-7.406469082635458" radius="0.2">
+        <Material ColorB="0.02032620400990975" ColorG="0.04439778864637935" ColorR="0.013002216964628657" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.25399971980940567" CentreY="0.2" CentreZ="-6.991875587105323" radius="0.2">
+        <Material ColorB="0.443182473060166" ColorG="0.05456581912261168" ColorR="0.2757257996931945" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.33009075661760456" CentreY="0.2" CentreZ="-5.300350778619846" radius="0.2">
+        <Material ColorB="0.3208986551536044" ColorG="0.31596709215097135" ColorR="0.03258607097092268" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.14445437567751923" CentreY="0.2" CentreZ="-4.324405869110203" radius="0.2">
+        <Material ColorB="0.33691825073210246" ColorG="0.022719440883572573" ColorR="0.46565287029114305" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.732594099395814" CentreY="0.2" CentreZ="-3.2366771035337063" radius="0.2">
+        <Material ColorB="0.27458651862885936" ColorG="0.5801816071326306" ColorR="0.10173044246990905" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.5465395680737988" CentreY="0.2" CentreZ="-2.993788862652531" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="0.658119408293232" CentreY="0.2" CentreZ="-1.88970313529452" radius="0.2">
+        <Material ColorB="0.0576605581039064" ColorG="0.25233128462463755" ColorR="0.3858284443846164" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.2312966894054662" CentreY="0.2" CentreZ="-0.7825169011875509" radius="0.2">
+        <Material ColorB="0.0545670717033149" ColorG="0.037675714609205005" ColorR="0.2518364895521153" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.4167733874841438" CentreY="0.2" CentreZ="0.7405458176892705" radius="0.2">
+        <Material ColorB="0.0513016436179412" ColorG="0.40254428699003975" ColorR="0.739273433232474" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.618400256319102" CentreY="0.2" CentreZ="1.7443613116610106" radius="0.2">
+        <Material ColorB="0.3926023026444461" ColorG="0.20593909711319625" ColorR="0.2728694391679356" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.04554004316873375" CentreY="0.2" CentreZ="2.288490685387808" radius="0.2">
+        <Material ColorB="0.14290791968379532" ColorG="0.12333366269040424" ColorR="0.22018472907193082" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.03848636593184632" CentreY="0.2" CentreZ="3.644231331398923" radius="0.2">
+        <Material ColorB="0.12421909388922854" ColorG="0.46529544436871184" ColorR="0.556024323450714" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.25809485711623764" CentreY="0.2" CentreZ="4.2852090278828925" radius="0.2">
+        <Material ColorB="0.17601608819165607" ColorG="0.14928908710785346" ColorR="0.7346210306983948" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.5746214530143736" CentreY="0.2" CentreZ="5.785513535694433" radius="0.2">
+        <Material ColorB="0.018187907290858285" ColorG="0.00639851643992529" ColorR="0.17417408615438526" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.6820729324112627" CentreY="0.2" CentreZ="6.273848048435228" radius="0.2">
+        <Material ColorB="0.02704083628322413" ColorG="0.18228144451046646" ColorR="0.413075703657182" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.6276575361658017" CentreY="0.2" CentreZ="7.51909596390632" radius="0.2">
+        <Material ColorB="0.04274387654879073" ColorG="0.14109919932904702" ColorR="0.214299219707492" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.12717433283970472" CentreY="0.2" CentreZ="8.527465842268274" radius="0.2">
+        <Material ColorB="0.3704886155254256" ColorG="0.016562043196961366" ColorR="0.12273671494166337" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.04750303741322819" CentreY="0.2" CentreZ="9.419870085617841" radius="0.2">
+        <Material ColorB="0.3509497057125022" ColorG="0.4014281541110107" ColorR="0.17923245179834457" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.689749905457926" CentreY="0.2" CentreZ="10.662495818664434" radius="0.2">
+        <Material ColorB="0.036728361997195674" ColorG="0.05057293723578101" ColorR="0.24491146838422706" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.704671123612023" CentreY="0.2" CentreZ="-10.957468810819899" radius="0.2">
+        <Material ColorB="0.006035156378808397" ColorG="0.054776791856946894" ColorR="0.24580388034807324" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.178738696835144" CentreY="0.2" CentreZ="-9.670680250690506" radius="0.2">
+        <Material ColorB="0.7742313717337974" ColorG="0.5548145297081863" ColorR="0.7250655127723349" fuzziness="0.370578121784175" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="1.0198196411955451" CentreY="0.2" CentreZ="-8.642174311052628" radius="0.2">
+        <Material ColorB="0.392109757915535" ColorG="4.23649023240389E-4" ColorR="0.3283070031669942" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.4950683032831802" CentreY="0.2" CentreZ="-7.745534226555356" radius="0.2">
+        <Material ColorB="0.6635643613297826" ColorG="0.5015869385809858" ColorR="0.07772320203205128" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.150827801915889" CentreY="0.2" CentreZ="-6.897976091877442" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="1.3402883738677354" CentreY="0.2" CentreZ="-5.672295726204824" radius="0.2">
+        <Material ColorB="0.12293141593477871" ColorG="0.06353682745084838" ColorR="0.8424833950228963" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.2071802956416873" CentreY="0.2" CentreZ="-4.495881164152515" radius="0.2">
+        <Material ColorB="0.5730795922969656" ColorG="0.6360393424892896" ColorR="0.5446401468841311" fuzziness="0.34101650133760636" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="1.2654745196420998" CentreY="0.2" CentreZ="-3.832337266937469" radius="0.2">
+        <Material ColorB="0.6828487786135216" ColorG="0.23202521815905655" ColorR="0.16618734928005757" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.2194126809289436" CentreY="0.2" CentreZ="-2.458047306638737" radius="0.2">
+        <Material ColorB="0.3851263269345429" ColorG="0.23147875457043135" ColorR="0.12237785240961857" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.5158226980385425" CentreY="0.2" CentreZ="-1.9692994552614265" radius="0.2">
+        <Material ColorB="0.23979450292989277" ColorG="0.23186223787290255" ColorR="0.24449927885440098" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.2515820047649981" CentreY="0.2" CentreZ="-0.7397443745704726" radius="0.2">
+        <Material ColorB="0.29175955646108004" ColorG="0.4662260792865404" ColorR="0.6608280726737448" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.253649463335569" CentreY="0.2" CentreZ="0.7540785444916843" radius="0.2">
+        <Material ColorB="0.46916437058542454" ColorG="0.023342470421654608" ColorR="0.3068530804793602" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.7180121133621777" CentreY="0.2" CentreZ="1.5351218134806939" radius="0.2">
+        <Material ColorB="0.7156502681460383" ColorG="0.09117619454199005" ColorR="0.0366350160239552" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.6370136600236078" CentreY="0.2" CentreZ="2.2574293274356614" radius="0.2">
+        <Material ColorB="0.7726025103887185" ColorG="0.5807311529143409" ColorR="0.6084264156411407" fuzziness="0.050439672488484244" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="1.3590945951569182" CentreY="0.2" CentreZ="3.0952514939691196" radius="0.2">
+        <Material ColorB="0.011704962641236862" ColorG="0.02311729851303905" ColorR="0.06534275081925996" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.3056180224582559" CentreY="0.2" CentreZ="4.204880809554746" radius="0.2">
+        <Material ColorB="0.8829121026538326" ColorG="0.062195194060427554" ColorR="0.10321131470850435" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.1945329644692066" CentreY="0.2" CentreZ="5.706205167355595" radius="0.2">
+        <Material ColorB="0.1460511366424498" ColorG="0.09727175107590051" ColorR="0.1758040776777342" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.385248865000078" CentreY="0.2" CentreZ="6.295183916219837" radius="0.2">
+        <Material ColorB="0.532251719670151" ColorG="0.5358490449185801" ColorR="0.021196423302455702" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.2770661128224159" CentreY="0.2" CentreZ="7.730357333775032" radius="0.2">
+        <Material ColorB="0.34032128179865606" ColorG="0.4150357813812466" ColorR="0.38343505399001837" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.6657563328528877" CentreY="0.2" CentreZ="8.65025159167532" radius="0.2">
+        <Material ColorB="0.6743631932505418" ColorG="0.7197434809784538" ColorR="0.9451764914752583" fuzziness="0.4154168870514823" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="1.6455293943739928" CentreY="0.2" CentreZ="9.068028948710706" radius="0.2">
+        <Material ColorB="0.6371850321459738" ColorG="0.6529997465354966" ColorR="0.9873905175718132" fuzziness="0.2808337681124279" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="1.340766325792674" CentreY="0.2" CentreZ="10.698153463169081" radius="0.2">
+        <Material ColorB="0.20275437981076638" ColorG="0.4031864930180048" ColorR="0.07763013339294904" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.4002787968351336" CentreY="0.2" CentreZ="-10.866085187976363" radius="0.2">
+        <Material ColorB="0.040372485785192404" ColorG="0.4132511679773156" ColorR="0.3115674329491248" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.5785057270008687" CentreY="0.2" CentreZ="-9.403229767109789" radius="0.2">
+        <Material ColorB="0.017332792374509607" ColorG="0.120832442775679" ColorR="0.20641121642646149" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.388074398750958" CentreY="0.2" CentreZ="-8.872788737801677" radius="0.2">
+        <Material ColorB="0.0010792051675777494" ColorG="0.15695942141379718" ColorR="0.20055905161477167" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.1310007204667025" CentreY="0.2" CentreZ="-7.97555126649455" radius="0.2">
+        <Material ColorB="0.07377730892347686" ColorG="0.6941936602289864" ColorR="0.5830706885281917" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.684058019272418" CentreY="0.2" CentreZ="-6.357728452661784" radius="0.2">
+        <Material ColorB="0.33715690351027994" ColorG="0.3548751274388117" ColorR="0.485373622990476" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.32523016855389" CentreY="0.2" CentreZ="-5.909701799332516" radius="0.2">
+        <Material ColorB="0.11760980027003208" ColorG="0.09424355730402297" ColorR="0.14005754820259617" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.1980826035404752" CentreY="0.2" CentreZ="-4.573847298797964" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="2.1157113671239363" CentreY="0.2" CentreZ="-3.360641798317891" radius="0.2">
+        <Material ColorB="0.6039582254995597" ColorG="0.8795359230499395" ColorR="0.842610544765624" fuzziness="0.004452946638418165" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="2.1709206489009825" CentreY="0.2" CentreZ="-2.32669164112945" radius="0.2">
+        <Material ColorB="0.03823028691195267" ColorG="0.6231892460458052" ColorR="0.061085287778953896" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.4366459192513004" CentreY="0.2" CentreZ="-1.8465575642907908" radius="0.2">
+        <Material ColorB="0.44097604332623674" ColorG="0.16632801560525687" ColorR="0.5300549778721072" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.3379356610211017" CentreY="0.2" CentreZ="-0.5885477343828003" radius="0.2">
+        <Material ColorB="0.0571807243891762" ColorG="0.1539002028047202" ColorR="0.9586425288767215" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.5267589928311684" CentreY="0.2" CentreZ="0.33726977908273786" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="2.488986433949073" CentreY="0.2" CentreZ="1.335297050171409" radius="0.2">
+        <Material ColorB="0.09929034986162359" ColorG="0.05088829913821419" ColorR="0.013722079861450924" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.038981124731284" CentreY="0.2" CentreZ="2.691913267783859" radius="0.2">
+        <Material ColorB="0.9825156410640776" ColorG="0.9185817622606615" ColorR="0.5510515899813548" fuzziness="0.05415233665683239" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="2.4211185458559195" CentreY="0.2" CentreZ="3.562522909683479" radius="0.2">
+        <Material ColorB="0.4456940449004832" ColorG="0.13887284580016282" ColorR="0.2508562703247234" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.700732946235817" CentreY="0.2" CentreZ="4.714121190853079" radius="0.2">
+        <Material ColorB="0.04047637686342638" ColorG="0.2550984396322132" ColorR="0.43358905034565004" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.6994750051929066" CentreY="0.2" CentreZ="5.61012584614488" radius="0.2">
+        <Material ColorB="0.14256335122720612" ColorG="0.05465506137368307" ColorR="0.6115015003228327" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.5231025362043025" CentreY="0.2" CentreZ="6.505820988530834" radius="0.2">
+        <Material ColorB="0.026726624541581916" ColorG="0.15783279459414679" ColorR="0.5075951207579569" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.169194317261466" CentreY="0.2" CentreZ="7.199127292477152" radius="0.2">
+        <Material ColorB="0.92473486892462" ColorG="0.8367657790525402" ColorR="0.9870255161059247" fuzziness="0.02085436024850218" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="2.446491816499631" CentreY="0.2" CentreZ="8.059385543004769" radius="0.2">
+        <Material ColorB="0.31036867935956153" ColorG="0.003419200483137169" ColorR="0.022368929173330353" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="2.4941833138280236" CentreY="0.2" CentreZ="9.170150977200484" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="2.343122623638167" CentreY="0.2" CentreZ="10.02260367409567" radius="0.2">
+        <Material ColorB="0.3579677102164553" ColorG="0.0031323963354274293" ColorR="0.10429755847883143" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.525713350126821" CentreY="0.2" CentreZ="-10.84188349546053" radius="0.2">
+        <Material ColorB="0.46358116739483723" ColorG="0.11780732172503763" ColorR="0.04524224882722315" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.6489286810067907" CentreY="0.2" CentreZ="-9.796240103658649" radius="0.2">
+        <Material ColorB="0.16004247743507366" ColorG="0.1790775555282239" ColorR="0.06424474112012918" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.2806883998789087" CentreY="0.2" CentreZ="-8.95622542264555" radius="0.2">
+        <Material ColorB="0.6160358912071824" ColorG="0.08178267611107896" ColorR="0.0890410663895118" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.320882734462499" CentreY="0.2" CentreZ="-7.532052891179258" radius="0.2">
+        <Material ColorB="0.013103143264891502" ColorG="0.16930491486772445" ColorR="0.09358169053379702" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.3086419024539087" CentreY="0.2" CentreZ="-6.310476916189853" radius="0.2">
+        <Material ColorB="0.2758643160970139" ColorG="0.30022756731034783" ColorR="0.012803520849822858" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.3318491702931192" CentreY="0.2" CentreZ="-5.959882403193444" radius="0.2">
+        <Material ColorB="0.011799322361638845" ColorG="0.14079111098126268" ColorR="0.2602396158856065" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.0365790290288848" CentreY="0.2" CentreZ="-4.565256855862099" radius="0.2">
+        <Material ColorB="0.27155310322361675" ColorG="0.3492840262702318" ColorR="0.31714309499916943" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.32345682625301" CentreY="0.2" CentreZ="-3.5003301199628787" radius="0.2">
+        <Material ColorB="0.3090419018144083" ColorG="0.2798717225403474" ColorR="0.7953331091300437" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.6996487664313302" CentreY="0.2" CentreZ="-2.6065083596950407" radius="0.2">
+        <Material ColorB="0.0022089537567565997" ColorG="0.1257095978259771" ColorR="0.5623461773472489" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.624997482705501" CentreY="0.2" CentreZ="-1.4379095053211977" radius="0.2">
+        <Material ColorB="0.2812392519695939" ColorG="0.16999850222734875" ColorR="0.71185815714853" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.613877994025619" CentreY="0.2" CentreZ="1.4333834685402687" radius="0.2">
+        <Material ColorB="0.004979779459316209" ColorG="0.10238626583048674" ColorR="0.09291361072055467" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.021747712680738" CentreY="0.2" CentreZ="2.170334465321525" radius="0.2">
+        <Material ColorB="0.9581122896157437" ColorG="0.6281107296910569" ColorR="0.9975268187541093" fuzziness="0.3583693828723985" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="3.186047504428311" CentreY="0.2" CentreZ="3.32962413615282" radius="0.2">
+        <Material ColorB="0.4927487762092384" ColorG="0.28357804179876256" ColorR="0.09089741450347331" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.505038923859964" CentreY="0.2" CentreZ="4.054436577959461" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="3.065115910225363" CentreY="0.2" CentreZ="5.126884916011303" radius="0.2">
+        <Material ColorB="0.599371632763425" ColorG="0.04278917144249939" ColorR="0.7624844943971031" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.7280274346262026" CentreY="0.2" CentreZ="6.188185665903526" radius="0.2">
+        <Material ColorB="0.5803024896033999" ColorG="0.0016935074154989943" ColorR="0.042762892984974106" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.467035498983228" CentreY="0.2" CentreZ="7.585342313647376" radius="0.2">
+        <Material ColorB="0.07634372049811401" ColorG="0.015980548343731287" ColorR="0.20275903829150038" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.20497093726186" CentreY="0.2" CentreZ="8.451685307156342" radius="0.2">
+        <Material ColorB="0.3176107269281616" ColorG="0.5409791327210859" ColorR="0.1648811991874177" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="3.5385683950746722" CentreY="0.2" CentreZ="9.713239030928468" radius="0.2">
+        <Material ColorB="0.8747449555813414" ColorG="0.9829372304070352" ColorR="0.9548589902494586" fuzziness="0.45903868713178503" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="3.6992360234250308" CentreY="0.2" CentreZ="10.014530479162204" radius="0.2">
+        <Material ColorB="0.7800763648527466" ColorG="0.5536544221893785" ColorR="0.6760649660645752" fuzziness="0.3848943685614383" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="4.01292972772447" CentreY="0.2" CentreZ="-10.216805049124394" radius="0.2">
+        <Material ColorB="0.3733528809293349" ColorG="0.32333909948655504" ColorR="0.1446715095958639" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.524891740239559" CentreY="0.2" CentreZ="-9.982519179528964" radius="0.2">
+        <Material ColorB="0.005532823301085528" ColorG="0.09715736813238311" ColorR="0.6868525397814201" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.32302685387312" CentreY="0.2" CentreZ="-8.9993469067227" radius="0.2">
+        <Material ColorB="0.03127069733803695" ColorG="0.20369412128005113" ColorR="5.7366540480448E-4" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.304376458181676" CentreY="0.2" CentreZ="-7.801954727312227" radius="0.2">
+        <Material ColorB="0.17430486302260448" ColorG="0.2658711201413618" ColorR="0.2120052930013733" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.329495646678573" CentreY="0.2" CentreZ="-6.621673952898152" radius="0.2">
+        <Material ColorB="0.13969895931385487" ColorG="0.04765747147194225" ColorR="0.0011538007503155447" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.1926561438994305" CentreY="0.2" CentreZ="-5.4276849422822915" radius="0.2">
+        <Material ColorB="0.05498854620268358" ColorG="0.3086076956593958" ColorR="0.5026574311805395" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.259999604551158" CentreY="0.2" CentreZ="-4.2785836967283375" radius="0.2">
+        <Material ColorB="0.15595607925261235" ColorG="0.22617231770649057" ColorR="0.25965296833102447" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.09860226141679" CentreY="0.2" CentreZ="-3.2978412018085295" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="4.527929119911021" CentreY="0.2" CentreZ="-2.545819101982276" radius="0.2">
+        <Material ColorB="0.1999992049850369" ColorG="0.1271820100295042" ColorR="0.3558499901434188" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.002387986909973" CentreY="0.2" CentreZ="-1.8630008874941113" radius="0.2">
+        <Material ColorB="0.07490158576014389" ColorG="0.11835491134872776" ColorR="0.2960638479209156" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.7329675857666045" CentreY="0.2" CentreZ="1.7328521142297393" radius="0.2">
+        <Material ColorB="0.15019999738900042" ColorG="0.00678348412569588" ColorR="0.2693287519050473" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.302795771911838" CentreY="0.2" CentreZ="2.099474113974613" radius="0.2">
+        <Material ColorB="0.32240511221949025" ColorG="0.13830430220639456" ColorR="0.055825545028411284" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.5830978435405445" CentreY="0.2" CentreZ="3.548028659748188" radius="0.2">
+        <Material ColorB="4.114884599125896E-4" ColorG="0.8883229261635368" ColorR="0.2900819314313079" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.721947819496949" CentreY="0.2" CentreZ="4.096406615958864" radius="0.2">
+        <Material ColorB="0.01750920676885953" ColorG="0.0397252001849366" ColorR="0.21605670643017644" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.694908125035344" CentreY="0.2" CentreZ="5.669248426300872" radius="0.2">
+        <Material ColorB="0.09309411740394427" ColorG="0.03972478209167893" ColorR="0.20489567929321412" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.316383504745949" CentreY="0.2" CentreZ="6.195370229927622" radius="0.2">
+        <Material ColorB="0.3959208311099948" ColorG="0.4479750619484777" ColorR="0.07492957132172141" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.3666846043209615" CentreY="0.2" CentreZ="7.016672697681661" radius="0.2">
+        <Material ColorB="0.5076567096370381" ColorG="0.19184096183794883" ColorR="0.5200215642951275" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.464279717607721" CentreY="0.2" CentreZ="8.515000347128995" radius="0.2">
+        <Material ColorB="0.7487498544434336" ColorG="0.04520426634373101" ColorR="0.021650313638403154" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.612552972703842" CentreY="0.2" CentreZ="9.012742918848891" radius="0.2">
+        <Material ColorB="0.18834275495934438" ColorG="0.04759244198342532" ColorR="0.4434440682023046" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.050658106811422" CentreY="0.2" CentreZ="10.69827502330432" radius="0.2">
+        <Material ColorB="0.5907500273263526" ColorG="0.7324976442268525" ColorR="0.8501127340505923" fuzziness="0.2294583443535954" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="5.793173293936181" CentreY="0.2" CentreZ="-10.374167878455872" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="5.240693889311685" CentreY="0.2" CentreZ="-9.859073272671324" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="5.195168973463891" CentreY="0.2" CentreZ="-8.440281982801963" radius="0.2">
+        <Material ColorB="0.20221495570775214" ColorG="0.2579513504796666" ColorR="0.14703659286604087" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.043398821427809" CentreY="0.2" CentreZ="-7.716705808260245" radius="0.2">
+        <Material ColorB="0.07163187414598833" ColorG="0.23733489737103242" ColorR="0.1586983684792125" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.376337171523539" CentreY="0.2" CentreZ="-6.30014804211294" radius="0.2">
+        <Material ColorB="0.37404919263078384" ColorG="0.022213113894002618" ColorR="0.12027418677664141" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.503236120907575" CentreY="0.2" CentreZ="-5.399323478983495" radius="0.2">
+        <Material ColorB="0.5798633481314455" ColorG="0.02672425966670369" ColorR="0.060332728012128495" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.662047054587712" CentreY="0.2" CentreZ="-4.24187505131212" radius="0.2">
+        <Material ColorB="0.13842504953259244" ColorG="0.0022923796404398745" ColorR="0.29919878977451064" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.6677087006168065" CentreY="0.2" CentreZ="-3.240341985235947" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="5.715198950859929" CentreY="0.2" CentreZ="-2.228182826535631" radius="0.2">
+        <Material ColorB="0.5849675294073045" ColorG="0.9320947145503837" ColorR="0.735130966682899" fuzziness="0.037054029745932526" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="5.3598130873894645" CentreY="0.2" CentreZ="-1.6942673690068872" radius="0.2">
+        <Material ColorB="0.12306167200050631" ColorG="0.720305989670521" ColorR="0.055358725619043564" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.649811547040163" CentreY="0.2" CentreZ="-0.5376277231988988" radius="0.2">
+        <Material ColorB="0.7246195885788235" ColorG="0.27424672964830676" ColorR="0.05664359926324708" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.753118619074909" CentreY="0.2" CentreZ="0.18900993780540684" radius="0.2">
+        <Material ColorB="0.3497388603634097" ColorG="0.04586149887146182" ColorR="0.02289923133133276" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.316782091461991" CentreY="0.2" CentreZ="1.0654916758330948" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="5.300878210135278" CentreY="0.2" CentreZ="2.4275345215073867" radius="0.2">
+        <Material ColorB="0.4457151457474895" ColorG="0.15513216280331107" ColorR="0.08301962212711747" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.1318224291074515" CentreY="0.2" CentreZ="3.2804667104766705" radius="0.2">
+        <Material ColorB="0.8388410348070462" ColorG="0.7333895924460015" ColorR="0.724777367028872" fuzziness="0.11766669066130048" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="5.776702388757301" CentreY="0.2" CentreZ="4.652746818288537" radius="0.2">
+        <Material ColorB="0.4548178036479792" ColorG="0.3041500539283189" ColorR="0.028863176625848534" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.109825500103007" CentreY="0.2" CentreZ="5.22962389556369" radius="0.2">
+        <Material ColorB="0.19170219156242316" ColorG="0.07832767128724924" ColorR="0.04990890600865422" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.037206456626905" CentreY="0.2" CentreZ="6.305042919719625" radius="0.2">
+        <Material ColorB="0.1264072475170041" ColorG="0.05896503171397716" ColorR="0.03413464980190728" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.172447564008452" CentreY="0.2" CentreZ="7.315654314262108" radius="0.2">
+        <Material ColorB="0.0034606369458843353" ColorG="0.20670651126432948" ColorR="0.7864883162462896" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.328839353868057" CentreY="0.2" CentreZ="8.407172768824275" radius="0.2">
+        <Material ColorB="0.006768502903422272" ColorG="0.009754651116147118" ColorR="0.023659803690758596" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.099590086289412" CentreY="0.2" CentreZ="9.49555782658259" radius="0.2">
+        <Material ColorB="0.29304871008374983" ColorG="0.052501537148870826" ColorR="0.18946183121027393" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="5.346160198595811" CentreY="0.2" CentreZ="10.412834699796738" radius="0.2">
+        <Material ColorB="0.029229109733628713" ColorG="0.14001050949906482" ColorR="0.1365853619715547" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.4604383420839255" CentreY="0.2" CentreZ="-10.301707147006343" radius="0.2">
+        <Material ColorB="0.12952779743084786" ColorG="0.35189243797564096" ColorR="0.02712218694218956" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.065752372950069" CentreY="0.2" CentreZ="-9.510553486190446" radius="0.2">
+        <Material ColorB="0.4654815651775863" ColorG="0.25705633068721506" ColorR="0.057580074651409935" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.470836317331319" CentreY="0.2" CentreZ="-8.233593141554032" radius="0.2">
+        <Material ColorB="0.08313931671770576" ColorG="0.24083295227545662" ColorR="0.2348126734752596" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.608347965746795" CentreY="0.2" CentreZ="-7.55297661372187" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="6.059062177980587" CentreY="0.2" CentreZ="-6.399571549824249" radius="0.2">
+        <Material ColorB="0.672752230026587" ColorG="0.44903259564666176" ColorR="0.5273315885589271" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.2934450795262125" CentreY="0.2" CentreZ="-5.610139950339354" radius="0.2">
+        <Material ColorB="0.6818680182416398" ColorG="0.5732302916054445" ColorR="0.5035116194370317" fuzziness="0.3411146444292043" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="6.0597466078759" CentreY="0.2" CentreZ="-4.8737334958973255" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="6.247648123489434" CentreY="0.2" CentreZ="-3.406081033412331" radius="0.2">
+        <Material ColorB="0.22312352588343395" ColorG="0.012787996452394979" ColorR="0.47083022410797715" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.44364737598738" CentreY="0.2" CentreZ="-2.962061574510896" radius="0.2">
+        <Material ColorB="0.44853126001307975" ColorG="0.33925346549838414" ColorR="0.22106027103903986" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.212329659722409" CentreY="0.2" CentreZ="-1.5426618583773162" radius="0.2">
+        <Material ColorB="0.04919847136390762" ColorG="0.19845342412052452" ColorR="0.4320879430997135" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.669946574428415" CentreY="0.2" CentreZ="-0.6266160943932908" radius="0.2">
+        <Material ColorB="0.6027058894337758" ColorG="0.6707385426953653" ColorR="0.8485494383192531" fuzziness="0.38156355309973106" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="6.545083634861481" CentreY="0.2" CentreZ="0.5432858996650055" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="6.281532003027038" CentreY="0.2" CentreZ="1.1410283769385432" radius="0.2">
+        <Material ColorB="0.1810284668268683" ColorG="0.23738159320560825" ColorR="0.1244298516562012" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.401380756666988" CentreY="0.2" CentreZ="2.7325306212807026" radius="0.2">
+        <Material ColorB="0.01873294215540917" ColorG="0.0035467687704404016" ColorR="0.3067810423402835" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.020140094746979" CentreY="0.2" CentreZ="3.452121690209064" radius="0.2">
+        <Material ColorB="0.5895626205075192" ColorG="0.5309928448426319" ColorR="0.41160313968195256" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.523900993760957" CentreY="0.2" CentreZ="4.268713679836177" radius="0.2">
+        <Material ColorB="0.26704380895577645" ColorG="0.4174385739365082" ColorR="0.2967597969994465" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.54871052311397" CentreY="0.2" CentreZ="5.522132909979844" radius="0.2">
+        <Material ColorB="0.07596946624083264" ColorG="0.11470739782161424" ColorR="0.259736942632258" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.3420737798286515" CentreY="0.2" CentreZ="6.130900492961645" radius="0.2">
+        <Material ColorB="0.9021792850663404" ColorG="0.05549514701928969" ColorR="0.5195604275300071" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.61560840965355" CentreY="0.2" CentreZ="7.291374490893794" radius="0.2">
+        <Material ColorB="0.0030342129220471705" ColorG="0.23912638993066462" ColorR="0.39532501031938755" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.530019541456866" CentreY="0.2" CentreZ="8.52767345339196" radius="0.2">
+        <Material ColorB="0.1854871197689849" ColorG="0.18802910594660568" ColorR="0.1300105258767858" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.26985456792828" CentreY="0.2" CentreZ="9.643741706665645" radius="0.2">
+        <Material ColorB="0.30197654146589237" ColorG="0.2422798284787911" ColorR="0.41596936817017943" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="6.255796801612784" CentreY="0.2" CentreZ="10.151890745559522" radius="0.2">
+        <Material ColorB="0.17154108966481982" ColorG="0.008263299649707208" ColorR="0.5791846759009283" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.664060123166083" CentreY="0.2" CentreZ="-10.267319857593867" radius="0.2">
+        <Material ColorB="0.6017292176017901" ColorG="0.31067186916536166" ColorR="0.033726167215471156" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.6781040118037955" CentreY="0.2" CentreZ="-9.416523071514629" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="7.79968736750265" CentreY="0.2" CentreZ="-8.312966058556173" radius="0.2">
+        <Material ColorB="0.03122470742380995" ColorG="0.18938781283488174" ColorR="0.2267771576502655" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.3173498626371645" CentreY="0.2" CentreZ="-7.564502465507228" radius="0.2">
+        <Material ColorB="0.01113459974302289" ColorG="0.31303257462252904" ColorR="0.06690024120909921" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.008328047705452" CentreY="0.2" CentreZ="-6.703045435635629" radius="0.2">
+        <Material ColorB="0.7192468794864215" ColorG="0.36143700878981" ColorR="0.021323668301095538" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.088533900777504" CentreY="0.2" CentreZ="-5.698678091547417" radius="0.2">
+        <Material ColorB="0.043762047585248535" ColorG="0.6597823786228212" ColorR="0.15602147298172997" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.531195256482956" CentreY="0.2" CentreZ="-4.450696263736376" radius="0.2">
+        <Material ColorB="0.6781452157765923" ColorG="0.26144579712687543" ColorR="0.09991978284078211" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.291193816846" CentreY="0.2" CentreZ="-3.9179818294104862" radius="0.2">
+        <Material ColorB="0.12513290295008195" ColorG="0.3482985673576397" ColorR="0.42234861472687607" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.722910592557354" CentreY="0.2" CentreZ="-2.5256566803735447" radius="0.2">
+        <Material ColorB="0.18641446064710127" ColorG="0.21090116291884634" ColorR="0.4635864330968834" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.4875457524140305" CentreY="0.2" CentreZ="-1.8996213788999203" radius="0.2">
+        <Material ColorB="0.8471725438081251" ColorG="0.020495551292260872" ColorR="0.6086939789007914" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.5153165075217565" CentreY="0.2" CentreZ="-0.2561282435745207" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="7.459366230703377" CentreY="0.2" CentreZ="0.27444865094927867" radius="0.2">
+        <Material ColorB="0.1960671741131215" ColorG="0.43910518091157297" ColorR="0.1678165992631484" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.462712190582941" CentreY="0.2" CentreZ="1.4352975435009756" radius="0.2">
+        <Material ColorB="0.00983005965588382" ColorG="0.7377728562078444" ColorR="0.6763860324701542" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.282719523958156" CentreY="0.2" CentreZ="2.0508233635058364" radius="0.2">
+        <Material ColorB="0.31599224559753175" ColorG="0.33476730876898725" ColorR="0.14334150738979107" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.439886332725998" CentreY="0.2" CentreZ="3.1460835187467193" radius="0.2">
+        <Material ColorB="0.5559475443080677" ColorG="0.5796539062284004" ColorR="0.11109873374394424" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.698999766537412" CentreY="0.2" CentreZ="4.340852073662657" radius="0.2">
+        <Material ColorB="0.3162839139838939" ColorG="0.10300823651499864" ColorR="0.4279289539361966" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.3734759287185305" CentreY="0.2" CentreZ="5.699935245605255" radius="0.2">
+        <Material ColorB="0.09822479829411934" ColorG="0.2431257170521996" ColorR="0.014616789612434703" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.514292973990453" CentreY="0.2" CentreZ="6.315921843838501" radius="0.2">
+        <Material ColorB="0.34656979387041786" ColorG="0.6432876081186105" ColorR="0.1465534321301687" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.430932759773015" CentreY="0.2" CentreZ="7.608462170222315" radius="0.2">
+        <Material ColorB="0.035107340035185786" ColorG="0.10898446179964635" ColorR="0.0012601951014105676" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.204175010641359" CentreY="0.2" CentreZ="8.521085051478973" radius="0.2">
+        <Material ColorB="0.6315193587504319" ColorG="0.6882386314671257" ColorR="0.8427116849983095" fuzziness="0.49940415201231664" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="7.421538375161524" CentreY="0.2" CentreZ="9.165941248444193" radius="0.2">
+        <Material ColorB="0.09746589669548715" ColorG="0.2951807740308009" ColorR="0.13972608552903204" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="7.369352046564183" CentreY="0.2" CentreZ="10.524186741445808" radius="0.2">
+        <Material ColorB="0.05317607243015076" ColorG="0.18108916799820624" ColorR="0.16812353573834746" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.393665581667673" CentreY="0.2" CentreZ="-10.296297477254008" radius="0.2">
+        <Material ColorB="0.15910823153480086" ColorG="0.024871791314984248" ColorR="0.42580035958694684" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.233856098392506" CentreY="0.2" CentreZ="-9.733085677474817" radius="0.2">
+        <Material ColorB="0.12417376456499633" ColorG="0.07055071824572344" ColorR="0.332642724884909" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.717894921997338" CentreY="0.2" CentreZ="-8.844745765986106" radius="0.2">
+        <Material ColorB="0.11090130319758855" ColorG="0.05956695273726254" ColorR="0.4953485328642814" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.262206560514356" CentreY="0.2" CentreZ="-7.881601890475398" radius="0.2">
+        <Material ColorB="0.4034804719353319" ColorG="0.36491626501810565" ColorR="0.012361882927465774" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.017377275367663" CentreY="0.2" CentreZ="-6.497532678609662" radius="0.2">
+        <Material ColorB="0.02093768826490486" ColorG="0.03374149618357523" ColorR="0.014121472127975257" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.253069184773974" CentreY="0.2" CentreZ="-5.562070894535588" radius="0.2">
+        <Material ColorB="0.19323411332117493" ColorG="0.046921863532910855" ColorR="0.5430703555390233" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.457827551806355" CentreY="0.2" CentreZ="-4.243426362950121" radius="0.2">
+        <Material ColorB="0.06862867168096025" ColorG="0.03342268703831168" ColorR="0.4326976163955587" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.518035113249482" CentreY="0.2" CentreZ="-3.5295860524173106" radius="0.2">
+        <Material ColorB="0.07431051597383449" ColorG="0.11508726230090828" ColorR="0.09659473253109822" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.006625477559519" CentreY="0.2" CentreZ="-2.633272164481285" radius="0.2">
+        <Material ColorB="0.2759287913107067" ColorG="0.0034608157931235897" ColorR="0.788065075967854" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.23523355166327" CentreY="0.2" CentreZ="-1.5838041864411285" radius="0.2">
+        <Material ColorB="0.22496504934623965" ColorG="0.0021034748182904082" ColorR="0.1050365483991707" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.496969031223818" CentreY="0.2" CentreZ="-0.8315635620346555" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="8.558081159102352" CentreY="0.2" CentreZ="0.45214752772409733" radius="0.2">
+        <Material ColorB="0.34519523664091256" ColorG="0.019149057505854404" ColorR="0.13374149228121612" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.588911760964418" CentreY="0.2" CentreZ="1.4427746848627405" radius="0.2">
+        <Material ColorB="0.6202638910680018" ColorG="0.1644892143535737" ColorR="0.03598782917418823" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.629824687957663" CentreY="0.2" CentreZ="2.485763953365986" radius="0.2">
+        <Material ColorB="0.9973316471927784" ColorG="0.7865342537735742" ColorR="0.9306979360862846" fuzziness="0.2812230850349911" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="8.239066458616467" CentreY="0.2" CentreZ="3.591467312627459" radius="0.2">
+        <Material ColorB="0.08019588690246401" ColorG="0.11547037055245428" ColorR="0.07158620452427102" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.357275877409563" CentreY="0.2" CentreZ="4.007106595354857" radius="0.2">
+        <Material ColorB="0.265105177901033" ColorG="0.006852226184710404" ColorR="0.03474986917331496" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.715218713722894" CentreY="0.2" CentreZ="5.230926233188768" radius="0.2">
+        <Material ColorB="0.5787038792176358" ColorG="0.06804092773050548" ColorR="0.11161796626770233" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.650164698403334" CentreY="0.2" CentreZ="6.196882953064353" radius="0.2">
+        <Material ColorB="0.0027627101500471607" ColorG="0.16391194398315317" ColorR="0.03615607328608216" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.664880525742483" CentreY="0.2" CentreZ="7.646382061919728" radius="0.2">
+        <Material ColorB="0.14336536684108558" ColorG="0.1761852404698927" ColorR="0.1066550420379537" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.17676303408556" CentreY="0.2" CentreZ="8.11991475472616" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="8.497196823295944" CentreY="0.2" CentreZ="9.611983210354758" radius="0.2">
+        <Material ColorB="0.04490836646948848" ColorG="0.12157937987843333" ColorR="0.36572012227902834" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="8.014334113555835" CentreY="0.2" CentreZ="10.736175987035422" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="9.781159467066821" CentreY="0.2" CentreZ="-10.46499976882458" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="9.261611882857554" CentreY="0.2" CentreZ="-9.287060627706573" radius="0.2">
+        <Material ColorB="0.13023828207008756" ColorG="0.5921683768857808" ColorR="0.505834345624642" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.505326781907742" CentreY="0.2" CentreZ="-8.365609502873994" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="9.032471159662041" CentreY="0.2" CentreZ="-7.820556173144164" radius="0.2">
+        <Material ColorB="0.6446495615602233" ColorG="0.9663185035647865" ColorR="0.9962417816833087" fuzziness="0.06449640486626146" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="9.73905553407446" CentreY="0.2" CentreZ="-6.845204674004589" radius="0.2">
+        <Material ColorB="0.04261979556732241" ColorG="0.4447975509091002" ColorR="0.10575111948498822" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.662919931444012" CentreY="0.2" CentreZ="-5.913813706409636" radius="0.2">
+        <Material ColorB="0.3543743080684555" ColorG="0.02534849300533751" ColorR="0.7379086171069728" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.041299891245917" CentreY="0.2" CentreZ="-4.647901019795135" radius="0.2">
+        <Material ColorB="0.08677168421258685" ColorG="0.2947673414031264" ColorR="0.19740551966729908" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.302221257588888" CentreY="0.2" CentreZ="-3.3404382975240594" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="9.520801192161912" CentreY="0.2" CentreZ="-2.426033500933438" radius="0.2">
+        <Material ColorB="0.2504759496505822" ColorG="0.10450469639196783" ColorR="0.07725997157279425" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.50003972538111" CentreY="0.2" CentreZ="-1.6369151925730552" radius="0.2">
+        <Material ColorB="0.5876904943526315" ColorG="0.937730909695216" ColorR="0.5406178966048603" fuzziness="0.20407032950713766" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="9.389761330336666" CentreY="0.2" CentreZ="-0.4899273311044591" radius="0.2">
+        <Material ColorB="0.3847145666381206" ColorG="0.013658545442929727" ColorR="0.12110941796181411" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.458001043285458" CentreY="0.2" CentreZ="0.4757853245762606" radius="0.2">
+        <Material ColorB="0.057373713992901296" ColorG="0.645236625774715" ColorR="0.5096540162928782" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.709631682283735" CentreY="0.2" CentreZ="1.474540532265804" radius="0.2">
+        <Material ColorB="0.20536560225118067" ColorG="0.006623754634842041" ColorR="0.8142986612649469" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.389007619366545" CentreY="0.2" CentreZ="2.513900233344391" radius="0.2">
+        <Material ColorB="0.3451055457351647" ColorG="0.10672365152075909" ColorR="0.005087459442130074" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.14259989763655" CentreY="0.2" CentreZ="3.2190353114833274" radius="0.2">
+        <Material ColorB="0.85139787707995" ColorG="0.5074780399807964" ColorR="0.6996122253417064" fuzziness="0.3438126161065314" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="9.366330072732158" CentreY="0.2" CentreZ="4.691327197586256" radius="0.2">
+        <Material ColorB="0.8304262570938241" ColorG="0.3395076836907925" ColorR="0.04493344774887646" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.352685391198781" CentreY="0.2" CentreZ="5.048124397501029" radius="0.2">
+        <Material ColorB="0.0821881672690927" ColorG="0.1497685808454996" ColorR="0.11618556505006165" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.197747404235797" CentreY="0.2" CentreZ="6.54358868473375" radius="0.2">
+        <Material ColorB="0.15972279316659657" ColorG="0.37724498079887364" ColorR="0.6085163054127796" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.717847184215316" CentreY="0.2" CentreZ="7.1023253116844325" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="9.190684676166395" CentreY="0.2" CentreZ="8.553709699727545" radius="0.2">
+        <Material ColorB="0.3089015368829017" ColorG="0.3384587903846065" ColorR="0.002993160914760383" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="9.651851131319052" CentreY="0.2" CentreZ="9.159228566517204" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="9.540358965381824" CentreY="0.2" CentreZ="10.763524222483817" radius="0.2">
+        <Material ColorB="0.3874282911071722" ColorG="0.6805796374256567" ColorR="0.05978703094237678" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.03309930296587" CentreY="0.2" CentreZ="-10.968956501278724" radius="0.2">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="10.066889076480773" CentreY="0.2" CentreZ="-9.422476248304635" radius="0.2">
+        <Material ColorB="0.017211049745161956" ColorG="0.47145403147731335" ColorR="0.5476499752953663" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.300924496241732" CentreY="0.2" CentreZ="-8.823525835105734" radius="0.2">
+        <Material ColorB="0.022877326716365824" ColorG="0.10182026798352381" ColorR="0.2802862388396033" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.547803601568587" CentreY="0.2" CentreZ="-7.347677621159831" radius="0.2">
+        <Material ColorB="0.14502397835831823" ColorG="0.785956690176009" ColorR="0.19269187714369934" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.333176470652786" CentreY="0.2" CentreZ="-6.869801147043199" radius="0.2">
+        <Material ColorB="0.11352023250171749" ColorG="0.028095888598615153" ColorR="0.05267463094907177" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.003809287564312" CentreY="0.2" CentreZ="-5.395972794787483" radius="0.2">
+        <Material ColorB="0.38247667490841764" ColorG="0.1835864487779318" ColorR="0.03986377512854489" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.305603830165031" CentreY="0.2" CentreZ="-4.403820080727055" radius="0.2">
+        <Material ColorB="0.006862895833690733" ColorG="0.10116948014722293" ColorR="0.05826145726622379" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.78954390902117" CentreY="0.2" CentreZ="-3.74109592826824" radius="0.2">
+        <Material ColorB="0.1796553733972607" ColorG="0.9773755845009565" ColorR="0.36642496176242617" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.095392186651116" CentreY="0.2" CentreZ="-2.880741520529355" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="10.480141100490938" CentreY="0.2" CentreZ="-1.7812197766731657" radius="0.2">
+        <Material ColorB="0.07625273217626014" ColorG="0.7256667332614155" ColorR="0.11203777903299265" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.605797268241185" CentreY="0.2" CentreZ="-0.5735698008946866" radius="0.2">
+        <Material ColorB="0.17133732235797416" ColorG="0.6234828365860702" ColorR="0.0701468952494254" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.63561336308802" CentreY="0.2" CentreZ="0.5141640251614571" radius="0.2">
+        <Material ColorB="0.09888292944080472" ColorG="0.02992344186979927" ColorR="0.3606598176139822" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.712833016161246" CentreY="0.2" CentreZ="1.4826917018299248" radius="0.2">
+        <Material ColorB="0.5485542729025286" ColorG="0.05012106673141641" ColorR="0.6453455460224922" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.592242715754988" CentreY="0.2" CentreZ="2.7813207330493492" radius="0.2">
+        <Material ColorB="0.00974896674498857" ColorG="0.44112157337794156" ColorR="0.33892474671444295" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.191554353102456" CentreY="0.2" CentreZ="3.5668422236075634" radius="0.2">
+        <Material ColorB="0.0116763033461604" ColorG="5.330393751540374E-4" ColorR="0.02918452004697745" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.496311674229272" CentreY="0.2" CentreZ="4.288759501518241" radius="0.2">
+        <Material ColorB="0.09098431116339975" ColorG="0.25107282079167237" ColorR="0.6973089739040738" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.726123449009307" CentreY="0.2" CentreZ="5.668001002671455" radius="0.2">
+        <Material ColorB="0.3675248237572417" ColorG="0.0972147619802979" ColorR="0.13365452103765074" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.021950449596847" CentreY="0.2" CentreZ="6.088089058961962" radius="0.2">
+        <Material ColorB="0.03455140568583311" ColorG="0.252320534259972" ColorR="0.7084503153092829" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.335938287857052" CentreY="0.2" CentreZ="7.297111592045441" radius="0.2">
+        <Material ColorB="0.09489259988025878" ColorG="0.4824167661075697" ColorR="0.03849317708083188" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.045448988589847" CentreY="0.2" CentreZ="8.222786408165655" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="10.274783642473077" CentreY="0.2" CentreZ="9.529652226415232" radius="0.2">
+        <Material ColorB="0.6789901662961787" ColorG="0.5478254334725674" ColorR="0.18065587579682166" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="10.003271720287822" CentreY="0.2" CentreZ="10.358399963104258" radius="0.2">
+        <Material ColorB="3.0" ColorG="3.0" ColorR="3.0" type="light"/>
+    </Sphere>
+    <Sphere CentreX="0.0" CentreY="1.0" CentreZ="0.0" radius="1.0">
+        <Material ColorB="1.0" ColorG="1.0" ColorR="1.0" fuzziness="0.0" ri="1.5" type="dielectric"/>
+    </Sphere>
+    <Sphere CentreX="-4.0" CentreY="1.0" CentreZ="0.0" radius="1.0">
+        <Material ColorB="0.1" ColorG="0.2" ColorR="0.4" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="4.0" CentreY="1.0" CentreZ="0.0" radius="1.0">
+        <Material ColorB="0.5" ColorG="0.6" ColorR="0.7" fuzziness="0.0" type="metal"/>
+    </Sphere>
+</Scene>

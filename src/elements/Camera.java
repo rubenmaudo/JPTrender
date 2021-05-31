@@ -36,6 +36,7 @@ public class Camera {
     private double aperture;
     private double focus_dist;
     private int autofocus;
+    private double aspect_ratio;
 
     //CAMERA FINAL FIELDS
     private final Vec3 lower_left_corner;
@@ -69,6 +70,7 @@ public class Camera {
         this.aperture=aperture;
         this.focus_dist=focus_dist;
         this.autofocus=autofocus;
+        this.aspect_ratio=aspect_ratio;
 
         if(autofocus==1){
             focus_dist=lookfrom.sub(lookat).length();
@@ -263,6 +265,17 @@ public class Camera {
         vup.setAttribute("Y",String.valueOf(this.vup.getValue(1)));
         vup.setAttribute("Z",String.valueOf(this.vup.getValue(2)));
         return camera;
+    }
+
+    public Camera clone(){
+        return new Camera(Vec3.clone(lookfrom),
+                Vec3.clone(lookat),
+                Vec3.clone(vup),
+                vfov,
+                aspect_ratio,
+                aperture,
+                focus_dist,
+                autofocus);
     }
 
 }

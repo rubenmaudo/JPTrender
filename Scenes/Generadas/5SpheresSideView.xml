@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Scene>
+    <Camera aperture="0.12" autofocus="1" focus_dist="2.930870177950569" vfov="40.0">
+        <lookfrom X="-2.5" Y="0.3" Z="0.5"/>
+        <lookat X="0.0" Y="0.0" Z="-1.0"/>
+        <vup X="0.0" Y="1.0" Z="0.0"/>
+    </Camera>
+    <Sphere CentreX="0.0" CentreY="0.0" CentreZ="-1.0" radius="0.5">
+        <Material ColorB="0.3" ColorG="0.3" ColorR="0.8" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="0.45" CentreY="-0.4" CentreZ="-0.7" radius="0.1">
+        <Material ColorB="0.8" ColorG="0.8" ColorR="0.8" fuzziness="0.0" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-0.45" CentreY="-0.4" CentreZ="-0.7" radius="0.1">
+        <Material ColorB="0.2" ColorG="0.2" ColorR="1.0" fuzziness="0.4" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="0.0" CentreY="-100.5" CentreZ="-1.0" radius="100.0">
+        <Material ColorB="0.0" ColorG="0.8" ColorR="0.8" type="lambertian"/>
+    </Sphere>
+    <Sphere CentreX="1.0" CentreY="0.0" CentreZ="-1.0" radius="0.5">
+        <Material ColorB="0.2" ColorG="0.6" ColorR="0.8" fuzziness="0.9" type="metal"/>
+    </Sphere>
+    <Sphere CentreX="-1.0" CentreY="0.0" CentreZ="-1.0" radius="0.5">
+        <Material ColorB="0.8" ColorG="0.8" ColorR="0.8" fuzziness="0.2" type="metal"/>
+    </Sphere>
+</Scene>
