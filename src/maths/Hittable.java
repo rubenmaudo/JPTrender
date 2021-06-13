@@ -59,4 +59,8 @@ public class Hittable {
     public Hit_record getTemp_rec(){
         return temp_rec;
     }
+
+    public ArrayList<Primitive> getList() {
+        return list;
+    }
 }

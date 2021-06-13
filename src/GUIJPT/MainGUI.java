@@ -9,6 +9,7 @@ import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
 import elements.SceneLoader;
 import maths.Background;
 import pathtracer.PathTracer;
+import pathtracer.PathTracerNEW;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -924,12 +925,26 @@ public class MainGUI extends javax.swing.JFrame {
             render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
             renderPanel.add(new ZoomingPanel(render));
 
+
+
+
+            //We start a new object pathTracer which create a new thread to start the render
+            pathTracer = new PathTracerNEW((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
+            checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
+            (double)spinnerGamma.getValue(), render,this,background, sceneLoader);
+            Thread thread = new Thread(pathTracer){};
+            thread.start();
+
+
+            /*PREVIOUS TRACER
             //We start a new object pathTracer which create a new thread to start the render
             pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
                     checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
                     (double)spinnerGamma.getValue(), render,this,background, sceneLoader);
             Thread thread = new Thread(pathTracer){};
             thread.start();
+
+             */
         }
 
     }
@@ -1402,7 +1417,7 @@ public class MainGUI extends javax.swing.JFrame {
     Timer timer; //Render time timer
     
     BufferedImage render; //Image to be render in
-    PathTracer pathTracer; //Thread of render engine
+    PathTracerNEW pathTracer; //Thread of render engine
 
     int pass; //Number of passes
     boolean updateProgressBar=true;

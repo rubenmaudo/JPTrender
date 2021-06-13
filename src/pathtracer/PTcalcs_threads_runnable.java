@@ -45,7 +45,7 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     int ID, Background background){
 
 
-        this.camera =camera;
+        //this.camera=camera;
         this.depth=depth;
 
         this.image=image;
