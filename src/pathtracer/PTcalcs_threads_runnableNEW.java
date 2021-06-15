@@ -7,7 +7,9 @@ import maths.*;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
+import static java.lang.Thread.sleep;
 import static maths.Utils.INFINITY;
 
 /**
@@ -33,6 +35,8 @@ public class PTcalcs_threads_runnableNEW implements Runnable {
     int totalPasses;
     int passesCount;
     boolean activeThread;
+
+    ThreadLocalRandom random=ThreadLocalRandom.current();
 
     //CONSTRUCTOR
     public PTcalcs_threads_runnableNEW(ArrayList<Primitive> scene,
@@ -61,6 +65,7 @@ public class PTcalcs_threads_runnableNEW implements Runnable {
 
         this.activeThread=activeThread;
 
+
     }
 
     //METHODS
@@ -74,21 +79,28 @@ public class PTcalcs_threads_runnableNEW implements Runnable {
             for (int y = 0; y< partialImage.getHeight(); y++){
                 for (int x = 0; x< partialImage.getWidth(); x++){
 
+
                     ColorValue col=null;
 
-                    double u = (x + Math.random())  /  partialImage.getWidth();
 
-                    double v = ((finalHeight-(y+(partialImage.getHeight()*(ID-1)) + Math.random()) )/ finalHeight);
+                    double u = (x + random.nextDouble() )  /  partialImage.getWidth();
+
+
+                    double v = ((finalHeight-(y+(partialImage.getHeight()*(ID-1)) + random.nextDouble()) )/ finalHeight);
 
                     Ray r = camera.get_ray(u, v);
 
                     col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
 
+                    //col=new ColorValue(0.2*ID,0,0);
+
                     if (imagePixels[x][y]==null){
                         imagePixels[x][y]=new ColorValue(0,0,0);
                     }
 
+
                     imagePixels[x][y]=imagePixels[x][y].add(col);
+
 
                     //Gamma correction
                     col= new ColorValue(imagePixels[x][y].divide(passesCount).vR(),
@@ -104,7 +116,7 @@ public class PTcalcs_threads_runnableNEW implements Runnable {
             long millis0 = (partialTime0 - startTime0)/1000000;
 
 
-            System.out.println("Id:" + ID + ", Pass=" + passesCount + "time="+ millis0);
+            System.out.println("Id:" + ID + ", Pass=" + passesCount + " time="+ millis0);
             passesCount++;
         }
     }

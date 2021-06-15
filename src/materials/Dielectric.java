@@ -6,6 +6,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import static java.lang.Math.*;
 
 /**
@@ -89,7 +91,7 @@ public class Dielectric extends Material{
         }
 
         double reflect_prob = schlick(cos_theta, etai_over_etat);
-        if(Math.random()<reflect_prob){
+        if(ThreadLocalRandom.current().nextDouble()<reflect_prob){
             Vec3 reflected=reflect(unit_direction, rec.normal);
             this.scattered =new Ray(rec.p, reflected.add(Vec3.random_in_unit_sphere().product(fuzz)));
             return true;

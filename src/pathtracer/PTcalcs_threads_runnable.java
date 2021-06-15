@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -90,7 +91,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
             ColorValue col;
 
-            double u = (pxLoc[0] + Math.random())  /  image.getWidth();
+            double u = (pxLoc[0] + ThreadLocalRandom.current().nextDouble())  /  image.getWidth();
 
             //
             if(pxLoc[0]==300 && pxLoc[1]==300){
@@ -98,7 +99,7 @@ public class PTcalcs_threads_runnable implements Runnable {
                 startTime2=  System.nanoTime();
             }
 
-            double v = ((image.getHeight()-pxLoc[1]) + Math.random()) / image.getHeight();
+            double v = ((image.getHeight()-pxLoc[1]) + ThreadLocalRandom.current().nextDouble()) / image.getHeight();
 
             //
             if(pxLoc[0]==300 && pxLoc[1]==300){

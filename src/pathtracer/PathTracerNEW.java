@@ -42,6 +42,7 @@ public class PathTracerNEW implements Runnable {
     Background background;
     SceneLoader sceneLoader;
 
+
     /**
      * Constructor to initialise the object using the parameters given
      * @param image_width
@@ -78,7 +79,7 @@ public class PathTracerNEW implements Runnable {
 
         Camera cam=sceneLoader.getCamera(aspect_ratio);
 
-        int availableProcessors=16;//Check the proccessors available
+        int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
 
         ArrayList<BufferedImage> listImages= new ArrayList<BufferedImage>();//Portions of images to be created
 
