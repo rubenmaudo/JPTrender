@@ -101,6 +101,8 @@ public class PathTracer implements Runnable {
 
         int availableProcessors=Runtime.getRuntime().availableProcessors();//Check the proccessors available
 
+        int availableProcessorsTest=Runtime.getRuntime().availableProcessors();//Check the proccessors available
+
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
         for (int j = 0; j < image_height; j++) {
@@ -136,7 +138,9 @@ public class PathTracer implements Runnable {
         int tempNs = 1;//Initialise the passes number
         while ((tempNs <= np || progressive)&& activeThread) {
 
-            executorService = Executors.newFixedThreadPool(8);//Thread pool
+            long startTime0=System.nanoTime();
+
+            executorService = Executors.newFixedThreadPool(availableProcessors);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
@@ -153,8 +157,11 @@ public class PathTracer implements Runnable {
                 e.printStackTrace();
             }
 
+            long partialTime0 =  System.nanoTime();
+            long millis0 = (partialTime0 - startTime0)/1000000;
+
             System.out.println("------------------------------------PASS NUMBER "
-                    + tempNs + " HAS BEEN COMPLETED------------------------------------");
+                    + tempNs + " HAS BEEN COMPLETED IN " + millis0 + "ms------------------------------------");
 
             mainGUI.updatePasses();//Update the pass number
             tempNs++;

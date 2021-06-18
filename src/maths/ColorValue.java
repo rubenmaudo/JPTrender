@@ -5,6 +5,7 @@ import geometry.Hit_record;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
@@ -142,7 +143,7 @@ public class ColorValue implements Serializable {
 
     //Return a random ColourValue
     public static ColorValue randomColorValue(){
-        return new ColorValue(Math.random(),Math.random(),Math.random());
+        return new ColorValue(ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble());
     }
 
     //Return a random Colour within a minimum and a maximum

@@ -2,6 +2,7 @@ package maths;
 
 import java.io.Serializable;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Math.*;
 
@@ -143,13 +144,13 @@ public class Vec3 implements Serializable {
     }    
 
     public static double random_double(double min, double max){
-        return min + (max - min) * Math.random();
+        return min + (max - min) * ThreadLocalRandom.current().nextDouble();
     }
 
     //Return a random vector
     public static Vec3 random(){
         Random r = new Random();
-        return new Vec3(Math.random(),Math.random(),Math.random());
+        return new Vec3(ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble());
     }
 
     //Return a random vector within a minimum and a maximum
