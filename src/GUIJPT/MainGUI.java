@@ -6,11 +6,14 @@
 package GUIJPT;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
+import elements.Camera;
 import elements.SceneLoader;
 import maths.Background;
 import pathtracer.PathTracer;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -750,6 +753,27 @@ public class MainGUI extends javax.swing.JFrame {
                 stopRenderButtonMouseClicked(evt);
             }
         });
+
+        stopRenderButton.addKeyListener(new KeyListener(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_UP){
+                    System.out.println("Hi");
+                    controlKeys=true;
+
+                }
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+            }
+        });
         panelBotonesRender.add(stopRenderButton);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1403,6 +1427,7 @@ public class MainGUI extends javax.swing.JFrame {
     
     BufferedImage render; //Image to be render in
     PathTracer pathTracer; //Thread of render engine
+    public boolean controlKeys=false;
 
     int pass; //Number of passes
     boolean updateProgressBar=true;

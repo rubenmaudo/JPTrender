@@ -267,6 +267,12 @@ public class Camera {
         return camera;
     }
 
+
+
+    public void setLookfrom() {
+        this.lookfrom = lookfrom.add(new Vec3(0,0,10));
+    }
+
     public Camera clone(){
         return new Camera(Vec3.clone(lookfrom),
                 Vec3.clone(lookat),

@@ -35,6 +35,8 @@ public class PTcalcs_threads_runnable implements Runnable {
 
     Background background;
 
+    boolean activeThread;
+
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera camera,
@@ -43,7 +45,9 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     ArrayList<int[]> list,
                                     ColorValue[][] imagePixels,
                                     double gammaValue,
-                                    int ID, Background background){
+                                    int ID,
+                                    Background background,
+                                    Boolean activeThread){
 
 
         this.scene=scene;
@@ -58,6 +62,7 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.ID=ID;
         this.background=background;
 
+        this.activeThread=activeThread;
 
 
     }
@@ -69,30 +74,34 @@ public class PTcalcs_threads_runnable implements Runnable {
 
         for(int[] pxLoc : pixelList){
 
-            ColorValue col;
+            if (activeThread) {
+                ColorValue col;
 
-            double u = (pxLoc[0] + ThreadLocalRandom.current().nextDouble())  /  image.getWidth();
+                double u = (pxLoc[0] + ThreadLocalRandom.current().nextDouble()) / image.getWidth();
 
-            double v = ((image.getHeight()-pxLoc[1]) + ThreadLocalRandom.current().nextDouble()) / image.getHeight();
+                double v = ((image.getHeight() - pxLoc[1]) + ThreadLocalRandom.current().nextDouble()) / image.getHeight();
 
-            Ray r = camera.get_ray(u, v);
+                Ray r = camera.get_ray(u, v);
 
-            col = ColorValue.colorRay(r, new Hittable(scene),depth, background);
+                col = ColorValue.colorRay(r, new Hittable(scene), depth, background);
 
-            if (imagePixels[pxLoc[0]][pxLoc[1]]==null){
-                imagePixels[pxLoc[0]][pxLoc[1]]=new ColorValue(0,0,0);
+                if (imagePixels[pxLoc[0]][pxLoc[1]] == null) {
+                    imagePixels[pxLoc[0]][pxLoc[1]] = new ColorValue(0, 0, 0);
+                }
+
+                imagePixels[pxLoc[0]][pxLoc[1]] = imagePixels[pxLoc[0]][pxLoc[1]].add(col);
+                pxLoc[2] = pxLoc[2] + 1;
+
+                //Gamma correction
+                col = new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vR(),
+                        imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vG(),
+                        imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vB(),
+                        gammaValue);
+
+                image.setRGB(pxLoc[0], pxLoc[1], col.toRGB());
+            }else{
+                break;
             }
-
-            imagePixels[pxLoc[0]][pxLoc[1]]=imagePixels[pxLoc[0]][pxLoc[1]].add(col);
-            pxLoc[2]=pxLoc[2]+1;
-
-            //Gamma correction
-            col= new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vR(),
-                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vG(),
-                    imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vB(),
-                    gammaValue);
-
-            image.setRGB(pxLoc[0],pxLoc[1],col.toRGB());
         }
 
         long partialTime0 =  System.nanoTime();
