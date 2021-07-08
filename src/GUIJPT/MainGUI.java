@@ -1258,8 +1258,8 @@ public class MainGUI extends javax.swing.JFrame {
     /**
      * Method to update the number of passes from the callback of pathTracer
      */
-    public void updatePasses(){
-        pass++;
+    public void updatePasses(int pass){
+        this.pass=pass;
         numeroPases.setText("Numero de pases: " + pass);
         updateProgressBar(2,pass);
     }

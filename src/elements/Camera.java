@@ -38,13 +38,13 @@ public class Camera {
     private int autofocus;
     private double aspect_ratio;
 
-    //CAMERA FINAL FIELDS
-    private final Vec3 lower_left_corner;
-    private final Vec3 horizontal;
-    private final Vec3 vertical;
-    private final Vec3 origin;
-    private final Vec3 u,v,w; //Parameters to create an orthonormal basis to describe camera orientation
-    private final double lens_radius;
+    //CAMERA FIELDS
+    private Vec3 lower_left_corner;
+    private Vec3 horizontal;
+    private Vec3 vertical;
+    private Vec3 origin;
+    private Vec3 u,v,w; //Parameters to create an orthonormal basis to describe camera orientation
+    private double lens_radius;
 
 
     //CAMERA CONSTRUCTOR
@@ -72,6 +72,10 @@ public class Camera {
         this.autofocus=autofocus;
         this.aspect_ratio=aspect_ratio;
 
+        calcCamera();
+    }
+
+    public void calcCamera(){
         if(autofocus==1){
             focus_dist=lookfrom.sub(lookat).length();
         }
@@ -91,9 +95,7 @@ public class Camera {
         //Parameter to identify the left corner of the picture to "take" that will be used as a reference
         this.lower_left_corner = origin.sub(horizontal.divide(2)).sub(vertical.divide(2)).sub(w.product(focus_dist));
         this.lens_radius= aperture / 2;//Size of the lens to determine the aperture to be used
-        this.autofocus=autofocus;
     }
-
 
     //CAMERA METHODS
     /**
@@ -269,8 +271,9 @@ public class Camera {
 
 
 
-    public void setLookfrom() {
-        this.lookfrom = lookfrom.add(new Vec3(0,0,10));
+    public void setOrigin() {
+        this.origin = origin.add(new Vec3(0,0,0.4));
+
     }
 
     public Camera clone(){

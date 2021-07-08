@@ -37,6 +37,8 @@ public class PTcalcs_threads_runnable implements Runnable {
 
     boolean activeThread;
 
+    int NoPasses;
+
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera camera,
@@ -47,7 +49,8 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     double gammaValue,
                                     int ID,
                                     Background background,
-                                    Boolean activeThread){
+                                    Boolean activeThread,
+                                    int NoPasses){
 
 
         this.scene=scene;
@@ -63,6 +66,8 @@ public class PTcalcs_threads_runnable implements Runnable {
         this.background=background;
 
         this.activeThread=activeThread;
+
+        this.NoPasses=NoPasses;
 
 
     }
@@ -90,12 +95,11 @@ public class PTcalcs_threads_runnable implements Runnable {
                 }
 
                 imagePixels[pxLoc[0]][pxLoc[1]] = imagePixels[pxLoc[0]][pxLoc[1]].add(col);
-                pxLoc[2] = pxLoc[2] + 1;
 
                 //Gamma correction
-                col = new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vR(),
-                        imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vG(),
-                        imagePixels[pxLoc[0]][pxLoc[1]].divide(pxLoc[2]).vB(),
+                col = new ColorValue(imagePixels[pxLoc[0]][pxLoc[1]].divide(NoPasses).vR(),
+                        imagePixels[pxLoc[0]][pxLoc[1]].divide(NoPasses).vG(),
+                        imagePixels[pxLoc[0]][pxLoc[1]].divide(NoPasses).vB(),
                         gammaValue);
 
                 image.setRGB(pxLoc[0], pxLoc[1], col.toRGB());

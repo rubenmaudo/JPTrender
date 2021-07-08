@@ -99,13 +99,13 @@ public class PathTracer implements Runnable {
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
         Camera cam=sceneLoader.getCamera(aspect_ratio);
 
-        int availableProcessors=Runtime.getRuntime().availableProcessors()-1;//Check the proccessors available
+        int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
 
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
         for (int j = 0; j < image_height; j++) {
             for (int i = 0; i < image_width; i++) {
-                int[] pixelLocation = {i, j, 0};//Last value is the reference for the Number of pass
+                int[] pixelLocation = {i, j};//Last value is the reference for the Number of pass
                 pixelList.add(pixelLocation);
             }
         }
@@ -145,7 +145,7 @@ public class PathTracer implements Runnable {
                 ID++;
 
                 executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, bi,
-                        shufflePixelGroup,imagePixels,gammaValue,ID,background,activeThread));
+                        shufflePixelGroup,imagePixels,gammaValue,ID,background,activeThread,tempNs));
 
             }
             executorService.shutdown();
@@ -166,8 +166,12 @@ public class PathTracer implements Runnable {
                 mainGUI.controlKeys=false;
                 activeThread=true;
                 tempNs=1;
+
+                cam.setOrigin();//We change the location
+
+
             }else{
-                mainGUI.updatePasses();//Update the pass number
+                mainGUI.updatePasses(tempNs);//Update the pass number
                 tempNs++;
             }
         }
