@@ -110,7 +110,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
         long partialTime0 =  System.nanoTime();
         long millis0 = (partialTime0 - startTime0)/1000000;
-        System.out.println("The thread "+ ID + " spent= "+millis0);
+       // System.out.println("The thread "+ ID + " spent= "+millis0);
     }
 
 

@@ -7,9 +7,7 @@ package pathtracer;
 
 import GUIJPT.MainGUI;
 import elements.Camera;
-import elements.Scene;
 import elements.SceneLoader;
-import elements.SceneSaver;
 import geometry.Primitive;
 import maths.Background;
 import maths.ColorValue;
@@ -42,6 +40,7 @@ public class PathTracer implements Runnable {
     MainGUI mainGUI;//Used to send the callback of passes increased
     Background background;
     SceneLoader sceneLoader;
+    Camera camera;
 
     /**
      * Constructor to initialise the object using the parameters given
@@ -57,7 +56,7 @@ public class PathTracer implements Runnable {
      * @param sceneLoader
      */
     public PathTracer(int image_width, int image_height, boolean progressive, int np, int depth, double gammaValue,
-                      BufferedImage bi, MainGUI mainGUI, Background background, SceneLoader sceneLoader) {
+                      BufferedImage bi, MainGUI mainGUI, Background background, SceneLoader sceneLoader, Camera camera) {
         this.image_width = image_width;
         this.image_height = image_height;
         this.aspect_ratio = (double)image_width/(double)image_height;
@@ -69,6 +68,7 @@ public class PathTracer implements Runnable {
         this.mainGUI=mainGUI;
         this.background=background;
         this.sceneLoader=sceneLoader;
+        this.camera=camera;
     }
 
 
@@ -78,26 +78,8 @@ public class PathTracer implements Runnable {
         //Create an array of all the pixels on the image
         ColorValue[][] imagePixels = new ColorValue[image_width][image_height];
 
-
-        /*
-        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
-        //Create scene
-        ArrayList<Primitive> primList = Scene.generateScene(13);
-        //ArrayList<Primitive> primList = Scene.loadScene();
-        Camera cam=Camera.generateCamera(aspect_ratio,8);
-
-        //FUNCIONS DEPRECATED-NEW LOAD SYSTEM
-        //ACTIVATE FOR SAVE SCENES
-        SceneSaver sceneSaver=new SceneSaver(
-                primList,
-                cam,
-                "C:\\Users\\RubenM\\Documents\\JPTR scenes\\Generated\\Generated1.xml"
-                );
-        */
-
-        //Create a new scene and camera fron the xml loader
+        //Create a new scene and camera from the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
-        Camera cam=sceneLoader.getCamera(aspect_ratio);
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
 
@@ -144,7 +126,7 @@ public class PathTracer implements Runnable {
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
                 ID++;
 
-                executorService.execute(new PTcalcs_threads_runnable(primList, cam, depth, bi,
+                executorService.execute(new PTcalcs_threads_runnable(primList, camera, depth, bi,
                         shufflePixelGroup,imagePixels,gammaValue,ID,background,activeThread,tempNs));
 
             }
@@ -166,10 +148,6 @@ public class PathTracer implements Runnable {
                 mainGUI.controlKeys=false;
                 activeThread=true;
                 tempNs=1;
-
-                cam.setOrigin();//We change the location
-
-
             }else{
                 mainGUI.updatePasses(tempNs);//Update the pass number
                 tempNs++;

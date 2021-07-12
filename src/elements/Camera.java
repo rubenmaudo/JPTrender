@@ -75,6 +75,13 @@ public class Camera {
         calcCamera();
     }
 
+
+
+    //CAMERA METHODS
+
+    /**
+     * Make calcs to complete the camera parameters
+     */
     public void calcCamera(){
         if(autofocus==1){
             focus_dist=lookfrom.sub(lookat).length();
@@ -97,7 +104,7 @@ public class Camera {
         this.lens_radius= aperture / 2;//Size of the lens to determine the aperture to be used
     }
 
-    //CAMERA METHODS
+
     /**
      *Produce a ray based in the parameters given
      * @param s Also called u / parameter to identify the x position in the viewport
@@ -114,127 +121,6 @@ public class Camera {
         );
     }
 
-
-    /**
-     * Create a camera with different settings, old method used to create cameras
-     * @deprecated
-     * @param aspect_ratio aspect ratio for the image
-     * @param cameraID ID to identify the camera presettings
-     * @return a Camera object
-     */
-
-    public static Camera generateCamera(double aspect_ratio, int cameraID){
-
-        Vec3 lookfrom;
-        Vec3 lookat;
-        Vec3 vup;
-        double dist_to_focus; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
-        double aperture;
-
-        Camera camera;
-
-        switch(cameraID){
-            case 1:
-                //Standard camera
-                lookfrom = new Vec3(0, 0, 0);
-                lookat = new Vec3(0, 0, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0.0;
-
-                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 2:
-                //Top left view
-                lookfrom = new Vec3(-2, 2, 1);
-                lookat = new Vec3(0, 0, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0;
-
-                camera = new Camera(lookfrom, lookat, vup, 90, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 3:
-                //Top left view zoomed
-                lookfrom = new Vec3(-2, 2, 1);
-                lookat = new Vec3(0, 0, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0;
-
-                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 4:
-                //back camera
-                lookfrom = new Vec3(0, 0, -3);
-                lookat = new Vec3(0, 0, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0;
-
-                camera = new Camera(lookfrom, lookat, vup, 70, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 5:
-                //side camera
-                lookfrom = new Vec3(-2.5, 0.3, 0.5);
-                lookat = new Vec3(0, 0, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0.12;
-
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 6:
-                //Camera for scene 8
-                lookfrom = new Vec3(13, 2, 3);
-                lookat = new Vec3(0, 0, 0);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = 10; //lookfrom.sub(lookat).length(); This would be the change to auto focus to the point you are looking to
-                aperture = 0.1;
-
-                camera = new Camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus,0);
-                return camera;
-
-            case 7:
-                //Standard camera for scene 11 (caustic(
-                lookfrom = new Vec3(0, 1.2, 2);
-                lookat = new Vec3(0, 0.5, -1);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0.0;
-
-                camera = new Camera(lookfrom, lookat, vup, 50, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            case 8:
-                //Scene cornell box
-                lookfrom = new Vec3(0, 278, 1078);
-                lookat = new Vec3(0, 278, 0);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = 10;
-                aperture = 0.0;
-
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-
-            default:
-                //Camera for box scene
-                lookfrom = new Vec3(3, 3, 2);
-                lookat = new Vec3(0, 0.5, 0);
-                vup = new Vec3(0, 1, 0);
-                dist_to_focus = lookfrom.sub(lookat).length();
-                aperture = 0;
-
-                camera = new Camera(lookfrom, lookat, vup, 40, aspect_ratio, aperture, dist_to_focus,1);
-                return camera;
-        }
-
-    }
 
     //PARSE FROM CAMERA TO XML TAGS
     /**
@@ -270,9 +156,46 @@ public class Camera {
     }
 
 
+    public void updateAspectRatio(double aspectRatio){
+        this.aspect_ratio=aspectRatio;
+        calcCamera();
+    }
+
+    public void updateCameraPositionForward(){
+        Vec3 latLfrm= lookfrom.sub(lookat);
+        double t=latLfrm.length();
+        Vec3 normLatLfrm=new Vec3(latLfrm.x(),latLfrm.y(),latLfrm.z());
+        normLatLfrm.normalize();
+        lookfrom=lookat.add(normLatLfrm.product(t*0.9803921));
+        calcCamera();
+    }
+
+    public void updateCameraPositionBackward(){
+        Vec3 latLfrm= lookfrom.sub(lookat);
+        double t=latLfrm.length();
+        Vec3 normLatLfrm=new Vec3(latLfrm.x(),latLfrm.y(),latLfrm.z());
+        normLatLfrm.normalize();
+        lookfrom=lookat.add(normLatLfrm.product(t*1.02));
+        calcCamera();
+    }
+
+    public void updateCameraPositionRight(){
+        double newX= (lookat.x() + ((lookfrom.x()-lookat.x())*Math.cos(0.02)) + ((lookfrom.z()- lookat.z())*Math.sin(0.02)));
+        double newZ= (lookat.z() + ((lookfrom.x()-lookat.x())*-Math.sin(0.02)) + ((lookfrom.z()- lookat.z())*Math.cos(0.02)));
+        lookfrom=new Vec3(newX, lookfrom.y(),newZ);
+        calcCamera();
+    }
+
+    public void updateCameraPositionLeft(){
+        double newX= (lookat.x() + ((lookfrom.x()-lookat.x())*Math.cos(-0.02)) + ((lookfrom.z()- lookat.z())*Math.sin(-0.02)));
+        double newZ= (lookat.z() + ((lookfrom.x()-lookat.x())*-Math.sin(-0.02)) + ((lookfrom.z()- lookat.z())*Math.cos(-0.02)));
+        lookfrom=new Vec3(newX, lookfrom.y(),newZ);
+        calcCamera();
+    }
+
 
     public void setOrigin() {
-        this.origin = origin.add(new Vec3(0,0,0.4));
+        this.origin = origin.add(new Vec3(0,0,10));
 
     }
 
@@ -285,6 +208,11 @@ public class Camera {
                 aperture,
                 focus_dist,
                 autofocus);
+    }
+
+    public void printValues(){
+        System.out.println(lookfrom);
+        System.out.println(lookat);
     }
 
 }

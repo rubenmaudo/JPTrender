@@ -757,11 +757,16 @@ public class MainGUI extends javax.swing.JFrame {
         stopRenderButton.addKeyListener(new KeyListener(){
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_UP){
-                    System.out.println("Hi");
-                    controlKeys=true;
-
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                    camera.updateCameraPositionRight();
+                }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    camera.updateCameraPositionLeft();
+                }else if(e.getKeyCode() == KeyEvent.VK_UP){
+                    camera.updateCameraPositionForward();
+                }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                    camera.updateCameraPositionBackward();
                 }
+                controlKeys=true;
             }
 
             @Override
@@ -948,10 +953,13 @@ public class MainGUI extends javax.swing.JFrame {
             render=new BufferedImage((int)spinnerAncho.getValue(),(int)spinnerAlto.getValue(),BufferedImage.TYPE_INT_RGB);
             renderPanel.add(new ZoomingPanel(render));
 
+            //Obtain camera and pass it to pathTracer
+            camera= sceneLoader.getCamera(((double)(int)spinnerAncho.getValue()/(double)(int)spinnerAlto.getValue()));
+
             //We start a new object pathTracer which create a new thread to start the render
             pathTracer = new PathTracer((int)spinnerAncho.getValue(), (int)spinnerAlto.getValue(),
                     checkBoxNumPases.isSelected(), (int)spinnerNumPases.getValue(), (int)spinnerNumRebotes.getValue(),
-                    (double)spinnerGamma.getValue(), render,this,background, sceneLoader);
+                    (double)spinnerGamma.getValue(), render,this,background, sceneLoader, camera);
             Thread thread = new Thread(pathTracer){};
             thread.start();
         }
@@ -1424,7 +1432,8 @@ public class MainGUI extends javax.swing.JFrame {
     
     long startTime;//Flag to control the render time
     Timer timer; //Render time timer
-    
+
+    Camera camera;
     BufferedImage render; //Image to be render in
     PathTracer pathTracer; //Thread of render engine
     public boolean controlKeys=false;
