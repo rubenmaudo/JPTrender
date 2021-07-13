@@ -103,30 +103,36 @@ class DragScrollListener extends MouseAdapter {
   private final Point pp = new Point();
 
   @Override public void mouseDragged(MouseEvent e) {
-    Component c = e.getComponent();
-    Container p = SwingUtilities.getUnwrappedParent(c);
-    if (p instanceof JViewport) {
-      JViewport vport = (JViewport) p;
-      Point cp = SwingUtilities.convertPoint(c, e.getPoint(), vport);
-      Point vp = vport.getViewPosition();
-      vp.translate(pp.x - cp.x, pp.y - cp.y);
-      ((JComponent) c).scrollRectToVisible(new Rectangle(vp, vport.getSize()));
-      pp.setLocation(cp);
+    if(SwingUtilities.isMiddleMouseButton(e)){
+      Component c = e.getComponent();
+      Container p = SwingUtilities.getUnwrappedParent(c);
+      if (p instanceof JViewport) {
+        JViewport vport = (JViewport) p;
+        Point cp = SwingUtilities.convertPoint(c, e.getPoint(), vport);
+        Point vp = vport.getViewPosition();
+        vp.translate(pp.x - cp.x, pp.y - cp.y);
+        ((JComponent) c).scrollRectToVisible(new Rectangle(vp, vport.getSize()));
+        pp.setLocation(cp);
+      }
     }
   }
 
   @Override public void mousePressed(MouseEvent e) {
-    Component c = e.getComponent();
-    c.setCursor(hndCursor);
-    Container p = SwingUtilities.getUnwrappedParent(c);
-    if (p instanceof JViewport) {
-      JViewport vport = (JViewport) p;
-      Point cp = SwingUtilities.convertPoint(c, e.getPoint(), vport);
-      pp.setLocation(cp);
+    if(SwingUtilities.isMiddleMouseButton(e)) {
+      Component c = e.getComponent();
+      c.setCursor(hndCursor);
+      Container p = SwingUtilities.getUnwrappedParent(c);
+      if (p instanceof JViewport) {
+        JViewport vport = (JViewport) p;
+        Point cp = SwingUtilities.convertPoint(c, e.getPoint(), vport);
+        pp.setLocation(cp);
+      }
     }
   }
 
   @Override public void mouseReleased(MouseEvent e) {
-    e.getComponent().setCursor(defCursor);
+    if(SwingUtilities.isMiddleMouseButton(e)) {
+      e.getComponent().setCursor(defCursor);
+    }
   }
 }

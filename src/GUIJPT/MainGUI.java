@@ -759,14 +759,30 @@ public class MainGUI extends javax.swing.JFrame {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     camera.updateCameraPositionRight();
+                    controlKeys=true;
                 }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     camera.updateCameraPositionLeft();
+                    controlKeys=true;
                 }else if(e.getKeyCode() == KeyEvent.VK_UP){
                     camera.updateCameraPositionForward();
+                    controlKeys=true;
                 }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
                     camera.updateCameraPositionBackward();
+                    controlKeys=true;
+                }else if(e.getKeyCode() == KeyEvent.VK_Q){
+                    camera.updateCameraPositionUp();
+                    controlKeys=true;
+                }else if(e.getKeyCode() == KeyEvent.VK_A){
+                    camera.updateCameraPositionDown();
+                    controlKeys=true;
+                }else if(e.getKeyCode() == KeyEvent.VK_W){
+                    camera.updateCentrePositionUp();
+                    controlKeys=true;
+                }else if(e.getKeyCode() == KeyEvent.VK_S){
+                    camera.updateCentrePositionDown();
+                    controlKeys=true;
                 }
-                controlKeys=true;
+
             }
 
             @Override

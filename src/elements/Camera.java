@@ -161,6 +161,30 @@ public class Camera {
         calcCamera();
     }
 
+    public void updateCentrePositionUp(){
+        double value= lookfrom.y()*1.05-lookfrom.y();
+        lookat=new Vec3(lookat.x(),lookat.y()+value, lookat.z());
+        calcCamera();
+    }
+    public void updateCentrePositionDown(){
+        double value=lookfrom.y()- lookfrom.y()*0.9523809;
+        lookat=new Vec3(lookat.x(),lookat.y()-value, lookat.z());
+        calcCamera();
+    }
+
+    public void updateCameraPositionUp(){
+        double value= lookfrom.y()*1.05-lookfrom.y();
+        lookfrom=new Vec3(lookfrom.x(),lookfrom.y()+value, lookfrom.z());
+        lookat=new Vec3(lookat.x(),lookat.y()+value, lookat.z());
+        calcCamera();
+    }
+    public void updateCameraPositionDown(){
+        double value=lookfrom.y()- lookfrom.y()*0.9523809;
+        lookfrom=new Vec3(lookfrom.x(),lookfrom.y()-value, lookfrom.z());
+        lookat=new Vec3(lookat.x(),lookat.y()-value, lookat.z());
+        calcCamera();
+    }
+
     public void updateCameraPositionForward(){
         Vec3 latLfrm= lookfrom.sub(lookat);
         double t=latLfrm.length();
