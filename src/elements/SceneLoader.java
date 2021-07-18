@@ -154,7 +154,6 @@ public class SceneLoader {
 
             if (node.getNodeType() == Node.ELEMENT_NODE)
             {
-                //Print each employee's detail
                 Element boxElement = (Element) node;
                 Box box= new Box(
                         Double.parseDouble(boxElement.getAttribute("width")),

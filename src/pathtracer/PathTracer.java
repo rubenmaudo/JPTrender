@@ -9,8 +9,12 @@ import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.SceneLoader;
 import geometry.Primitive;
+import geometry.Triangle;
+import materials.Lambertian;
+import materials.Metal;
 import maths.Background;
 import maths.ColorValue;
+import maths.Vec3;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -80,6 +84,20 @@ public class PathTracer implements Runnable {
 
         //Create a new scene and camera from the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
+
+
+
+        ///////////TESTING/////////////
+
+        Triangle triangle = new Triangle(
+                new Vec3(-278,0,-278),
+                new Vec3(278,556,-278),
+                new Vec3(278,0,278), new Metal(new ColorValue(1,1,1),0));
+        primList.add(triangle);
+
+        ///////////TESTING/////////////
+
+
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
 
