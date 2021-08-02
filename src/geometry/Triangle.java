@@ -41,7 +41,7 @@ public class Triangle extends Primitive{
 
         // if the determinant is negative the triangle is backfacing
         // if the determinant is close to 0, the ray misses the triangle
-        if (det < kEpsilon & det>kEpsilon*-1) return false;
+        //if (det < kEpsilon & det>kEpsilon*-1) return false;
 
         double invDet = 1 / det;
 

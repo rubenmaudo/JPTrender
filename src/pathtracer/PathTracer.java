@@ -7,11 +7,11 @@ package pathtracer;
 
 import GUIJPT.MainGUI;
 import elements.Camera;
+import elements.Obj_read;
 import elements.SceneLoader;
+import geometry.Mesh;
 import geometry.Primitive;
-import geometry.Triangle;
-import materials.Lambertian;
-import materials.Metal;
+import materials.Dielectric;
 import maths.Background;
 import maths.ColorValue;
 import maths.Vec3;
@@ -88,15 +88,19 @@ public class PathTracer implements Runnable {
 
 
         ///////////TESTING/////////////
-
+        /*
         Triangle triangle = new Triangle(
                 new Vec3(-278,0,-278),
                 new Vec3(278,556,-278),
                 new Vec3(278,0,278), new Metal(new ColorValue(1,1,1),0));
+
+
         primList.add(triangle);
+         */
 
         ///////////TESTING/////////////
-
+        //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\teap.obj").importMesh(primList);
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\teap.obj",new Vec3(0,0,0),new Dielectric(1.3)));
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
