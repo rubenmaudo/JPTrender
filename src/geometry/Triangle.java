@@ -8,25 +8,50 @@ import org.w3c.dom.Node;
 
 public class Triangle extends Primitive{
 
-    //SPHERE FIELDS
+    //TRIANGLE FIELDS
     Vec3 v0,v1,v2; //Triangle vertex
+    Vec3 vn0,vn1,vn2; //Triangle vertex
+    boolean vertexNormalCalc;
     double kEpsilon = 0.00000001;
 
     //CONSTRUCTOR
 
     /**
      * Triangle constructor based on three vertex
-     * @param v0
-     * @param v1
-     * @param v2
+     * @param v0 vertex normal
+     * @param v1 vertex normal
+     * @param v2 vertex normal
      */
     public Triangle(Vec3 v0, Vec3 v1, Vec3 v2, Material material) {
         this.v0 = v0;
         this.v1 = v1;
         this.v2 = v2;
         super.material= material;
+
+        vertexNormalCalc=false;
     }
 
+    /**
+     *
+     * @param v0 vertex
+     * @param v1 vertex
+     * @param v2 vertex
+     * @param vn0 vertex normal
+     * @param vn1 vertex normal
+     * @param vn2 vertex normal
+     * @param material
+     */
+    public Triangle(Vec3 v0, Vec3 v1, Vec3 v2, Vec3 vn0, Vec3 vn1, Vec3 vn2, Material material) {
+        this.v0 = v0;
+        this.v1 = v1;
+        this.v2 = v2;
+        this.vn0 = vn0;
+        this.vn1 = vn1;
+        this.vn2 = vn2;
+        super.material= material;
+
+        vertexNormalCalc=true;
+    }
 
     //METHODS
     @Override
@@ -61,7 +86,15 @@ public class Triangle extends Primitive{
 
             rec.material=this.material;
 
-            Vec3 outward_normal=v0v1.cross(v0v2).normalize();
+            Vec3 outward_normal;
+            if(vertexNormalCalc){
+                //(1 - uv.x - uv.y) * n0 + uv.x * n1 + uv.y * n2;
+               //Smoothing the shader using vertex normal
+                outward_normal=(vn0.product(1-u-v).add(vn1.product(u))).add(vn2.product(v));
+            }else{
+                //Smoothing off
+                outward_normal=v0v1.cross(v0v2).normalize();
+            }
             rec.set_face_normal(r,outward_normal);
             return true;
         }

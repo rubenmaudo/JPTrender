@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class Obj_read {
     ArrayList<Vec3> vertexList = new ArrayList<Vec3>();
+    ArrayList<Vec3> vertexNormalList = new ArrayList<Vec3>();
     ArrayList<Primitive> triangleslist = new ArrayList<Primitive>();
     Material material;
     String path;
@@ -27,7 +28,7 @@ public class Obj_read {
         this.path=file_path;
         this.material=material;
         importMesh();
-        this.basepoint=new Vec3((xMax-xMin)/2,(yMax-yMin)/2,(zMax-zMin)/2);
+        this.basepoint=new Vec3(((xMax-xMin)/2)+xMin,(yMin),((zMax-zMin)/2)+zMin);
         this.boundingBox=new Box(xMax-xMin,zMax-zMin,yMax-yMin,basepoint,material);
     }
 
@@ -39,6 +40,7 @@ public class Obj_read {
             String line = bufferedReader.readLine();
             while(line != null) {
 
+                //We capture the vertex values
                 if (line.startsWith("v ")){
                     String[] listOf=line.split(" ");
 
@@ -51,24 +53,37 @@ public class Obj_read {
                     if (vertexValue.z()<zMin) zMin=vertexValue.z();
                     if (vertexValue.z()>zMax) zMax=vertexValue.z();
 
-                }else if(line.startsWith("f ")){
+                }
+
+                //We capture the vertex normal values
+                else if (line.startsWith("vn")){
+                    String[] listOf=line.split(" ");
+
+                    Vec3 vertexNormalValue=new Vec3(Double.valueOf(listOf[1]),Double.valueOf(listOf[2]),Double.valueOf(listOf[3]));
+                    vertexNormalList.add(vertexNormalValue);
+                }
+
+                //We capture the faces values
+                else if(line.startsWith("f ")){
                     ArrayList<Integer> vertexListFace= new ArrayList<Integer>();
+                    ArrayList<Integer> vertexNormalListFace= new ArrayList<Integer>();
                     String[] listOfWithSpaces=line.split(" ");
                     for(int i=1;i<listOfWithSpaces.length; i++){
                         String[] faceElements=listOfWithSpaces[i].split("/");
                         vertexListFace.add(Integer.valueOf(faceElements[0]));
-                        System.out.println(faceElements[0]);
+                        vertexNormalListFace.add(Integer.valueOf(faceElements[2]));
                     }
                     for(int i=2; i<vertexListFace.size(); i++){
                         triangleslist.add(new Triangle(
                                 vertexList.get(vertexListFace.get(0)-1),
                                 vertexList.get(vertexListFace.get(i-1)-1),
                                 vertexList.get(vertexListFace.get(i)-1),
+                                vertexNormalList.get(vertexNormalListFace.get(0)-1),
+                                vertexNormalList.get(vertexNormalListFace.get(i-1)-1),
+                                vertexNormalList.get(vertexNormalListFace.get(i)-1),
                                 material
                         ));
                     }
-
-                    System.out.println("next face");
                 }
 
                 line = bufferedReader.readLine();

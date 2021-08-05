@@ -33,7 +33,7 @@ public class Mesh extends Primitive{
         boundingBoxArray.add(boundingBox);
 
         Hittable tempHittable1=new Hittable(boundingBoxArray);
-        if(tempHittable1.hit(r,t_min,t_max,rec)){
+        if(tempHittable1.hit(r,t_min,t_max,new Hit_record())){
             Hittable tempHittable2=new Hittable(triangleslist);
             return tempHittable2.hit(r,t_min,t_max,rec);
         }
