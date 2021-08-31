@@ -27,6 +27,10 @@ public class Hit_record {
 
     public Material material;//Material type for the primitive we hit
 
+    public double u; //u coordinate for textures
+    public double v; //v coordinate for textures
+
+
 
     //CONSTRUCTOR
     public Hit_record(){

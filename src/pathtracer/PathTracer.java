@@ -101,16 +101,20 @@ public class PathTracer implements Runnable {
          */
 
         ///////////TESTING/////////////
-        //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\teap.obj").importMesh(primList);
+        //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj").importMesh(primList);
 
-        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\teap.obj",
+
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
-                new Metal(new ColorValue(1,1,1),0)));
+                new Metal(new ColorValue(1,1,1),0.6)));
+
+
 
         /*
-        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\teap.obj",
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
                 new Lambertian(new ColorValue(0.8,0.2,0.3))));
+                new Metal(new ColorValue(1,1,1),0)));
          */
 
 

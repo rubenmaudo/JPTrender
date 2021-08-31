@@ -35,9 +35,7 @@ public class ColorValue implements Serializable {
 
 
     //METHODS
-    //Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
-    //and obtaining the color
-
+    
     /**
      * Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
      * and obtaining the color of the hit object
@@ -159,7 +157,4 @@ public class ColorValue implements Serializable {
     public static ColorValue clone(ColorValue colorValue){
         return new ColorValue(colorValue.vR(), colorValue.vG(), colorValue.vB());
     }
-
-
-
 }
