@@ -31,6 +31,10 @@ public class Lambertian extends Material{
         this.albedo=a;
     }
 
+    public Lambertian(Texture texture){
+        this.albedo=texture;
+    }
+
     //METHODS
     @Override
     public boolean scatter(Ray r_in, Hit_record rec) {

@@ -12,8 +12,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import static java.lang.Math.*;
 import static maths.Vec3.dotProduct;
-import static java.lang.Math.sqrt;
 
 
 /**
@@ -75,6 +75,9 @@ public class Sphere extends Primitive{
 
                 Vec3 outward_normal=(rec.p.sub(center)).divide(radius);
                 rec.set_face_normal(r,outward_normal);
+
+                get_spehere_uv(outward_normal,rec);
+
                 return true;
             }
             
@@ -88,6 +91,9 @@ public class Sphere extends Primitive{
 
                 Vec3 outward_normal=(rec.p.sub(center)).divide(radius);
                 rec.set_face_normal(r,outward_normal);
+
+                get_spehere_uv(outward_normal,rec);
+
                 return true;
             }            
         }        
@@ -98,6 +104,20 @@ public class Sphere extends Primitive{
     public String getDescription() {
         return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
                 "radius is r";
+    }
+
+    private void get_spehere_uv(Vec3 p, Hit_record rec){
+        // p: a given point on the sphere of radius one, centered at the origin.
+        // u: returned value [0,1] of angle around the Y axis from X=-1.
+        // v: returned value [0,1] of angle from Y=-1 to Y=+1.
+        //     <1 0 0> yields <0.50 0.50>       <-1  0  0> yields <0.00 0.50>
+        //     <0 1 0> yields <0.50 1.00>       < 0 -1  0> yields <0.50 0.00>
+        //     <0 0 1> yields <0.25 0.50>       < 0  0 -1> yields <0.75 0.50>
+
+        double theta = acos(-p.y());
+        double phi = atan2(-p.z(),p.x() + PI);
+        rec.u= phi / (2*PI);
+        rec.v= theta / PI;
     }
 
     @Override

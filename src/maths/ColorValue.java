@@ -107,6 +107,17 @@ public class ColorValue implements Serializable {
         return new Color(R,G,B).getRGB();
     }
 
+    //TESTING TEXTURES
+
+    public ColorValue setColorValue(){
+        return this;
+    }
+
+    //TESTING TEXTURES
+
+
+
+
     public double vR(){
         return vR;
     }
