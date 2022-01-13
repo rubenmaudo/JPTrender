@@ -109,7 +109,7 @@ public class ColorValue implements Serializable {
 
     //TESTING TEXTURES
 
-    public ColorValue setColorValue(){
+    public ColorValue getColorValue(double u, double v, Vec3 p){
         return this;
     }
 

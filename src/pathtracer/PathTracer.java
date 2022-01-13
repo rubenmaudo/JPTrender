@@ -11,9 +11,8 @@ import elements.Obj_read;
 import elements.SceneLoader;
 import geometry.Mesh;
 import geometry.Primitive;
-import materials.Dielectric;
-import materials.Lambertian;
-import materials.Metal;
+import geometry.Sphere;
+import materials.*;
 import maths.Background;
 import maths.ColorValue;
 import maths.Vec3;
@@ -103,12 +102,18 @@ public class PathTracer implements Runnable {
         ///////////TESTING/////////////
         //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj").importMesh(primList);
 
-
+        /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
                 new Metal(new ColorValue(1,1,1),0.6)));
 
+         */
 
+        //TEXTURE CHECKER WORKING
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0), new ColorValue(1,1,1)))));
+
+        //TEXTURE TESTING
+        primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("/resources/CRW_3857_JFR.jpg"))));
 
         /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
@@ -116,6 +121,8 @@ public class PathTracer implements Runnable {
                 new Lambertian(new ColorValue(0.8,0.2,0.3))));
                 new Metal(new ColorValue(1,1,1),0)));
          */
+
+
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available

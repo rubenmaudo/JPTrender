@@ -46,7 +46,8 @@ public class Lambertian extends Material{
         //Vec3 scatter_direction = temp.normal.add(Vec3.random_unit_vector());
 
         this.scattered = new Ray(rec.p, scatter_direction);
-        this.attenuation= albedo;
+        //TESTING this.attenuation= albedo;
+        this.attenuation=albedo.getColorValue(rec.u, rec.v, rec.p);
 
         return true;
     }
