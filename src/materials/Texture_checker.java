@@ -4,6 +4,7 @@ import maths.ColorValue;
 import maths.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
 public class Texture_checker extends ColorValue {
@@ -22,8 +23,8 @@ public class Texture_checker extends ColorValue {
 
     public ColorValue getColorValue(double u, double v, @NotNull Vec3 p){
 
-        double sines = sin(scale*p.x())*sin(scale*p.y())*sin(scale*p.z());
-        if (sines < 0)
+        double cosines = cos(scale*p.x())*cos(scale*p.y())*cos(scale*p.z());
+        if (cosines < 0)
             return color1;
         else
             return color2;

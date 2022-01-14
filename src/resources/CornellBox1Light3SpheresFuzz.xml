@@ -16,9 +16,8 @@
   <PlaneYZ width="556" height="556" centreBasePointX="278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
     <Material type="lambertian" ColorR="0.12" ColorG="0.45" ColorB="0.15"></Material>
   </PlaneYZ>
-  <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="0" centreBasePointZ="0" flipped="true">
-    <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
-  </PlaneXZ>
+
+
   <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="556" centreBasePointZ="0" flipped="true">
     <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
   </PlaneXZ>
@@ -26,5 +25,8 @@
     <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
   </PlaneXY>
   <!--////////GEOMETRY\\\\\\\\\-->
+  <Sphere radius="70" CentreX="-100" CentreY="70" CentreZ="128">
+    <Material type="metal" ColorR="1" ColorG="1" ColorB="1" fuzziness="0"></Material>
+  </Sphere>
 
 </Scene>

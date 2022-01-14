@@ -114,10 +114,19 @@ public class Sphere extends Primitive{
         //     <0 1 0> yields <0.50 1.00>       < 0 -1  0> yields <0.50 0.00>
         //     <0 0 1> yields <0.25 0.50>       < 0  0 -1> yields <0.75 0.50>
 
+        /*
         double theta = acos(-p.y());
         double phi = atan2(-p.z(),p.x() + PI);
         rec.u= phi / (2*PI);
         rec.v= theta / PI;
+         */
+
+        double theta = asin(p.y());
+        double phi = atan2(p.z(), p.x());
+
+        rec.u = 1 - (phi + PI) / (2 * PI);
+        rec.v = (theta + PI / 2) / PI;
+        //System.out.println("u & v are=" + rec.u + ", " + rec.v);
     }
 
     @Override

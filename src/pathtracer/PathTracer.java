@@ -10,6 +10,7 @@ import elements.Camera;
 import elements.Obj_read;
 import elements.SceneLoader;
 import geometry.Mesh;
+import geometry.Plane_xz;
 import geometry.Primitive;
 import geometry.Sphere;
 import materials.*;
@@ -113,7 +114,9 @@ public class PathTracer implements Runnable {
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0), new ColorValue(1,1,1)))));
 
         //TEXTURE TESTING
-        primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("/resources/CRW_3857_JFR.jpg"))));
+        primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("c:/earth.jpeg"))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new ColorValue(0,1,1))));
+        primList.add(new Plane_xz(556,556,new Vec3(0,0,0),new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0),new ColorValue(1,1,1)))));
 
         /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
