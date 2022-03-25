@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
 
@@ -59,9 +61,21 @@ public class ColorValue implements Serializable {
             Vec3 unit_direction=(r.direction().normalize());
             double t= 0.5*(unit_direction.y() + 1);
 
+
+            double angle=1.45;
+            Vec3 sundir=new Vec3(0,cos(angle),-sin(angle));
+            System.out.println(cos(angle));
+            System.out.println(-sin(angle));
+
             if (background.getMixed()){
-                return background.getSecondaryColor().product(1-t).add(background.getMainColor().product(t));
-            }else return background.getMainColor();
+                //return background.getSecondaryColor().product(1-t).add(background.getMainColor().product(t));
+                Atmosphere sky=new Atmosphere(sundir);
+                return sky.computeIncidentLight(r);
+            }else {
+                Atmosphere sky = new Atmosphere(sundir);
+                return sky.computeIncidentLight(r);
+                //return background.getMainColor();
+            }
         }
 
         if (!rec.material.scatter(r, rec)) {
