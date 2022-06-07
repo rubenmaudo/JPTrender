@@ -62,7 +62,7 @@ public class ColorValue implements Serializable {
             double t= 0.5*(unit_direction.y() + 1);
 
 
-            double angle=1.45;
+            double angle=-0.7;
             Vec3 sundir=new Vec3(0,cos(angle),-sin(angle));
             System.out.println(cos(angle));
             System.out.println(-sin(angle));

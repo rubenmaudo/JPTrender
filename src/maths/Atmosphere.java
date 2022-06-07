@@ -14,7 +14,7 @@ public class Atmosphere {
     final Vec3 betaR = new Vec3(3.8e-6,15.5e-6,33.1e-6);
     final Vec3 betaM = new Vec3(21e-6);
     double Er = 6360e3;//in m
-    double Ar = 6420e3;
+    double Ar = 6420e3;//in m
     double Hr = 7994;
     double Hm = 1200;
     Vec3 sunDirection;
@@ -25,17 +25,15 @@ public class Atmosphere {
 
         this.sunDirection=sunDirection;
 
-        Sphere earth=new Sphere(new Vec3(0, 0, 0), 6360e3, new Lambertian(new ColorValue(0,0,0)));
+        Sphere earth=new Sphere(new Vec3(0, 0, 0), Er, new Lambertian(new ColorValue(0,0,0)));
         worldList.add(earth);
 
-        Sphere atmosphere=new Sphere(new Vec3(0, 0, 0), 6420e3, new Lambertian(new ColorValue(0,0,0)));
+        Sphere atmosphere=new Sphere(new Vec3(0, 0, 0), Ar, new Lambertian(new ColorValue(0,0,0)));
         worldList.add(atmosphere);
         atmosphereList.add(atmosphere);
     }
 
     public ColorValue computeIncidentLight(Ray ray){
-
-        //Ray newRay = new Ray(new Vec3(ray.origin().x(),ray.origin().y()+Er,ray.origin().z()),ray.direction());
 
         int numbSamples=16;
         int numbSamplesLight=8;
@@ -86,9 +84,9 @@ public class Atmosphere {
 
                 for(j=0;j<numbSamplesLight;++j){
                     Vec3 samplePositionLight = samplePosition.add(sunDirection.product(tCurrentLight + segmentLengthLight * 0.5));
-                    double heightLight = samplePositionLight.squared_length() - Er;
+                    double heightLight = samplePositionLight.length() - Er;
 
-                    if (heightLight < 0) return new ColorValue(1,0,0);
+                    if (heightLight < 0) return new ColorValue(0,0,0);
 
                     opticalDepthLightR += exp(-heightLight/Hr) * segmentLengthLight;
                     opticalDepthLightM += exp(-heightLight/Hm) * segmentLengthLight;
@@ -99,13 +97,15 @@ public class Atmosphere {
                     Vec3 tau = betaR.product(opticalDepthR+opticalDepthLightR).add(betaM.product(1.1*(opticalDepthM+opticalDepthLightM)));
                     Vec3 attenuation = new Vec3(exp(-tau.x()),exp(-tau.y()),exp(-tau.z()));
 
+
                     sumR = sumR.add(attenuation.product(hr));
-                    sumM = sumM.add(attenuation.product(hr));
+                    sumM = sumM.add(attenuation.product(hm));
                 }
 
                 tCurrent += segmentLength;
             }
         }
+
 
         Vec3 finalVecR = sumR.product(betaR).product(phaseR);
         Vec3 finalVecM = sumM.product(betaM).product(phaseM);

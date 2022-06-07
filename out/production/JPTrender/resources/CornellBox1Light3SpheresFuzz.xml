@@ -1,32 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Scene>
-  <Camera vfov="40" aperture="0" focus_dist="10" autofocus="0">
-    <lookfrom X="0" Y="278" Z="1078" />
-    <lookat X="0" Y="278" Z="0" />
+  <Camera vfov="95" aperture="0" focus_dist="10" autofocus="0">
+    <lookfrom X="0" Y="6360001.8" Z="10" />
+    <lookat X="0" Y="6360001.5" Z="13" />
     <vup X="0" Y="1" Z="0" />
   </Camera>
-  <!--////////LIGHT\\\\\\\\\-->
-  <PlaneXZ width="230" depth="230" centreBasePointX="0" centreBasePointY="555" centreBasePointZ="0" flipped="true">
-    <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
-  </PlaneXZ>
-  <!--////////CORNELL BOX\\\\\\\\\-->
-  <PlaneYZ width="556" height="556" centreBasePointX="-278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
-    <Material type="lambertian" ColorR="0.65" ColorG="0.05" ColorB="0.05"></Material>
-  </PlaneYZ>
-  <PlaneYZ width="556" height="556" centreBasePointX="278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
-    <Material type="lambertian" ColorR="0.12" ColorG="0.45" ColorB="0.15"></Material>
-  </PlaneYZ>
 
-
-  <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="556" centreBasePointZ="0" flipped="true">
-    <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
-  </PlaneXZ>
-  <PlaneXY width="556" height="556" centreBasePointX="0" centreBasePointY="278" centreBasePointZ="-278" flipped="true">
-    <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
-  </PlaneXY>
-  <!--////////GEOMETRY\\\\\\\\\-->
-  <Sphere radius="70" CentreX="-100" CentreY="70" CentreZ="128">
+  <!--////////GEOMETRY\\\\\\\\\  -->
+  <Sphere radius="1.5" CentreX="0" CentreY="6360001.5" CentreZ="13">
     <Material type="metal" ColorR="1" ColorG="1" ColorB="1" fuzziness="0"></Material>
+  </Sphere>
+  <Sphere radius="6360000" CentreX="0" CentreY="0" CentreZ="0">
+    <Material type="lambertian" ColorR="1" ColorG="1" ColorB="1" />
   </Sphere>
 
 </Scene>
