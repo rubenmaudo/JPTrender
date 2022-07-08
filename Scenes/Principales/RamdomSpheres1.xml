@@ -5,7 +5,7 @@
         <lookat X="0.0" Y="0.0" Z="0.0"/>
         <vup X="0.0" Y="1.0" Z="0.0"/>
     </Camera>
-    <Sphere CentreX="0.0" CentreY="-1000.0" CentreZ="0.0" radius="1000.0">
+    <Sphere CentreX="0.0" CentreY="-6360e3" CentreZ="0.0" radius="6360e3">
         <Material ColorB="0.5" ColorG="0.5" ColorR="0.5" type="lambertian"/>
     </Sphere>
     <Sphere CentreX="-10.525853087194866" CentreY="0.2" CentreZ="-10.848106420169731" radius="0.2">

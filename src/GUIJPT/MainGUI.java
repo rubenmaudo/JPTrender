@@ -961,7 +961,7 @@ public class MainGUI extends javax.swing.JFrame {
              * Update the progressbar
              * status 1 to start the progress bar
              */
-            updateProgressBar(1,0);//Update the
+            updateProgressBar(1,0);//Update the progressBar
 
             renderPanel.removeAll();//remove the render panell prior to create a new one
 

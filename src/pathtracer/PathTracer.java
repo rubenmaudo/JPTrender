@@ -114,16 +114,16 @@ public class PathTracer implements Runnable {
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0), new ColorValue(1,1,1)))));
 
         //TEXTURE TESTING
-        primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("c:/earth.jpeg"))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("c:/earth.jpeg"))));
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new ColorValue(0,1,1))));
-        primList.add(new Plane_xz(556,556,new Vec3(0,0,0),new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0),new ColorValue(1,1,1)))));
+        //primList.add(new Plane_xz(556,556,new Vec3(0,0,0),new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0),new ColorValue(1,1,1)))));
 
-        /*
+
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
                 new Lambertian(new ColorValue(0.8,0.2,0.3))));
-                new Metal(new ColorValue(1,1,1),0)));
-         */
+                //new Metal(new ColorValue(1,1,1),0)));
+
 
 
 

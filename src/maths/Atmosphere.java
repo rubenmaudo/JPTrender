@@ -86,7 +86,7 @@ public class Atmosphere {
                     Vec3 samplePositionLight = samplePosition.add(sunDirection.product(tCurrentLight + segmentLengthLight * 0.5));
                     double heightLight = samplePositionLight.length() - Er;
 
-                    if (heightLight < 0) return new ColorValue(0,0,0);
+                    if (heightLight < 0) break;
 
                     opticalDepthLightR += exp(-heightLight/Hr) * segmentLengthLight;
                     opticalDepthLightM += exp(-heightLight/Hm) * segmentLengthLight;
@@ -110,7 +110,6 @@ public class Atmosphere {
         Vec3 finalVecR = sumR.product(betaR).product(phaseR);
         Vec3 finalVecM = sumM.product(betaM).product(phaseM);
         Vec3 finalVecColour = finalVecR.add(finalVecM).product(20);
-        System.out.println(finalVecColour);
 
         return new ColorValue(finalVecColour.x(),finalVecColour.y(),finalVecColour.z());
 
