@@ -29,6 +29,7 @@ public class Sphere extends Primitive{
     //SPHERE FIELDS
     Vec3 center; //Centre
     double radius; //Radius
+    AABB bounding_box;
 
 
     //CONSTRUCTOR
@@ -43,6 +44,9 @@ public class Sphere extends Primitive{
         this.center = cen;
         this.radius = r;
         super.material= material;
+
+        get_bounding_box();
+
     }
 
     //METHODS
@@ -101,7 +105,7 @@ public class Sphere extends Primitive{
     }
 
     @Override
-    public String getDescription() {
+    String getDescription() {
         return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
                 "radius is r";
     }
@@ -127,6 +131,11 @@ public class Sphere extends Primitive{
         rec.u = 1 - (phi + PI) / (2 * PI);
         rec.v = (theta + PI / 2) / PI;
         //System.out.println("u & v are=" + rec.u + ", " + rec.v);
+    }
+
+    private void get_bounding_box(){
+        this.bounding_box=new AABB(center.sub(new Vec3(radius)),
+                center.add(new Vec3(radius)));
     }
 
     @Override

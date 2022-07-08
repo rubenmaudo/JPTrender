@@ -11,6 +11,7 @@ import static java.lang.Math.exp;
 import static java.lang.Math.pow;
 
 public class Atmosphere {
+
     final Vec3 betaR = new Vec3(3.8e-6,15.5e-6,33.1e-6);
     final Vec3 betaM = new Vec3(21e-6);
     double Er = 6360e3;//in m
