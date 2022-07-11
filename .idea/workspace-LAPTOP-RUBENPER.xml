@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="275d8297-0bbf-4119-b99b-d08e394baf69" name="Default Changelist" comment="Testing reStartEngine">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JPTrender.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/flatlaf_demo_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JPTrender.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/CallBackNoPasses.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/MainGUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/VerticalLabelUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/ZoomingPanel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/class-use/CallBackNoPasses.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/class-use/MainGUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/class-use/VerticalLabelUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/class-use/ZoomingPanel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/GUIJPT/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/constant-values.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/deprecated-list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/Camera.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/CameraOLD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/Scene.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/SceneLoader.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/SceneOLD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/SceneSaver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/Camera.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/CameraOLD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/Scene.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/SceneLoader.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/SceneOLD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/class-use/SceneSaver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/elements/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Box.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Hit_record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Plane_xy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Plane_xz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Plane_yz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Primitive.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/Sphere.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Box.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Hit_record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Plane_xy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Plane_xz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Plane_yz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Primitive.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/class-use/Sphere.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/geometry/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-17.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-18.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-19.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-20.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-21.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-22.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_glass_65_dadada_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-icons_222222_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-icons_454545_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-icons_888888_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-3.3.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-migrate-3.0.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.structure.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jquery-ui.structure.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip-utils/dist/jszip-utils-ie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip/dist/jszip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/jquery/jszip/dist/jszip.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/Dielectric.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/Diffuse_light.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/Lambertian.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/Material.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/Metal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/class-use/Dielectric.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/class-use/Diffuse_light.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/class-use/Lambertian.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/class-use/Material.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/class-use/Metal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/materials/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/Background.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/ColorValue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/FinalImage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/Hittable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/Ray.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/Utils.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/Vec3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/Background.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/ColorValue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/FinalImage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/Hittable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/Ray.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/Utils.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/class-use/Vec3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/maths/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/member-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/overview-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/package-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/PTcalcs_threads_runnable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/PathTracer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/class-use/PTcalcs_threads_runnable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/class-use/PathTracer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/pathtracer/package-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/serialized-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Javadoc/type-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/1 - render-noAnti.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/10 - render metal blurrines 1000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/11 - render metal blurrines 1000 time.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/2 - render-Anti20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/3 - render-Anti1000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/4 - render no gamma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/5 - render gamma bug.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/6 - render.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/7 - render lambertian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/8 - render metal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/9 - render metal blurrines.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-06-28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-11-52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-12-30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-12-43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-14-28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-15-39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-10 14-18-00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-16 20-42-19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-16 20-46-21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-16 20-47-26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2020-07-16 20-47-41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-03-14 15-19-18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-03-23 20-33-39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-05-04 18-19-33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-05-09 09-39-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-05-09 09-47-47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render 2021-05-09 09-58-00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render05-06-2020 20-20-37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render05-06-2020 20-51-17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render05-06-2020 21-24-40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render05-06-2020 21-25-29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render19-06-2020 19-57-36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/Old/render19-06-2020 21-08-14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render 01-07-2020 21-34-55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render 2020-07-05 09-40-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render01-07-2020 13-35-06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 20-14-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 20-19-25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 20-21-13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 21-21-57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 22-41-49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 22-42-28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 22-43-38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 23-09-00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 23-10-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 23-11-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 23-24-22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render05-06-2020 23-27-34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render06-06-2020 12-55-34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render22-06-2020 22-36-46_Executor_100_allAvailable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render22-06-2020 22-43-37newForkJoin_100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render22-06-2020 23-43-20_Executor_200_allAvailable(2000px).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render24-06-2020 23-37-14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 19-15-36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 19-24-49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 19-32-21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 20-47-17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 23-08-37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 23-08-49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 23-08-59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 23-09-19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render25-06-2020 23-09-27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render26-06-2020 07-58-56_nightRender.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render27-06-2020 00-53-10_caustic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render28-06-2020 10-49-38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render28-06-2020 14-37-49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Renders/render30-06-2020 17-07-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/ErrorScene.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/2Sphere1LightCaustics.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/5SpheresFrontFar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/5SpheresFrontNear.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/5SpheresSideView.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/6SpheresLightFrontNear.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/CornellBox1Light3SpheresGlass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/CornellBox2LigV&amp;H3SpheresGlass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/CornellBox3ColouLights3SpheresGlass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Generadas/CornellBoxStrippedLightStaircases.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Modification Template/JPTR_basicTemplate.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Modification Template/MaterialTestRenderResources/BoxRender.3dm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Modification Template/MaterialTestRenderResources/CornellBox1LightBallsMaterialSample.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Modification Template/MaterialTestRenderResources/templater.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Principales/5SpheresFrontNear.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Principales/CornellBox1Light3SpheresFuzz.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Principales/CornellBox1LightBallsMaterialSample.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Principales/RamdomSpheres1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/Principales/SpheresVdifferentMaterials.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/scene.scn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/annotations-19.0.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/annotations-19.0.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/annotations-19.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flatlaf-demo-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manifest.mf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/DragScrollListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/VerticalLabelUI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/ZoomAndPanePanel$ZoomHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/ZoomAndPanePanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/ZoomingPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/elements/Camera.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Box.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Hit_record.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xz.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_yz.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Primitive.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Sphere.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Dielectric.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Diffuse_light.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Lambertian.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Material.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Metal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/ColorValue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/Hittable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/Ray.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/Utils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/Vec3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/JPTrender/pathtracer/PTcalcs_threads_runnable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUIJPT/MainGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUIJPT/VerticalLabelUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUIJPT/ZoomingPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/SceneLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/SceneSaver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Box.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Hit_record.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Plane_xy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Plane_xz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Plane_yz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Primitive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/Sphere.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Dielectric.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Diffuse_light.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Lambertian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Material.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Metal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/Background.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/ColorValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/Hittable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/Ray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/maths/Vec3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pathtracer/PTcalcs_threads_runnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pathtracer/PathTracer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/CRW_3857_JFR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/CornellBox1Light3SpheresFuzz.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/folder_classic_opened.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/logo64x64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sprocket_dark.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tMeiHEtk8rjWNUa8ZeOJywJy6R" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pathtracer" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUIJPT.MainGUI" />
+      <module name="JPTrender" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUIJPT.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainGUI" />
+        <item itemvalue="Application.MainGUI" />
+        <item itemvalue="Application.MainGUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="275d8297-0bbf-4119-b99b-d08e394baf69" name="Default Changelist" comment="" />
+      <created>1622583513523</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622583513523</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Second attempt of Multithreading">
+      <created>1623620250765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623620250765</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Second attempt of Multithreading">
+      <created>1623620432536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623620432536</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Multithreading working (Random sorted)">
+      <created>1623785450908</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623785450908</updated>
+    </task>
+    <task id="LOCAL-00004" summary="New multithread tested">
+      <created>1624038000447</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1624038000447</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Testing reStartEngine">
+      <created>1624127718341</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1624127718341</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="MasterSortedRandomThread" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Second attempt of Multithreading" />
+    <MESSAGE value="Multithreading working (Random sorted)" />
+    <MESSAGE value="New multithread tested" />
+    <MESSAGE value="Testing reStartEngine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing reStartEngine" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JPTrender$MainGUI.ic" NAME="MainGUI Coverage Results" MODIFIED="1624481383688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>GUIJPT.*</FILTER>
+    </SUITE>
+  </component>
+</project>
