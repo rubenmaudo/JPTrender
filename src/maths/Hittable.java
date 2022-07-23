@@ -31,7 +31,8 @@ public class Hittable {
 
     //CONSTRUCTOR
     public Hittable(ArrayList<Primitive> list){
-        this.list= (ArrayList<Primitive>) list.clone();
+        //this.list= (ArrayList<Primitive>) list.clone();
+        this.list= list;
         this.temp_rec=new Hit_record();
     }
 

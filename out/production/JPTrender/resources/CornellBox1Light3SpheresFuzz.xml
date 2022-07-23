@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Scene>
-  <Camera vfov="40" aperture="0" focus_dist="10" autofocus="0">
+  <Camera vfov="5" aperture="0" focus_dist="10" autofocus="0">
     <lookfrom X="0" Y="278" Z="1078" />
     <lookat X="0" Y="278" Z="0" />
     <vup X="0" Y="1" Z="0" />
@@ -26,5 +26,13 @@
     <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
   </PlaneXY>
   <!--////////GEOMETRY\\\\\\\\\-->
-
+  <Sphere radius="70" CentreX="-100" CentreY="70" CentreZ="128">
+    <Material type="metal" ColorR="1" ColorG="1" ColorB="1" fuzziness="10"></Material>
+  </Sphere>
+  <Sphere radius="70" CentreX="0" CentreY="70" CentreZ="-22">
+    <Material type="lambertian" ColorR="0.05" ColorG="0.05" ColorB="0.65" />
+  </Sphere>
+  <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
+    <Material type="dielectric" ColorR="1" ColorG="0.2" ColorB="0.2" ri="1.5" fuzziness="0.25" />
+  </Sphere>
 </Scene>

@@ -87,6 +87,7 @@ public class PathTracer implements Runnable {
         //Create a new scene and camera from the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
 
+        ///////////TESTING/////////////
 
 
         ///////////TESTING/////////////

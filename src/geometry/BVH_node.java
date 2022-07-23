@@ -26,13 +26,16 @@ public class BVH_node extends Primitive{
 
     public BVH_node(ArrayList<Primitive> list) {
 
-        if(list.size()==1){
-            leftPrimitive =list.get(0);
+        ArrayList<Primitive> tempList=new ArrayList<>();
+        tempList= (ArrayList<Primitive>) list.clone();
+
+        if(tempList.size()==1){
+            leftPrimitive =tempList.get(0);
             singlefinalBranch =true;
             this.boundingBox= leftPrimitive.getAABB();
-        }else if(list.size()==2){
-            leftPrimitive =list.get(0);
-            rightPrimitive=list.get(1);
+        }else if(tempList.size()==2){
+            leftPrimitive =tempList.get(0);
+            rightPrimitive=tempList.get(1);
             doublefinalBranch =true;
             create_bounding_box();
         }else{
@@ -74,11 +77,25 @@ public class BVH_node extends Primitive{
 
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec, ArrayList<Primitive> tempListHit) {
         if (boundingBox.hit(r, t_min, t_max, rec)) {
+
+            /*
             if (singlefinalBranch ==true && leftPrimitive.getAABB().hit(r,t_min,t_max, rec)){
+
                 tempListHit.add(leftPrimitive);
                 return true;
             }
-            if (doublefinalBranch ==true){
+
+             */
+            if (singlefinalBranch) {
+
+                tempListHit.add(leftPrimitive);
+                return true;
+            }
+
+
+                if (doublefinalBranch) {
+
+                /*
                 boolean hitAnything=false;
                 if(leftPrimitive.getAABB().hit(r,t_min,t_max, rec)){
                     tempListHit.add(leftPrimitive);
@@ -89,14 +106,21 @@ public class BVH_node extends Primitive{
                     hitAnything=true;
                 }
                 if (hitAnything) return true;
-            }else{
-                boolean hitAnything=false;
-                if(leftNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything=true;
-                if(rightNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything=true;
-                return hitAnything;
+                */
+
+                    tempListHit.add(leftPrimitive);
+                    tempListHit.add(rightPrimitive);
+
+                    return true;
+
+                } else {
+                    boolean hitAnything = false;
+                    if (leftNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything = true;
+                    if (rightNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything = true;
+                    return hitAnything;
+                }
             }
-        }
-        return false;
+            return false;
     }
 
     @Override
