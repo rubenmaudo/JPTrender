@@ -6,6 +6,9 @@ import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Triangle extends Primitive{
 
     //TRIANGLE FIELDS
@@ -51,6 +54,8 @@ public class Triangle extends Primitive{
         super.material= material;
 
         vertexNormalCalc=true;
+
+        create_bounding_box();
     }
 
     //METHODS
@@ -89,7 +94,7 @@ public class Triangle extends Primitive{
             Vec3 outward_normal;
             if(vertexNormalCalc){
                 //(1 - uv.x - uv.y) * n0 + uv.x * n1 + uv.y * n2;
-               //Smoothing the shader using vertex normal
+                //Smoothing the shader using vertex normal
                 outward_normal=(vn0.product(1-u-v).add(vn1.product(u))).add(vn2.product(v));
             }else{
                 //Smoothing off
@@ -99,6 +104,7 @@ public class Triangle extends Primitive{
             return true;
         }
         return false;
+
     }
 
     @Override
@@ -120,5 +126,23 @@ public class Triangle extends Primitive{
                 new Vec3(v1.x(),v1.y(),v1.z()),
                 new Vec3(v2.x(),v2.y(),v2.z()),
                 super.material= material.clone());
+    }
+
+    @Override
+    void create_bounding_box() {
+        this.v0 = v0;
+        this.v1 = v1;
+        this.v2 = v2;
+
+        double tempMinX,tempMinY,tempMinZ,tempMaxX,tempMaxY,tempMaxZ;
+
+        tempMinX=min(min(v0.x(),v1.x()),v2.x());
+        tempMinY=min(min(v0.y(),v1.y()),v2.y());
+        tempMinZ=min(min(v0.z(),v1.z()),v2.z());
+        tempMaxX=max(max(v0.x(),v1.x()),v2.x());
+        tempMaxY=max(max(v0.y(),v1.y()),v2.y());
+        tempMaxZ=max(max(v0.z(),v1.z()),v2.z());
+
+        this.boundingBox=new AABB(new Vec3(tempMinX,tempMinY,tempMinZ),new Vec3(tempMaxX,tempMaxY,tempMaxZ));
     }
 }

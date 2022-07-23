@@ -118,6 +118,19 @@ public class Vec3 implements Serializable {
         }
     }
 
+    public void setValue(int i, double value){
+        switch (i) {
+            case 0:
+                this.x=value;
+            case 1:
+                this.y=value;
+            case 2:
+                this.z=value;
+            default:
+                ;
+        }
+    }
+
     public double x() {
         return x;
     }

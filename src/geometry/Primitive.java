@@ -2,6 +2,7 @@ package geometry;
 
 import materials.Material;
 import maths.Ray;
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -19,6 +20,7 @@ public abstract class Primitive implements Serializable {
 
     //PRIMITIVE FIELDS
     Material material;//Material asigned to the primitive
+    AABB boundingBox;
 
     //PRIMITIVE METHODS
     /**
@@ -51,4 +53,18 @@ public abstract class Primitive implements Serializable {
      */
     public abstract Primitive clone();
 
+    /**
+     * Return the AABB from the primitive
+     *
+     * @return
+     */
+    public AABB getAABB(){
+        return boundingBox;
+    }
+
+    /**Create the bounding box for the primitive object
+     *
+     * @return
+     */
+    abstract void create_bounding_box();
 }

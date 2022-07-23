@@ -1,5 +1,6 @@
 package elements;
 
+import geometry.AABB;
 import geometry.Box;
 import geometry.Primitive;
 import geometry.Triangle;
@@ -22,14 +23,19 @@ public class Obj_read {
     String path;
     double xMin=0,xMax=0,yMin=0,yMax=0,zMin=0,zMax=0;
     Vec3 basepoint;
-    Box boundingBox;
+    Box oldBoundingBox;
+
+    AABB boundingBox;
 
     public Obj_read(String file_path, Material material) {
         this.path=file_path;
         this.material=material;
         importMesh();
         this.basepoint=new Vec3(((xMax-xMin)/2)+xMin,(yMin),((zMax-zMin)/2)+zMin);
-        this.boundingBox=new Box(xMax-xMin,zMax-zMin,yMax-yMin,basepoint,material);
+        this.oldBoundingBox=new Box(xMax-xMin,zMax-zMin,yMax-yMin,basepoint,material); //Old system of creating a bounding box
+
+
+        this.boundingBox=new AABB(new Vec3(xMin,yMin,zMin),new Vec3(xMax,yMax,zMax));
     }
 
     public void importMesh(){
@@ -102,7 +108,13 @@ public class Obj_read {
         return triangleslist;
     }
 
-    public Box getBoundingBox() {
+    public Box getOldBoundingBox() {
+        return oldBoundingBox;
+    }
+
+    public AABB getBoundingBox() {
         return boundingBox;
     }
+
+
 }

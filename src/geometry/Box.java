@@ -49,13 +49,14 @@ public class Box extends Primitive{
 
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), material));
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), true,material));
+
+        create_bounding_box();
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
-        Hittable tempHittable=new Hittable(planesList);
-
-        return tempHittable.hit(r,t_min,t_max,rec);
+            Hittable tempHittable = new Hittable(planesList);
+            return tempHittable.hit(r, t_min, t_max, rec);
     }
 
     @Override
@@ -101,5 +102,13 @@ public class Box extends Primitive{
     @Override
     public Primitive clone() {
         return new Box(this.getWidth(),this.getDepth(),this.getHeight(),Vec3.clone(this.getCentreBasePoint()),this.getMaterial().clone());
+    }
+
+    @Override
+    void create_bounding_box() {
+        boundingBox=new AABB(
+                new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y(),centreBasePoint.z()-depth/2),
+                new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+height,centreBasePoint.z()+depth/2)
+        );
     }
 }

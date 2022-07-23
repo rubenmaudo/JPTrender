@@ -5,6 +5,7 @@
  */
 package maths;
 
+import geometry.BVH_node;
 import geometry.Hit_record;
 import geometry.Primitive;
 import geometry.Sphere;
@@ -22,13 +23,15 @@ public class Hittable {
     //HITTABLE FIELDS
     ArrayList<Primitive> list;
 
+    ArrayList <Primitive> tempListHitted= new ArrayList<>(); //List of AABB hit to be analysed
+
     Hit_record temp_rec;
     Boolean hit_anything = false;
     double closest_so_far;
 
     //CONSTRUCTOR
     public Hittable(ArrayList<Primitive> list){
-        this.list=list;
+        this.list= (ArrayList<Primitive>) list.clone();
         this.temp_rec=new Hit_record();
     }
 
@@ -45,12 +48,25 @@ public class Hittable {
 
         closest_so_far = t_max;
 
-        for (Primitive primitive : list) {
+        if(list.size()<3){
+            for (Primitive primitive : list) {
 
-            if (primitive.hit(r, t_min, closest_so_far,rec)) {
-                hit_anything = true;
-                closest_so_far=rec.t;
-                temp_rec=rec;
+                if (primitive.hit(r, t_min, closest_so_far,rec)) {
+                    hit_anything = true;
+                    closest_so_far=rec.t;
+                    temp_rec=rec;
+                }
+            }
+        }else{
+            BVH_node NodeList=new BVH_node(list);
+            if (NodeList.hit(r, t_min, t_max,rec,tempListHitted)){
+                for (Primitive primitive : tempListHitted) {
+                    if (primitive.hit(r, t_min, closest_so_far,rec)) {
+                        hit_anything = true;
+                        closest_so_far=rec.t;
+                        temp_rec=rec;
+                    }
+                }
             }
         }
         return hit_anything;        

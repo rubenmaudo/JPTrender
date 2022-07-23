@@ -7,6 +7,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 /**
  * @author : Ruben Maudo
  * @since : 27/06/2020
@@ -40,6 +43,8 @@ public class Plane_yz extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=false;
+
+        create_bounding_box();
     }
 
     /**
@@ -60,6 +65,8 @@ public class Plane_yz extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=true;
+
+        create_bounding_box();
     }
 
     /**
@@ -81,6 +88,8 @@ public class Plane_yz extends Primitive{
         this.z0=centreBasePoint.z()-width/2;
         this.z1=centreBasePoint.z()+width/2;
         this.k=centreBasePoint.x();
+
+        create_bounding_box();
     }
 
     /**
@@ -103,10 +112,13 @@ public class Plane_yz extends Primitive{
         this.z0=centreBasePoint.z()-width/2;
         this.z1=centreBasePoint.z()+width/2;
         this.k=centreBasePoint.x();
+
+        create_bounding_box();
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
+
         double t=(k-r.origin().x()) / r.direction().x();
         if(t<t_min || t>t_max){
             return false;
@@ -131,11 +143,9 @@ public class Plane_yz extends Primitive{
         rec.material=this.material;
         rec.p=r.point_at_parameter(t);
         return true;
+
     }
-    //-----------------TO BE DEFINED IN FUTURE-----------------
-    public boolean bounding_box(double t0, double t1){
-        return false;
-    }
+
 
     @Override
     String getDescription() {
@@ -180,5 +190,10 @@ public class Plane_yz extends Primitive{
     @Override
     public Primitive clone() {
         return new Plane_yz(this.getWidth(), this.getHeight(), Vec3.clone(this.getCentreBasePoint()), this.isFlipped(), this.getMaterial().clone());
+    }
+
+    @Override
+    void create_bounding_box() {
+        this.boundingBox=new AABB(new Vec3(k,min(y0,y1),min(z0,z1)),new Vec3(k+0.0001,max(y0,y1),max(z0,z1)));
     }
 }

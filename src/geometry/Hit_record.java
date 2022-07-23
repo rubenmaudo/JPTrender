@@ -31,6 +31,10 @@ public class Hit_record {
     public double v; //v coordinate for textures
 
 
+    //testing
+    public double tmax_Temp=0;
+
+
 
     //CONSTRUCTOR
     public Hit_record(){

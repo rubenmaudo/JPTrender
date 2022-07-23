@@ -7,6 +7,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 /**
  * @author : Ruben Maudo
  * @since : 27/06/2020
@@ -40,6 +43,7 @@ public class Plane_xy extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=false;
+        create_bounding_box();
     }
 
     /**
@@ -60,6 +64,7 @@ public class Plane_xy extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=flipped;
+        create_bounding_box();
     }
 
     /**
@@ -81,7 +86,7 @@ public class Plane_xy extends Primitive{
         this.y0=centreBasePoint.y()-height/2;
         this.y1=centreBasePoint.y()+height/2;
         this.k=centreBasePoint.z();
-        this.material=material;
+        create_bounding_box();
     }
 
     /**
@@ -105,13 +110,15 @@ public class Plane_xy extends Primitive{
         this.y0=centreBasePoint.y()-height/2;
         this.y1=centreBasePoint.y()+height/2;
         this.k=centreBasePoint.z();
-        this.material=material;
+
+        create_bounding_box();
 
     }
 
     //METHODS
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
+
         double t=(k-r.origin().z()) / r.direction().z();
         if(t<t_min || t>t_max){
             return false;
@@ -128,7 +135,7 @@ public class Plane_xy extends Primitive{
         rec.t=t;
         Vec3 outward_normal;
         if(flipped){
-           outward_normal=new Vec3(0,0,-1);
+            outward_normal=new Vec3(0,0,-1);
         }else{
             outward_normal=new Vec3(0,0,1);
         }
@@ -137,11 +144,7 @@ public class Plane_xy extends Primitive{
         rec.material=this.material;
         rec.p=r.point_at_parameter(t);
         return true;
-    }
 
-    //-----------------TO BE DEFINED IN FUTURE-----------------
-    public boolean bounding_box(double t0, double t1){
-        return false;
     }
 
     @Override
@@ -187,5 +190,10 @@ public class Plane_xy extends Primitive{
     @Override
     public Primitive clone() {
         return new Plane_xy(this.getWidth(), this.getHeight(), Vec3.clone(this.getCentreBasePoint()), this.isFlipped(), this.getMaterial().clone());
+    }
+
+    @Override
+    void create_bounding_box() {
+        this.boundingBox=new AABB(new Vec3(min(x0,x1),min(y0,y1),k),new Vec3(max(x0,x1),max(y0,y1),k+0.0001));
     }
 }
