@@ -11,7 +11,7 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 
 public class Mesh extends Primitive{
-    private ArrayList<Primitive> triangleslist;
+    public ArrayList<Primitive> triangleslist;
     Vec3 centreBasePoint;
     Material material;
 
@@ -19,6 +19,7 @@ public class Mesh extends Primitive{
 
     Box oldBoundingBox;
 
+    BVH_node newBVH_Node;
 
 
 
@@ -31,7 +32,9 @@ public class Mesh extends Primitive{
         this.triangleslist=meshImport.getTriangleslist();
         this.oldBoundingBox=meshImport.getOldBoundingBox();
 
-        this.triangleListHit=new Hittable(meshImport.getTriangleslist());
+        this.newBVH_Node= new BVH_node(triangleslist);
+
+        this.triangleListHit=new Hittable(meshImport.getTriangleslist(),newBVH_Node);
         this.boundingBox= meshImport.getBoundingBox();
 
 
@@ -41,7 +44,7 @@ public class Mesh extends Primitive{
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
 
-        return new Hittable(triangleslist).hit(r,t_min,t_max,rec);
+        return triangleListHit.hit(r,t_min,t_max,rec);
 
         /*
         //ORIGINAL DESIGN WITH BOXES...

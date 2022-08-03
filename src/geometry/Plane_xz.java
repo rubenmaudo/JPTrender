@@ -191,6 +191,6 @@ public class Plane_xz extends Primitive{
 
     @Override
     void create_bounding_box() {
-        this.boundingBox=new AABB(new Vec3(min(x0,x1),k,min(z0,z1)),new Vec3(max(x0,x1),k+0.0001,max(z0,z1)));
+        this.boundingBox=new AABB(new Vec3(min(x0,x1),k,min(z0,z1)),new Vec3(max(x0,x1),k+0.00001,max(z0,z1)));
     }
 }

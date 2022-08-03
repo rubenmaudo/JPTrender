@@ -81,7 +81,7 @@ public class ColorValue implements Serializable {
         }
 
         return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(),
-                new Hittable(world.list), depth - 1, background));
+                new Hittable(world.list,world.nodeList), depth - 1, background));
     }
 
     /**

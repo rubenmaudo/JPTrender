@@ -20,107 +20,116 @@ public class BVH_node extends Primitive{
     Primitive rightPrimitive;
 
     int axis; //Axis to order the nodes/primitives inside
-    boolean singlefinalBranch=false;
-    boolean doublefinalBranch=false;
 
-
+    int nodeType;
     public BVH_node(ArrayList<Primitive> list) {
 
-        ArrayList<Primitive> tempList=new ArrayList<>();
-        tempList= (ArrayList<Primitive>) list.clone();
+        if (list.size()>2){
+            nodeType =3;
+        }else nodeType =list.size();
 
-        if(tempList.size()==1){
-            leftPrimitive =tempList.get(0);
-            singlefinalBranch =true;
-            this.boundingBox= leftPrimitive.getAABB();
-        }else if(tempList.size()==2){
-            leftPrimitive =tempList.get(0);
-            rightPrimitive=tempList.get(1);
-            doublefinalBranch =true;
-            create_bounding_box();
-        }else{
-            //Choose a random axis to sort the primitives
-            axis= java.util.concurrent.ThreadLocalRandom.current().nextInt(0,3);
 
-            //Sort the list based on the axis
-            Collections.sort(list, new Comparator<Primitive>() {
-                @Override
-                public int compare(Primitive p1, Primitive p2) {
-                    if(p1.boundingBox.min().getValue(axis)<p2.boundingBox.min().getValue(axis)) return -1;
-                    if(p1.boundingBox.min().getValue(axis)==p2.boundingBox.min().getValue(axis)) return 0;
-                    return 1;
+        switch(nodeType) {
+            case 3:
+                //Choose a random axis to sort the primitives
+                axis= java.util.concurrent.ThreadLocalRandom.current().nextInt(0,3);
+
+                //Sort the list based on the axis
+                Collections.sort(list, new Comparator<Primitive>() {
+                    @Override
+                    public int compare(Primitive p1, Primitive p2) {
+                        if(p1.boundingBox.min().getValue(axis)<p2.boundingBox.min().getValue(axis)) return -1;
+                        if(p1.boundingBox.min().getValue(axis)==p2.boundingBox.min().getValue(axis)) return 0;
+                        return 1;
+                    }
+                });
+
+
+                ArrayList<Primitive> left_temp=new ArrayList<>();
+                ArrayList<Primitive> right_temp=new ArrayList<>();
+
+                for (int i=0; i<(int) round(list.size()/2.);i++){
+                    left_temp.add(list.get(i));
                 }
-            });
+                for (int i = (int) round(list.size()/2.); i<=list.size()-1; i++){
+                    right_temp.add(list.get(i));
+                }
 
+                leftNode =new BVH_node(left_temp);
+                rightNode=new BVH_node(right_temp);
 
-            ArrayList<Primitive> left_temp=new ArrayList<>();
-            ArrayList<Primitive> right_temp=new ArrayList<>();
+                create_bounding_box();
+                break;
 
-            for (int i=0; i<(int) round(list.size()/2.);i++){
-                left_temp.add(list.get(i));
-            }
-            for (int i = (int) round(list.size()/2.); i<=list.size()-1; i++){
-                right_temp.add(list.get(i));
-            }
+            case 2:
+                leftPrimitive =list.get(0);
+                rightPrimitive=list.get(1);
+                create_bounding_box();
+                break;
 
-            leftNode =new BVH_node(left_temp);
-            rightNode=new BVH_node(right_temp);
-
-            create_bounding_box();
+            case 1:
+                leftPrimitive =list.get(0);
+                this.boundingBox= leftPrimitive.getAABB();
+                break;
         }
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
+        System.out.println("There is something wrong");
         return false;
     }
 
-    public boolean hit(Ray r, double t_min, double t_max, Hit_record rec, ArrayList<Primitive> tempListHit) {
-        if (boundingBox.hit(r, t_min, t_max, rec)) {
 
-            /*
-            if (singlefinalBranch ==true && leftPrimitive.getAABB().hit(r,t_min,t_max, rec)){
 
-                tempListHit.add(leftPrimitive);
-                return true;
+
+    public boolean hit(Ray r, double t_min, double t_max, Hit_record rec, int intTest) {
+
+        double closest_so_far;
+
+        closest_so_far= (rec.material!=null) ? min(t_max,rec.t) : t_max;
+
+        if (nodeType >0 && boundingBox.hit(r, t_min, closest_so_far, rec)) {
+
+            boolean hitAnything = false;
+
+            switch(nodeType) {
+                case 3:
+
+                    if(leftNode.hit(r, t_min, closest_so_far, rec,1)) {
+                        hitAnything = true;
+                        closest_so_far=rec.t;
+                    }
+
+                    if(rightNode.hit(r, t_min, closest_so_far,rec,1)) hitAnything = true;
+
+                    break;
+
+                case 2:
+                    if(leftPrimitive.getAABB().hit(r,t_min,closest_so_far, rec) &&
+                            leftPrimitive.hit(r,t_min,closest_so_far, rec)){
+                        closest_so_far=rec.t;
+                        hitAnything=true;
+                    }
+
+                    if(rightPrimitive.getAABB().hit(r,t_min,closest_so_far, rec) &&
+                            rightPrimitive.hit(r,t_min,closest_so_far, rec)){
+                        hitAnything=true;
+                    }
+                    break;
+
+                case 1:
+                    if(leftPrimitive.hit(r, t_min, closest_so_far, rec)){
+                        hitAnything=true;
+                    }
+                    break;
+
+                case 0:
+                    break;
             }
-
-             */
-            if (singlefinalBranch) {
-
-                tempListHit.add(leftPrimitive);
-                return true;
-            }
-
-
-                if (doublefinalBranch) {
-
-                /*
-                boolean hitAnything=false;
-                if(leftPrimitive.getAABB().hit(r,t_min,t_max, rec)){
-                    tempListHit.add(leftPrimitive);
-                    hitAnything=true;
-                }
-                if(rightPrimitive.getAABB().hit(r,t_min,t_max, rec)){
-                    tempListHit.add(rightPrimitive);
-                    hitAnything=true;
-                }
-                if (hitAnything) return true;
-                */
-
-                    tempListHit.add(leftPrimitive);
-                    tempListHit.add(rightPrimitive);
-
-                    return true;
-
-                } else {
-                    boolean hitAnything = false;
-                    if (leftNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything = true;
-                    if (rightNode.hit(r, t_min, t_max, rec, tempListHit)) hitAnything = true;
-                    return hitAnything;
-                }
-            }
-            return false;
+            return hitAnything;
+        }
+        return false;
     }
 
     @Override
@@ -144,7 +153,7 @@ public class BVH_node extends Primitive{
         Vec3 temp_min=new Vec3(0);
         Vec3 temp_max=new Vec3(0);
 
-        if (doublefinalBranch){
+        if (nodeType ==2){
             for(int i=0; i<3; i++){
                 temp_min.setValue(i,min(leftPrimitive.getAABB().min().getValue(i),rightPrimitive.getAABB().min().getValue(i)));
                 temp_max.setValue(i,max(leftPrimitive.getAABB().max().getValue(i),rightPrimitive.getAABB().max().getValue(i)));

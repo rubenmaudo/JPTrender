@@ -9,10 +9,7 @@ import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Obj_read;
 import elements.SceneLoader;
-import geometry.Mesh;
-import geometry.Plane_xz;
-import geometry.Primitive;
-import geometry.Sphere;
+import geometry.*;
 import materials.*;
 import maths.Background;
 import maths.ColorValue;
@@ -88,6 +85,14 @@ public class PathTracer implements Runnable {
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
 
         ///////////TESTING/////////////
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
+                new Vec3(0,0,0),
+                new Lambertian(new ColorValue(0.8,0.2,0.3))));
+
+
+
+        BVH_node nodeList=new BVH_node(primList);
+
 
 
         ///////////TESTING/////////////
@@ -104,12 +109,15 @@ public class PathTracer implements Runnable {
         ///////////TESTING/////////////
         //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj").importMesh(primList);
 
+
         /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
                 new Metal(new ColorValue(1,1,1),0.6)));
 
          */
+
+
 
         //TEXTURE CHECKER WORKING
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0), new ColorValue(1,1,1)))));
@@ -130,6 +138,7 @@ public class PathTracer implements Runnable {
 
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
+        //int availableProcessors=1;
 
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
@@ -168,13 +177,14 @@ public class PathTracer implements Runnable {
 
             long startTime0=System.nanoTime();
 
+            //executorService = Executors.newFixedThreadPool(availableProcessors);//Thread pool
             executorService = Executors.newFixedThreadPool(availableProcessors);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
                 ID++;
 
-                executorService.execute(new PTcalcs_threads_runnable(primList, camera, depth, bi,
+                executorService.execute(new PTcalcs_threads_runnable(nodeList,primList, camera, depth, bi,
                         shufflePixelGroup,imagePixels,gammaValue,ID,background,activeThread,tempNs));
 
             }
