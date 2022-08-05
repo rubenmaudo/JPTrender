@@ -61,7 +61,7 @@ public class ColorValue implements Serializable {
             Vec3 unit_direction=(r.direction().normalize());
             double t= 0.5*(unit_direction.y() + 1);
 
-            double angle=-1;
+            double angle=1.3;
             Vec3 sundir=new Vec3(0,cos(angle),sin(angle));
 
             if (background.getMixed()){

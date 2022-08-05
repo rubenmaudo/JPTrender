@@ -11,17 +11,13 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 
 public class Mesh extends Primitive{
-    public ArrayList<Primitive> triangleslist;
+
     Vec3 centreBasePoint;
     Material material;
 
-    Hittable triangleListHit;
 
-    Box oldBoundingBox;
-
-    BVH_node newBVH_Node;
-
-
+    ArrayList<Primitive> triangleslist;
+    BVH_node bvh_node;
 
     public Mesh(String file_path, Vec3 base_point,Material material){
         this.centreBasePoint=base_point;
@@ -30,13 +26,10 @@ public class Mesh extends Primitive{
         Obj_read meshImport=new Obj_read(file_path,material);
 
         this.triangleslist=meshImport.getTriangleslist();
-        this.oldBoundingBox=meshImport.getOldBoundingBox();
 
-        this.newBVH_Node= new BVH_node(triangleslist);
+        this.bvh_node=new BVH_node(triangleslist);
 
-        this.triangleListHit=new Hittable(meshImport.getTriangleslist(),newBVH_Node);
         this.boundingBox= meshImport.getBoundingBox();
-
 
     }
 
@@ -44,22 +37,7 @@ public class Mesh extends Primitive{
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
 
-        return triangleListHit.hit(r,t_min,t_max,rec);
-
-        /*
-        //ORIGINAL DESIGN WITH BOXES...
-        ArrayList<Primitive> boundingBoxArray=new ArrayList<Primitive>();
-        boundingBoxArray.add(oldBoundingBox);
-
-        Hittable tempHittable1=new Hittable(boundingBoxArray);
-        if(tempHittable1.hit(r,t_min,t_max,new Hit_record())){
-            Hittable tempHittable2=new Hittable(triangleslist);
-            return tempHittable2.hit(r,t_min,t_max,rec);
-        }return false;
-
-         */
-
-
+        return new Hittable(triangleslist,bvh_node).hit(r, t_min, t_max, rec);
     }
 
     @Override

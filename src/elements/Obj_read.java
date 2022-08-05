@@ -77,7 +77,7 @@ public class Obj_read {
                     for(int i=1;i<listOfWithSpaces.length; i++){
                         String[] faceElements=listOfWithSpaces[i].split("/");
                         vertexListFace.add(Integer.valueOf(faceElements[0]));
-                        vertexNormalListFace.add(Integer.valueOf(faceElements[2]));
+                        vertexNormalListFace.add(Integer.valueOf(faceElements[2])); //Number 2 changed for 1
                     }
                     for(int i=2; i<vertexListFace.size(); i++){
                         triangleslist.add(new Triangle(

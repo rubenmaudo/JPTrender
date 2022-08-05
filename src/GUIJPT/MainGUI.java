@@ -301,14 +301,14 @@ public class MainGUI extends javax.swing.JFrame {
         labelAlto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelAlto.setText("Alto:");
 
-        spinnerAncho.setModel(new javax.swing.SpinnerNumberModel(800, 50, 10000, 1));
+        spinnerAncho.setModel(new javax.swing.SpinnerNumberModel(800, 1, 10000, 1));
         spinnerAncho.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinnerAnchoStateChanged(evt);
             }
         });
 
-        spinnerAlto.setModel(new javax.swing.SpinnerNumberModel(600, 100, 10000, 1));
+        spinnerAlto.setModel(new javax.swing.SpinnerNumberModel(600, 1, 10000, 1));
         spinnerAlto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinnerAltoStateChanged(evt);

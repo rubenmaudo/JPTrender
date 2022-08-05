@@ -76,14 +76,6 @@ public class BVH_node extends Primitive{
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
-        System.out.println("There is something wrong");
-        return false;
-    }
-
-
-
-
-    public boolean hit(Ray r, double t_min, double t_max, Hit_record rec, int intTest) {
 
         double closest_so_far;
 
@@ -96,12 +88,12 @@ public class BVH_node extends Primitive{
             switch(nodeType) {
                 case 3:
 
-                    if(leftNode.hit(r, t_min, closest_so_far, rec,1)) {
+                    if(leftNode.hit(r, t_min, closest_so_far, rec)) {
                         hitAnything = true;
                         closest_so_far=rec.t;
                     }
 
-                    if(rightNode.hit(r, t_min, closest_so_far,rec,1)) hitAnything = true;
+                    if(rightNode.hit(r, t_min, closest_so_far,rec)) hitAnything = true;
 
                     break;
 

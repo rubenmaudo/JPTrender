@@ -23,8 +23,6 @@ public class Hittable {
     //HITTABLE FIELDS
     ArrayList<Primitive> list;
 
-    ArrayList <Primitive> tempListHitted= new ArrayList<>(); //List of AABB hit to be analysed
-
     BVH_node nodeList;
 
 
@@ -59,40 +57,10 @@ public class Hittable {
      * @param rec class that storage all the information about the intersection if happen
      * @return boolean confirming if the ray hit something
      */
-    /*public boolean hit(Ray r, double t_min, double t_max, Hit_record rec){
-
-        closest_so_far = t_max;
-
-        if(list.size()<3){
-            for (Primitive primitive : list) {
-
-                if (primitive.hit(r, t_min, closest_so_far,rec)) {
-                    hit_anything = true;
-                    closest_so_far=rec.t;
-                    temp_rec=rec;
-                }
-            }
-        }else{
-            BVH_node NodeList=new BVH_node(list);
-            if (NodeList.hit(r, t_min, t_max,rec,tempListHitted)){
-                for (Primitive primitive : tempListHitted) {
-                    if (primitive.hit(r, t_min, closest_so_far,rec)) {
-                        hit_anything = true;
-                        closest_so_far=rec.t;
-                        temp_rec=rec;
-                    }
-                }
-            }
-        }
-        return hit_anything;        
-    }*/
-
-    //TESTING METHOD
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec){
 
         closest_so_far = t_max;
 
-        /*
         if(list.size()<3){
             for (Primitive primitive : list) {
 
@@ -103,12 +71,8 @@ public class Hittable {
                 }
             }
         }else{
-            hit_anything=nodeList.hit(r, t_min, t_max, rec,1);
+            hit_anything=nodeList.hit(r, t_min, t_max, rec);
         }
-
-         */
-
-        hit_anything=nodeList.hit(r, t_min, t_max, rec,1);
         return hit_anything;
     }
 

@@ -32,6 +32,8 @@ public class Triangle extends Primitive{
         super.material= material;
 
         vertexNormalCalc=false;
+
+        create_bounding_box();
     }
 
     /**

@@ -22,6 +22,7 @@ public class Box extends Primitive{
     Material material;
 
     ArrayList<Primitive> planesList;
+    Hittable tempHittable;
 
     /**
      * Constructor that create a box object based on parameters passed
@@ -50,12 +51,14 @@ public class Box extends Primitive{
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), material));
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), true,material));
 
+        tempHittable= new Hittable(planesList,new BVH_node(planesList));
+
         create_bounding_box();
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
-            Hittable tempHittable = new Hittable(planesList);
+
             return tempHittable.hit(r, t_min, t_max, rec);
     }
 

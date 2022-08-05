@@ -15,7 +15,11 @@ import maths.Background;
 import maths.ColorValue;
 import maths.Vec3;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
@@ -27,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  * @since : 23/06/2020, Tue
  **/
 
-public class PathTracer implements Runnable {
+public class PathTracer extends Component implements Runnable {
 
     private int image_width;
     private int image_height;
@@ -85,10 +89,40 @@ public class PathTracer implements Runnable {
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
 
         ///////////TESTING/////////////
+
+        /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
-                new Lambertian(new ColorValue(0.8,0.2,0.3))));
+                new Metal(new ColorValue(1,1,1),1)));
+                //new Lambertian(new ColorValue(0.8,0.2,0.3))));
+                */
 
+
+        /*
+        JFileChooser chooser;
+        chooser = new JFileChooser();
+        chooser.setDialogTitle("Seleccione archivo flipao");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Obj Files", "obj");
+        chooser.setFileFilter(filter);
+
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        String sceneFilePath="";
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = chooser.getSelectedFile();
+            sceneFilePath = selectedFile.getAbsolutePath();
+        }
+
+         */
+
+
+        /*
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\dragon.obj",
+                new Vec3(0,0,0),
+                //new Metal(new ColorValue(1,1,1),1)));
+                new Lambertian(new ColorValue(0.8,0.2,0.3))));
+                
+         */
 
 
         BVH_node nodeList=new BVH_node(primList);

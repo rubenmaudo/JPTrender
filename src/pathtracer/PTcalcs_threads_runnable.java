@@ -127,7 +127,6 @@ public class PTcalcs_threads_runnable implements Runnable {
 
                 Ray r = camera.get_ray(u, v);
 
-                //TESTING col = ColorValue.colorRay(r, new Hittable(scene), depth, background);
                 col = ColorValue.colorRay(r, new Hittable(scene,nodeList), depth, background);
 
                 if (imagePixels[pxLoc[0]][pxLoc[1]] == null) {

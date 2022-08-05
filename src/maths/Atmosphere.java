@@ -50,7 +50,7 @@ public class Atmosphere {
 
         Hittable hitCheck=new Hittable(worldList);
         if(!hitCheck.hit(ray,0, Double.MAX_VALUE,new Hit_record())){
-            return new ColorValue(1,1,1);
+            return new ColorValue(0,0,0);
         }else{
 
             double segmentLength=hitCheck.temp_rec.t/(double)numbSamples;
