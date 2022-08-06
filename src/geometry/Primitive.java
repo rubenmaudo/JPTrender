@@ -33,11 +33,6 @@ public abstract class Primitive implements Serializable {
      */
     public abstract boolean hit(Ray r, double t_min, double t_max, Hit_record rec);
 
-    /**
-     * Create a description for the primitive and its parameters
-     * @return
-     */
-    abstract String getDescription();
 
     /**
      * Method to parse onto xml from instances
@@ -46,12 +41,6 @@ public abstract class Primitive implements Serializable {
      */
     public abstract Node getGeomety(Document doc);
 
-    /**
-     * Clone primitive object
-     *
-     * @return
-     */
-    public abstract Primitive clone();
 
     /**
      * Return the AABB from the primitive

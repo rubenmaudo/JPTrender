@@ -124,18 +124,9 @@ public class BVH_node extends Primitive{
         return false;
     }
 
-    @Override
-    String getDescription() {
-        return null;
-    }
 
     @Override
     public Node getGeomety(Document doc) {
-        return null;
-    }
-
-    @Override
-    public Primitive clone() {
         return null;
     }
 

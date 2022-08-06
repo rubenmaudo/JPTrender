@@ -102,12 +102,6 @@ public class Sphere extends Primitive{
         return false;//The ray doesn't hit the sphere
     }
 
-    @Override
-    String getDescription() {
-        return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
-                "radius is r";
-    }
-
     private void get_spehere_uv(Vec3 p, Hit_record rec){
         // p: a given point on the sphere of radius one, centered at the origin.
         // u: returned value [0,1] of angle around the Y axis from X=-1.
@@ -155,11 +149,6 @@ public class Sphere extends Primitive{
 
     public Material getMaterial(){
         return material;
-    }
-
-    @Override
-    public Primitive clone() {
-        return new Sphere(Vec3.clone(this.getCenter()),this.getRadius(),this.getMaterial().clone());
     }
 
     @Override

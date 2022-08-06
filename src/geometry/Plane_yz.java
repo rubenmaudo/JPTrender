@@ -146,12 +146,6 @@ public class Plane_yz extends Primitive{
 
     }
 
-
-    @Override
-    String getDescription() {
-        return "A plane";
-    }
-
     @Override
     public Node getGeomety(Document doc) {
         Element planeYZ=doc.createElement("PlaneYZ");
@@ -185,11 +179,6 @@ public class Plane_yz extends Primitive{
 
     public Material getMaterial() {
         return material;
-    }
-
-    @Override
-    public Primitive clone() {
-        return new Plane_yz(this.getWidth(), this.getHeight(), Vec3.clone(this.getCentreBasePoint()), this.isFlipped(), this.getMaterial().clone());
     }
 
     @Override

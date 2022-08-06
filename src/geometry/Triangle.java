@@ -110,24 +110,8 @@ public class Triangle extends Primitive{
     }
 
     @Override
-    String getDescription() {
-        return "The triangle is formed by vertex v0("+ v0.x() + "," + v0.y() + "," + v0.z() + "), " +
-                "v1(" + v1.x() + "," + v1.y() + "," + v1.z() + "), " +
-                "v2(" + v2.x() + "," + v2.y() + "," + v2.z() + ")";
-    }
-
-    @Override
     public Node getGeomety(Document doc) {
         return null;
-    }
-
-    @Override
-    public Primitive clone() {
-        return new Triangle(
-                new Vec3(v0.x(),v0.y(),v0.z()),
-                new Vec3(v1.x(),v1.y(),v1.z()),
-                new Vec3(v2.x(),v2.y(),v2.z()),
-                super.material= material.clone());
     }
 
     @Override

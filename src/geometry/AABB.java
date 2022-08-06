@@ -61,19 +61,10 @@ public class AABB extends Primitive {
     }
 
     @Override
-    String getDescription() {
-        return null;
-    }
-
-    @Override
     public Node getGeomety(Document doc) {
         return null;
     }
 
-    @Override
-    public Primitive clone() {
-        return null;
-    }
 
     @Override
     void create_bounding_box() {

@@ -33,7 +33,6 @@ public class Hittable {
     //CONSTRUCTOR
 
     public Hittable(ArrayList<Primitive> list){
-        //this.list= (ArrayList<Primitive>) list.clone();
         this.list= list;
         this.temp_rec=new Hit_record();
     }
@@ -47,6 +46,8 @@ public class Hittable {
         this.temp_rec=new Hit_record();
 
     }
+
+    //TODO comment all this process
 
     //METHODS
     /**

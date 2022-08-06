@@ -13,15 +13,13 @@ import java.util.ArrayList;
 public class Mesh extends Primitive{
 
     Vec3 centreBasePoint;
-    Material material;
-
 
     ArrayList<Primitive> triangleslist;
     BVH_node bvh_node;
 
     public Mesh(String file_path, Vec3 base_point,Material material){
         this.centreBasePoint=base_point;
-        this.material=material;
+        super.material=material;
 
         Obj_read meshImport=new Obj_read(file_path,material);
 
@@ -39,21 +37,11 @@ public class Mesh extends Primitive{
 
         return new Hittable(triangleslist,bvh_node).hit(r, t_min, t_max, rec);
     }
-
-    @Override
-    String getDescription() {
-        return null;
-    }
-
     @Override
     public Node getGeomety(Document doc) {
         return null;
     }
 
-    @Override
-    public Primitive clone() {
-        return null;
-    }
 
     @Override
     void create_bounding_box() {

@@ -36,6 +36,8 @@ public class ColorValue implements Serializable {
     }
 
 
+    //TODO Refactor colorvalue for texture solid to be used
+
     //METHODS
     
     /**
@@ -126,8 +128,6 @@ public class ColorValue implements Serializable {
     }
 
     //TESTING TEXTURES
-
-
 
 
     public double vR(){

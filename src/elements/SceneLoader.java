@@ -42,6 +42,7 @@ public class SceneLoader {
     //GEOMETRY FIELDS
     ArrayList<Primitive> geometry = new ArrayList<>();
 
+    //TODO add all the details of the scene,  including render size, etc
 
     /**
      * Constructor to read a xml and load all the camera, objects and materials

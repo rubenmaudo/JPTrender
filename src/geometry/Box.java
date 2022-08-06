@@ -19,7 +19,6 @@ public class Box extends Primitive{
     double depth;
     double height;
     Vec3 centreBasePoint;
-    Material material;
 
     ArrayList<Primitive> planesList;
     Hittable tempHittable;
@@ -37,7 +36,7 @@ public class Box extends Primitive{
         this.depth=depth;
         this.height=height;
         this.centreBasePoint=centreBasePoint;
-        this.material=material;
+        super.material=material;
 
         //The box is created based on combination of flats
         planesList=new ArrayList<>();
@@ -62,10 +61,6 @@ public class Box extends Primitive{
             return tempHittable.hit(r, t_min, t_max, rec);
     }
 
-    @Override
-    String getDescription() {
-        return null;
-    }
 
     @Override
     public Node getGeomety(Document doc) {
@@ -102,10 +97,6 @@ public class Box extends Primitive{
         return material;
     }
 
-    @Override
-    public Primitive clone() {
-        return new Box(this.getWidth(),this.getDepth(),this.getHeight(),Vec3.clone(this.getCentreBasePoint()),this.getMaterial().clone());
-    }
 
     @Override
     void create_bounding_box() {

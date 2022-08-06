@@ -8,7 +8,7 @@
 
   <!--////////LIGHT\\\\\\\\\-->
   <PlaneXZ width="230" depth="230" centreBasePointX="0" centreBasePointY="555" centreBasePointZ="0" flipped="true">
-    <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
+    <Material type="light" ColorR="50" ColorG="50" ColorB="50" />
   </PlaneXZ>
   <!--////////CORNELL BOX\\\\\\\\\-->
   <PlaneYZ width="556" height="556" centreBasePointX="-278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
@@ -37,6 +37,5 @@
   <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
     <Material type="dielectric" ColorR="1" ColorG="0.2" ColorB="0.2" ri="1.5" fuzziness="0.25" />
   </Sphere>
-
 
 </Scene>

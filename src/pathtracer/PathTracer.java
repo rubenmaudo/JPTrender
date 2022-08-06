@@ -10,6 +10,7 @@ import elements.Camera;
 import elements.Obj_read;
 import elements.SceneLoader;
 import geometry.*;
+import geometry.Box;
 import materials.*;
 import maths.Background;
 import maths.ColorValue;
@@ -89,6 +90,11 @@ public class PathTracer extends Component implements Runnable {
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
 
         ///////////TESTING/////////////
+
+        //primList.add(new Volume(new Sphere(new Vec3(100,70,128),70,new Isotropic(new ColorValue(1,1,1))),0.03));
+        //primList.add(new Volume(new Sphere(new Vec3(0,275,275),200,new Isotropic(new ColorValue(1,1,1))),0.003));
+        primList.add(new Volume(new Box(556,556,556,new Vec3(0,0,0),new Isotropic(new ColorValue(0.95,0.95,0.95))),0.001));
+
 
         /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
