@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JPTrender" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="275d8297-0bbf-4119-b99b-d08e394baf69" name="Default Changelist" comment="New material-fog">
+      <change afterPath="$PROJECT_DIR$/src/materials/Metal2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Texture_map.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/materials/Texture_solid_colour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/JPTrender/JPTrender.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JPTrender/JPTrender.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/GUIJPT/MainGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/elements/Obj_read.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/elements/Obj_read.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/elements/SceneSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/elements/SceneSaver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Box.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Box.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Mesh.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Mesh.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xz.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_xz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_yz.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Plane_yz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Primitive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Primitive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Sphere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/geometry/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/geometry/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Dielectric.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Dielectric.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Diffuse_light.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Diffuse_light.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Lambertian.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Lambertian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Material.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Material.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Metal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Metal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Texture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Texture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/materials/Texture_checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/materials/Texture_checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/maths/Hittable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/maths/Hittable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/pathtracer/PathTracer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/pathtracer/PathTracer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JPTrender/resources/CornellBox1Light3SpheresFuzz.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JPTrender/resources/CornellBox1Light3SpheresFuzz.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUIJPT/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIJPT/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Obj_read.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Obj_read.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/SceneSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/SceneSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/AABB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/AABB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/BVH_node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/BVH_node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Mesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Plane_xy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Plane_xy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Plane_xz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Plane_xz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Plane_yz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Plane_yz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Primitive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Primitive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/Volume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Dielectric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Dielectric.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Diffuse_light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Diffuse_light.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Isotropic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Isotropic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Lambertian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Lambertian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Metal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Metal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/Texture_checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/Texture_checker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/maths/Hittable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/maths/Hittable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathtracer/PathTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathtracer/PathTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/CornellBox1Light3SpheresFuzz.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/CornellBox1Light3SpheresFuzz.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1tMeiHEtk8rjWNUa8ZeOJywJy6R" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources/dragon.obj" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="materials" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ruben\OneDrive\Documents\IdeaProjects\JPTrender\src\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="materials" />
+      <recent name="elements" />
+      <recent name="pathtracer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainGUI">
+    <configuration name="MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUIJPT.MainGUI" />
+      <module name="JPTrender" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUIJPT.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Obj_read" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="elements.Obj_read" />
+      <module name="JPTrender" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="elements.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainGUI" />
+        <item itemvalue="Application.Obj_read" />
+        <item itemvalue="Application.MainGUI" />
+        <item itemvalue="Application.MainGUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="275d8297-0bbf-4119-b99b-d08e394baf69" name="Default Changelist" comment="" />
+      <created>1622583513523</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622583513523</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Second attempt of Multithreading">
+      <created>1623620250765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623620250765</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Second attempt of Multithreading">
+      <created>1623620432536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623620432536</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Multithreading working (Random sorted)">
+      <created>1623785450908</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623785450908</updated>
+    </task>
+    <task id="LOCAL-00004" summary="New multithread tested">
+      <created>1624038000447</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1624038000447</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Testing reStartEngine">
+      <created>1624127718341</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1624127718341</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Camera updated 1">
+      <created>1625769995614</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1625769995614</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Camera moving">
+      <created>1626127081999</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626127081999</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Camera moving right">
+      <created>1626127250500</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1626127250500</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Camera Moving with buttons">
+      <created>1626201548377</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1626201548377</updated>
+    </task>
+    <task id="LOCAL-00010" summary="MultiThread changes pushed">
+      <created>1626202045218</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1626202045218</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Triangle added">
+      <created>1626601912291</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1626601912291</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Mesh added">
+      <created>1627943538907</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1627943538907</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Smooth shading added">
+      <created>1628203609417</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1628203609417</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Adding textures">
+      <created>1630442477268</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1630442477268</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Adding textures_working on correlation">
+      <created>1630618231689</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1630618231689</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Adding textures_checker working">
+      <created>1642086174358</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1642086174358</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Textures added">
+      <created>1642177130394</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1642177130394</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Starting with sky">
+      <created>1643214841359</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1643214841359</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Sky working">
+      <created>1648228164467</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1648228164467</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Sky with good numbering">
+      <created>1654617207547</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1654617207547</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implementing BVH">
+      <created>1657286760090</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1657286760090</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Implementing BVH - Sphere with bounding box">
+      <created>1657294856257</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1657294856257</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Implementing BVH - Sphere with bounding box">
+      <created>1657541277346</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1657541277346</updated>
+    </task>
+    <task id="LOCAL-00024" summary="BVH implmented-Mesh to be revised">
+      <created>1658564629134</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1658564629134</updated>
+    </task>
+    <task id="LOCAL-00025" summary="BVH implmented-Mesh to be revised &#10;Problems with multithread">
+      <created>1658579704959</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1658579704959</updated>
+    </task>
+    <task id="LOCAL-00026" summary="BVH fully implemented&#10;Mesh &amp; box to be revised.">
+      <created>1659530577052</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1659530577052</updated>
+    </task>
+    <task id="LOCAL-00027" summary="New material-fog">
+      <created>1659795557088</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1659795557088</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Second attempt of Multithreading" />
+    <MESSAGE value="Multithreading working (Random sorted)" />
+    <MESSAGE value="New multithread tested" />
+    <MESSAGE value="Testing reStartEngine" />
+    <MESSAGE value="Camera updated 1" />
+    <MESSAGE value="Camera moving" />
+    <MESSAGE value="Camera moving right" />
+    <MESSAGE value="Camera Moving with buttons" />
+    <MESSAGE value="MultiThread changes pushed" />
+    <MESSAGE value="Triangle added" />
+    <MESSAGE value="Mesh added" />
+    <MESSAGE value="Smooth shading added" />
+    <MESSAGE value="Adding textures" />
+    <MESSAGE value="Adding textures_working on correlation" />
+    <MESSAGE value="Adding textures_checker working" />
+    <MESSAGE value="Textures added" />
+    <MESSAGE value="Starting with sky" />
+    <MESSAGE value="Sky working" />
+    <MESSAGE value="Sky with good numbering" />
+    <MESSAGE value="Implementing BVH" />
+    <MESSAGE value="Implementing BVH - Sphere with bounding box" />
+    <MESSAGE value="BVH implmented-Mesh to be revised" />
+    <MESSAGE value="BVH implmented-Mesh to be revised &#10;Problems with multithread" />
+    <MESSAGE value="BVH fully implemented&#10;Mesh &amp; box to be revised." />
+    <MESSAGE value="New material-fog" />
+    <option name="LAST_COMMIT_MESSAGE" value="New material-fog" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/maths/Atmosphere.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/elements/Obj_read.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometry/Volume.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometry/Box.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/materials/Metal2.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/materials/Metal2.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="41" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="43" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="attenuation" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JPTrender$MainGUI.ic" NAME="MainGUI Coverage Results" MODIFIED="1659773483924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>GUIJPT.*</FILTER>
+    </SUITE>
+  </component>
+</project>
