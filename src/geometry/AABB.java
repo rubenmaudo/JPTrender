@@ -15,6 +15,7 @@ public class AABB extends Primitive {
     public AABB(Vec3 minimum, Vec3 maximum) {
         this.minimum = minimum;
         this.maximum = maximum;
+        //
     }
 
     public Vec3 min() {
