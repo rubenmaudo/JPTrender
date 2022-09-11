@@ -36,10 +36,12 @@ public class ColorValue implements Serializable {
     }
 
 
+    //TODO Refactor colorvalue for texture solid to be used
+
     //METHODS
-    
+
     /**
-     * Method that recive a ray direction (from camera) and go through the array of elements in scene checking colisions
+     * Method that take a ray direction (from camera) and go through the array of elements in scene checking colisions
      * and obtaining the color of the hit object
      * @param r Ray to use
      * @param world list of items to hit with other information
@@ -61,20 +63,18 @@ public class ColorValue implements Serializable {
             Vec3 unit_direction=(r.direction().normalize());
             double t= 0.5*(unit_direction.y() + 1);
 
-
-            double angle=-0.7;
-            Vec3 sundir=new Vec3(0,cos(angle),-sin(angle));
-            System.out.println(cos(angle));
-            System.out.println(-sin(angle));
+            double angle=1.3;
+            Vec3 sundir=new Vec3(0,cos(angle),sin(angle));
 
             if (background.getMixed()){
                 //return background.getSecondaryColor().product(1-t).add(background.getMainColor().product(t));
                 Atmosphere sky=new Atmosphere(sundir);
-                return sky.computeIncidentLight(r);
+                Ray ray=r;
+                ray.setPointOrigin(r.getPointOrigin().add(new Vec3(0,6360e3,0)));
+                return sky.computeIncidentLight(ray);
+
             }else {
-                Atmosphere sky = new Atmosphere(sundir);
-                return sky.computeIncidentLight(r);
-                //return background.getMainColor();
+                return background.getMainColor();
             }
         }
 
@@ -83,7 +83,7 @@ public class ColorValue implements Serializable {
         }
 
         return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(),
-                new Hittable(world.list), depth - 1, background));
+                new Hittable(world.list,world.nodeList), depth - 1, background));
     }
 
     /**
@@ -128,8 +128,6 @@ public class ColorValue implements Serializable {
     }
 
     //TESTING TEXTURES
-
-
 
 
     public double vR(){

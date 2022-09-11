@@ -11,6 +11,7 @@ import static java.lang.Math.exp;
 import static java.lang.Math.pow;
 
 public class Atmosphere {
+
     final Vec3 betaR = new Vec3(3.8e-6,15.5e-6,33.1e-6);
     final Vec3 betaM = new Vec3(21e-6);
     double Er = 6360e3;//in m
@@ -49,7 +50,7 @@ public class Atmosphere {
 
         Hittable hitCheck=new Hittable(worldList);
         if(!hitCheck.hit(ray,0, Double.MAX_VALUE,new Hit_record())){
-            return new ColorValue(1,1,1);
+            return new ColorValue(0,0,0);
         }else{
 
             double segmentLength=hitCheck.temp_rec.t/(double)numbSamples;
@@ -86,7 +87,7 @@ public class Atmosphere {
                     Vec3 samplePositionLight = samplePosition.add(sunDirection.product(tCurrentLight + segmentLengthLight * 0.5));
                     double heightLight = samplePositionLight.length() - Er;
 
-                    if (heightLight < 0) return new ColorValue(0,0,0);
+                    if (heightLight < 0) break;
 
                     opticalDepthLightR += exp(-heightLight/Hr) * segmentLengthLight;
                     opticalDepthLightM += exp(-heightLight/Hm) * segmentLengthLight;
@@ -110,7 +111,6 @@ public class Atmosphere {
         Vec3 finalVecR = sumR.product(betaR).product(phaseR);
         Vec3 finalVecM = sumM.product(betaM).product(phaseM);
         Vec3 finalVecColour = finalVecR.add(finalVecM).product(20);
-        System.out.println(finalVecColour);
 
         return new ColorValue(finalVecColour.x(),finalVecColour.y(),finalVecColour.z());
 

@@ -31,7 +31,6 @@ public class Hit_record {
     public double v; //v coordinate for textures
 
 
-
     //CONSTRUCTOR
     public Hit_record(){
         this.t=0;

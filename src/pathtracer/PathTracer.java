@@ -9,16 +9,18 @@ import GUIJPT.MainGUI;
 import elements.Camera;
 import elements.Obj_read;
 import elements.SceneLoader;
-import geometry.Mesh;
-import geometry.Plane_xz;
-import geometry.Primitive;
-import geometry.Sphere;
+import geometry.*;
+import geometry.Box;
 import materials.*;
 import maths.Background;
 import maths.ColorValue;
 import maths.Vec3;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
@@ -30,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  * @since : 23/06/2020, Tue
  **/
 
-public class PathTracer implements Runnable {
+public class PathTracer extends Component implements Runnable {
 
     private int image_width;
     private int image_height;
@@ -87,6 +89,87 @@ public class PathTracer implements Runnable {
         //Create a new scene and camera from the xml loader
         ArrayList<Primitive> primList =sceneLoader.getGeometry();
 
+        ///////////TESTING VOLUMES/////////////
+
+        //primList.add(new Volume(new Sphere(new Vec3(100,70,128),70,new Isotropic(new ColorValue(1,1,1))),0.03));
+        //primList.add(new Volume(new Sphere(new Vec3(0,275,275),200,new Isotropic(new ColorValue(1,1,1))),0.003));
+        //primList.add(new Volume(new Box(556,556,556,new Vec3(0,0,0),new Isotropic(0.95,0.95,0.95)),0.001));
+        //primList.add(new Volume(new Sphere(new Vec3(0,120,128),119.9999,new Isotropic(new ColorValue(0,0,1))),0.002));
+
+        ///TESTING METAL 2///
+
+        /*
+        primList.add(new Sphere(new Vec3(0,120,128),120,new Metal2(
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\rust-coated-metal-bl\\rust-coated-basecolor.png"),
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\rust-coated-metal-bl\\rust-coated-metal.png"),
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\rust-coated-metal-bl\\rust-coated-roughness.png"))));
+
+
+
+        /*
+        primList.add(new Sphere(new Vec3(0,120,128),120,new Metal2(
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\earth.jpg"),
+                new Texture_solid_colour(1,1,1),
+                new Texture_solid_colour(0,0,0))));
+
+         */
+
+
+
+        /*
+        primList.add(new Sphere(new Vec3(0,120,128),120,new Lambertian(
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\earth.jpg"))));
+
+         */
+
+
+
+        /*
+        primList.add(new Sphere(new Vec3(0,120,128),120,new Metal2(
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\RustedMetal\\rusted-steel_albedo.png"),
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\RustedMetal\\rusted-steel_metallic.png"),
+                new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\Materials\\RustedMetal\\rusted-steel_roughness.png"))));
+         */
+
+        /*
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
+                new Vec3(0,0,0),
+                new Metal(new ColorValue(1,1,1),1)));
+                //new Lambertian(new ColorValue(0.8,0.2,0.3))));
+
+         */
+
+
+
+        /*
+        JFileChooser chooser;
+        chooser = new JFileChooser();
+        chooser.setDialogTitle("Seleccione archivo flipao");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Obj Files", "obj");
+        chooser.setFileFilter(filter);
+
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        String sceneFilePath="";
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = chooser.getSelectedFile();
+            sceneFilePath = selectedFile.getAbsolutePath();
+        }
+
+         */
+
+
+
+        primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap2.obj",
+                new Vec3(0,0,0), new Metal(1,1,1,0.6)));
+        // new Dielectric(1.5)));
+        //new Metal(1,0.5,0.5,0.6)));
+        //new Metal(new ColorValue(1,1,1),1)));
+        // new Lambertian(new ColorValue(0.8,0.2,0.3))));
+
+
+
+
 
 
         ///////////TESTING/////////////
@@ -103,6 +186,7 @@ public class PathTracer implements Runnable {
         ///////////TESTING/////////////
         //primList=new Obj_read("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj").importMesh(primList);
 
+
         /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
@@ -110,25 +194,33 @@ public class PathTracer implements Runnable {
 
          */
 
+
+
         //TEXTURE CHECKER WORKING
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0), new ColorValue(1,1,1)))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Metal(new Texture_checker(0.15,new ColorValue(1,0,0), new ColorValue(1,1,1)),0.6)));
 
         //TEXTURE TESTING
-        primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("c:/earth.jpeg"))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture("c:/earth.jpeg"))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\earth.jpg"))));
+        //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Metal(new Texture_map("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\earth.jpg"),0.8)));
         //primList.add(new Sphere(new Vec3(0,70,-22), 70,new Lambertian(new ColorValue(0,1,1))));
-        primList.add(new Plane_xz(556,556,new Vec3(0,0,0),new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0),new ColorValue(1,1,1)))));
+        //primList.add(new Plane_xz(556,556,new Vec3(0,0,0),new Lambertian(new Texture_checker(0.15,new ColorValue(0,0,0),new ColorValue(1,1,1)))));
 
-        /*
+
+/*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap.obj",
                 new Vec3(0,0,0),
                 new Lambertian(new ColorValue(0.8,0.2,0.3))));
-                new Metal(new ColorValue(1,1,1),0)));
-         */
+                //new Metal(new ColorValue(1,1,1),0)));
+*/
 
 
 
+        BVH_node nodeList=new BVH_node(primList);
 
         int availableProcessors=Runtime.getRuntime().availableProcessors()+1;//Check the proccessors available
+        //int availableProcessors=1;
 
         //Generate a list of pixels
         ArrayList<int[]> pixelList = new ArrayList<>();
@@ -167,13 +259,14 @@ public class PathTracer implements Runnable {
 
             long startTime0=System.nanoTime();
 
+            //executorService = Executors.newFixedThreadPool(availableProcessors);//Thread pool
             executorService = Executors.newFixedThreadPool(availableProcessors);//Thread pool
 
             int ID = 0;
             for (ArrayList<int[]> shufflePixelGroup : listOfPixelGroups) {
                 ID++;
 
-                executorService.execute(new PTcalcs_threads_runnable(primList, camera, depth, bi,
+                executorService.execute(new PTcalcs_threads_runnable(nodeList,primList, camera, depth, bi,
                         shufflePixelGroup,imagePixels,gammaValue,ID,background,activeThread,tempNs));
 
             }

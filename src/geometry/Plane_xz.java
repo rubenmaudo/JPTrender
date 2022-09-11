@@ -7,6 +7,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 /**
  * @author : Ruben Maudo
  * @since : 27/06/2020
@@ -40,6 +43,7 @@ public class Plane_xz extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=false;
+        create_bounding_box();
     }
 
     /**
@@ -60,6 +64,7 @@ public class Plane_xz extends Primitive{
         this.k=k;
         this.material=material;
         this.flipped=flipped;
+        create_bounding_box();
     }
 
     /**
@@ -81,7 +86,8 @@ public class Plane_xz extends Primitive{
         this.z0=centreBasePoint.z()-depth/2;
         this.z1=centreBasePoint.z()+depth/2;
         this.k=centreBasePoint.y();
-        this.material=material;
+
+        create_bounding_box();
     }
 
     /**
@@ -104,10 +110,13 @@ public class Plane_xz extends Primitive{
         this.z0=centreBasePoint.z()-depth/2;
         this.z1=centreBasePoint.z()+depth/2;
         this.k=centreBasePoint.y();
+
+        create_bounding_box();
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
+
         double t=(k-r.origin().y()) / r.direction().y();
         if(t<t_min || t>t_max){
             return false;
@@ -132,19 +141,11 @@ public class Plane_xz extends Primitive{
         rec.material=this.material;
         rec.p=r.point_at_parameter(t);
         return true;
-    }
-    //-----------------TO BE DEFINED IN FUTURE-----------------
-    public boolean bounding_box(double t0, double t1){
-        return false;
+
     }
 
     @Override
-    String getDescription() {
-        return "A plane";
-    }
-
-    @Override
-    public Node getGeomety(Document doc) {
+    public Node saveGeomety(Document doc) {
         Element planeXZ=doc.createElement("PlaneXZ");
         planeXZ.setAttribute("width", String.valueOf(this.width));
         planeXZ.setAttribute("depth", String.valueOf(this.depth));
@@ -179,7 +180,7 @@ public class Plane_xz extends Primitive{
     }
 
     @Override
-    public Primitive clone() {
-        return new Plane_xz(this.getWidth(), this.getDepth(), Vec3.clone(this.getCentreBasePoint()), this.isFlipped(), this.getMaterial().clone());
+    void create_bounding_box() {
+        this.boundingBox=new AABB(new Vec3(min(x0,x1),k,min(z0,z1)),new Vec3(max(x0,x1),k+0.00001,max(z0,z1)));
     }
 }

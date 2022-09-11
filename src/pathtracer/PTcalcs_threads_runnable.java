@@ -1,6 +1,7 @@
 package pathtracer;
 
 import elements.Camera;
+import geometry.BVH_node;
 import geometry.Primitive;
 import maths.Background;
 import maths.ColorValue;
@@ -39,6 +40,9 @@ public class PTcalcs_threads_runnable implements Runnable {
 
     int NoPasses;
 
+    //TESTING
+    BVH_node nodeList;
+
     //CONSTRUCTOR
     public PTcalcs_threads_runnable(ArrayList<Primitive> scene,
                                     Camera camera,
@@ -51,6 +55,41 @@ public class PTcalcs_threads_runnable implements Runnable {
                                     Background background,
                                     Boolean activeThread,
                                     int NoPasses){
+
+
+        this.scene=scene;
+        this.camera =camera;
+        this.depth=depth;
+
+        this.image=image;
+        this.pixelList=list;
+        this.imagePixels=imagePixels;
+        this.gammaValue=gammaValue;
+
+        this.ID=ID;
+        this.background=background;
+
+        this.activeThread=activeThread;
+
+        this.NoPasses=NoPasses;
+
+
+    }
+
+    //TESTINGGGGG//////
+    public PTcalcs_threads_runnable(BVH_node nodeList, ArrayList<Primitive> scene,
+                                    Camera camera,
+                                    int depth,
+                                    BufferedImage image,
+                                    ArrayList<int[]> list,
+                                    ColorValue[][] imagePixels,
+                                    double gammaValue,
+                                    int ID,
+                                    Background background,
+                                    Boolean activeThread,
+                                    int NoPasses){
+
+        this.nodeList=nodeList;
 
 
         this.scene=scene;
@@ -88,7 +127,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
                 Ray r = camera.get_ray(u, v);
 
-                col = ColorValue.colorRay(r, new Hittable(scene), depth, background);
+                col = ColorValue.colorRay(r, new Hittable(scene,nodeList), depth, background);
 
                 if (imagePixels[pxLoc[0]][pxLoc[1]] == null) {
                     imagePixels[pxLoc[0]][pxLoc[1]] = new ColorValue(0, 0, 0);
@@ -110,7 +149,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
         long partialTime0 =  System.nanoTime();
         long millis0 = (partialTime0 - startTime0)/1000000;
-       // System.out.println("The thread "+ ID + " spent= "+millis0);
+        // System.out.println("The thread "+ ID + " spent= "+millis0);
     }
 
 

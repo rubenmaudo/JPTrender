@@ -42,6 +42,7 @@ public class SceneLoader {
     //GEOMETRY FIELDS
     ArrayList<Primitive> geometry = new ArrayList<>();
 
+    //TODO add all the details of the scene,  including render size, etc
 
     /**
      * Constructor to read a xml and load all the camera, objects and materials
@@ -72,35 +73,35 @@ public class SceneLoader {
                 flagControlState =LOADED;
             }
 
-        Element root = document.getDocumentElement();
+            Element root = document.getDocumentElement();
 
-        //CAMERA PARAMETERS
-        Element elementCamera= (Element) document.getElementsByTagName("Camera").item(0);
-        vfov = Double.parseDouble(elementCamera.getAttribute("vfov"));
-        aperture= Double.parseDouble(elementCamera.getAttribute("aperture"));
-        focus_dist=Double.parseDouble(elementCamera.getAttribute("focus_dist"));
-        autofocus= Integer.parseInt(elementCamera.getAttribute("autofocus"));
+            //CAMERA PARAMETERS
+            Element elementCamera= (Element) document.getElementsByTagName("Camera").item(0);
+            vfov = Double.parseDouble(elementCamera.getAttribute("vfov"));
+            aperture= Double.parseDouble(elementCamera.getAttribute("aperture"));
+            focus_dist=Double.parseDouble(elementCamera.getAttribute("focus_dist"));
+            autofocus= Integer.parseInt(elementCamera.getAttribute("autofocus"));
 
-        Element elementLookFrom = (Element) elementCamera.getElementsByTagName("lookfrom").item(0);
-        lookfrom=new Vec3(
-                Double.parseDouble(elementLookFrom.getAttribute("X")),
-                Double.parseDouble(elementLookFrom.getAttribute("Y")),
-                Double.parseDouble(elementLookFrom.getAttribute("Z"))
-        );
+            Element elementLookFrom = (Element) elementCamera.getElementsByTagName("lookfrom").item(0);
+            lookfrom=new Vec3(
+                    Double.parseDouble(elementLookFrom.getAttribute("X")),
+                    Double.parseDouble(elementLookFrom.getAttribute("Y")),
+                    Double.parseDouble(elementLookFrom.getAttribute("Z"))
+            );
 
-        Element elementLookAt = (Element) elementCamera.getElementsByTagName("lookat").item(0);
-        lookat=new Vec3(
-                Double.parseDouble(elementLookAt.getAttribute("X")),
-                Double.parseDouble(elementLookAt.getAttribute("Y")),
-                Double.parseDouble(elementLookAt.getAttribute("Z"))
-        );
+            Element elementLookAt = (Element) elementCamera.getElementsByTagName("lookat").item(0);
+            lookat=new Vec3(
+                    Double.parseDouble(elementLookAt.getAttribute("X")),
+                    Double.parseDouble(elementLookAt.getAttribute("Y")),
+                    Double.parseDouble(elementLookAt.getAttribute("Z"))
+            );
 
-        Element elementVup = (Element) elementCamera.getElementsByTagName("vup").item(0);
-        vup=new Vec3(
-                Double.parseDouble(elementVup.getAttribute("X")),
-                Double.parseDouble(elementVup.getAttribute("Y")),
-                Double.parseDouble(elementVup.getAttribute("Z"))
-        );
+            Element elementVup = (Element) elementCamera.getElementsByTagName("vup").item(0);
+            vup=new Vec3(
+                    Double.parseDouble(elementVup.getAttribute("X")),
+                    Double.parseDouble(elementVup.getAttribute("Y")),
+                    Double.parseDouble(elementVup.getAttribute("Z"))
+            );
 
         /*PRINTING CHECK
         System.out.println("Lookfrom: "+lookfrom);
@@ -113,27 +114,27 @@ public class SceneLoader {
         */
 
 
-        //LOADING SPHERES
-        NodeList nList = document.getElementsByTagName("Sphere");
+            //LOADING SPHERES
+            NodeList nList = document.getElementsByTagName("Sphere");
 
-        for (int temp = 0; temp < nList.getLength(); temp++)
-        {
-            Node node = nList.item(temp);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            for (int temp = 0; temp < nList.getLength(); temp++)
             {
-                //Print each employee's detail
-                Element sphereElement = (Element) node;
-                Sphere sphere= new Sphere(
-                        new Vec3(
-                                Double.parseDouble(sphereElement.getAttribute("CentreX")),
-                                Double.parseDouble(sphereElement.getAttribute("CentreY")),
-                                Double.parseDouble(sphereElement.getAttribute("CentreZ"))
-                        ),
-                        Double.parseDouble(sphereElement.getAttribute("radius")),
-                        this.scanMaterial(sphereElement)
-                );
-                geometry.add(sphere);
+                Node node = nList.item(temp);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    //Print each employee's detail
+                    Element sphereElement = (Element) node;
+                    Sphere sphere= new Sphere(
+                            new Vec3(
+                                    Double.parseDouble(sphereElement.getAttribute("CentreX")),
+                                    Double.parseDouble(sphereElement.getAttribute("CentreY")),
+                                    Double.parseDouble(sphereElement.getAttribute("CentreZ"))
+                            ),
+                            Double.parseDouble(sphereElement.getAttribute("radius")),
+                            this.scanMaterial(sphereElement)
+                    );
+                    geometry.add(sphere);
 
                 /*PRINTING CHECK
                 System.out.println("Sphere:");
@@ -142,31 +143,31 @@ public class SceneLoader {
                 System.out.println("CentreY "  + Double.parseDouble(sphereElement.getAttribute("CentreY")));
                 System.out.println("CentreZ "  + Double.parseDouble(sphereElement.getAttribute("CentreZ")));
                 */
+                }
             }
-        }
 
-        //LOADING BOXES
-        nList = document.getElementsByTagName("Box");
+            //LOADING BOXES
+            nList = document.getElementsByTagName("Box");
 
-        for (int temp = 0; temp < nList.getLength(); temp++)
-        {
-            Node node = nList.item(temp);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            for (int temp = 0; temp < nList.getLength(); temp++)
             {
-                Element boxElement = (Element) node;
-                Box box= new Box(
-                        Double.parseDouble(boxElement.getAttribute("width")),
-                        Double.parseDouble(boxElement.getAttribute("depth")),
-                        Double.parseDouble(boxElement.getAttribute("height")),
-                        new Vec3(
-                                Double.parseDouble(boxElement.getAttribute("centreBasePointX")),
-                                Double.parseDouble(boxElement.getAttribute("centreBasePointY")),
-                                Double.parseDouble(boxElement.getAttribute("centreBasePointZ"))
-                        ),
-                        this.scanMaterial(boxElement)
-                );
-                geometry.add(box);
+                Node node = nList.item(temp);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element boxElement = (Element) node;
+                    Box box= new Box(
+                            Double.parseDouble(boxElement.getAttribute("width")),
+                            Double.parseDouble(boxElement.getAttribute("depth")),
+                            Double.parseDouble(boxElement.getAttribute("height")),
+                            new Vec3(
+                                    Double.parseDouble(boxElement.getAttribute("centreBasePointX")),
+                                    Double.parseDouble(boxElement.getAttribute("centreBasePointY")),
+                                    Double.parseDouble(boxElement.getAttribute("centreBasePointZ"))
+                            ),
+                            this.scanMaterial(boxElement)
+                    );
+                    geometry.add(box);
 
                 /*PRINTING CHECK
                 System.out.println("Box:");
@@ -177,32 +178,32 @@ public class SceneLoader {
                 System.out.println("centreBasePointY "  + Double.parseDouble(boxElement.getAttribute("centreBasePointY")));
                 System.out.println("centreBasePointZ "  + Double.parseDouble(boxElement.getAttribute("centreBasePointZ")));
                  */
+                }
             }
-        }
 
-        //LOADING PLANE XY
-        nList = document.getElementsByTagName("PlaneXY");
+            //LOADING PLANE XY
+            nList = document.getElementsByTagName("PlaneXY");
 
-        for (int temp = 0; temp < nList.getLength(); temp++)
-        {
-            Node node = nList.item(temp);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            for (int temp = 0; temp < nList.getLength(); temp++)
             {
-                //Print each employee's detail
-                Element planeXYElement = (Element) node;
-                Plane_xy planeXY= new Plane_xy(
-                        Double.parseDouble(planeXYElement.getAttribute("width")),
-                        Double.parseDouble(planeXYElement.getAttribute("height")),
-                        new Vec3(
-                                Double.parseDouble(planeXYElement.getAttribute("centreBasePointX")),
-                                Double.parseDouble(planeXYElement.getAttribute("centreBasePointY")),
-                                Double.parseDouble(planeXYElement.getAttribute("centreBasePointZ"))
-                        ),
-                        Boolean.parseBoolean(planeXYElement.getAttribute("flipped")),
-                        this.scanMaterial(planeXYElement)
-                );
-                geometry.add(planeXY);
+                Node node = nList.item(temp);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    //Print each employee's detail
+                    Element planeXYElement = (Element) node;
+                    Plane_xy planeXY= new Plane_xy(
+                            Double.parseDouble(planeXYElement.getAttribute("width")),
+                            Double.parseDouble(planeXYElement.getAttribute("height")),
+                            new Vec3(
+                                    Double.parseDouble(planeXYElement.getAttribute("centreBasePointX")),
+                                    Double.parseDouble(planeXYElement.getAttribute("centreBasePointY")),
+                                    Double.parseDouble(planeXYElement.getAttribute("centreBasePointZ"))
+                            ),
+                            Boolean.parseBoolean(planeXYElement.getAttribute("flipped")),
+                            this.scanMaterial(planeXYElement)
+                    );
+                    geometry.add(planeXY);
 
 
                 /*PRINTING CHECK
@@ -214,32 +215,32 @@ public class SceneLoader {
                 System.out.println("centreBasePointZ "  + Double.parseDouble(planeXYElement.getAttribute("centreBasePointZ")));
                 System.out.println("flipped "  + Boolean.parseBoolean(planeXYElement.getAttribute("flipped")));
                 */
+                }
             }
-        }
 
-        //LOADING PLANE XZ
-        nList = document.getElementsByTagName("PlaneXZ");
+            //LOADING PLANE XZ
+            nList = document.getElementsByTagName("PlaneXZ");
 
-        for (int temp = 0; temp < nList.getLength(); temp++)
-        {
-            Node node = nList.item(temp);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            for (int temp = 0; temp < nList.getLength(); temp++)
             {
-                //Print each employee's detail
-                Element planeXZElement = (Element) node;
-                Plane_xz planeXZ= new Plane_xz(
-                        Double.parseDouble(planeXZElement.getAttribute("width")),
-                        Double.parseDouble(planeXZElement.getAttribute("depth")),
-                        new Vec3(
-                                Double.parseDouble(planeXZElement.getAttribute("centreBasePointX")),
-                                Double.parseDouble(planeXZElement.getAttribute("centreBasePointY")),
-                                Double.parseDouble(planeXZElement.getAttribute("centreBasePointZ"))
-                        ),
-                        Boolean.parseBoolean(planeXZElement.getAttribute("flipped")),
-                        this.scanMaterial(planeXZElement)
-                );
-                geometry.add(planeXZ);
+                Node node = nList.item(temp);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    //Print each employee's detail
+                    Element planeXZElement = (Element) node;
+                    Plane_xz planeXZ= new Plane_xz(
+                            Double.parseDouble(planeXZElement.getAttribute("width")),
+                            Double.parseDouble(planeXZElement.getAttribute("depth")),
+                            new Vec3(
+                                    Double.parseDouble(planeXZElement.getAttribute("centreBasePointX")),
+                                    Double.parseDouble(planeXZElement.getAttribute("centreBasePointY")),
+                                    Double.parseDouble(planeXZElement.getAttribute("centreBasePointZ"))
+                            ),
+                            Boolean.parseBoolean(planeXZElement.getAttribute("flipped")),
+                            this.scanMaterial(planeXZElement)
+                    );
+                    geometry.add(planeXZ);
 
                 /*PRINTING CHECK
                 System.out.println("PlaneXZ:");
@@ -250,32 +251,32 @@ public class SceneLoader {
                 System.out.println("centreBasePointZ "  + Double.parseDouble(planeXZElement.getAttribute("centreBasePointZ")));
                 System.out.println("flipped "  + Boolean.parseBoolean(planeXZElement.getAttribute("flipped")));
                 */
+                }
             }
-        }
 
-        //LOADING PLANE YZ
-        nList = document.getElementsByTagName("PlaneYZ");
+            //LOADING PLANE YZ
+            nList = document.getElementsByTagName("PlaneYZ");
 
-        for (int temp = 0; temp < nList.getLength(); temp++)
-        {
-            Node node = nList.item(temp);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            for (int temp = 0; temp < nList.getLength(); temp++)
             {
-                //Print each employee's detail
-                Element planeYZElement = (Element) node;
-                Plane_yz planeYZ= new Plane_yz(
-                        Double.parseDouble(planeYZElement.getAttribute("width")),
-                        Double.parseDouble(planeYZElement.getAttribute("height")),
-                        new Vec3(
-                                Double.parseDouble(planeYZElement.getAttribute("centreBasePointX")),
-                                Double.parseDouble(planeYZElement.getAttribute("centreBasePointY")),
-                                Double.parseDouble(planeYZElement.getAttribute("centreBasePointZ"))
-                        ),
-                        Boolean.parseBoolean(planeYZElement.getAttribute("flipped")),
-                        this.scanMaterial(planeYZElement)
-                );
-                geometry.add(planeYZ);
+                Node node = nList.item(temp);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    //Print each employee's detail
+                    Element planeYZElement = (Element) node;
+                    Plane_yz planeYZ= new Plane_yz(
+                            Double.parseDouble(planeYZElement.getAttribute("width")),
+                            Double.parseDouble(planeYZElement.getAttribute("height")),
+                            new Vec3(
+                                    Double.parseDouble(planeYZElement.getAttribute("centreBasePointX")),
+                                    Double.parseDouble(planeYZElement.getAttribute("centreBasePointY")),
+                                    Double.parseDouble(planeYZElement.getAttribute("centreBasePointZ"))
+                            ),
+                            Boolean.parseBoolean(planeYZElement.getAttribute("flipped")),
+                            this.scanMaterial(planeYZElement)
+                    );
+                    geometry.add(planeYZ);
 
                 /*PRINTING CHECK
                 System.out.println("PlaneXZ:");
@@ -286,8 +287,8 @@ public class SceneLoader {
                 System.out.println("centreBasePointZ "  + Double.parseDouble(planeYZElement.getAttribute("centreBasePointZ")));
                 System.out.println("flipped "  + Boolean.parseBoolean(planeYZElement.getAttribute("flipped")));
                  */
+                }
             }
-        }
 
         } catch (SAXException e) {
             e.printStackTrace();

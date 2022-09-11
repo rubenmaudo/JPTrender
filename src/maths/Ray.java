@@ -13,8 +13,8 @@ package maths;
 public class Ray {
 
     //RAY FIELDS
-    private final Vec3 pointOrigin;
-    private final Vec3 vectorDirection;
+    private Vec3 pointOrigin;
+    private Vec3 vectorDirection;
     
     //CONSTRUCTOR
     public Ray(Vec3 pO, Vec3 vD){
@@ -46,5 +46,17 @@ public class Ray {
      */
     public Vec3 point_at_parameter(double t){
         return pointOrigin.add(vectorDirection.product(t));
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Vec3 getPointOrigin() {
+        return pointOrigin;
+    }
+
+    public void setPointOrigin(Vec3 pointOrigin) {
+        this.pointOrigin = pointOrigin;
     }
 }

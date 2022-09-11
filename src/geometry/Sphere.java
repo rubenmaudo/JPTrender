@@ -30,7 +30,6 @@ public class Sphere extends Primitive{
     Vec3 center; //Centre
     double radius; //Radius
 
-
     //CONSTRUCTOR
 
     /**
@@ -43,6 +42,7 @@ public class Sphere extends Primitive{
         this.center = cen;
         this.radius = r;
         super.material= material;
+        create_bounding_box();
     }
 
     //METHODS
@@ -56,6 +56,7 @@ public class Sphere extends Primitive{
      */
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec){
+
         Vec3 oc= r.origin().sub(center);
         double a = dotProduct(r.direction(), r.direction());
         double half_b = dotProduct(oc, r.direction());
@@ -80,9 +81,9 @@ public class Sphere extends Primitive{
 
                 return true;
             }
-            
+
             temp = (( -half_b + sqrt)/a);
-            
+
             if(temp < t_max && temp > t_min){
                 rec.t = temp;
                 rec.p = r.point_at_parameter(rec.t);
@@ -95,15 +96,9 @@ public class Sphere extends Primitive{
                 get_spehere_uv(outward_normal,rec);
 
                 return true;
-            }            
-        }        
+            }
+        }
         return false;//The ray doesn't hit the sphere
-    }
-
-    @Override
-    public String getDescription() {
-        return "The Sphere centre is at xyz(" + center.x() + "," + center.y() + "," + center.z() + ") and the" +
-                "radius is r";
     }
 
     private void get_spehere_uv(Vec3 p, Hit_record rec){
@@ -129,8 +124,9 @@ public class Sphere extends Primitive{
         //System.out.println("u & v are=" + rec.u + ", " + rec.v);
     }
 
+
     @Override
-    public Node getGeomety(Document doc) {
+    public Node saveGeomety(Document doc) {
         Element sphere=doc.createElement("Sphere");
         sphere.setAttribute("radius", String.valueOf(this.radius));
         sphere.setAttribute("CentreX", String.valueOf(this.center.getValue(0)));
@@ -155,8 +151,9 @@ public class Sphere extends Primitive{
     }
 
     @Override
-    public Primitive clone() {
-        return new Sphere(Vec3.clone(this.getCenter()),this.getRadius(),this.getMaterial().clone());
+    public void create_bounding_box() {
+        this.boundingBox= new AABB(center.sub(new Vec3(radius)),
+                center.add(new Vec3(radius)));
     }
 
 }

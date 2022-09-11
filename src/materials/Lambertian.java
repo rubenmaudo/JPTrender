@@ -11,8 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import java.awt.*;
-
 /**
  * @author : Ruben Maudo
  * @since : 23/06/2020, Tue
@@ -24,15 +22,22 @@ import java.awt.*;
 public class Lambertian extends Material{
 
     //LAMBERTIAN FIELDS
-    ColorValue albedo;
+    Texture albedo;
+
+    ColorValue testColorValue;
 
     //CONSTRUCTOR
     public Lambertian(ColorValue a){
-        this.albedo=a;
+        this.albedo=new Texture_solid_colour(a.vR(),a.vG(),a.vB());
+        this.testColorValue=a;
+    }
+
+    public Lambertian(double R, double G, double B){
+        this.albedo=new Texture_solid_colour(R,G,B);
     }
 
     public Lambertian(Texture texture){
-        this.albedo=texture;
+        this.albedo= texture;
     }
 
     //METHODS
@@ -47,7 +52,7 @@ public class Lambertian extends Material{
 
         this.scattered = new Ray(rec.p, scatter_direction);
         //TESTING this.attenuation= albedo;
-        this.attenuation=albedo.getColorValue(rec.u, rec.v, rec.p);
+        this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
 
         return true;
     }
@@ -56,17 +61,10 @@ public class Lambertian extends Material{
     public Node getMaterial(Document doc) {
         Element lambertian=doc.createElement("Material");
         lambertian.setAttribute("type", "lambertian");
-        lambertian.setAttribute("ColorR", String.valueOf(this.albedo.vR()));
-        lambertian.setAttribute("ColorG", String.valueOf(this.albedo.vG()));
-        lambertian.setAttribute("ColorB", String.valueOf(this.albedo.vB()));
-
+        lambertian.setAttribute("ColorR", String.valueOf(this.testColorValue.vR()));
+        lambertian.setAttribute("ColorG", String.valueOf(this.testColorValue.vG()));
+        lambertian.setAttribute("ColorB", String.valueOf(this.testColorValue.vB()));
+        //TODO save scene need to be implemented
         return lambertian;
     }
-
-    @Override
-    public Material clone() {
-        return new Lambertian(ColorValue.clone(this.albedo));
-    }
-
-
 }

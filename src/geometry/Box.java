@@ -19,9 +19,9 @@ public class Box extends Primitive{
     double depth;
     double height;
     Vec3 centreBasePoint;
-    Material material;
 
     ArrayList<Primitive> planesList;
+    Hittable tempHittable;
 
     /**
      * Constructor that create a box object based on parameters passed
@@ -36,7 +36,7 @@ public class Box extends Primitive{
         this.depth=depth;
         this.height=height;
         this.centreBasePoint=centreBasePoint;
-        this.material=material;
+        super.material=material;
 
         //The box is created based on combination of flats
         planesList=new ArrayList<>();
@@ -49,22 +49,21 @@ public class Box extends Primitive{
 
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), material));
         planesList.add(new Plane_yz(depth, height, new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y()+(height/2),centreBasePoint.z()), true,material));
+
+        tempHittable= new Hittable(planesList,new BVH_node(planesList));
+
+        create_bounding_box();
     }
 
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
-        Hittable tempHittable=new Hittable(planesList);
 
-        return tempHittable.hit(r,t_min,t_max,rec);
+        return tempHittable.hit(r, t_min, t_max, rec);
     }
 
-    @Override
-    String getDescription() {
-        return null;
-    }
 
     @Override
-    public Node getGeomety(Document doc) {
+    public Node saveGeomety(Document doc) {
         Element box=doc.createElement("Box");
         box.setAttribute("width", String.valueOf(this.width));
         box.setAttribute("depth", String.valueOf(this.depth));
@@ -98,8 +97,12 @@ public class Box extends Primitive{
         return material;
     }
 
+
     @Override
-    public Primitive clone() {
-        return new Box(this.getWidth(),this.getDepth(),this.getHeight(),Vec3.clone(this.getCentreBasePoint()),this.getMaterial().clone());
+    void create_bounding_box() {
+        boundingBox=new AABB(
+                new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y(),centreBasePoint.z()-depth/2),
+                new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+height,centreBasePoint.z()+depth/2)
+        );
     }
 }

@@ -65,6 +65,4 @@ public abstract class Material implements Serializable {
     }
 
     public abstract Node getMaterial(Document doc);
-
-    public abstract Material clone();
 }

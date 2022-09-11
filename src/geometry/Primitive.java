@@ -19,6 +19,7 @@ public abstract class Primitive implements Serializable {
 
     //PRIMITIVE FIELDS
     Material material;//Material asigned to the primitive
+    AABB boundingBox;
 
     //PRIMITIVE METHODS
     /**
@@ -31,24 +32,27 @@ public abstract class Primitive implements Serializable {
      */
     public abstract boolean hit(Ray r, double t_min, double t_max, Hit_record rec);
 
-    /**
-     * Create a description for the primitive and its parameters
-     * @return
-     */
-    abstract String getDescription();
 
     /**
      * Method to parse onto xml from instances
      * @param doc Document DOM parser
      * @return
      */
-    public abstract Node getGeomety(Document doc);
+    public abstract Node saveGeomety(Document doc);
+
 
     /**
-     * Clone primitive object
+     * Return the AABB from the primitive
      *
      * @return
      */
-    public abstract Primitive clone();
+    public AABB getAABB(){
+        return boundingBox;
+    }
 
+    /**Create the bounding box for the primitive object
+     *
+     * @return
+     */
+    abstract void create_bounding_box();
 }

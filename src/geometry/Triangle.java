@@ -4,7 +4,11 @@ import materials.Material;
 import maths.Ray;
 import maths.Vec3;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class Triangle extends Primitive{
 
@@ -29,6 +33,8 @@ public class Triangle extends Primitive{
         super.material= material;
 
         vertexNormalCalc=false;
+
+        create_bounding_box();
     }
 
     /**
@@ -51,6 +57,8 @@ public class Triangle extends Primitive{
         super.material= material;
 
         vertexNormalCalc=true;
+
+        create_bounding_box();
     }
 
     //METHODS
@@ -89,7 +97,7 @@ public class Triangle extends Primitive{
             Vec3 outward_normal;
             if(vertexNormalCalc){
                 //(1 - uv.x - uv.y) * n0 + uv.x * n1 + uv.y * n2;
-               //Smoothing the shader using vertex normal
+                //Smoothing the shader using vertex normal
                 outward_normal=(vn0.product(1-u-v).add(vn1.product(u))).add(vn2.product(v));
             }else{
                 //Smoothing off
@@ -99,26 +107,53 @@ public class Triangle extends Primitive{
             return true;
         }
         return false;
+
     }
 
     @Override
-    String getDescription() {
-        return "The triangle is formed by vertex v0("+ v0.x() + "," + v0.y() + "," + v0.z() + "), " +
-                "v1(" + v1.x() + "," + v1.y() + "," + v1.z() + "), " +
-                "v2(" + v2.x() + "," + v2.y() + "," + v2.z() + ")";
+    public Node saveGeomety(Document doc) {
+        Element triangle=doc.createElement("Triangle");
+        triangle.setAttribute("v0x", String.valueOf(this.v0.x()));
+        triangle.setAttribute("v0y", String.valueOf(this.v0.y()));
+        triangle.setAttribute("v0z", String.valueOf(this.v0.z()));
+        triangle.setAttribute("v1x", String.valueOf(this.v1.x()));
+        triangle.setAttribute("v1y", String.valueOf(this.v1.y()));
+        triangle.setAttribute("v1z", String.valueOf(this.v1.z()));
+        triangle.setAttribute("v2x", String.valueOf(this.v0.x()));
+        triangle.setAttribute("v2y", String.valueOf(this.v0.y()));
+        triangle.setAttribute("v2z", String.valueOf(this.v0.z()));
+        triangle.setAttribute("vn0x", String.valueOf(this.vn0.x()));
+        triangle.setAttribute("vn0y", String.valueOf(this.vn0.y()));
+        triangle.setAttribute("vn0z", String.valueOf(this.vn0.z()));
+        triangle.setAttribute("vn1x", String.valueOf(this.vn1.x()));
+        triangle.setAttribute("vn1y", String.valueOf(this.vn1.y()));
+        triangle.setAttribute("vn1z", String.valueOf(this.vn1.z()));
+        triangle.setAttribute("vn2x", String.valueOf(this.vn0.x()));
+        triangle.setAttribute("vn2y", String.valueOf(this.vn0.y()));
+        triangle.setAttribute("vn2z", String.valueOf(this.vn0.z()));
+
+        triangle.appendChild(material.getMaterial(doc));
+
+        return triangle;
     }
 
-    @Override
-    public Node getGeomety(Document doc) {
-        return null;
-    }
+
 
     @Override
-    public Primitive clone() {
-        return new Triangle(
-                new Vec3(v0.x(),v0.y(),v0.z()),
-                new Vec3(v1.x(),v1.y(),v1.z()),
-                new Vec3(v2.x(),v2.y(),v2.z()),
-                super.material= material.clone());
+    void create_bounding_box() {
+        this.v0 = v0;
+        this.v1 = v1;
+        this.v2 = v2;
+
+        double tempMinX,tempMinY,tempMinZ,tempMaxX,tempMaxY,tempMaxZ;
+
+        tempMinX=min(min(v0.x(),v1.x()),v2.x());
+        tempMinY=min(min(v0.y(),v1.y()),v2.y());
+        tempMinZ=min(min(v0.z(),v1.z()),v2.z());
+        tempMaxX=max(max(v0.x(),v1.x()),v2.x());
+        tempMaxY=max(max(v0.y(),v1.y()),v2.y());
+        tempMaxZ=max(max(v0.z(),v1.z()),v2.z());
+
+        this.boundingBox=new AABB(new Vec3(tempMinX,tempMinY,tempMinZ),new Vec3(tempMaxX,tempMaxY,tempMaxZ));
     }
 }

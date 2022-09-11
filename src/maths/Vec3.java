@@ -15,18 +15,18 @@ import static java.lang.Math.*;
  * A class to create & operate with points/vectors
  */
 public class Vec3 implements Serializable {
-    
+
     //PROPERTIES
     private double x,y,z;
-    
-    
+
+
     //CONSTRUCTORS
     public Vec3(){
         this.x=0;
         this.y=0;
         this.z=0;
     }
-    
+
     public Vec3(double x){
         this.x=x;
         this.y=x;
@@ -38,52 +38,52 @@ public class Vec3 implements Serializable {
         this.y = y;
         this.z = z;
     }
-    
-    
+
+
     //METHODS 
     public Vec3 add(Vec3 v){
         return new Vec3(x+v.x, y+v.y, z+v.z);
     }
-    
+
     public Vec3 add(double d){
         return new Vec3(x+d, y+d, z+d);
     }
-    
+
     public Vec3 sub(Vec3 v){
         return new Vec3(x-v.x, y-v.y, z-v.z);
     }
-    
+
     public Vec3 sub(double d){
         return new Vec3(x-d, y-d, z-d);
     }
-    
+
     public Vec3 product(double d){
         return new Vec3(x*d, y*d, z*d);
     }
-    
+
     public Vec3 product(Vec3 v){
         return new Vec3(x*v.x, y*v.y, z*v.z);
     }
-    
-    public Vec3 divide(Vec3 v)
-	{
-		return new Vec3(x / v.x, y / v.y, z / v.z);
-	}
 
-	public Vec3 divide(double v)
-	{
-		return new Vec3(x / v, y / v, z / v);
-	}
-    
-    
+    public Vec3 divide(Vec3 v)
+    {
+        return new Vec3(x / v.x, y / v.y, z / v.z);
+    }
+
+    public Vec3 divide(double v)
+    {
+        return new Vec3(x / v, y / v, z / v);
+    }
+
+
     public double dotProduct(Vec3 v){
         return  x*v.x + y*v.y + z*v.z;
     }
-    
+
     public static double dotProduct(Vec3 v1, Vec3 v2){
         return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     }
-    
+
     //Return perpendicular vector to the plane based in the two given vectors
     public Vec3 cross(Vec3 v){
         return new Vec3(
@@ -92,19 +92,19 @@ public class Vec3 implements Serializable {
                 x*v.y - y*v.x
         );
     }
-    
+
     public double norm(){
         return x*x + y*y + z*z;
     }
-    
-    public double length(){        
+
+    public double length(){
         return sqrt(norm());
     }
-    
+
     public double squared_length(){
         return length()*length();
-    }            
-    
+    }
+
     public double getValue(int i){
         switch (i) {
             case 0:
@@ -112,9 +112,22 @@ public class Vec3 implements Serializable {
             case 1:
                 return this.y;
             case 2:
-                return this.z;            
+                return this.z;
             default:
                 return 0;
+        }
+    }
+
+    public void setValue(int i, double value){
+        switch (i) {
+            case 0:
+                this.x=value;
+            case 1:
+                this.y=value;
+            case 2:
+                this.z=value;
+            default:
+                ;
         }
     }
 
@@ -129,7 +142,7 @@ public class Vec3 implements Serializable {
     public double z() {
         return z;
     }
-    
+
     //Every coordinate divided by the vector length
     //Also called unit_vector
     public Vec3 normalize(){
@@ -141,7 +154,7 @@ public class Vec3 implements Serializable {
             z*=invLen;
         }
         return this;
-    }    
+    }
 
     public static double random_double(double min, double max){
         return min + (max - min) * ThreadLocalRandom.current().nextDouble();
@@ -200,7 +213,7 @@ public class Vec3 implements Serializable {
         return String.format("Vec3[%.5f, %.5f, %.5f]", x, y, z);
     }
 
-    
-    
-    
+
+
+
 }

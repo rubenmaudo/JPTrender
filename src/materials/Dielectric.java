@@ -149,9 +149,4 @@ public class Dielectric extends Material{
         return fuzz;
     }
 
-    @Override
-    public Material clone() {
-        return new Dielectric(ColorValue.clone(this.getAttenuation()),this.getRef_idx(),this.getFuzz());
-    }
-
 }

@@ -11,7 +11,6 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -53,7 +52,7 @@ public class SceneSaver {
             rootElement.appendChild(camera.getCamera(doc));
 
             for(Primitive geometry:geometry){
-                rootElement.appendChild(geometry.getGeomety(doc));
+                rootElement.appendChild(geometry.saveGeomety(doc));
             }
 
 

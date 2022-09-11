@@ -5,6 +5,7 @@
  */
 package maths;
 
+import geometry.BVH_node;
 import geometry.Hit_record;
 import geometry.Primitive;
 import geometry.Sphere;
@@ -22,19 +23,34 @@ public class Hittable {
     //HITTABLE FIELDS
     ArrayList<Primitive> list;
 
+    BVH_node nodeList;
+
+
     Hit_record temp_rec;
     Boolean hit_anything = false;
     double closest_so_far;
 
     //CONSTRUCTOR
+
     public Hittable(ArrayList<Primitive> list){
-        this.list=list;
+        this.list= list;
         this.temp_rec=new Hit_record();
     }
+
+
+    public Hittable(ArrayList<Primitive> list, BVH_node nodeList){
+        this.list= list;
+        this.nodeList=nodeList;
+        this.temp_rec=new Hit_record();
+    }
+
+    //TODO comment all this process
 
     //METHODS
     /**
      * Main method for the path tracer, help to check if there is an intersection between ray and primitive
+     * First the original system, going through every item in the scene with a for structure, in the second part
+     * lately added the BVH node structure, much faster.
      * @param r Ray
      * @param t_min minimum distance to look for intersections
      * @param t_max maximum distance to look for intersections
@@ -45,17 +61,27 @@ public class Hittable {
 
         closest_so_far = t_max;
 
-        for (Primitive primitive : list) {
+        if(list.size()<3){
+            for (Primitive primitive : list) {
 
-            if (primitive.hit(r, t_min, closest_so_far,rec)) {
-                hit_anything = true;
-                closest_so_far=rec.t;
-                temp_rec=rec;
+                if (primitive.hit(r, t_min, closest_so_far,rec)) {
+                    hit_anything = true;
+                    closest_so_far=rec.t;
+                    temp_rec=rec;
+                }
             }
+        }else{
+            //BVH node system to go check if there is any hit
+            hit_anything=nodeList.hit(r, t_min, t_max, rec);
         }
-        return hit_anything;        
+        return hit_anything;
     }
-    
+
+
+
+
+
+
     public Hit_record getTemp_rec(){
         return temp_rec;
     }
