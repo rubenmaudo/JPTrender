@@ -2,6 +2,7 @@ package geometry;
 
 import materials.Material;
 import maths.Ray;
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -39,6 +40,7 @@ public abstract class Primitive implements Serializable {
      * @return
      */
     public abstract Node saveGeomety(Document doc);
+
 
 
     /**
