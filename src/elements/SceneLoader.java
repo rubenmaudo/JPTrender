@@ -156,6 +156,11 @@ public class SceneLoader {
                 if (node.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element boxElement = (Element) node;
+
+                    double rotationAngle=0;
+                    if (!boxElement.getAttribute("rotationAngle").isEmpty()){
+                        rotationAngle= Double.parseDouble(boxElement.getAttribute("rotationAngle"));
+                    }
                     Box box= new Box(
                             Double.parseDouble(boxElement.getAttribute("width")),
                             Double.parseDouble(boxElement.getAttribute("depth")),
@@ -165,7 +170,8 @@ public class SceneLoader {
                                     Double.parseDouble(boxElement.getAttribute("centreBasePointY")),
                                     Double.parseDouble(boxElement.getAttribute("centreBasePointZ"))
                             ),
-                            this.scanMaterial(boxElement)
+                            this.scanMaterial(boxElement),
+                            rotationAngle
                     );
                     geometry.add(box);
 

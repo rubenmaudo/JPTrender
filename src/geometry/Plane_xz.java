@@ -24,6 +24,10 @@ public class Plane_xz extends Primitive{
     boolean flipped;
     Material material;
 
+    double rotationAngle;
+    double sin_theta;
+    double cos_theta;
+
     //CONSTRUCTOR
 
     /**

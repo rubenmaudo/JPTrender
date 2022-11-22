@@ -155,18 +155,21 @@ public class PathTracer extends Component implements Runnable {
             File selectedFile = chooser.getSelectedFile();
             sceneFilePath = selectedFile.getAbsolutePath();
         }
-
          */
 
 
+        primList.add(new Box(200,200,200,new Vec3(0,0.01,0), new Lambertian(new ColorValue(0.2,0.8,0.8)),22));
 
+
+
+        /*
         primList.add(new Mesh("C:\\Users\\ruben\\OneDrive\\Desktop\\Motor Render\\teap2.obj",
                 new Vec3(0,0,0), new Metal(1,1,1,0.6)));
         // new Dielectric(1.5)));
         //new Metal(1,0.5,0.5,0.6)));
         //new Metal(new ColorValue(1,1,1),1)));
         // new Lambertian(new ColorValue(0.8,0.2,0.3))));
-
+         */
 
 
 

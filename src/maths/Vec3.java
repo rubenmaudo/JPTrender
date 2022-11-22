@@ -122,12 +122,13 @@ public class Vec3 implements Serializable {
         switch (i) {
             case 0:
                 this.x=value;
+                break;
             case 1:
                 this.y=value;
+                break;
             case 2:
                 this.z=value;
-            default:
-                ;
+                break;
         }
     }
 

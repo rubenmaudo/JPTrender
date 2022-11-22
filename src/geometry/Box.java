@@ -1,8 +1,10 @@
 package geometry;
 
+import materials.Lambertian;
 import materials.Material;
 import maths.Hittable;
 import maths.Ray;
+import maths.Utils;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,9 +21,13 @@ public class Box extends Primitive{
     double depth;
     double height;
     Vec3 centreBasePoint;
+    double rotationAngle;
+    double sin_theta;
+    double cos_theta;
 
     ArrayList<Primitive> planesList;
     Hittable tempHittable;
+
 
     /**
      * Constructor that create a box object based on parameters passed
@@ -31,12 +37,19 @@ public class Box extends Primitive{
      * @param centreBasePoint Base X,Y,Z
      * @param material
      */
-    public Box(double width, double depth, double height, Vec3 centreBasePoint, Material material){
+    public Box(double width, double depth, double height, Vec3 centreBasePoint, Material material, double angle){
         this.width=width;
         this.depth=depth;
         this.height=height;
         this.centreBasePoint=centreBasePoint;
         super.material=material;
+
+        this.rotationAngle=angle;
+        double radians= Utils.degrees_to_radians(rotationAngle);
+
+        this.sin_theta= Math.sin(radians);
+        this.cos_theta= Math.cos(radians);
+
 
         //The box is created based on combination of flats
         planesList=new ArrayList<>();
@@ -58,7 +71,46 @@ public class Box extends Primitive{
     @Override
     public boolean hit(Ray r, double t_min, double t_max, Hit_record rec) {
 
-        return tempHittable.hit(r, t_min, t_max, rec);
+        if (rotationAngle!=0){
+
+            Vec3 origin = new Vec3(r.origin().getValue(0),r.origin().getValue(1),r.origin().getValue(2));
+            Vec3 direction = new Vec3(r.direction().getValue(0),r.direction().getValue(1),r.direction().getValue(2));
+
+            origin.setValue(0, (cos_theta*r.origin().getValue(0)-sin_theta*r.origin().getValue(2)));
+            origin.setValue(2, (sin_theta*r.origin().getValue(0)+cos_theta*r.origin().getValue(2)));
+
+            direction.setValue(0, cos_theta*r.direction().getValue(0)-sin_theta*r.direction().getValue(2));
+            direction.setValue(2, sin_theta*r.direction().getValue(0)+cos_theta*r.direction().getValue(2));
+
+            Ray rotated_r=new Ray(origin, direction);
+
+
+            if(!tempHittable.hit(rotated_r, t_min, t_max, rec)){
+                return false;
+            }else{
+
+                if (rec.material==null){
+                    return false;
+                };
+
+                Vec3 p = new Vec3(rec.p.getValue(0),rec.p.getValue(1),rec.p.getValue(2));
+                Vec3 normal = new Vec3(rec.normal.getValue(0),rec.normal.getValue(1),rec.normal.getValue(2));
+
+                p.setValue(0,cos_theta*rec.p.getValue(0) + sin_theta*rec.p.getValue(2));
+                p.setValue(2,-sin_theta*rec.p.getValue(0) + cos_theta*rec.p.getValue(2));
+
+                normal.setValue(0,cos_theta*rec.normal.getValue(0) + sin_theta*rec.normal.getValue(2));
+                normal.setValue(2,-sin_theta*rec.normal.getValue(0) + cos_theta*rec.normal.getValue(2));
+
+                rec.p = new Vec3(p.getValue(0),p.getValue(1),p.getValue(2));
+                rec.set_face_normal(r, normal);
+
+                return true;
+            }
+
+        }else{
+            return tempHittable.hit(r, t_min, t_max, rec);
+        }
     }
 
 
@@ -72,7 +124,11 @@ public class Box extends Primitive{
         box.setAttribute("centreBasePointY", String.valueOf(this.centreBasePoint.getValue(1)));
         box.setAttribute("centreBasePointZ", String.valueOf(this.centreBasePoint.getValue(2)));
 
+        box.setAttribute("rotationAngle", String.valueOf(this.rotationAngle));
+
         box.appendChild(material.getMaterial(doc));
+
+
 
         return box;
     }
@@ -104,5 +160,34 @@ public class Box extends Primitive{
                 new Vec3(centreBasePoint.x()-(width/2),centreBasePoint.y(),centreBasePoint.z()-depth/2),
                 new Vec3(centreBasePoint.x()+(width/2),centreBasePoint.y()+height,centreBasePoint.z()+depth/2)
         );
+
+        if(rotationAngle!=0){
+
+            Vec3 min=new Vec3(Double.MAX_VALUE);
+            Vec3 max=new Vec3(-Double.MAX_VALUE);
+
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    for (int k = 0; k < 2; k++) {
+                        double x = i*boundingBox.max().x() + (1-i)*boundingBox.min().x();
+                        double y = j*boundingBox.max().y() + (1-j)*boundingBox.min().y();
+                        double z = k*boundingBox.max().z() + (1-k)*boundingBox.min().z();
+
+                        double newx =  cos_theta*x + sin_theta*z;
+                        double newz = -sin_theta*x + cos_theta*z;
+
+                        Vec3 tester=new Vec3(newx, y, newz);
+
+                        for (int c = 0; c < 3; c++) {
+                            min.setValue(c,Math.min(min.getValue(c), tester.getValue(c)));
+                            max.setValue(c,Math.max(max.getValue(c), tester.getValue(c)));
+                        }
+                    }
+                }
+            }
+
+            boundingBox=new AABB(min,max);
+
+        }
     }
 }

@@ -30,7 +30,7 @@ public class Obj_read {
         this.material=material;
         importMesh();
         this.basepoint=new Vec3(((xMax-xMin)/2)+xMin,(yMin),((zMax-zMin)/2)+zMin);
-        this.oldBoundingBox=new Box(xMax-xMin,zMax-zMin,yMax-yMin,basepoint,material); //Old system of creating a bounding box
+        //this.oldBoundingBox=new Box(xMax-xMin,zMax-zMin,yMax-yMin,basepoint,material); //Old system of creating a bounding box
 
 
         this.boundingBox=new AABB(new Vec3(xMin,yMin,zMin),new Vec3(xMax,yMax,zMax));
