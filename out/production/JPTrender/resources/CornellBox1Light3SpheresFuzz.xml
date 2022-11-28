@@ -6,25 +6,27 @@
     <vup X="0" Y="1" Z="0" />
   </Camera>
   <!--////////LIGHT\\\\\\\\\-->
-  <PlaneXZ width="230" depth="230" centreBasePointX="0" centreBasePointY="555" centreBasePointZ="0" flipped="true">
+  <PlaneXZ width="150" depth="150" centreBasePointX="0" centreBasePointY="555" centreBasePointZ="0" flipped="true">
    <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
  </PlaneXZ>
  <!--////////CORNELL BOX\\\\\\\\\-->
+
+    <PlaneXY width="556" height="556" centreBasePointX="0" centreBasePointY="278" centreBasePointZ="-278" flipped="true">
+        <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
+    </PlaneXY>
   <PlaneYZ width="556" height="556" centreBasePointX="-278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
     <Material type="lambertian" ColorR="0.65" ColorG="0.05" ColorB="0.05"></Material>
   </PlaneYZ>
   <PlaneYZ width="556" height="556" centreBasePointX="278" centreBasePointY="278" centreBasePointZ="0" flipped="true">
     <Material type="lambertian" ColorR="0.12" ColorG="0.45" ColorB="0.15"></Material>
   </PlaneYZ>
-  <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="0" centreBasePointZ="0" flipped="true">
-    <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
-  </PlaneXZ>
   <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="556" centreBasePointZ="0" flipped="true">
     <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
   </PlaneXZ>
-  <PlaneXY width="556" height="556" centreBasePointX="0" centreBasePointY="278" centreBasePointZ="-278" flipped="true">
-    <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
-  </PlaneXY>
+    <PlaneXZ width="556" depth="556" centreBasePointX="0" centreBasePointY="0" centreBasePointZ="0" flipped="true">
+        <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
+    </PlaneXZ>
+
   <!--////////GEOMETRY\\\\\\\\\-->
   <!--
 

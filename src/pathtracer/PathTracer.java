@@ -158,8 +158,8 @@ public class PathTracer extends Component implements Runnable {
          */
 
 
-        primList.add(new Box(200,200,200,new Vec3(0,0.01,0), new Lambertian(new ColorValue(0.2,0.8,0.8)),22));
-
+        primList.add(new Box(165,165,330,new Vec3(-83,0,-83), new Lambertian(new ColorValue(0.73,0.73,0.73)),15));
+        primList.add(new Box(165,165,165,new Vec3(120,0,83), new Lambertian(new ColorValue(0.73,0.73,0.73)),-18));
 
 
         /*
