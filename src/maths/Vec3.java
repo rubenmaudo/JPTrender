@@ -205,6 +205,18 @@ public class Vec3 implements Serializable {
         }
     }
 
+    public static Vec3 random_cosine_direction(){
+        double r1= ThreadLocalRandom.current().nextDouble();
+        double r2= ThreadLocalRandom.current().nextDouble();
+        double z=sqrt(1-r2);
+
+        double phi=2*Utils.PI*r1;
+        double x=cos(phi)*sqrt(r2);
+        double y=sin(phi)*sqrt(r2);
+
+        return new Vec3(x,y,z);
+    }
+
     public boolean near_zero(){
         // Return true if the vector is close to zero in all dimensions.
         final double s = 1e-8;

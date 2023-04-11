@@ -44,6 +44,7 @@ public class Lambertian extends Material{
     @Override
     public boolean scatter(Ray r_in, Hit_record rec) {
 
+        /*MATERIAL AS IT WAS BEFORE CHAPTER 8-THE REST OF YOUR LIFE
         //OPTION 1-Calc with scatter in random unit sphere (create more shadows)
         //Vec3 scatter_direction = rec.normal.add(Vec3.random_in_unit_sphere());
 
@@ -64,6 +65,19 @@ public class Lambertian extends Material{
         //super.pdf=0.5/Utils.PI; ALTERNATIVE
 
         return true;
+        */
+
+
+        Onb uvw=new Onb();
+        uvw.build_from_w(rec.normal);
+        Vec3 direction=uvw.local(Vec3.random_cosine_direction());
+
+        this.scattered=new Ray(rec.p, direction.normalize());
+        this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
+
+        super.pdf=(uvw.w().dotProduct(scattered.direction())) / Utils.PI;
+        return true;
+
     }
 
     @Override
