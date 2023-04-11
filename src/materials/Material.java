@@ -10,13 +10,9 @@ import maths.ColorValue;
 import maths.Ray;
 import maths.Vec3;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.io.Serializable;
-
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
 
 /**
  * @author : Ruben Maudo
@@ -33,6 +29,9 @@ public abstract class Material implements Serializable {
     ColorValue emitted;
     Ray scattered;
 
+    //TESTING
+    double pdf;
+
     //METHODS
     /**
      * Abstrad method to calc the scatter of the ray that hit the primitive
@@ -41,6 +40,10 @@ public abstract class Material implements Serializable {
      * @return
      */
     public abstract boolean scatter(Ray r_in, Hit_record rec);
+
+    public double scattering_pdf(Ray r_in, Hit_record rec, Ray scattered){
+        return 0;
+    }
 
 
     public ColorValue emitted(){
@@ -63,6 +66,9 @@ public abstract class Material implements Serializable {
     public Ray getScattered() {
         return scattered;
     }
+
+    public double getPdf() {return pdf;}
+
 
     public abstract Node getMaterial(Document doc);
 }

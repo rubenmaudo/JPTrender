@@ -45,17 +45,33 @@ public class Lambertian extends Material{
     public boolean scatter(Ray r_in, Hit_record rec) {
 
         //OPTION 1-Calc with scatter in random unit sphere (create more shadows)
-        Vec3 scatter_direction = rec.normal.add(Vec3.random_in_unit_sphere());
+        //Vec3 scatter_direction = rec.normal.add(Vec3.random_in_unit_sphere());
 
         //OPTION 2-Calc with scatter in random unit vector (Objects brighter and less shadow)
-        //Vec3 scatter_direction = temp.normal.add(Vec3.random_unit_vector());
+        Vec3 scatter_direction = rec.normal.add(Vec3.random_unit_vector());
+        //Vec3 scatter_direction = Vec3.random_in_hemisphere(rec.normal); ALTERNATIVE
 
-        this.scattered = new Ray(rec.p, scatter_direction);
-        //TESTING this.attenuation= albedo;
+        //catch degenerate scatter direction
+        if (scatter_direction.near_zero()){
+            scatter_direction=rec.normal;
+        }
+
+        this.scattered=new Ray(rec.p, scatter_direction.normalize());
+
         this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
+
+        super.pdf=(rec.normal.dotProduct(scattered.direction()))/Utils.PI;
+        //super.pdf=0.5/Utils.PI; ALTERNATIVE
 
         return true;
     }
+
+    @Override
+    public double scattering_pdf(Ray r_in, Hit_record rec, Ray scattered) {
+        double cosine= rec.normal.dotProduct(scattered.direction().normalize());
+        return cosine < 0 ? 0 : cosine/Utils.PI;
+    }
+
 
     @Override
     public Node getMaterial(Document doc) {
@@ -67,4 +83,5 @@ public class Lambertian extends Material{
         //TODO save scene need to be implemented
         return lambertian;
     }
+
 }

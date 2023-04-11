@@ -205,6 +205,12 @@ public class Vec3 implements Serializable {
         }
     }
 
+    public boolean near_zero(){
+        // Return true if the vector is close to zero in all dimensions.
+        final double s = 1e-8;
+        return (Math.abs(exp(0)) < s) && (Math.abs(exp(1))< s) && (Math.abs(exp(2)) < s);
+    }
+
     public static Vec3 clone(Vec3 vec3){
         return(new Vec3(vec3.x(),vec3.y(),vec3.z()));
     }
