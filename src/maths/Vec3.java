@@ -93,17 +93,13 @@ public class Vec3 implements Serializable {
         );
     }
 
-    public double norm(){
+    public double squared_length(){
         return x*x + y*y + z*z;
     }
-
     public double length(){
-        return sqrt(norm());
+        return sqrt(squared_length());
     }
 
-    public double squared_length(){
-        return length()*length();
-    }
 
     public double getValue(int i){
         switch (i) {

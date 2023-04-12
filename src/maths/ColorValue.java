@@ -7,8 +7,7 @@ import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
+import static java.lang.Math.*;
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
 
@@ -82,10 +81,38 @@ public class ColorValue implements Serializable {
             return rec.material.emitted();
         }
 
+
+        Vec3 on_light= new Vec3(random_double(-65,65),554,random_double(-65,65));
+        Vec3 to_light=on_light.sub(rec.p);
+        double distance_squared=to_light.squared_length();
+        to_light=to_light.normalize();
+
+        if(to_light.dotProduct(rec.normal)<0) return rec.material.emitted();
+
+        double light_area=(343-213)*(332-227);
+        double light_cosine=abs(to_light.y());
+        if(light_cosine<0.000001) return rec.material.emitted();
+
+        double pdf = distance_squared / (light_cosine*light_area);
+        Ray scattered=new Ray(rec.p,to_light);
+
+
+
+        return rec.material.emitted().add(
+                rec.material.getAttenuation().product(rec.material.scattering_pdf(r,rec,scattered))
+                        .product(colorRay(scattered, new Hittable(world.list,world.nodeList), depth - 1, background))
+                        .divide(pdf));
+
+
+
+
+        /*METHOD PRIOR TO CHAPTER 9
         return rec.material.emitted().add(
                 rec.material.getAttenuation().product(rec.material.scattering_pdf(r,rec,rec.material.getScattered()))
                         .product(colorRay(rec.material.getScattered(), new Hittable(world.list,world.nodeList), depth - 1, background))
                         .divide(rec.material.getPdf()));
+
+
 
         /*OLD METHOD
         return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(),
