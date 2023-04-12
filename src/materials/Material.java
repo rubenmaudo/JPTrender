@@ -47,6 +47,7 @@ public abstract class Material implements Serializable {
 
 
     public ColorValue emitted(){
+
         if (emitted==null){
             return new ColorValue(0,0,0);
         }else{

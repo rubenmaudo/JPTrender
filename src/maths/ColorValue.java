@@ -78,7 +78,12 @@ public class ColorValue implements Serializable {
         }
 
         if (!rec.material.scatter(r, rec)) {
-            return rec.material.emitted();
+            //We check in here where the light is coming from
+            if(rec.front_face){
+                return rec.material.emitted();
+            }else {
+                return new ColorValue(0,0,0);
+            }
         }
 
 
