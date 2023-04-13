@@ -87,6 +87,8 @@ public class ColorValue implements Serializable {
         }
 
 
+
+        /*PRIOR TO CHAPTER 10.2
         Vec3 on_light= new Vec3(random_double(-65,65),554,random_double(-65,65));
         Vec3 to_light=on_light.sub(rec.p);
         double distance_squared=to_light.squared_length();
@@ -101,12 +103,20 @@ public class ColorValue implements Serializable {
         double pdf = distance_squared / (light_cosine*light_area);
         Ray scattered=new Ray(rec.p,to_light);
 
+         */
+
+
+        Cosine_pdf p=new Cosine_pdf(rec.normal);
+        Ray scattered=new Ray(rec.p,p.generate());
+        double pdf_val=p.value(scattered.direction());
+
+
 
 
         return rec.material.emitted().add(
                 rec.material.getAttenuation().product(rec.material.scattering_pdf(r,rec,scattered))
                         .product(colorRay(scattered, new Hittable(world.list,world.nodeList), depth - 1, background))
-                        .divide(pdf));
+                        .divide(pdf_val));
 
 
 
