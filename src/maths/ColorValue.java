@@ -1,6 +1,9 @@
 package maths;
 
 import geometry.Hit_record;
+import geometry.Plane_xz;
+import geometry.Primitive;
+import materials.Diffuse_light;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -88,7 +91,7 @@ public class ColorValue implements Serializable {
 
 
 
-        /*PRIOR TO CHAPTER 10.2
+        /*PRIOR TO CHAPTER 10.1
         Vec3 on_light= new Vec3(random_double(-65,65),554,random_double(-65,65));
         Vec3 to_light=on_light.sub(rec.p);
         double distance_squared=to_light.squared_length();
@@ -106,10 +109,18 @@ public class ColorValue implements Serializable {
          */
 
 
+        /*PRIOR TO CHAPTER 10.2
         Cosine_pdf p=new Cosine_pdf(rec.normal);
         Ray scattered=new Ray(rec.p,p.generate());
         double pdf_val=p.value(scattered.direction());
 
+         */
+
+        Plane_xz lights=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
+
+        Primitive_pdf light_pdf= new Primitive_pdf(lights,rec.p);
+        Ray scattered=new Ray(rec.p,light_pdf.generate());
+        double pdf_val= light_pdf.value(scattered.direction());
 
 
 

@@ -2,6 +2,7 @@ package geometry;
 
 import materials.Material;
 import maths.Ray;
+import maths.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -57,4 +58,12 @@ public abstract class Primitive implements Serializable {
      * @return
      */
     abstract void create_bounding_box();
+
+    public double pdf_value(Vec3 o, Vec3 direction) {
+        return 0.0;
+    }
+
+    public Vec3 random(Vec3 o) {
+        return new Vec3(1,0,0);
+    }
 }
