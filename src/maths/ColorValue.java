@@ -2,15 +2,14 @@ package maths;
 
 import geometry.Hit_record;
 import geometry.Plane_xz;
-import geometry.Primitive;
 import materials.Diffuse_light;
 
 import java.awt.*;
 import java.io.Serializable;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static java.lang.Math.*;
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 import static maths.Utils.INFINITY;
 import static maths.Vec3.random_double;
 
@@ -118,9 +117,12 @@ public class ColorValue implements Serializable {
 
         Plane_xz lights=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
 
-        Primitive_pdf light_pdf= new Primitive_pdf(lights,rec.p);
-        Ray scattered=new Ray(rec.p,light_pdf.generate());
-        double pdf_val= light_pdf.value(scattered.direction());
+        Primitive_pdf p0= new Primitive_pdf(lights,rec.p);
+        Cosine_pdf p1= new Cosine_pdf(rec.normal);
+        Mixture_pdf mixed_pdf= new Mixture_pdf(p0,p1);
+
+        Ray scattered=new Ray(rec.p,mixed_pdf.generate());
+        double pdf_val= mixed_pdf.value(scattered.direction());
 
 
 

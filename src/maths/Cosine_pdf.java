@@ -1,6 +1,6 @@
 package maths;
 
-public class Cosine_pdf {
+public class Cosine_pdf extends Pdf{
 
     Onb uvw;
 

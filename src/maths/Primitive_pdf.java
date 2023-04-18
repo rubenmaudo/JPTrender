@@ -2,7 +2,7 @@ package maths;
 
 import geometry.Primitive;
 
-public class Primitive_pdf {
+public class Primitive_pdf extends Pdf{
     Vec3 o;
     Primitive ptr;
 
