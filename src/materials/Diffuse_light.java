@@ -19,14 +19,18 @@ public class Diffuse_light extends Material{
         this.emitted=colorValue;
     }
 
-
-    @Override
-    public boolean scatter(Ray r_in, Hit_record rec) {
-        return false;
-    }
-
     public ColorValue emitted(double u, double v, double p){
         return new ColorValue(u,v,p);
+    }
+
+    //THIS IS JUST A TEST
+    public ColorValue emitted(Ray r_in, Hit_record rec, double u, double v, Vec3 p){
+
+        if(rec.front_face){
+            return emitted;
+        }else {
+            return new ColorValue(0,0,0);
+        }
     }
 
     public ColorValue getEmitted(){

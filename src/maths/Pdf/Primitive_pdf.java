@@ -1,6 +1,7 @@
-package maths;
+package maths.Pdf;
 
 import geometry.Primitive;
+import maths.Vec3;
 
 public class Primitive_pdf extends Pdf{
     Vec3 o;

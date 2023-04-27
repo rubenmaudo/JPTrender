@@ -7,6 +7,7 @@ package materials;
 
 import geometry.Hit_record;
 import maths.*;
+import maths.Pdf.Cosine_pdf;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -42,7 +43,7 @@ public class Lambertian extends Material{
 
     //METHODS
     @Override
-    public boolean scatter(Ray r_in, Hit_record rec) {
+    public boolean scatter(Ray r_in, Hit_record rec, Scatter_record srec) {
 
         /*MATERIAL AS IT WAS BEFORE CHAPTER 8-THE REST OF YOUR LIFE
         //OPTION 1-Calc with scatter in random unit sphere (create more shadows)
@@ -68,6 +69,7 @@ public class Lambertian extends Material{
         */
 
 
+        /*
         Onb uvw=new Onb();
         uvw.build_from_w(rec.normal);
         Vec3 direction=uvw.local(Vec3.random_cosine_direction());
@@ -76,6 +78,13 @@ public class Lambertian extends Material{
         this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
 
         super.pdf=(uvw.w().dotProduct(scattered.direction())) / Utils.PI;
+        return true;
+        */
+
+        this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
+        srec.setIs_specular(false);
+        srec.setAttenuation(albedo.getColourValue(rec.u, rec.v, rec.p));
+        srec.setPdf_ptr(new Cosine_pdf(rec.normal));
         return true;
 
     }

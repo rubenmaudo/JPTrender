@@ -1,4 +1,6 @@
-package maths;
+package maths.Pdf;
+
+import maths.Vec3;
 
 public abstract class Pdf {
 

@@ -30,6 +30,8 @@ public class Hittable {
     Boolean hit_anything = false;
     double closest_so_far;
 
+    ArrayList<Primitive> listSampler;
+
     //CONSTRUCTOR
 
     public Hittable(ArrayList<Primitive> list){
@@ -44,6 +46,14 @@ public class Hittable {
         this.temp_rec=new Hit_record();
     }
 
+    public Hittable(ArrayList<Primitive> list, BVH_node nodeList, ArrayList<Primitive> listSampler){
+        this.list= list;
+        this.nodeList=nodeList;
+        this.temp_rec=new Hit_record();
+        this.listSampler=listSampler;
+    }
+
+    //TODO with listSampler check directly if needed or not to be added
     //TODO comment all this process
 
     //METHODS
@@ -77,10 +87,20 @@ public class Hittable {
         return hit_anything;
     }
 
+    public double pdf_value(Vec3 o, Vec3 v){
+        double weight= 1.0 / listSampler.size();
+        double sum=0.0;
 
+        for(Primitive p : listSampler){
+            sum+= weight*p.pdf_value(o,v);
+        }
+        return sum;
+    }
 
-
-
+    public Vec3 random(Vec3 o){
+        int int_size=listSampler.size();
+        return listSampler.get(Vec3.random_int(0,int_size-1)).random(o);
+    }
 
     public Hit_record getTemp_rec(){
         return temp_rec;

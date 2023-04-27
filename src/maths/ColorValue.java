@@ -2,7 +2,12 @@ package maths;
 
 import geometry.Hit_record;
 import geometry.Plane_xz;
+import geometry.Sphere;
 import materials.Diffuse_light;
+import materials.Lambertian;
+import maths.Pdf.Cosine_pdf;
+import maths.Pdf.Mixture_pdf;
+import maths.Pdf.Primitive_pdf;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -79,13 +84,16 @@ public class ColorValue implements Serializable {
             }
         }
 
-        if (!rec.material.scatter(r, rec)) {
-            //We check in here where the light is coming from
-            if(rec.front_face){
-                return rec.material.emitted();
-            }else {
-                return new ColorValue(0,0,0);
-            }
+        Scatter_record srec= new Scatter_record();
+
+        ColorValue emitted = rec.material.emitted(r,rec,rec.u,rec.v,rec.p);
+
+        if (!rec.material.scatter(r, rec, srec)) {
+            return emitted;
+        }
+
+        if(srec.is_specular){
+            return srec.attenuation.product(colorRay(srec.specular_ray, new Hittable(world.list,world.nodeList), depth - 1, background));
         }
 
 
@@ -115,40 +123,22 @@ public class ColorValue implements Serializable {
 
          */
 
-        Plane_xz lights=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
-
-        Primitive_pdf p0= new Primitive_pdf(lights,rec.p);
-        Cosine_pdf p1= new Cosine_pdf(rec.normal);
-        Mixture_pdf mixed_pdf= new Mixture_pdf(p0,p1);
-
-        Ray scattered=new Ray(rec.p,mixed_pdf.generate());
-        double pdf_val= mixed_pdf.value(scattered.direction());
+        //Plane_xz lights=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
+        Sphere lights=new Sphere(new Vec3(83,90,83),90,new Lambertian(new ColorValue(0.73,0.73,0.73)));
 
 
+        Primitive_pdf light_ptr= new Primitive_pdf(lights,rec.p);
+        Mixture_pdf p=new Mixture_pdf(light_ptr,srec.pdf_ptr);
 
-        return rec.material.emitted().add(
-                rec.material.getAttenuation().product(rec.material.scattering_pdf(r,rec,scattered))
+        Ray scattered=new Ray(rec.p,p.generate());
+        double pdf_val= p.value(scattered.direction());
+
+
+
+        return emitted.add(
+                srec.attenuation).product(rec.material.scattering_pdf(r,rec,scattered))
                         .product(colorRay(scattered, new Hittable(world.list,world.nodeList), depth - 1, background))
-                        .divide(pdf_val));
-
-
-
-
-        /*METHOD PRIOR TO CHAPTER 9
-        return rec.material.emitted().add(
-                rec.material.getAttenuation().product(rec.material.scattering_pdf(r,rec,rec.material.getScattered()))
-                        .product(colorRay(rec.material.getScattered(), new Hittable(world.list,world.nodeList), depth - 1, background))
-                        .divide(rec.material.getPdf()));
-
-
-
-        /*OLD METHOD
-        return rec.material.getAttenuation().product(colorRay(rec.material.getScattered(),
-                new Hittable(world.list,world.nodeList), depth - 1, background));
-
-         */
-
-
+                        .divide(pdf_val);
     }
 
     /**

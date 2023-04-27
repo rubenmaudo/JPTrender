@@ -7,6 +7,7 @@ package materials;
 
 import geometry.Hit_record;
 import maths.Ray;
+import maths.Scatter_record;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -38,7 +39,7 @@ public class Metal2 extends Material{
 
     //METHODS
     @Override
-    public boolean scatter(Ray r_in, Hit_record rec) {
+    public boolean scatter(Ray r_in, Hit_record rec, Scatter_record srec) {
 
         //Metal scatter
         Vec3 reflected = reflect(r_in.direction().normalize(), rec.normal);

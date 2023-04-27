@@ -70,9 +70,10 @@ public class Dielectric extends Material{
 
     //METHODS
     @Override
-    public boolean scatter(Ray r_in, Hit_record rec) {
+    public boolean scatter(Ray r_in, Hit_record rec, Scatter_record srec) {
         double etai_over_etat;
 
+        /*
         //Check if the ray is going into the material or going outside
         if(rec.front_face){
             etai_over_etat = 1 / ref_idx;
@@ -100,7 +101,33 @@ public class Dielectric extends Material{
         Vec3 refracted = refract(unit_direction, rec.normal,etai_over_etat);
         this.scattered = new Ray(rec.p,refracted.add(Vec3.random_in_unit_sphere().product(fuzz)));
         return true;
+         */
+
+        srec.setIs_specular(true);
+        srec.setPdf_ptr(null);
+        srec.setAttenuation(attenuation);
+        double refraction_ratio=rec.front_face ? (1/ref_idx) : ref_idx;
+
+        Vec3 unit_direction=r_in.direction().normalize();
+
+        //ATTENTION HERE (the -1 was needed to make it work)
+        double cos_theta = min(unit_direction.product(-1).dotProduct(rec.normal),1);
+        double sin_theta = sqrt(1 - cos_theta*cos_theta);
+
+        boolean cannot_refract = refraction_ratio*sin_theta>1;
+        Vec3 direction;
+
+        if (cannot_refract||schlick(cos_theta,refraction_ratio) > Vec3.random_double(0,1)){
+            direction=reflect(unit_direction, rec.normal);
+        }else{
+            direction= refract(unit_direction,rec.normal,refraction_ratio);
+        }
+
+        srec.setSpecular_ray(new Ray(rec.p,direction));
+        return true;
+
     }
+
 
     /**
      * Calc the refracted vector

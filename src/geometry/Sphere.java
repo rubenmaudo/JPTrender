@@ -6,7 +6,9 @@
 package geometry;
 
 import materials.Material;
+import maths.Onb;
 import maths.Ray;
+import maths.Utils;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,6 +16,7 @@ import org.w3c.dom.Node;
 
 import static java.lang.Math.*;
 import static maths.Vec3.dotProduct;
+import static maths.Vec3.random_to_Sphere;
 
 
 /**
@@ -124,6 +127,26 @@ public class Sphere extends Primitive{
         //System.out.println("u & v are=" + rec.u + ", " + rec.v);
     }
 
+    @Override
+    public double pdf_value(Vec3 o, Vec3 v) {
+        Hit_record rec=new Hit_record();
+        if(!this.hit(new Ray(o,v),0.001, Utils.INFINITY,rec))
+            return 0;
+
+        double cos_theta_max= Math.sqrt(1-radius*radius/(center.sub(o).squared_length()));
+        double solid_angle= 2*Utils.PI*(1-cos_theta_max);
+
+        return 1/solid_angle;
+    }
+
+    @Override
+    public Vec3 random(Vec3 o) {
+        Vec3 direction=center.sub(o);
+        double distance_squared=direction.squared_length();
+        Onb uvw = new Onb();
+        uvw.build_from_w(direction);
+        return uvw.local(random_to_Sphere(radius,distance_squared));
+    }
 
     @Override
     public Node saveGeomety(Document doc) {

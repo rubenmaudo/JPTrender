@@ -3,6 +3,7 @@ package materials;
 import geometry.Hit_record;
 import maths.ColorValue;
 import maths.Ray;
+import maths.Scatter_record;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -27,7 +28,7 @@ public class Isotropic extends Material{
 
 
     @Override
-    public boolean scatter(Ray r_in, Hit_record rec) {
+    public boolean scatter(Ray r_in, Hit_record rec, Scatter_record srec) {
         this.scattered = new Ray(rec.p, Vec3.random_in_unit_sphere());
         this.attenuation=albedo.getColourValue(rec.u, rec.v, rec.p);
         return true;

@@ -1,4 +1,8 @@
-package maths;
+package maths.Pdf;
+
+import maths.Onb;
+import maths.Utils;
+import maths.Vec3;
 
 public class Cosine_pdf extends Pdf{
 
@@ -11,7 +15,7 @@ public class Cosine_pdf extends Pdf{
 
     public double value(Vec3 direction){
         double cosine = direction.normalize().dotProduct(uvw.w());
-        return cosine <= 0 ? 0 : (cosine/Utils.PI);
+        return cosine <= 0 ? 0 : (cosine/ Utils.PI);
     }
 
     public Vec3 generate(){

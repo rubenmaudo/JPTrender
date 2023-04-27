@@ -1,4 +1,6 @@
-package maths;
+package maths.Pdf;
+
+import maths.Vec3;
 
 public class Mixture_pdf extends Pdf{
 
@@ -16,7 +18,7 @@ public class Mixture_pdf extends Pdf{
     }
 
     public Vec3 generate(){
-        if(Math.random()<0.5){
+        if(Vec3.random_double(0,1)<0.5){
             return p0.generate();
         }else{
             return p1.generate();

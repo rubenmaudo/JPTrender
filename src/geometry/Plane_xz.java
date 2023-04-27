@@ -148,9 +148,9 @@ public class Plane_xz extends Primitive{
 
     }
 
-    public double pdf_value(Vec3 origin, Vec3 v) {
+    public double pdf_value(Vec3 o, Vec3 v) {
         Hit_record rec=new Hit_record();
-        if(!this.hit(new Ray(origin,v),0.001, Utils.INFINITY,rec))
+        if(!this.hit(new Ray(o,v),0.001, Utils.INFINITY,rec))
             return 0;
 
         double area= (x1-x0)*(z1-z0);

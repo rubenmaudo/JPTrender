@@ -157,8 +157,12 @@ public class Vec3 implements Serializable {
         return min + (max - min) * ThreadLocalRandom.current().nextDouble();
     }
 
+    public static int random_int(int min, int max){
+        return ThreadLocalRandom.current().nextInt(min,max);
+    }
+
     //Return a random vector
-    public static Vec3 random(){
+    public static Vec3 randomVec3(){
         Random r = new Random();
         return new Vec3(ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble(),ThreadLocalRandom.current().nextDouble());
     }
@@ -211,6 +215,19 @@ public class Vec3 implements Serializable {
         double y=sin(phi)*sqrt(r2);
 
         return new Vec3(x,y,z);
+    }
+
+    public static Vec3 random_to_Sphere(double radius, double distance_squared){
+        double r1=random_double(0,1);
+        double r2=random_double(0,1);
+        double z=1+r2*(Math.sqrt(1-radius*radius/distance_squared)-1);
+
+        double phi= 2*Utils.PI*Utils.PI;
+        double x= cos(phi)*sqrt(1-z*z);
+        double y= sin(phi)*sqrt(1-z*z);
+
+        return new Vec3(x,y,z);
+
     }
 
     public boolean near_zero(){

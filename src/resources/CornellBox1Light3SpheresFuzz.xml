@@ -9,6 +9,7 @@
   <PlaneXZ width="130" depth="130" centreBasePointX="0" centreBasePointY="554" centreBasePointZ="0" flipped="true">
    <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
  </PlaneXZ>
+
  <!--////////CORNELL BOX\\\\\\\\\-->
 
     <PlaneXY width="556" height="556" centreBasePointX="0" centreBasePointY="278" centreBasePointZ="-278" flipped="true">

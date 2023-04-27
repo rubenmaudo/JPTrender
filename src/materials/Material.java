@@ -8,6 +8,7 @@ package materials;
 import geometry.Hit_record;
 import maths.ColorValue;
 import maths.Ray;
+import maths.Scatter_record;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -28,6 +29,7 @@ public abstract class Material implements Serializable {
     ColorValue attenuation;
     ColorValue emitted;
     Ray scattered;
+    public Scatter_record srec;
 
     //TESTING
     double pdf;
@@ -39,20 +41,29 @@ public abstract class Material implements Serializable {
      * @param rec
      * @return
      */
-    public abstract boolean scatter(Ray r_in, Hit_record rec);
+    public boolean scatter(Ray r_in, Hit_record rec,Scatter_record srec){
+        return false;
+    };
 
     public double scattering_pdf(Ray r_in, Hit_record rec, Ray scattered){
         return 0;
     }
 
 
+    /*
     public ColorValue emitted(){
+
 
         if (emitted==null){
             return new ColorValue(0,0,0);
         }else{
             return emitted;
         }
+    }
+     */
+
+    public ColorValue emitted(Ray r_in, Hit_record rec, double u, double v, Vec3 p){
+        return new ColorValue(0,0,0);
     }
 
     //Calc the reflected ray
