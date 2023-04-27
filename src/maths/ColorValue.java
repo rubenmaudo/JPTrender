@@ -2,15 +2,18 @@ package maths;
 
 import geometry.Hit_record;
 import geometry.Plane_xz;
+import geometry.Primitive;
 import geometry.Sphere;
 import materials.Diffuse_light;
 import materials.Lambertian;
 import maths.Pdf.Cosine_pdf;
+import maths.Pdf.Hittable_list_pdf;
 import maths.Pdf.Mixture_pdf;
 import maths.Pdf.Primitive_pdf;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Math.cos;
@@ -123,16 +126,24 @@ public class ColorValue implements Serializable {
 
          */
 
-        //Plane_xz lights=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
-        Sphere lights=new Sphere(new Vec3(83,90,83),90,new Lambertian(new ColorValue(0.73,0.73,0.73)));
+        Plane_xz light=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
+        //Sphere sphere=new Sphere(new Vec3(83,90,83),90,new Lambertian(new ColorValue(0.73,0.73,0.73)));
+        ArrayList<Primitive> listSampler=new ArrayList<Primitive>();
+        listSampler.add(light);
+        //listSampler.add(sphere);
 
-
+        /*
         Primitive_pdf light_ptr= new Primitive_pdf(lights,rec.p);
         Mixture_pdf p=new Mixture_pdf(light_ptr,srec.pdf_ptr);
 
         Ray scattered=new Ray(rec.p,p.generate());
         double pdf_val= p.value(scattered.direction());
+         */
 
+        Hittable_list_pdf list_ptr= new Hittable_list_pdf(listSampler,rec.p);
+        Mixture_pdf p= new Mixture_pdf(list_ptr,srec.pdf_ptr);
+        Ray scattered=new Ray(rec.p,p.generate());
+        double pdf_val= p.value(scattered.direction());
 
 
         return emitted.add(

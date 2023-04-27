@@ -87,21 +87,6 @@ public class Hittable {
         return hit_anything;
     }
 
-    public double pdf_value(Vec3 o, Vec3 v){
-        double weight= 1.0 / listSampler.size();
-        double sum=0.0;
-
-        for(Primitive p : listSampler){
-            sum+= weight*p.pdf_value(o,v);
-        }
-        return sum;
-    }
-
-    public Vec3 random(Vec3 o){
-        int int_size=listSampler.size();
-        return listSampler.get(Vec3.random_int(0,int_size-1)).random(o);
-    }
-
     public Hit_record getTemp_rec(){
         return temp_rec;
     }
