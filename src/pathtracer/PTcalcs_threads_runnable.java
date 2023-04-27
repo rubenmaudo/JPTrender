@@ -129,6 +129,20 @@ public class PTcalcs_threads_runnable implements Runnable {
 
                 col = ColorValue.colorRay(r, new Hittable(scene,nodeList), depth, background);
 
+
+                //Code to reduce hotpixel (fireflies)
+
+                /*
+                if(col.vR()>1000){col.setvR();}
+                if(col.vG()>1000){col.setvG();}
+                if(col.vB()>1000){col.setvB();}
+
+                 */
+
+
+
+
+
                 if (imagePixels[pxLoc[0]][pxLoc[1]] == null) {
                     imagePixels[pxLoc[0]][pxLoc[1]] = new ColorValue(0, 0, 0);
                 }

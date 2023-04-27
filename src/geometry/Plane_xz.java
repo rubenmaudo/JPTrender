@@ -102,7 +102,7 @@ public class Plane_xz extends Primitive{
      * @param flipped
      * @param material
      */
-    public Plane_xz(double width, double depth, Vec3 centreBasePoint,boolean flipped, Material material){
+    public Plane_xz(double width, double depth, Vec3 centreBasePoint,boolean flipped, boolean isSampled, Material material){
         this.width=width;
         this.depth=depth;
         this.centreBasePoint=centreBasePoint;
@@ -114,6 +114,8 @@ public class Plane_xz extends Primitive{
         this.z0=centreBasePoint.z()-depth/2;
         this.z1=centreBasePoint.z()+depth/2;
         this.k=centreBasePoint.y();
+
+        this.isSampled=isSampled;
 
         create_bounding_box();
     }

@@ -5,13 +5,13 @@
         <lookat X="0.0" Y="278.0" Z="0.0"/>
         <vup X="0.0" Y="1.0" Z="0.0"/>
     </Camera>
-    <PlaneXZ centreBasePointX="-195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+    <PlaneXZ centreBasePointX="-195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="true" width="40.0">
         <Material ColorB="0.7" ColorG="70.0" ColorR="0.7" type="light"/>
     </PlaneXZ>
-    <PlaneXZ centreBasePointX="0.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+    <PlaneXZ centreBasePointX="0.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="true" width="40.0">
         <Material ColorB="0.7" ColorG="0.7" ColorR="70.0" type="light"/>
     </PlaneXZ>
-    <PlaneXZ centreBasePointX="195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="false" width="40.0">
+    <PlaneXZ centreBasePointX="195.0" centreBasePointY="555.0" centreBasePointZ="0.0" depth="400.0" flipped="true" width="40.0">
         <Material ColorB="70.0" ColorG="0.7" ColorR="0.7" type="light"/>
     </PlaneXZ>
     <PlaneYZ centreBasePointX="-278.0" centreBasePointY="278.0" centreBasePointZ="0.0" flipped="false" height="556.0" width="556.0">

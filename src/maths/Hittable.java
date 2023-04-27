@@ -30,13 +30,19 @@ public class Hittable {
     Boolean hit_anything = false;
     double closest_so_far;
 
-    ArrayList<Primitive> listSampler;
+    private ArrayList<Primitive> listSampler=new ArrayList<Primitive>();
 
     //CONSTRUCTOR
 
     public Hittable(ArrayList<Primitive> list){
         this.list= list;
         this.temp_rec=new Hit_record();
+
+        for(Primitive p: list){
+            if(p.isSampled()){
+                listSampler.add(p);
+            }
+        }
     }
 
 
@@ -44,16 +50,14 @@ public class Hittable {
         this.list= list;
         this.nodeList=nodeList;
         this.temp_rec=new Hit_record();
+
+        for(Primitive p: list){
+            if(p.isSampled()){
+                listSampler.add(p);
+            }
+        }
     }
 
-    public Hittable(ArrayList<Primitive> list, BVH_node nodeList, ArrayList<Primitive> listSampler){
-        this.list= list;
-        this.nodeList=nodeList;
-        this.temp_rec=new Hit_record();
-        this.listSampler=listSampler;
-    }
-
-    //TODO with listSampler check directly if needed or not to be added
     //TODO comment all this process
 
     //METHODS
@@ -89,5 +93,9 @@ public class Hittable {
 
     public Hit_record getTemp_rec(){
         return temp_rec;
+    }
+
+    public ArrayList<Primitive> getListSampler(){
+        return listSampler;
     }
 }

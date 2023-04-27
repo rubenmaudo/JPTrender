@@ -5,9 +5,11 @@
         <lookat X="0.0" Y="0.0" Z="0.0"/>
         <vup X="0.0" Y="1.0" Z="0.0"/>
     </Camera>
-    <Sphere CentreX="0.0" CentreY="-6360e3" CentreZ="0.0" radius="6360e3">
-        <Material ColorB="0.5" ColorG="0.5" ColorR="0.5" type="lambertian"/>
-    </Sphere>
+ <PlaneXZ width="6360e3" depth="6360e3" centreBasePointX="0" centreBasePointY="-0.001" centreBasePointZ="0" flipped="false">
+    <Material ColorB="0.5" ColorG="0.5" ColorR="0.5" type="lambertian"/> 
+  </PlaneXZ>
+
+
     <Sphere CentreX="-10.525853087194866" CentreY="0.2" CentreZ="-10.848106420169731" radius="0.2">
         <Material ColorB="0.030791413111995417" ColorG="0.12338745710336271" ColorR="0.10347080195097316" type="lambertian"/>
     </Sphere>

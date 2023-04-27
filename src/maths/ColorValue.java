@@ -1,11 +1,9 @@
 package maths;
 
-import geometry.Hit_record;
-import geometry.Plane_xz;
-import geometry.Primitive;
-import geometry.Sphere;
+import geometry.*;
 import materials.Diffuse_light;
 import materials.Lambertian;
+import materials.Metal;
 import maths.Pdf.Cosine_pdf;
 import maths.Pdf.Hittable_list_pdf;
 import maths.Pdf.Mixture_pdf;
@@ -126,11 +124,18 @@ public class ColorValue implements Serializable {
 
          */
 
-        Plane_xz light=new Plane_xz(130,130,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
+        //Box lightBox=new Box(30,30,30,new Vec3(600,520,2000),new Diffuse_light(new ColorValue(10000,10000,10000)),0);
+        //Plane_xz light=new Plane_xz(10,10,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10)));
+        //Plane_xy light2=new Plane_xy(50,50,new Vec3(224,274,-274),new Diffuse_light(new ColorValue(100,100,100)));
+        //Plane_yz light2=new Plane_yz(50,50,new Vec3(274,274,0),true,new Diffuse_light(new ColorValue(10,10,10)));
         //Sphere sphere=new Sphere(new Vec3(83,90,83),90,new Lambertian(new ColorValue(0.73,0.73,0.73)));
-        ArrayList<Primitive> listSampler=new ArrayList<Primitive>();
-        listSampler.add(light);
+        //Sphere sphere2=new Sphere(new Vec3(-5000,10000,10000),10,new Diffuse_light(new ColorValue(10,10,10)));
+        //ArrayList<Primitive> listSampler=new ArrayList<Primitive>();
+        //listSampler.add(lightBox);
+        //listSampler.add(light);
+        //listSampler.add(light2);
         //listSampler.add(sphere);
+        //listSampler.add(sphere2);
 
         /*
         Primitive_pdf light_ptr= new Primitive_pdf(lights,rec.p);
@@ -140,10 +145,22 @@ public class ColorValue implements Serializable {
         double pdf_val= p.value(scattered.direction());
          */
 
-        Hittable_list_pdf list_ptr= new Hittable_list_pdf(listSampler,rec.p);
-        Mixture_pdf p= new Mixture_pdf(list_ptr,srec.pdf_ptr);
-        Ray scattered=new Ray(rec.p,p.generate());
-        double pdf_val= p.value(scattered.direction());
+        world.getListSampler().add(new Box(165,165,330,new Vec3(-83,0.1,-83), new Metal(new ColorValue(0.73,0.73,0.73)),15));
+        world.getListSampler().add(new Plane_xz(150,150,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10))));
+
+
+        Ray scattered;
+        double pdf_val;
+        if(world.getListSampler().size()>=1){
+            Hittable_list_pdf list_ptr= new Hittable_list_pdf(world.getListSampler(),rec.p);
+            Mixture_pdf p= new Mixture_pdf(list_ptr,srec.pdf_ptr);
+            scattered=new Ray(rec.p,p.generate());
+            pdf_val= p.value(scattered.direction());
+        }else{
+            Cosine_pdf p=new Cosine_pdf(rec.normal);
+            scattered=new Ray(rec.p,p.generate());
+            pdf_val=p.value(scattered.direction());
+        }
 
 
         return emitted.add(
@@ -245,5 +262,15 @@ public class ColorValue implements Serializable {
 
     public static ColorValue clone(ColorValue colorValue){
         return new ColorValue(colorValue.vR(), colorValue.vG(), colorValue.vB());
+    }
+
+    public void setvR(){
+        this.vR=1;
+    }
+    public void setvG(){
+        this.vG=1;
+    }
+    public void setvB(){
+        this.vB=1;
     }
 }

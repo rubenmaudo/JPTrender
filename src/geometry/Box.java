@@ -3,6 +3,7 @@ package geometry;
 import materials.Lambertian;
 import materials.Material;
 import maths.Hittable;
+import maths.Pdf.Hittable_list_pdf;
 import maths.Ray;
 import maths.Utils;
 import maths.Vec3;
@@ -11,6 +12,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.util.ArrayList;
+
+import static java.lang.Math.abs;
 
 /**
  * @author : Ruben Maudo
@@ -54,7 +57,9 @@ public class Box extends Primitive{
         //The box is created based on combination of flats
         planesList=new ArrayList<>();
         planesList.add(new Plane_xz(width, depth, new Vec3(centreBasePoint.x(),centreBasePoint.y()+height,centreBasePoint.z()),material));
-        planesList.add(new Plane_xz(width, depth, centreBasePoint,true,material));
+
+        //TODO remove hard coded isSampled
+        planesList.add(new Plane_xz(width, depth, centreBasePoint,true,false,material));
 
 
         planesList.add(new Plane_xy(width, height, new Vec3(centreBasePoint.x(),centreBasePoint.y()+(height/2),centreBasePoint.z()+(depth/2)), material));
@@ -113,6 +118,16 @@ public class Box extends Primitive{
         }
     }
 
+    public double pdf_value(Vec3 o, Vec3 v) {
+        Hittable_list_pdf box_planes_list=new Hittable_list_pdf(planesList,o);
+        return box_planes_list.value(v);
+    }
+
+    public Vec3 random(Vec3 origin) {
+        Hittable_list_pdf box_planes_list=new Hittable_list_pdf(planesList,origin);
+        return box_planes_list.generate();
+    }
+
 
     @Override
     public Node saveGeomety(Document doc) {
@@ -147,6 +162,13 @@ public class Box extends Primitive{
 
     public Vec3 getCentreBasePoint() {
         return centreBasePoint;
+    }
+
+    public void setisSampled(boolean value){
+        this.isSampled=value;
+        for( Primitive p : planesList){
+            p.setisSampled(value);
+        }
     }
 
     public Material getMaterial() {

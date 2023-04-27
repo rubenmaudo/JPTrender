@@ -6,11 +6,11 @@
     <vup X="0" Y="1" Z="0" />
   </Camera>
   <!--////////LIGHT\\\\\\\\\-->
-  <PlaneXZ width="130" depth="130" centreBasePointX="0" centreBasePointY="554" centreBasePointZ="0" flipped="true">
-   <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
- </PlaneXZ>
+  <PlaneXZ width="150" depth="150" centreBasePointX="0" centreBasePointY="554" centreBasePointZ="0" flipped="true" isSampled="true">
+    <Material type="light" ColorR="10" ColorG="10" ColorB="10" />
+  </PlaneXZ>
 
- <!--////////CORNELL BOX\\\\\\\\\-->
+  <!--////////CORNELL BOX\\\\\\\\\-->
 
     <PlaneXY width="556" height="556" centreBasePointX="0" centreBasePointY="278" centreBasePointZ="-278" flipped="true">
         <Material type="lambertian" ColorR="0.73" ColorG="0.73" ColorB="0.73"></Material>
@@ -30,19 +30,14 @@
 
   <!--////////GEOMETRY\\\\\\\\\-->
   <!--
-
-  <Sphere radius="120" CentreX="0" CentreY="120" CentreZ="128">
-    <Material type="dielectric" ColorR="1" ColorG="1" ColorB="1" ri="1.5" fuzziness="0" />
-  </Sphere>
-
-  <Sphere radius="70" CentreX="-100" CentreY="70" CentreZ="128">
-    <Material type="metal" ColorR="1" ColorG="1" ColorB="1" fuzziness="10"></Material>
-  </Sphere>
   <Sphere radius="70" CentreX="0" CentreY="70" CentreZ="-22">
     <Material type="lambertian" ColorR="0.05" ColorG="0.05" ColorB="0.65" />
   </Sphere>
-  <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
-    <Material type="dielectric" ColorR="1" ColorG="0.2" ColorB="0.2" ri="1.5" fuzziness="0.25" />
+  <Sphere radius="70" CentreX="-100" CentreY="71" CentreZ="128">
+    <Material type="metal" ColorR="1" ColorG="1" ColorB="1" fuzziness="0.1"></Material>
   </Sphere>
-  -->
+  <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
+    <Material type="dielectric" ColorR="1" ColorG="1" ColorB="1" ri="1.5" fuzziness="0.05" />
+  </Sphere>
+-->
 </Scene>

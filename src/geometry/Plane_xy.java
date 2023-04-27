@@ -2,13 +2,13 @@ package geometry;
 
 import materials.Material;
 import maths.Ray;
+import maths.Utils;
 import maths.Vec3;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 /**
  * @author : Ruben Maudo
@@ -145,6 +145,23 @@ public class Plane_xy extends Primitive{
         rec.p=r.point_at_parameter(t);
         return true;
 
+    }
+
+    public double pdf_value(Vec3 o, Vec3 v) {
+        Hit_record rec=new Hit_record();
+        if(!this.hit(new Ray(o,v),0.001, Utils.INFINITY,rec))
+            return 0;
+
+        double area= (x1-x0)*(y1-y0);
+        double distance_squared=rec.t* rec.t*v.squared_length();
+        double cosine= abs(v.dotProduct(rec.normal)/v.length());
+
+        return distance_squared / (cosine*area);
+    }
+
+    public Vec3 random(Vec3 origin) {
+        Vec3 random_point= new Vec3(Vec3.random_double(x0,x1),Vec3.random_double(y0,y1),k);
+        return random_point.sub(origin);
     }
 
     @Override

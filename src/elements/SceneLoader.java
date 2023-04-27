@@ -41,6 +41,7 @@ public class SceneLoader {
 
     //GEOMETRY FIELDS
     ArrayList<Primitive> geometry = new ArrayList<>();
+    ArrayList<Primitive> samplerList = new ArrayList<>();
 
     //TODO add all the details of the scene,  including render size, etc
 
@@ -244,6 +245,7 @@ public class SceneLoader {
                                     Double.parseDouble(planeXZElement.getAttribute("centreBasePointZ"))
                             ),
                             Boolean.parseBoolean(planeXZElement.getAttribute("flipped")),
+                            Boolean.parseBoolean(planeXZElement.getAttribute("isSampled")),
                             this.scanMaterial(planeXZElement)
                     );
                     geometry.add(planeXZ);

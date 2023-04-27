@@ -31,7 +31,7 @@ public class Hittable_list_pdf extends Pdf{
     public Vec3 generate() {
         int int_size=listSampler.size();
         if(int_size>1){
-            return listSampler.get(Vec3.random_int(0,int_size-1)).random(o);
+            return listSampler.get(Vec3.random_int(0,int_size)).random(o);
         }
         if(int_size==1){
             return listSampler.get(0).random(o);

@@ -28,8 +28,8 @@ public class Metal extends Material{
     //CONSTRUCTOR
     public Metal(ColorValue a, double fuzziness){
         this.albedo=new Texture_solid_colour(a.vR(),a.vG(),a.vB());
-        if (fuzziness<2) fuzz=fuzziness;
-        else fuzz=2;
+        if (fuzziness<1) fuzz=fuzziness;
+        else fuzz=1;
     }
 
     public Metal(ColorValue a){
@@ -50,8 +50,8 @@ public class Metal extends Material{
 
     public Metal(double R, double G, double B, double fuzziness){
         this.albedo=new Texture_solid_colour(R,G,B);
-        if (fuzziness<2) fuzz=fuzziness;
-        else fuzz=2;
+        if (fuzziness<1) fuzz=fuzziness;
+        else fuzz=1;
     }
 
     public Metal(double R, double G, double B){

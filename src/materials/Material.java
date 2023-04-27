@@ -29,6 +29,7 @@ public abstract class Material implements Serializable {
     ColorValue attenuation;
     ColorValue emitted;
     Ray scattered;
+
     public Scatter_record srec;
 
     //TESTING
@@ -80,7 +81,6 @@ public abstract class Material implements Serializable {
     }
 
     public double getPdf() {return pdf;}
-
 
     public abstract Node getMaterial(Document doc);
 }

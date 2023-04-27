@@ -120,7 +120,7 @@ public class Dielectric extends Material{
         if (cannot_refract||schlick(cos_theta,refraction_ratio) > Vec3.random_double(0,1)){
             direction=reflect(unit_direction, rec.normal);
         }else{
-            direction= refract(unit_direction,rec.normal,refraction_ratio);
+            direction= refract(unit_direction,rec.normal,refraction_ratio).add(Vec3.random_in_unit_sphere().product(fuzz));
         }
 
         srec.setSpecular_ray(new Ray(rec.p,direction));

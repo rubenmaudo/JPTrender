@@ -23,6 +23,8 @@ public abstract class Primitive implements Serializable {
     Material material;//Material asigned to the primitive
     AABB boundingBox;
 
+    boolean isSampled=false;
+
     //PRIMITIVE METHODS
     /**
      * Method to be implemented in all the primitives types that look for impacts from the ray
@@ -65,5 +67,17 @@ public abstract class Primitive implements Serializable {
 
     public Vec3 random(Vec3 o) {
         return new Vec3(1,0,0);
+    }
+
+    public boolean isSampled(){
+        return isSampled;
+    }
+
+    public void setisSampled(boolean value){
+        this.isSampled=value;
+    }
+
+    public Material getMaterial(){
+        return this.material;
     }
 }
