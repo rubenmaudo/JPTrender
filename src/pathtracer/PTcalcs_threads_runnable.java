@@ -125,7 +125,7 @@ public class PTcalcs_threads_runnable implements Runnable {
 
                 double v = ((image.getHeight() - pxLoc[1]) + ThreadLocalRandom.current().nextDouble()) / image.getHeight();
 
-                Ray r = camera.get_ray(u, v);
+                Ray r = camera.get_ray(u, v,true);
 
                 col = ColorValue.colorRay(r, new Hittable(scene,nodeList), depth, background);
 

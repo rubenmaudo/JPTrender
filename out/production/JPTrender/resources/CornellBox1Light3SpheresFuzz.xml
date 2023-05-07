@@ -29,7 +29,7 @@
     </PlaneXZ>
 
   <!--////////GEOMETRY\\\\\\\\\-->
-  <!--
+
   <Sphere radius="70" CentreX="0" CentreY="70" CentreZ="-22">
     <Material type="lambertian" ColorR="0.05" ColorG="0.05" ColorB="0.65" />
   </Sphere>
@@ -39,5 +39,5 @@
   <Sphere radius="70" CentreX="100" CentreY="70" CentreZ="128">
     <Material type="dielectric" ColorR="1" ColorG="1" ColorB="1" ri="1.5" fuzziness="0.05" />
   </Sphere>
--->
+
 </Scene>

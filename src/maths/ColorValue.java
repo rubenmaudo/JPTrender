@@ -145,8 +145,8 @@ public class ColorValue implements Serializable {
         double pdf_val= p.value(scattered.direction());
          */
 
-        world.getListSampler().add(new Box(165,165,330,new Vec3(-83,0.1,-83), new Metal(new ColorValue(0.73,0.73,0.73)),15));
-        world.getListSampler().add(new Plane_xz(150,150,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10))));
+        //world.getListSampler().add(new Box(165,165,330,new Vec3(-83,0.1,-83), new Metal(new ColorValue(0.73,0.73,0.73)),15));
+        //world.getListSampler().add(new Plane_xz(150,150,new Vec3(0,554,0),new Diffuse_light(new ColorValue(10,10,10))));
 
 
         Ray scattered;

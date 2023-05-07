@@ -7,6 +7,7 @@ package elements;
 
 import geometry.Primitive;
 import geometry.Sphere;
+import jdk.jshell.execution.Util;
 import materials.Dielectric;
 import materials.Lambertian;
 import materials.Material;
@@ -111,14 +112,27 @@ public class Camera {
      * @param t Also called v / parameter to identify the y position in the viewport
      * @return a new ray that goes from the origing of the camera to the direction created based in s & t
      */
-    public Ray get_ray(double s, double t){
-        Vec3 rd= Vec3.random_in_unit_disk().product(lens_radius);//Obtain random point in the lens
-        Vec3 offset = u.product(rd.x()).add(v.product(rd.y()));
+    public Ray get_ray(double s, double t, boolean enviromentCamera){
+
+        if (!enviromentCamera){
+            Vec3 rd= Vec3.random_in_unit_disk().product(lens_radius);//Obtain random point in the lens
+            Vec3 offset = u.product(rd.x()).add(v.product(rd.y()));
 
 
-        return new Ray(origin.add(offset),
-                lower_left_corner.add(horizontal.product(s)).add(vertical.product(t)).sub(origin).sub(offset)
-        );
+            return new Ray(origin.add(offset),
+                    lower_left_corner.add(horizontal.product(s)).add(vertical.product(t)).sub(origin).sub(offset)
+            );
+        }
+
+        double horizontal_angle_phi=s*2*Utils.PI;
+        double vertical_angle_theta=Utils.PI-(t*Utils.PI);
+
+        double x=Math.sin(vertical_angle_theta)*Math.cos(horizontal_angle_phi);
+        double z=Math.sin(horizontal_angle_phi)*Math.sin(vertical_angle_theta);
+        double y=Math.cos(vertical_angle_theta);
+
+        return new Ray(lookfrom,new Vec3(x,y,z));
+
     }
 
 
